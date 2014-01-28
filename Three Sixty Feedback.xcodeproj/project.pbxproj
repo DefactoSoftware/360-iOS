@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */; };
 		E4800B211897FD9A00FCE147 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4800B201897FD9A00FCE147 /* Foundation.framework */; };
 		E4800B231897FD9A00FCE147 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4800B221897FD9A00FCE147 /* CoreGraphics.framework */; };
 		E4800B251897FD9A00FCE147 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4800B241897FD9A00FCE147 /* UIKit.framework */; };
@@ -22,6 +23,7 @@
 		E4800B451897FD9A00FCE147 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4800B241897FD9A00FCE147 /* UIKit.framework */; };
 		E4800B4D1897FD9A00FCE147 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4800B4B1897FD9A00FCE147 /* InfoPlist.strings */; };
 		E4800B4F1897FD9A00FCE147 /* Three_Sixty_FeedbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4800B4E1897FD9A00FCE147 /* Three_Sixty_FeedbackTests.m */; };
+		F0FBDD2E96ED4C558BDC16E7 /* libPods-Three Sixty Feedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02440D1D9DA543F999900FB9 /* libPods-Three Sixty Feedback.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02440D1D9DA543F999900FB9 /* libPods-Three Sixty Feedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty Feedback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty FeedbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty Feedback.xcconfig"; path = "Pods/Pods-Three Sixty Feedback.xcconfig"; sourceTree = "<group>"; };
+		C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty FeedbackTests.xcconfig"; path = "Pods/Pods-Three Sixty FeedbackTests.xcconfig"; sourceTree = "<group>"; };
 		E4800B1D1897FD9A00FCE147 /* Three Sixty Feedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Three Sixty Feedback.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4800B201897FD9A00FCE147 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E4800B221897FD9A00FCE147 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,6 +71,7 @@
 				E4800B231897FD9A00FCE147 /* CoreGraphics.framework in Frameworks */,
 				E4800B251897FD9A00FCE147 /* UIKit.framework in Frameworks */,
 				E4800B211897FD9A00FCE147 /* Foundation.framework in Frameworks */,
+				F0FBDD2E96ED4C558BDC16E7 /* libPods-Three Sixty Feedback.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,12 +82,31 @@
 				E4800B431897FD9A00FCE147 /* XCTest.framework in Frameworks */,
 				E4800B451897FD9A00FCE147 /* UIKit.framework in Frameworks */,
 				E4800B441897FD9A00FCE147 /* Foundation.framework in Frameworks */,
+				10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E429DD48189806CD00BAFEC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E4800B321897FD9A00FCE147 /* Main_iPhone.storyboard */,
+				E4800B351897FD9A00FCE147 /* Main_iPad.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E429DD49189806D200BAFEC4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4800B381897FD9A00FCE147 /* TSFViewController.h */,
+				E4800B391897FD9A00FCE147 /* TSFViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		E4800B141897FD9A00FCE147 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +114,8 @@
 				E4800B481897FD9A00FCE147 /* Three Sixty FeedbackTests */,
 				E4800B1F1897FD9A00FCE147 /* Frameworks */,
 				E4800B1E1897FD9A00FCE147 /* Products */,
+				62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */,
+				C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +135,8 @@
 				E4800B221897FD9A00FCE147 /* CoreGraphics.framework */,
 				E4800B241897FD9A00FCE147 /* UIKit.framework */,
 				E4800B421897FD9A00FCE147 /* XCTest.framework */,
+				02440D1D9DA543F999900FB9 /* libPods-Three Sixty Feedback.a */,
+				30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -116,10 +146,8 @@
 			children = (
 				E4800B2F1897FD9A00FCE147 /* TSFAppDelegate.h */,
 				E4800B301897FD9A00FCE147 /* TSFAppDelegate.m */,
-				E4800B321897FD9A00FCE147 /* Main_iPhone.storyboard */,
-				E4800B351897FD9A00FCE147 /* Main_iPad.storyboard */,
-				E4800B381897FD9A00FCE147 /* TSFViewController.h */,
-				E4800B391897FD9A00FCE147 /* TSFViewController.m */,
+				E429DD48189806CD00BAFEC4 /* Views */,
+				E429DD49189806D200BAFEC4 /* Controllers */,
 				E4800B3B1897FD9A00FCE147 /* Images.xcassets */,
 				E4800B271897FD9A00FCE147 /* Supporting Files */,
 			);
@@ -162,9 +190,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4800B521897FD9A00FCE147 /* Build configuration list for PBXNativeTarget "Three Sixty Feedback" */;
 			buildPhases = (
+				9393B610F8224B18806E82E4 /* Check Pods Manifest.lock */,
 				E4800B191897FD9A00FCE147 /* Sources */,
 				E4800B1A1897FD9A00FCE147 /* Frameworks */,
 				E4800B1B1897FD9A00FCE147 /* Resources */,
+				56576D0BF44C4A489F6A5252 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,9 +209,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4800B551897FD9A00FCE147 /* Build configuration list for PBXNativeTarget "Three Sixty FeedbackTests" */;
 			buildPhases = (
+				0E88067454464CCB8979B650 /* Check Pods Manifest.lock */,
 				E4800B3D1897FD9A00FCE147 /* Sources */,
 				E4800B3E1897FD9A00FCE147 /* Frameworks */,
 				E4800B3F1897FD9A00FCE147 /* Resources */,
+				F6230EF13B084862B2F9C6E7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -248,6 +280,69 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E88067454464CCB8979B650 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		56576D0BF44C4A489F6A5252 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Three Sixty Feedback-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9393B610F8224B18806E82E4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F6230EF13B084862B2F9C6E7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Three Sixty FeedbackTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E4800B191897FD9A00FCE147 /* Sources */ = {
@@ -390,6 +485,7 @@
 		};
 		E4800B531897FD9A00FCE147 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -403,6 +499,7 @@
 		};
 		E4800B541897FD9A00FCE147 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -416,6 +513,7 @@
 		};
 		E4800B561897FD9A00FCE147 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Three Sixty Feedback.app/Three Sixty Feedback";
@@ -439,6 +537,7 @@
 		};
 		E4800B571897FD9A00FCE147 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Three Sixty Feedback.app/Three Sixty Feedback";
@@ -475,6 +574,7 @@
 				E4800B541897FD9A00FCE147 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4800B551897FD9A00FCE147 /* Build configuration list for PBXNativeTarget "Three Sixty FeedbackTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +583,7 @@
 				E4800B571897FD9A00FCE147 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
