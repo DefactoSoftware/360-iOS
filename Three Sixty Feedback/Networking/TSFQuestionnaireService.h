@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TSFAPIClient.h"
+#import "TSFQuestionnaireMapper.h"
 
 static NSString *const TSFAPIEndPointQuestionnaires = @"questionnaires";
 
