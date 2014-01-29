@@ -11,8 +11,6 @@
 
 SPEC_BEGIN(TSFQuestionSpec)
 
-describe(@"TSFQuestion", ^{
-
-});
+describe(@"TSFQuestion", ^{});
 
 SPEC_END

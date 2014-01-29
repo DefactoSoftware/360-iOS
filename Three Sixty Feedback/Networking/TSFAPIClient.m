@@ -11,13 +11,14 @@
 @implementation TSFAPIClient
 
 + (instancetype)sharedClient {
-	static TSFAPIClient *_sharedClient = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-	    _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:TSFAPIBaseURL]];
-	});
-    
-	return _sharedClient;
+  static TSFAPIClient *_sharedClient = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedClient =
+        [[self alloc] initWithBaseURL:[NSURL URLWithString:TSFAPIBaseURL]];
+  });
+
+  return _sharedClient;
 }
 
 @end

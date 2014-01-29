@@ -11,8 +11,6 @@
 
 SPEC_BEGIN(TSFKeyBehaviourSpec)
 
-describe(@"TSFKeyBehaviour", ^{
-
-});
+describe(@"TSFKeyBehaviour", ^{});
 
 SPEC_END
