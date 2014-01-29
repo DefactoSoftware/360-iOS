@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSFBaseModel.h"
 
-@interface TSFKeyBehaviour : NSObject
+@interface TSFKeyBehaviour : TSFBaseModel
 
 @property (nonatomic, strong) NSNumber *keyBehaviourId;
 @property (nonatomic, strong) NSString *keyBehaviourDescription;

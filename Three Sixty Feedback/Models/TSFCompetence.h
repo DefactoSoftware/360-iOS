@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSFBaseModel.h"
 
-@interface TSFCompetence : NSObject
+@interface TSFCompetence : TSFBaseModel
 
 @property (nonatomic, strong) NSString *competenceId;
 @property (nonatomic, strong) NSString *title;

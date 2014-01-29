@@ -26,13 +26,4 @@
              };
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    NSString *mappedKey = [self keyMapping][key];
-    if (mappedKey) {
-        [super setValue:value forKey:mappedKey];
-    } else {
-        [super setValue:value forKey:key];
-    }
-}
-
 @end

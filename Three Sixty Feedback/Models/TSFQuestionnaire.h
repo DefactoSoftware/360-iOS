@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSFBaseModel.h"
 
-@interface TSFQuestionnaire : NSObject
+@interface TSFQuestionnaire : TSFBaseModel
 
 @property (nonatomic, strong) NSNumber *questionnaireId;
 @property (nonatomic, strong) NSString *title;
