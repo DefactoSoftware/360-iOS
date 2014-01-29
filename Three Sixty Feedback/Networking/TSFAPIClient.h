@@ -14,6 +14,8 @@ static NSString *const TSFAPIBaseURL =
 typedef void (^TSFNetworkingSuccessBlock)(id);
 typedef void (^TSFNetworkingErrorBlock)(NSError *);
 
+typedef void (^TSFNetworkingCompletionBlock)(BOOL);
+
 @interface TSFAPIClient : AFHTTPRequestOperationManager
 
 @property (nonatomic, strong) NSString *assessorToken;
