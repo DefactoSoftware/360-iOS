@@ -17,6 +17,4 @@
 @property (nonatomic, strong) NSString *comment;
 @property (nonatomic, strong) NSArray *keyBehaviours;
 
-+ (instancetype) competenceWithDictionary:(NSDictionary *)dictionary;
-
 @end

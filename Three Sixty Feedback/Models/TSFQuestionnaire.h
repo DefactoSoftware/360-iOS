@@ -9,17 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "TSFBaseModel.h"
 #import "TSFQuestionMapper.h"
-#import "TSFCompetence.h"
+#import "TSFCompetenceMapper.h"
 
 @interface TSFQuestionnaire : TSFBaseModel
 
-@property (nonatomic, strong) NSNumber *questionnaireId;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *questionnaireDescription;
-@property (nonatomic, strong) NSString *subject;
-@property (nonatomic, strong) NSArray *questions;
-@property (nonatomic, strong) NSArray *competences;
+@property(nonatomic, strong) NSNumber *questionnaireId;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *questionnaireDescription;
+@property(nonatomic, strong) NSString *subject;
+@property(nonatomic, strong) NSArray *questions;
+@property(nonatomic, strong) NSArray *competences;
 
-+ (instancetype) questionnaireWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)questionnaireWithDictionary:(NSDictionary *)dictionary;
 
 @end

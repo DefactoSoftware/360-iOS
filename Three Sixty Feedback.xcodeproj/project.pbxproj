@@ -37,6 +37,8 @@
 		E4C7F91A1899380900B0E5F2 /* TSFKeyBehaviourMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7F9191899380900B0E5F2 /* TSFKeyBehaviourMapperSpec.m */; };
 		E4C7F91C18993E1300B0E5F2 /* TSFQuestionMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7F91B18993E1300B0E5F2 /* TSFQuestionMapperSpec.m */; };
 		E4C7F91F18993E5400B0E5F2 /* TSFQuestionMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7F91E18993E5400B0E5F2 /* TSFQuestionMapper.m */; };
+		E4C7F922189940A800B0E5F2 /* TSFCompetenceMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7F921189940A800B0E5F2 /* TSFCompetenceMapper.m */; };
+		E4C7F924189940B400B0E5F2 /* TSFCompetenceMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7F923189940B400B0E5F2 /* TSFCompetenceMapperSpec.m */; };
 		F0FBDD2E96ED4C558BDC16E7 /* libPods-Three Sixty Feedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02440D1D9DA543F999900FB9 /* libPods-Three Sixty Feedback.a */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,9 @@
 		E4C7F91B18993E1300B0E5F2 /* TSFQuestionMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionMapperSpec.m; path = Models/Mappers/TSFQuestionMapperSpec.m; sourceTree = "<group>"; };
 		E4C7F91D18993E5400B0E5F2 /* TSFQuestionMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionMapper.h; path = Models/Mappers/TSFQuestionMapper.h; sourceTree = "<group>"; };
 		E4C7F91E18993E5400B0E5F2 /* TSFQuestionMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionMapper.m; path = Models/Mappers/TSFQuestionMapper.m; sourceTree = "<group>"; };
+		E4C7F920189940A800B0E5F2 /* TSFCompetenceMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCompetenceMapper.h; path = Models/Mappers/TSFCompetenceMapper.h; sourceTree = "<group>"; };
+		E4C7F921189940A800B0E5F2 /* TSFCompetenceMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceMapper.m; path = Models/Mappers/TSFCompetenceMapper.m; sourceTree = "<group>"; };
+		E4C7F923189940B400B0E5F2 /* TSFCompetenceMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceMapperSpec.m; path = Models/Mappers/TSFCompetenceMapperSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +281,8 @@
 				E4C7F9161899376100B0E5F2 /* TSFKeyBehaviourMapper.m */,
 				E4C7F91D18993E5400B0E5F2 /* TSFQuestionMapper.h */,
 				E4C7F91E18993E5400B0E5F2 /* TSFQuestionMapper.m */,
+				E4C7F920189940A800B0E5F2 /* TSFCompetenceMapper.h */,
+				E4C7F921189940A800B0E5F2 /* TSFCompetenceMapper.m */,
 			);
 			name = Mappers;
 			sourceTree = "<group>";
@@ -285,6 +292,7 @@
 			children = (
 				E4C7F9191899380900B0E5F2 /* TSFKeyBehaviourMapperSpec.m */,
 				E4C7F91B18993E1300B0E5F2 /* TSFQuestionMapperSpec.m */,
+				E4C7F923189940B400B0E5F2 /* TSFCompetenceMapperSpec.m */,
 			);
 			name = Mappers;
 			sourceTree = "<group>";
@@ -460,6 +468,7 @@
 				E455FF90189913F100F8C04C /* TSFBaseModel.m in Sources */,
 				E4800B311897FD9A00FCE147 /* TSFAppDelegate.m in Sources */,
 				E4800B2D1897FD9A00FCE147 /* main.m in Sources */,
+				E4C7F922189940A800B0E5F2 /* TSFCompetenceMapper.m in Sources */,
 				E455FF82189905DB00F8C04C /* TSFCompetence.m in Sources */,
 				E455FF9518991D1A00F8C04C /* TSFQuestion.m in Sources */,
 				E455FF8B18990E8200F8C04C /* TSFKeyBehaviour.m in Sources */,
@@ -477,6 +486,7 @@
 				E4C7F91C18993E1300B0E5F2 /* TSFQuestionMapperSpec.m in Sources */,
 				E455FF7F189904A200F8C04C /* TSFCompetenceSpec.m in Sources */,
 				E455FF791899004F00F8C04C /* TSFQuestionnaireSpec.m in Sources */,
+				E4C7F924189940B400B0E5F2 /* TSFCompetenceMapperSpec.m in Sources */,
 				E455FF8518990DB000F8C04C /* TSFKeyBehaviourSpec.m in Sources */,
 				E429DD51189809A400BAFEC4 /* TSFAPIClientSpec.m in Sources */,
 				E4C7F91A1899380900B0E5F2 /* TSFKeyBehaviourMapperSpec.m in Sources */,

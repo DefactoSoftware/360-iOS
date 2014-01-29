@@ -11,34 +11,26 @@
 @implementation TSFQuestionnaire
 
 + (TSFQuestionnaire *)questionnaireWithDictionary:(NSDictionary *)dictionary {
-    TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
-    
-    questionnaire.questions = [TSFQuestionMapper questionsWithDictionaryArray:dictionary[@"questions"]];
-    [questionnaire initializeCompetencesWithDictionaries:dictionary[@"competences"]];
-    
-    NSMutableDictionary *questionnaireDictionary = [[NSMutableDictionary alloc] initWithDictionary:dictionary];
-    [questionnaireDictionary removeObjectForKey:@"questions"];
-    [questionnaireDictionary removeObjectForKey:@"competences"];
-    [questionnaire setValuesForKeysWithDictionary:questionnaireDictionary];
-    
-    return questionnaire;
-}
+  TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
 
-- (void)initializeCompetencesWithDictionaries:(NSArray *)competencesDictionaries {
-    NSMutableArray *competences = [[NSMutableArray alloc] init];
-    
-    for (NSDictionary *competenceDictionary in competencesDictionaries) {
-        [competences addObject:[TSFCompetence competenceWithDictionary:competenceDictionary]];
-    }
-    
-    self.competences = competences;
+  questionnaire.questions =
+      [TSFQuestionMapper questionsWithDictionaryArray:dictionary[@"questions"]];
+  questionnaire.competences = [TSFCompetenceMapper
+      competencesWithDictionaryArray:dictionary[@"competences"]];
+
+  NSMutableDictionary *questionnaireDictionary =
+      [[NSMutableDictionary alloc] initWithDictionary:dictionary];
+  [questionnaireDictionary removeObjectForKey:@"questions"];
+  [questionnaireDictionary removeObjectForKey:@"competences"];
+  [questionnaire setValuesForKeysWithDictionary:questionnaireDictionary];
+
+  return questionnaire;
 }
 
 - (NSDictionary *)keyMapping {
-    return @{
-             @"id": @"questionnaireId",
-             @"description": @"questionnaireDescription"
-             };
+  return @{
+    @"id" : @"questionnaireId", @"description" : @"questionnaireDescription"
+  };
 }
 
 @end

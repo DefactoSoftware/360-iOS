@@ -10,22 +10,4 @@
 
 @implementation TSFCompetence
 
-+ (instancetype)competenceWithDictionary:(NSDictionary *)dictionary {
-    TSFCompetence *competence = [[TSFCompetence alloc] init];
-    
-    competence.keyBehaviours = [TSFKeyBehaviourMapper keyBehavioursWithDictionaryArray:dictionary[@"key_behaviours"]];
-    
-    NSMutableDictionary *competenceDictionary = [[NSMutableDictionary alloc] initWithDictionary:dictionary];
-    [competenceDictionary removeObjectForKey:@"key_behaviours"];
-    [competence setValuesForKeysWithDictionary:competenceDictionary];
-    
-    return competence;
-}
-
-- (NSDictionary *)keyMapping {
-    return @{
-             @"id": @"competenceId"
-             };
-}
-
 @end
