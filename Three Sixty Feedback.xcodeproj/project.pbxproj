@@ -352,6 +352,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Defacto;
 				TargetAttributes = {
+					E4800B1C1897FD9A00FCE147 = {
+						DevelopmentTeam = CF9WCHX389;
+					};
 					E4800B401897FD9A00FCE147 = {
 						TestTargetID = E4800B1C1897FD9A00FCE147;
 					};
@@ -623,10 +626,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Three Sixty Feedback/Three Sixty Feedback-Prefix.pch";
 				INFOPLIST_FILE = "Three Sixty Feedback/Three Sixty Feedback-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -637,10 +643,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Three Sixty Feedback/Three Sixty Feedback-Prefix.pch";
 				INFOPLIST_FILE = "Three Sixty Feedback/Three Sixty Feedback-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
