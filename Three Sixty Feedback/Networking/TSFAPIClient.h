@@ -11,6 +11,8 @@
 static NSString *const TSFAPIBaseURL =
     @"http://backend360staging.herokuapp.com/api/v1/";
 
+typedef void (^TSFNetworkingCompletionBlock)(BOOL);
+
 @interface TSFAPIClient : AFHTTPRequestOperationManager
 
 @property (nonatomic, strong) NSString *assessorToken;
