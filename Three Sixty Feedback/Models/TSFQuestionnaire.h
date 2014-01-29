@@ -20,6 +20,4 @@
 @property(nonatomic, strong) NSArray *questions;
 @property(nonatomic, strong) NSArray *competences;
 
-+ (instancetype)questionnaireWithDictionary:(NSDictionary *)dictionary;
-
 @end
