@@ -18,7 +18,7 @@ $ [sudo] gem install cocoapods
 $ pod setup
 ```
 
-Naviate to the projects folder and:
+Navigate to the projects folder and:
 ```$ pod install```
 
 This generates a `.xcworkspace` file with our project and a separate project for the pods. It can be opened from the command line by doing:
