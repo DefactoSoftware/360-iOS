@@ -14,8 +14,30 @@
     TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
     
     [questionnaire setValuesForKeysWithDictionary:dictionary];
+    [questionnaire initializeQuestions];
+    [questionnaire initializeCompetences];
     
     return questionnaire;
+}
+
+- (void)initializeQuestions {
+    NSMutableArray *questions = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *questionDictionary in self.questions) {
+        [questions addObject:[TSFQuestion questionWithDictionary:questionDictionary]];
+    }
+    
+    self.questions = questions;
+}
+
+- (void)initializeCompetences {
+    NSMutableArray *competences = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *competenceDictionary in self.competences) {
+        [competences addObject:[TSFCompetence competenceWithDictionary:competenceDictionary]];
+    }
+    
+    self.competences = competences;
 }
 
 - (NSDictionary *)keyMapping {
