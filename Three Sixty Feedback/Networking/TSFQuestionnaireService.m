@@ -22,7 +22,17 @@
 }
 
 - (void)questionnairesWithToken:(NSString *)token
-                     completion:(TSFNetworkingCompletionBlock)completion {
+                        success:(TSFQuestionnairesSuccessBlock)success
+                        failure:(TSFNetworkingErrorBlock)failure {
+  NSString *questionnairesURL = [NSString
+      stringWithFormat:@"%@%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires];
+  NSDictionary *parameters = @{ @"token" : token };
+
+    [self.apiClient GET:questionnairesURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+      success(responseObject);
+    }
+failure:
+  ^(AFHTTPRequestOperation * operation, NSError * error) { failure(error); }];
 }
 
 @end
