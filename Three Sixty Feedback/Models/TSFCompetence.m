@@ -13,16 +13,19 @@
 + (instancetype)competenceWithDictionary:(NSDictionary *)dictionary {
     TSFCompetence *competence = [[TSFCompetence alloc] init];
     
-    [competence setValuesForKeysWithDictionary:dictionary];
-    [competence initializeKeyBehaviours];
+    [competence initializeKeyBehavioursDictionaries:dictionary[@"key_behaviours"]];
+    
+    NSMutableDictionary *competenceDictionary = [[NSMutableDictionary alloc] initWithDictionary:dictionary];
+    [competenceDictionary removeObjectForKey:@"key_behaviours"];
+    [competence setValuesForKeysWithDictionary:competenceDictionary];
     
     return competence;
 }
 
-- (void)initializeKeyBehaviours {
+- (void)initializeKeyBehavioursDictionaries:(NSArray *)keyBehaviourDictionaries {
     NSMutableArray *keyBehaviours = [[NSMutableArray alloc] init];
     
-    for (NSDictionary *keyBehaviourDictionary in self.keyBehaviours) {
+    for (NSDictionary *keyBehaviourDictionary in keyBehaviourDictionaries) {
         TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviour keyBehaviourWithDictionary:keyBehaviourDictionary];
         [keyBehaviours addObject:keyBehaviour];
     }
@@ -32,8 +35,7 @@
 
 - (NSDictionary *)keyMapping {
     return @{
-             @"id": @"competenceId",
-             @"key_behaviours": @"keyBehaviours"
+             @"id": @"competenceId"
              };
 }
 

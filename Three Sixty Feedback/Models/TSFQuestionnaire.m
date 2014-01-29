@@ -13,27 +13,31 @@
 + (TSFQuestionnaire *)questionnaireWithDictionary:(NSDictionary *)dictionary {
     TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
     
-    [questionnaire setValuesForKeysWithDictionary:dictionary];
-    [questionnaire initializeQuestions];
-    [questionnaire initializeCompetences];
+    [questionnaire initializeQuestionsWithDictionaries:dictionary[@"questions"]];
+    [questionnaire initializeCompetencesWithDictionaries:dictionary[@"competences"]];
+    
+    NSMutableDictionary *questionnaireDictionary = [[NSMutableDictionary alloc] initWithDictionary:dictionary];
+    [questionnaireDictionary removeObjectForKey:@"questions"];
+    [questionnaireDictionary removeObjectForKey:@"competences"];
+    [questionnaire setValuesForKeysWithDictionary:questionnaireDictionary];
     
     return questionnaire;
 }
 
-- (void)initializeQuestions {
+- (void)initializeQuestionsWithDictionaries:(NSArray *)questionsDictionaries {
     NSMutableArray *questions = [[NSMutableArray alloc] init];
     
-    for (NSDictionary *questionDictionary in self.questions) {
+    for (NSDictionary *questionDictionary in questionsDictionaries) {
         [questions addObject:[TSFQuestion questionWithDictionary:questionDictionary]];
     }
     
     self.questions = questions;
 }
 
-- (void)initializeCompetences {
+- (void)initializeCompetencesWithDictionaries:(NSArray *)competencesDictionaries {
     NSMutableArray *competences = [[NSMutableArray alloc] init];
     
-    for (NSDictionary *competenceDictionary in self.competences) {
+    for (NSDictionary *competenceDictionary in competencesDictionaries) {
         [competences addObject:[TSFCompetence competenceWithDictionary:competenceDictionary]];
     }
     
