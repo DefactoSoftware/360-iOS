@@ -13,7 +13,7 @@
 + (TSFQuestionnaire *)questionnaireWithDictionary:(NSDictionary *)dictionary {
     TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
     
-    [questionnaire initializeQuestionsWithDictionaries:dictionary[@"questions"]];
+    questionnaire.questions = [TSFQuestionMapper questionsWithDictionaryArray:dictionary[@"questions"]];
     [questionnaire initializeCompetencesWithDictionaries:dictionary[@"competences"]];
     
     NSMutableDictionary *questionnaireDictionary = [[NSMutableDictionary alloc] initWithDictionary:dictionary];
@@ -22,16 +22,6 @@
     [questionnaire setValuesForKeysWithDictionary:questionnaireDictionary];
     
     return questionnaire;
-}
-
-- (void)initializeQuestionsWithDictionaries:(NSArray *)questionsDictionaries {
-    NSMutableArray *questions = [[NSMutableArray alloc] init];
-    
-    for (NSDictionary *questionDictionary in questionsDictionaries) {
-        [questions addObject:[TSFQuestion questionWithDictionary:questionDictionary]];
-    }
-    
-    self.questions = questions;
 }
 
 - (void)initializeCompetencesWithDictionaries:(NSArray *)competencesDictionaries {

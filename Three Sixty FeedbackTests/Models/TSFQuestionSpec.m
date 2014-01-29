@@ -12,18 +12,7 @@
 SPEC_BEGIN(TSFQuestionSpec)
 
 describe(@"TSFQuestion", ^{
-    __block TSFQuestion *_question;
-    __block NSDictionary *_sampleDictionary = @{
-                                                @"id": @(arc4random()),
-                                                @"question": [NSString stringWithFormat:@"%d" ,arc4random()]
-                                                };
-    
-    it(@"creates a new question model with a dictionary", ^{
-        _question = [TSFQuestion questionWithDictionary:_sampleDictionary];
-        
-        [[_question.questionId should] equal:_sampleDictionary[@"id"]];
-        [[_question.question should] equal:_sampleDictionary[@"question"]];
-    });
+
 });
 
 SPEC_END

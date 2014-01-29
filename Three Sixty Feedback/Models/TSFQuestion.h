@@ -13,6 +13,4 @@
 @property (nonatomic, strong) NSNumber *questionId;
 @property (nonatomic, strong) NSString *question;
 
-+ (instancetype) questionWithDictionary:(NSDictionary *)dictionary;
-
 @end

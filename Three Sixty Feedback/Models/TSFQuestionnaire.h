@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TSFBaseModel.h"
-#import "TSFQuestion.h"
+#import "TSFQuestionMapper.h"
 #import "TSFCompetence.h"
 
 @interface TSFQuestionnaire : TSFBaseModel

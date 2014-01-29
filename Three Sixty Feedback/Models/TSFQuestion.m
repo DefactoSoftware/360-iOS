@@ -10,18 +10,4 @@
 
 @implementation TSFQuestion
 
-+ (instancetype)questionWithDictionary:(NSDictionary *)dictionary {
-    TSFQuestion *question = [[TSFQuestion alloc] init];
-    
-    [question setValuesForKeysWithDictionary:dictionary];
-    
-    return question;
-}
-
-- (NSDictionary *)keyMapping {
-    return @{
-             @"id": @"questionId"
-             };
-}
-
 @end
