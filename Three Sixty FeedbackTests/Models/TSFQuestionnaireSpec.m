@@ -14,18 +14,18 @@ SPEC_BEGIN(TSFQuestionnaireSpec)
 describe(@"TSFQuestionnaire", ^{
     __block TSFQuestionnaire *_questionnaire;
     __block NSDictionary *_sampleDictionary = @{
-                                               @"id": @387,
-                                               @"title": @"The old Questionnaire title",
-                                               @"description": @"This is a great questionnaire",
-                                               @"subject": @"Jamal Bergstrom",
+                                               @"id": @(arc4random()),
+                                               @"title": [NSString stringWithFormat:@"%d" ,arc4random()],
+                                               @"description": [NSString stringWithFormat:@"%d" ,arc4random()],
+                                               @"subject": [NSString stringWithFormat:@"%d" ,arc4random()],
                                                @"questions": @[
                                                              @{
-                                                                 @"id": @150
+                                                                 @"id": @(arc4random())
                                                              }
                                                              ],
                                                @"competences": @[
                                                                @{
-                                                                   @"id": @154
+                                                                   @"id": @(arc4random())
                                                                }
                                                                ]
                                                };

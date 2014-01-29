@@ -14,9 +14,9 @@ SPEC_BEGIN(TSFKeyBehaviourSpec)
 describe(@"TSFKeyBehaviour", ^{
     __block TSFKeyBehaviour *_keyBehaviour;
     __block NSDictionary *_sampleDictionary = @{
-                                                @"id": @609,
-                                                @"description": @"Vegan retro keytar craft beer.",
-                                                @"key_behaviour_rating": @1
+                                                @"id": @(arc4random()),
+                                                @"description": [NSString stringWithFormat:@"%d" ,arc4random()],
+                                                @"key_behaviour_rating": @(arc4random_uniform(5))
                                                 };
     
     it(@"creates a new key behaviour model with a dictionary", ^{

@@ -14,12 +14,12 @@ SPEC_BEGIN(TSFCompetenceSpec)
 describe(@"TSFCompetence", ^{
     __block TSFCompetence *_competence;
     __block NSDictionary *_sampleDictionary = @{
-                                                @"id": @154,
-                                                @"title": @"McSweeney's",
-                                                @"comment": @"",
+                                                @"id": @(arc4random()),
+                                                @"title": [NSString stringWithFormat:@"%d" ,arc4random()],
+                                                @"comment": [NSString stringWithFormat:@"%d" ,arc4random()],
                                                 @"key_behaviours": @[
                                                                     @{
-                                                                      @"id": @609
+                                                                      @"id": @(arc4random())
                                                                       }
                                                                     ]
                                                 };

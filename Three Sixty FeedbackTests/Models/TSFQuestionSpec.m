@@ -14,8 +14,8 @@ SPEC_BEGIN(TSFQuestionSpec)
 describe(@"TSFQuestion", ^{
     __block TSFQuestion *_question;
     __block NSDictionary *_sampleDictionary = @{
-                                                @"id": @146,
-                                                @"question": @"Aesthetic ethical Portland cliche?"
+                                                @"id": @(arc4random()),
+                                                @"question": [NSString stringWithFormat:@"%d" ,arc4random()]
                                                 };
     
     it(@"creates a new question model with a dictionary", ^{
