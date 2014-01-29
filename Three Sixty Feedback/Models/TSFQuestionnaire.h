@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TSFBaseModel.h"
 #import "TSFQuestionMapper.h"
 #import "TSFCompetenceMapper.h"
 
-@interface TSFQuestionnaire : TSFBaseModel
+@interface TSFQuestionnaire : NSObject
 
 @property(nonatomic, strong) NSNumber *questionnaireId;
 @property(nonatomic, strong) NSString *title;

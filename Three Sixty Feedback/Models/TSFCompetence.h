@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TSFBaseModel.h"
 #import "TSFKeyBehaviourMapper.h"
 
-@interface TSFCompetence : TSFBaseModel
+@interface TSFCompetence : NSObject
 
-@property (nonatomic, strong) NSString *competenceId;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *comment;
-@property (nonatomic, strong) NSArray *keyBehaviours;
+@property(nonatomic, strong) NSString *competenceId;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *comment;
+@property(nonatomic, strong) NSArray *keyBehaviours;
 
 @end

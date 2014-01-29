@@ -6,11 +6,9 @@
 //  Copyright (c) 2014 Defacto. All rights reserved.
 //
 
-#import "TSFBaseModel.h"
+@interface TSFQuestion : NSObject
 
-@interface TSFQuestion : TSFBaseModel
-
-@property (nonatomic, strong) NSNumber *questionId;
-@property (nonatomic, strong) NSString *question;
+@property(nonatomic, strong) NSNumber *questionId;
+@property(nonatomic, strong) NSString *question;
 
 @end
