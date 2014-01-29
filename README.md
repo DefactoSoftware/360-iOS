@@ -2,6 +2,7 @@
 =======
 
 360 Feedback for iOS
+[![Build Status](https://magnum.travis-ci.com/DefactoSoftware/360-iOS.png?token=A49pyqNGPBpMX52bcsLm)](https://magnum.travis-ci.com/DefactoSoftware/360-iOS)
 
 ##Dependencies
 1. XCode 5 & iOS 7 SDK
