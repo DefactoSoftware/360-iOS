@@ -14,8 +14,20 @@
     TSFCompetence *competence = [[TSFCompetence alloc] init];
     
     [competence setValuesForKeysWithDictionary:dictionary];
+    [competence initializeKeyBehaviours];
     
     return competence;
+}
+
+- (void)initializeKeyBehaviours {
+    NSMutableArray *keyBehaviours = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *keyBehaviourDictionary in self.keyBehaviours) {
+        TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviour keyBehaviourWithDictionary:keyBehaviourDictionary];
+        [keyBehaviours addObject:keyBehaviour];
+    }
+    
+    self.keyBehaviours = keyBehaviours;
 }
 
 - (NSDictionary *)keyMapping {

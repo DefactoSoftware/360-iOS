@@ -24,13 +24,23 @@ describe(@"TSFCompetence", ^{
                                                                     ]
                                                 };
     
-    it(@"creates a new competence model with a dictionary", ^{
+    beforeEach(^{
         _competence = [TSFCompetence competenceWithDictionary:_sampleDictionary];
-        
+    });
+    
+    it(@"creates a new competence model with a dictionary", ^{
         [[_competence.competenceId should] equal:_sampleDictionary[@"id"]];
         [[_competence.title should] equal:_sampleDictionary[@"title"]];
         [[_competence.comment should] equal:_sampleDictionary[@"comment"]];
         [[_competence.keyBehaviours should] beKindOfClass:[NSArray class]];
+    });
+    
+    it(@"creates new key behaviour models based on their dictionaries", ^{
+        TSFKeyBehaviour *keyBehaviour = [_competence.keyBehaviours firstObject];
+        
+        [[[_competence.keyBehaviours should] have:[_sampleDictionary[@"key_behaviours"] count]] keyBehaviours];
+        [[keyBehaviour shouldNot] beNil];
+        [[keyBehaviour.keyBehaviourId should] equal:_sampleDictionary[@"key_behaviours"][0][@"id"]];
     });
 });
 
