@@ -10,6 +10,8 @@
 		10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */; };
 		E429DD4E189807B300BAFEC4 /* TSFAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E429DD4D189807B300BAFEC4 /* TSFAPIClient.m */; };
 		E429DD51189809A400BAFEC4 /* TSFAPIClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E429DD50189809A400BAFEC4 /* TSFAPIClientSpec.m */; };
+		E455FF791899004F00F8C04C /* TSFQuestionnaireSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E455FF781899004F00F8C04C /* TSFQuestionnaireSpec.m */; };
+		E455FF7C1899018A00F8C04C /* TSFQuestionnaire.m in Sources */ = {isa = PBXBuildFile; fileRef = E455FF7B1899018A00F8C04C /* TSFQuestionnaire.m */; };
 		E4800B211897FD9A00FCE147 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4800B201897FD9A00FCE147 /* Foundation.framework */; };
 		E4800B231897FD9A00FCE147 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4800B221897FD9A00FCE147 /* CoreGraphics.framework */; };
 		E4800B251897FD9A00FCE147 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4800B241897FD9A00FCE147 /* UIKit.framework */; };
@@ -45,6 +47,9 @@
 		E429DD4C189807B300BAFEC4 /* TSFAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFAPIClient.h; path = Networking/TSFAPIClient.h; sourceTree = "<group>"; };
 		E429DD4D189807B300BAFEC4 /* TSFAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFAPIClient.m; path = Networking/TSFAPIClient.m; sourceTree = "<group>"; };
 		E429DD50189809A400BAFEC4 /* TSFAPIClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFAPIClientSpec.m; path = Networking/TSFAPIClientSpec.m; sourceTree = "<group>"; };
+		E455FF781899004F00F8C04C /* TSFQuestionnaireSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireSpec.m; path = Models/TSFQuestionnaireSpec.m; sourceTree = "<group>"; };
+		E455FF7A1899018A00F8C04C /* TSFQuestionnaire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnaire.h; path = Models/TSFQuestionnaire.h; sourceTree = "<group>"; };
+		E455FF7B1899018A00F8C04C /* TSFQuestionnaire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaire.m; path = Models/TSFQuestionnaire.m; sourceTree = "<group>"; };
 		E4800B1D1897FD9A00FCE147 /* Three Sixty Feedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Three Sixty Feedback.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4800B201897FD9A00FCE147 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E4800B221897FD9A00FCE147 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,6 +132,23 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
+		E455FF761899002200F8C04C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E455FF7A1899018A00F8C04C /* TSFQuestionnaire.h */,
+				E455FF7B1899018A00F8C04C /* TSFQuestionnaire.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E455FF771899002A00F8C04C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E455FF781899004F00F8C04C /* TSFQuestionnaireSpec.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		E4800B141897FD9A00FCE147 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +186,7 @@
 		E4800B261897FD9A00FCE147 /* Three Sixty Feedback */ = {
 			isa = PBXGroup;
 			children = (
+				E455FF761899002200F8C04C /* Models */,
 				E429DD4B1898075300BAFEC4 /* Networking */,
 				E4800B2F1897FD9A00FCE147 /* TSFAppDelegate.h */,
 				E4800B301897FD9A00FCE147 /* TSFAppDelegate.m */,
@@ -189,6 +212,7 @@
 		E4800B481897FD9A00FCE147 /* Three Sixty FeedbackTests */ = {
 			isa = PBXGroup;
 			children = (
+				E455FF771899002A00F8C04C /* Models */,
 				E429DD4F1898093000BAFEC4 /* Networking */,
 				E4800B491897FD9A00FCE147 /* Supporting Files */,
 			);
@@ -370,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E455FF7C1899018A00F8C04C /* TSFQuestionnaire.m in Sources */,
 				E4800B3A1897FD9A00FCE147 /* TSFViewController.m in Sources */,
 				E4800B311897FD9A00FCE147 /* TSFAppDelegate.m in Sources */,
 				E4800B2D1897FD9A00FCE147 /* main.m in Sources */,
@@ -381,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E455FF791899004F00F8C04C /* TSFQuestionnaireSpec.m in Sources */,
 				E429DD51189809A400BAFEC4 /* TSFAPIClientSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
