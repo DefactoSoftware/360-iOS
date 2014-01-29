@@ -13,18 +13,26 @@ SPEC_BEGIN(TSFAPIClientSpec)
 
 describe(@"TSFAPIClient", ^{
     __block TSFAPIClient *APIClient;
-    
-    beforeEach(^{
+
+    beforeEach ( ^{
         APIClient = [TSFAPIClient sharedClient];
-    });
-    
+	});
+
     it(@"instantiates correctly", ^{
         [[APIClient should] beKindOfClass:[TSFAPIClient class]];
-    });
-    
+	});
+
     it(@"has the correct base URL", ^{
         [[[APIClient.baseURL absoluteString] should] equal:TSFAPIBaseURL];
-    });
+	});
+
+    context(@"#setAssessorTokenWithURL", ^{
+        it(@"sets the token correctly", ^{
+            NSURL *url = [NSURL URLWithString:@"feedback://assessor?token=12345"];
+            [APIClient setAssessorTokenWithURL:url];
+            [[APIClient.assessorToken should] equal:@"12345"];
+		});
+	});
 });
 
 SPEC_END

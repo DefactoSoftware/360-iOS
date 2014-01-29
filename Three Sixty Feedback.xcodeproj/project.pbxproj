@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */; };
 		10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */; };
 		E417281718994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */; };
 		E417281A18994C8000DD77B5 /* TSFQuestionnaireMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281918994C8000DD77B5 /* TSFQuestionnaireMapper.m */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		02440D1D9DA543F999900FB9 /* libPods-Three Sixty Feedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty Feedback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFAppDelegateSpec.m; sourceTree = "<group>"; };
 		30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty FeedbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty Feedback.xcconfig"; path = "Pods/Pods-Three Sixty Feedback.xcconfig"; sourceTree = "<group>"; };
 		C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty FeedbackTests.xcconfig"; path = "Pods/Pods-Three Sixty FeedbackTests.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				E455FF771899002A00F8C04C /* Models */,
 				E429DD4F1898093000BAFEC4 /* Networking */,
 				E4800B491897FD9A00FCE147 /* Supporting Files */,
+				0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */,
 			);
 			path = "Three Sixty FeedbackTests";
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E455FF9218991CAA00F8C04C /* TSFQuestionSpec.m in Sources */,
+				0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */,
 				E4C7F91C18993E1300B0E5F2 /* TSFQuestionMapperSpec.m in Sources */,
 				E417281718994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m in Sources */,
 				E455FF7F189904A200F8C04C /* TSFCompetenceSpec.m in Sources */,

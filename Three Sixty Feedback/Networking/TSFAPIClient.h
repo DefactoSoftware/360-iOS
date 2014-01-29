@@ -13,6 +13,10 @@ static NSString *const TSFAPIBaseURL =
 
 @interface TSFAPIClient : AFHTTPRequestOperationManager
 
+@property (nonatomic, strong) NSString *assessorToken;
+
 + (TSFAPIClient *)sharedClient;
+
+- (void)setAssessorTokenWithURL:(NSURL *)url;
 
 @end

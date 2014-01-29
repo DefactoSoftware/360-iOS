@@ -7,6 +7,7 @@
 //
 
 #import "TSFAppDelegate.h"
+#import "TSFAPIClient.h"
 
 @implementation TSFAppDelegate
 
@@ -17,6 +18,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    [[TSFAPIClient sharedClient] setAssessorTokenWithURL:url];
   return YES;
 }
 
