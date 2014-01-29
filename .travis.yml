@@ -1,12 +1,9 @@
-rvm: 1.9.3
 language: objective-c
 env:
   global:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
-xcode_workspace: Three\ Sixty\ Feedback.xcworkspace
-xcode_scheme: Three\ Sixty\ Feedback
-script:
-	- gem install xcpretty
-	- open -a iPhone\ Simulator
-	- xcodebuild -workspace Three\ Sixty\ Feedback.xcworkspace -scheme Three\ Sixty\ Feedback -sdk iphonesimulator test | xcpretty -c
+before_install: 
+- gem install xcpretty
+- make install
+script: make ci | xcpretty
