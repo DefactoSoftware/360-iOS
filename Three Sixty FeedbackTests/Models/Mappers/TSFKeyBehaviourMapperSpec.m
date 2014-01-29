@@ -34,6 +34,13 @@ describe(@"TSFKeyBehaviourMapper", ^{
         [[keyBehaviour.rating should] equal:keyBehaviourDictionary[@"key_behaviour_rating"]];
     });
     
+    it(@"maps an array of key behaviours correctly", ^{
+        NSArray *keyBehaviours = [TSFKeyBehaviourMapper keyBehavioursWithDictionaryArray:_sampleDictionaryArray];
+        
+        
+        [[[keyBehaviours should] have:[_sampleDictionaryArray count]] behaviors];
+        [[[keyBehaviours firstObject] should] beKindOfClass:[TSFKeyBehaviour class]];
+    });
 });
 
 SPEC_END

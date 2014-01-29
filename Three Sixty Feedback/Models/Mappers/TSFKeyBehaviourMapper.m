@@ -20,4 +20,15 @@
     return keyBehaviour;
 }
 
++ (NSArray *)keyBehavioursWithDictionaryArray:(NSArray *)dictionaryArray {
+    NSMutableArray *keyBehaviours = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *keyBehaviourDictionary in dictionaryArray) {
+        TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper keyBehaviourWithDictionary:keyBehaviourDictionary];
+        [keyBehaviours addObject:keyBehaviour];
+    }
+    
+    return keyBehaviours;
+}
+
 @end

@@ -12,5 +12,6 @@
 @interface TSFKeyBehaviourMapper : NSObject
 
 + (TSFKeyBehaviour *) keyBehaviourWithDictionary:(NSDictionary *)dictionary;
++ (NSArray *) keyBehavioursWithDictionaryArray:(NSArray *)dictionaryArray;
 
 @end
