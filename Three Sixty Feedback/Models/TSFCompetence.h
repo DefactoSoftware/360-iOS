@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TSFBaseModel.h"
-#import "TSFKeyBehaviour.h"
+#import "TSFKeyBehaviourMapper.h"
 
 @interface TSFCompetence : TSFBaseModel
 

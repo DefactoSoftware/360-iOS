@@ -10,20 +10,4 @@
 
 @implementation TSFKeyBehaviour
 
-+ (TSFKeyBehaviour *)keyBehaviourWithDictionary:(NSDictionary *)dictionary {
-    TSFKeyBehaviour *keyBehaviour = [[TSFKeyBehaviour alloc] init];
-    
-    [keyBehaviour setValuesForKeysWithDictionary:dictionary];
-    
-    return keyBehaviour;
-}
-
-- (NSDictionary *)keyMapping {
-    return @{
-             @"id": @"keyBehaviourId",
-             @"description": @"keyBehaviourDescription",
-             @"key_behaviour_rating": @"rating"
-             };
-}
-
 @end

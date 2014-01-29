@@ -15,6 +15,4 @@
 @property (nonatomic, strong) NSString *keyBehaviourDescription;
 @property (nonatomic, strong) NSNumber *rating;
 
-+ (instancetype) keyBehaviourWithDictionary:(NSDictionary *)dictionary;
-
 @end

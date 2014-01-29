@@ -26,7 +26,7 @@
     NSMutableArray *keyBehaviours = [[NSMutableArray alloc] init];
     
     for (NSDictionary *keyBehaviourDictionary in keyBehaviourDictionaries) {
-        TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviour keyBehaviourWithDictionary:keyBehaviourDictionary];
+        TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper keyBehaviourWithDictionary:keyBehaviourDictionary];
         [keyBehaviours addObject:keyBehaviour];
     }
     
