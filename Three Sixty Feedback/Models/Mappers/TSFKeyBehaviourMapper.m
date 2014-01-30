@@ -24,8 +24,7 @@
 	NSMutableArray *keyBehaviours = [[NSMutableArray alloc] init];
     
 	for (NSDictionary *keyBehaviourDictionary in dictionaryArray) {
-		TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper
-		                                 keyBehaviourWithDictionary:keyBehaviourDictionary];
+		TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper keyBehaviourWithDictionary:keyBehaviourDictionary];
 		[keyBehaviours addObject:keyBehaviour];
 	}
     
@@ -38,6 +37,17 @@
              @"description": keyBehaviour.keyBehaviourDescription,
              @"key_behaviour_rating": keyBehaviour.rating
              };
+}
+
++ (NSArray *)dictionariesWithKeyBehaviourArray:(NSArray *)keyBehaviours {
+	NSMutableArray *dictionaries = [[NSMutableArray alloc] init];
+    
+	for (TSFKeyBehaviour *keyBehaviour in keyBehaviours) {
+		NSDictionary *dictionary = [TSFKeyBehaviourMapper dictionaryWithKeyBehaviour:keyBehaviour];
+		[dictionaries addObject:dictionary];
+	}
+    
+	return dictionaries;
 }
 
 @end

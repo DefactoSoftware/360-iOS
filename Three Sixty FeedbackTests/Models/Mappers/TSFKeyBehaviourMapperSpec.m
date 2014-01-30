@@ -30,18 +30,15 @@ describe(@"TSFKeyBehaviourMapper", ^{
         TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper keyBehaviourWithDictionary:keyBehaviourDictionary];
         
         [[keyBehaviour.keyBehaviourId should] equal:keyBehaviourDictionary[@"id"]];
-        [[keyBehaviour.keyBehaviourDescription should]
-         equal:keyBehaviourDictionary[@"description"]];
-        [[keyBehaviour.rating should]
-         equal:keyBehaviourDictionary[@"key_behaviour_rating"]];
+        [[keyBehaviour.keyBehaviourDescription should] equal:keyBehaviourDictionary[@"description"]];
+        [[keyBehaviour.rating should] equal:keyBehaviourDictionary[@"key_behaviour_rating"]];
 	});
     
     it(@"maps an array of key behaviours correctly", ^{
         NSArray *keyBehaviours = [TSFKeyBehaviourMapper keyBehavioursWithDictionaryArray:_sampleDictionaryArray];
         
         [[[keyBehaviours should] have:[_sampleDictionaryArray count]] behaviors];
-        [[[keyBehaviours firstObject] should]
-         beKindOfClass:[TSFKeyBehaviour class]];
+        [[[keyBehaviours firstObject] should] beKindOfClass:[TSFKeyBehaviour class]];
 	});
     
     it(@"maps a dictionary correctly with a key behaviour", ^{
@@ -53,6 +50,14 @@ describe(@"TSFKeyBehaviourMapper", ^{
         [[mappedDictionary[@"id"] should] equal:dictionary[@"id"]];
         [[mappedDictionary[@"description"] should] equal:dictionary[@"description"]];
         [[mappedDictionary[@"key_behaviour_rating"] should] equal:dictionary[@"key_behaviour_rating"]];
+	});
+    
+    it(@"maps an array of dictionaries correctly with key behaviours", ^{
+        NSArray *keyBehaviours = [TSFKeyBehaviourMapper keyBehavioursWithDictionaryArray:_sampleDictionaryArray];
+        NSArray *dictionaries = [TSFKeyBehaviourMapper dictionariesWithKeyBehaviourArray:keyBehaviours];
+        
+        [[[dictionaries should] have:[_sampleDictionaryArray count]] items];
+        [[[dictionaries firstObject] should] beKindOfClass:[NSDictionary class]];
 	});
 });
 
