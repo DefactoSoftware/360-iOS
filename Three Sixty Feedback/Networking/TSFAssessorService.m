@@ -21,11 +21,13 @@
 	return _sharedService;
 }
 
-- (void)completeCurrentAssessmentWithToken:(NSString *)token
-                                   success:(TSFNetworkingSuccessBlock)success
-                                   failure:(TSFNetworkingErrorBlock)failure {
+- (void)completeCurrentAssessmentWithSuccess:(TSFNetworkingSuccessBlock)success
+                                     failure:(TSFNetworkingErrorBlock)failure {
 	__block TSFNetworkingSuccessBlock _successBlock = success;
-	NSString *questionnairesURL = [NSString stringWithFormat:@"%@%@?token=%@", TSFAPIBaseURL, TSFAPIEndPointCurrentAssessor, token];
+	NSString *questionnairesURL = [NSString stringWithFormat:@"%@%@?token=%@",
+	                               TSFAPIBaseURL,
+	                               TSFAPIEndPointCurrentAssessor,
+	                               self.apiClient.assessorToken];
 	NSDictionary *completedParameters = @{ @"completed": @YES };
     
 	[self.apiClient PUT:questionnairesURL parameters:completedParameters success: ^(AFHTTPRequestOperation *operation, id responseObject) {

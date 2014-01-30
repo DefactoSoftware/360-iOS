@@ -16,9 +16,8 @@ static NSString *const TSFAPIEndPointCurrentAssessor = @"assessors/current";
 @property (nonatomic, strong) TSFAPIClient *apiClient;
 
 + (TSFAssessorService *)sharedService;
-- (void)completeCurrentAssessmentWithToken:(NSString *)token
-                                   success:(TSFNetworkingSuccessBlock)success
-                                   failure:(TSFNetworkingErrorBlock)failure;
+- (void)completeCurrentAssessmentWithSuccess:(TSFNetworkingSuccessBlock)success
+                                     failure:(TSFNetworkingErrorBlock)failure;
 
 
 @end

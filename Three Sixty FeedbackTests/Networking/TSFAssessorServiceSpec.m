@@ -34,6 +34,8 @@ describe(@"TSFAssessorService", ^{
         __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@?token=%@", TSFAPIBaseURL, TSFAPIEndPointCurrentAssessor, _fakeToken];
         __block NSNumber *_stubResponse = @(arc4random());
         
+        [_mockAPIClient stub:@selector(assessorToken) andReturn:_fakeToken];
+        
         [_mockAPIClient stub:@selector(PUT:parameters:success:failure:) withBlock: ^id (NSArray *params) {
             NSString *URL = params[0];
             NSDictionary *parameters = params[1];
@@ -46,7 +48,7 @@ describe(@"TSFAssessorService", ^{
 		}];
         
         __block bool _succeeded = NO;
-        [_assessorService completeCurrentAssessmentWithToken:_fakeToken success: ^(id response) {
+        [_assessorService completeCurrentAssessmentWithSuccess: ^(id response) {
             _succeeded = YES;
             [[response should] beTrue];
 		} failure: ^(NSError *error) {
