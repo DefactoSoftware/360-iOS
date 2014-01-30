@@ -22,7 +22,7 @@
 }
 
 - (void)questionnairesWithToken:(NSString *)token
-                        success:(TSFQuestionnairesSuccessBlock)success
+                        success:(TSFNetworkingSuccessBlock)success
                         failure:(TSFNetworkingErrorBlock)failure {
 	NSString *questionnairesURL = [NSString
 	                               stringWithFormat:@"%@%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires];

@@ -7,7 +7,6 @@
 //
 
 #import "Kiwi.h"
-#import "Nocilla.h"
 #import "TSFQuestionnaireService.h"
 
 SPEC_BEGIN(TSFQuestionnaireServiceSpec)
@@ -15,18 +14,6 @@ SPEC_BEGIN(TSFQuestionnaireServiceSpec)
 describe(@"TSFQuestionnaireService", ^{
     __block TSFQuestionnaireService *_questionnaireService;
     __block id _mockAPIClient;
-    
-    beforeAll ( ^{
-        [[LSNocilla sharedInstance] start];
-	});
-    
-    afterAll ( ^{
-        [[LSNocilla sharedInstance] stop];
-	});
-    
-    afterEach ( ^{
-        [[LSNocilla sharedInstance] clearStubs];
-	});
     
     beforeEach ( ^{
         _questionnaireService = [TSFQuestionnaireService sharedService];

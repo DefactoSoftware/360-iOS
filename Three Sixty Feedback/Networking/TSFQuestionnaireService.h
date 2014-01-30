@@ -12,15 +12,13 @@
 
 static NSString *const TSFAPIEndPointQuestionnaires = @"questionnaires";
 
-typedef void (^TSFQuestionnairesSuccessBlock)(NSArray *);
-
 @interface TSFQuestionnaireService : NSObject
 
-@property(nonatomic, strong) TSFAPIClient *apiClient;
+@property (nonatomic, strong) TSFAPIClient *apiClient;
 
 + (TSFQuestionnaireService *)sharedService;
 - (void)questionnairesWithToken:(NSString *)token
-                        success:(TSFQuestionnairesSuccessBlock)success
+                        success:(TSFNetworkingSuccessBlock)success
                         failure:(TSFNetworkingErrorBlock)failure;
 
 @end
