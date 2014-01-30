@@ -13,5 +13,6 @@
 
 + (TSFKeyBehaviour *)keyBehaviourWithDictionary:(NSDictionary *)dictionary;
 + (NSArray *)keyBehavioursWithDictionaryArray:(NSArray *)dictionaryArray;
++ (NSDictionary *)dictionaryWithKeyBehaviour:(TSFKeyBehaviour *)keyBehaviour;
 
 @end

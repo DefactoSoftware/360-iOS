@@ -11,25 +11,33 @@
 @implementation TSFKeyBehaviourMapper
 
 + (TSFKeyBehaviour *)keyBehaviourWithDictionary:(NSDictionary *)dictionary {
-  TSFKeyBehaviour *keyBehaviour = [[TSFKeyBehaviour alloc] init];
-
-  keyBehaviour.keyBehaviourId = dictionary[@"id"];
-  keyBehaviour.keyBehaviourDescription = dictionary[@"description"];
-  keyBehaviour.rating = dictionary[@"key_behaviour_rating"];
-
-  return keyBehaviour;
+	TSFKeyBehaviour *keyBehaviour = [[TSFKeyBehaviour alloc] init];
+    
+	keyBehaviour.keyBehaviourId = dictionary[@"id"];
+	keyBehaviour.keyBehaviourDescription = dictionary[@"description"];
+	keyBehaviour.rating = dictionary[@"key_behaviour_rating"];
+    
+	return keyBehaviour;
 }
 
 + (NSArray *)keyBehavioursWithDictionaryArray:(NSArray *)dictionaryArray {
-  NSMutableArray *keyBehaviours = [[NSMutableArray alloc] init];
+	NSMutableArray *keyBehaviours = [[NSMutableArray alloc] init];
+    
+	for (NSDictionary *keyBehaviourDictionary in dictionaryArray) {
+		TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper
+		                                 keyBehaviourWithDictionary:keyBehaviourDictionary];
+		[keyBehaviours addObject:keyBehaviour];
+	}
+    
+	return keyBehaviours;
+}
 
-  for (NSDictionary *keyBehaviourDictionary in dictionaryArray) {
-    TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper
-        keyBehaviourWithDictionary:keyBehaviourDictionary];
-    [keyBehaviours addObject:keyBehaviour];
-  }
-
-  return keyBehaviours;
++ (NSDictionary *)dictionaryWithKeyBehaviour:(TSFKeyBehaviour *)keyBehaviour {
+	return @{
+             @"id": keyBehaviour.keyBehaviourId,
+             @"description": keyBehaviour.keyBehaviourDescription,
+             @"key_behaviour_rating": keyBehaviour.rating
+             };
 }
 
 @end
