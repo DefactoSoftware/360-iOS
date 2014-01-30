@@ -22,12 +22,11 @@
 	return _sharedService;
 }
 
-- (void)questionnairesWithToken:(NSString *)token
-                        success:(TSFNetworkingSuccessBlock)success
-                        failure:(TSFNetworkingErrorBlock)failure {
+- (void)questionnairesWithSuccess:(TSFNetworkingSuccessBlock)success
+                          failure:(TSFNetworkingErrorBlock)failure {
 	NSString *questionnairesURL = [NSString
 	                               stringWithFormat:@"%@%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires];
-	NSDictionary *parameters = @{ @"token" : token };
+	NSDictionary *parameters = @{ @"token" : self.apiClient.assessorToken };
     
 	[self.apiClient GET:questionnairesURL parameters:parameters success: ^(AFHTTPRequestOperation *operation, id responseObject) {
 	    success([self.questionnaireMapper questionnairesWithDictionaryArray:responseObject]);

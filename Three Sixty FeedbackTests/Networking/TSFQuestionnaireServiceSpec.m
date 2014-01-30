@@ -38,33 +38,34 @@ describe(@"TSFQuestionnaireService", ^{
 	});
     
     it(@"calls the API for a list of questionnaires with a token", ^{
-        __block NSString *fakeToken = [NSString stringWithFormat:@"%d", arc4random()];
-        __block NSString *expectedRequestURL = [NSString stringWithFormat:@"%@%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires];
-        __block NSArray *stubResponse = @[@{ @"id" : @(arc4random()) }];
-        __block NSArray *stubMappedResponse = [[[TSFQuestionnaireMapper alloc] init]
-                                               questionnairesWithDictionaryArray:stubResponse];
+        __block NSString *_fakeToken = [NSString stringWithFormat:@"%d", arc4random()];
+        __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires];
+        __block NSArray *_stubResponse = @[@{ @"id" : @(arc4random()) }];
+        __block NSArray *_stubMappedResponse = [[[TSFQuestionnaireMapper alloc] init]
+                                                questionnairesWithDictionaryArray:_stubResponse];
+        
+        [_mockAPIClient stub:@selector(assessorToken) andReturn:_fakeToken];
         
         [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock: ^id (NSArray *params) {
             NSString *URL = params[0];
             NSDictionary *parameters = params[1];
             void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
             
-            [[URL should] equal:expectedRequestURL];
-            [[parameters[@"token"] should] equal:fakeToken];
-            successBlock(nil, stubResponse);
+            [[URL should] equal:_expectedRequestURL];
+            [[parameters[@"token"] should] equal:_fakeToken];
+            successBlock(nil, _stubResponse);
             return nil;
 		}];
         
         [[_mockQuestionnaireMapper should] receive:@selector(questionnairesWithDictionaryArray:)
-                                         andReturn:stubMappedResponse
-                                     withArguments:stubResponse];
+                                         andReturn:_stubMappedResponse
+                                     withArguments:_stubResponse];
         
-        [_questionnaireService questionnairesWithToken:fakeToken
-                                               success: ^(NSArray *response) {
-                                                   [[response should] equal:stubMappedResponse];
-                                               }
+        [_questionnaireService questionnairesWithSuccess: ^(NSArray *response) {
+            [[response should] equal:_stubMappedResponse];
+		}
          
-                                               failure: ^(NSError *error) {}];
+                                                 failure: ^(NSError *error) {}];
 	});
 });
 
