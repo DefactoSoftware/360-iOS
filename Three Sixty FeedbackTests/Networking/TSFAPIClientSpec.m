@@ -28,7 +28,7 @@ describe(@"TSFAPIClient", ^{
 
     context(@"#setAssessorTokenWithURL", ^{
         it(@"sets the token correctly", ^{
-            NSURL *url = [NSURL URLWithString:@"feedback://assessor?token=12345"];
+            NSURL *url = [NSURL URLWithString:@"feedback://assessor?token=12345&something_else=foo"];
             [APIClient setAssessorTokenWithURL:url];
             [[APIClient.assessorToken should] equal:@"12345"];
 		});
