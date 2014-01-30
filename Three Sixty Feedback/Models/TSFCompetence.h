@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "TSFKeyBehaviourMapper.h"
+#import "TSFQuestionnaire.h"
 
 @interface TSFCompetence : NSObject
 
-@property(nonatomic, strong) NSString *competenceId;
-@property(nonatomic, strong) NSString *title;
-@property(nonatomic, strong) NSString *comment;
-@property(nonatomic, strong) NSArray *keyBehaviours;
+@property (nonatomic, strong) NSNumber *competenceId;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *comment;
+@property (nonatomic, strong) NSArray *keyBehaviours;
 
 @end

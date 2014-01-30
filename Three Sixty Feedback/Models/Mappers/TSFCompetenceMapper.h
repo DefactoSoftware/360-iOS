@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "TSFCompetence.h"
 
+@class TSFCompetence;
+
 @interface TSFCompetenceMapper : NSObject
 
 @property (nonatomic, strong) TSFKeyBehaviourMapper *keyBehaviourMapper;
