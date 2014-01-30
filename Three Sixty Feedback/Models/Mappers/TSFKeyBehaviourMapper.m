@@ -10,7 +10,7 @@
 
 @implementation TSFKeyBehaviourMapper
 
-+ (TSFKeyBehaviour *)keyBehaviourWithDictionary:(NSDictionary *)dictionary {
+- (TSFKeyBehaviour *)keyBehaviourWithDictionary:(NSDictionary *)dictionary {
 	TSFKeyBehaviour *keyBehaviour = [[TSFKeyBehaviour alloc] init];
     
 	keyBehaviour.keyBehaviourId = dictionary[@"id"];
@@ -20,30 +20,32 @@
 	return keyBehaviour;
 }
 
-+ (NSArray *)keyBehavioursWithDictionaryArray:(NSArray *)dictionaryArray {
+- (NSArray *)keyBehavioursWithDictionaryArray:(NSArray *)dictionaryArray {
 	NSMutableArray *keyBehaviours = [[NSMutableArray alloc] init];
     
 	for (NSDictionary *keyBehaviourDictionary in dictionaryArray) {
-		TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper keyBehaviourWithDictionary:keyBehaviourDictionary];
+		TSFKeyBehaviour *keyBehaviour = [self keyBehaviourWithDictionary:keyBehaviourDictionary];
 		[keyBehaviours addObject:keyBehaviour];
 	}
     
 	return keyBehaviours;
 }
 
-+ (NSDictionary *)dictionaryWithKeyBehaviour:(TSFKeyBehaviour *)keyBehaviour {
-	return @{
-             @"id": keyBehaviour.keyBehaviourId,
-             @"description": keyBehaviour.keyBehaviourDescription,
-             @"key_behaviour_rating": keyBehaviour.rating
-             };
+- (NSDictionary *)dictionaryWithKeyBehaviour:(TSFKeyBehaviour *)keyBehaviour {
+	NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    
+	[dictionary setValue:keyBehaviour.keyBehaviourId forKey:@"id"];
+	[dictionary setValue:keyBehaviour.keyBehaviourDescription forKey:@"description"];
+	[dictionary setValue:keyBehaviour.rating forKey:@"key_behaviour_rating"];
+    
+	return dictionary;
 }
 
-+ (NSArray *)dictionariesWithKeyBehaviourArray:(NSArray *)keyBehaviours {
+- (NSArray *)dictionariesWithKeyBehaviourArray:(NSArray *)keyBehaviours {
 	NSMutableArray *dictionaries = [[NSMutableArray alloc] init];
     
 	for (TSFKeyBehaviour *keyBehaviour in keyBehaviours) {
-		NSDictionary *dictionary = [TSFKeyBehaviourMapper dictionaryWithKeyBehaviour:keyBehaviour];
+		NSDictionary *dictionary = [self dictionaryWithKeyBehaviour:keyBehaviour];
 		[dictionaries addObject:dictionary];
 	}
     

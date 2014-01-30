@@ -11,9 +11,9 @@
 
 @interface TSFKeyBehaviourMapper : NSObject
 
-+ (TSFKeyBehaviour *)keyBehaviourWithDictionary:(NSDictionary *)dictionary;
-+ (NSArray *)keyBehavioursWithDictionaryArray:(NSArray *)dictionaryArray;
-+ (NSDictionary *)dictionaryWithKeyBehaviour:(TSFKeyBehaviour *)keyBehaviour;
-+ (NSArray *)dictionariesWithKeyBehaviourArray:(NSArray *)keyBehaviours;
+- (TSFKeyBehaviour *)keyBehaviourWithDictionary:(NSDictionary *)dictionary;
+- (NSArray *)keyBehavioursWithDictionaryArray:(NSArray *)dictionaryArray;
+- (NSDictionary *)dictionaryWithKeyBehaviour:(TSFKeyBehaviour *)keyBehaviour;
+- (NSArray *)dictionariesWithKeyBehaviourArray:(NSArray *)keyBehaviours;
 
 @end

@@ -16,6 +16,7 @@
 	dispatch_once(&onceToken, ^{
 	    _sharedService = [[self alloc] init];
 	    _sharedService.apiClient = [TSFAPIClient sharedClient];
+	    _sharedService.questionnaireMapper = [[TSFQuestionnaireMapper alloc] init];
 	});
     
 	return _sharedService;
@@ -29,7 +30,7 @@
 	NSDictionary *parameters = @{ @"token" : token };
     
 	[self.apiClient GET:questionnairesURL parameters:parameters success: ^(AFHTTPRequestOperation *operation, id responseObject) {
-	    success([TSFQuestionnaireMapper questionnairesWithDictionaryArray:responseObject]);
+	    success([self.questionnaireMapper questionnairesWithDictionaryArray:responseObject]);
 	}
      
 	            failure:

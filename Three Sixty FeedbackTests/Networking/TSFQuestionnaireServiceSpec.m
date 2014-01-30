@@ -14,11 +14,14 @@ SPEC_BEGIN(TSFQuestionnaireServiceSpec)
 describe(@"TSFQuestionnaireService", ^{
     __block TSFQuestionnaireService *_questionnaireService;
     __block id _mockAPIClient;
+    __block id _mockQuestionnaireMapper;
     
     beforeEach ( ^{
         _questionnaireService = [TSFQuestionnaireService sharedService];
         _mockAPIClient = [KWMock mockForClass:[TSFAPIClient class]];
+        _mockQuestionnaireMapper = [KWMock mockForClass:[TSFQuestionnaireMapper class]];
         _questionnaireService.apiClient = _mockAPIClient;
+        _questionnaireService.questionnaireMapper = _mockQuestionnaireMapper;
 	});
     
     it(@"instantiates correctly", ^{
@@ -29,11 +32,17 @@ describe(@"TSFQuestionnaireService", ^{
         [[_questionnaireService.apiClient should] beKindOfClass:[TSFAPIClient class]];
 	});
     
+    it(@"has an instance of a questionnaire mapper", ^{
+        [[_questionnaireService.questionnaireMapper shouldNot] beNil];
+        [[_questionnaireService.questionnaireMapper should] beKindOfClass:[TSFQuestionnaireMapper class]];
+	});
+    
     it(@"calls the API for a list of questionnaires with a token", ^{
         __block NSString *fakeToken = [NSString stringWithFormat:@"%d", arc4random()];
         __block NSString *expectedRequestURL = [NSString stringWithFormat:@"%@%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires];
         __block NSArray *stubResponse = @[@{ @"id" : @(arc4random()) }];
-        __block NSArray *stubMappedResponse = [TSFQuestionnaireMapper questionnairesWithDictionaryArray:stubResponse];
+        __block NSArray *stubMappedResponse = [[[TSFQuestionnaireMapper alloc] init]
+                                               questionnairesWithDictionaryArray:stubResponse];
         
         [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock: ^id (NSArray *params) {
             NSString *URL = params[0];
@@ -46,9 +55,9 @@ describe(@"TSFQuestionnaireService", ^{
             return nil;
 		}];
         
-        [[TSFQuestionnaireMapper should] receive:@selector(questionnairesWithDictionaryArray:)
-                                       andReturn:stubMappedResponse
-                                   withArguments:stubResponse];
+        [[_mockQuestionnaireMapper should] receive:@selector(questionnairesWithDictionaryArray:)
+                                         andReturn:stubMappedResponse
+                                     withArguments:stubResponse];
         
         [_questionnaireService questionnairesWithToken:fakeToken
                                                success: ^(NSArray *response) {

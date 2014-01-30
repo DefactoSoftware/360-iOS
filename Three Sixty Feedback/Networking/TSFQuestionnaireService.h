@@ -15,6 +15,7 @@ static NSString *const TSFAPIEndPointQuestionnaires = @"questionnaires";
 @interface TSFQuestionnaireService : NSObject
 
 @property (nonatomic, strong) TSFAPIClient *apiClient;
+@property (nonatomic, strong) TSFQuestionnaireMapper *questionnaireMapper;
 
 + (TSFQuestionnaireService *)sharedService;
 - (void)questionnairesWithToken:(NSString *)token

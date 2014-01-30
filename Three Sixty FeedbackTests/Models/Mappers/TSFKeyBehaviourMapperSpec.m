@@ -24,10 +24,15 @@ describe(@"TSFKeyBehaviourMapper", ^{
                                                     @"key_behaviour_rating" : @(arc4random_uniform(5))
                                                     },
                                                 ];
+    __block TSFKeyBehaviourMapper *_keyBehaviourMapper;
+    
+    beforeEach ( ^{
+        _keyBehaviourMapper = [[TSFKeyBehaviourMapper alloc] init];
+	});
     
     it(@"maps a key behaviour correctly", ^{
         NSDictionary *keyBehaviourDictionary = [_sampleDictionaryArray firstObject];
-        TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper keyBehaviourWithDictionary:keyBehaviourDictionary];
+        TSFKeyBehaviour *keyBehaviour = [_keyBehaviourMapper keyBehaviourWithDictionary:keyBehaviourDictionary];
         
         [[keyBehaviour.keyBehaviourId should] equal:keyBehaviourDictionary[@"id"]];
         [[keyBehaviour.keyBehaviourDescription should] equal:keyBehaviourDictionary[@"description"]];
@@ -35,7 +40,7 @@ describe(@"TSFKeyBehaviourMapper", ^{
 	});
     
     it(@"maps an array of key behaviours correctly", ^{
-        NSArray *keyBehaviours = [TSFKeyBehaviourMapper keyBehavioursWithDictionaryArray:_sampleDictionaryArray];
+        NSArray *keyBehaviours = [_keyBehaviourMapper keyBehavioursWithDictionaryArray:_sampleDictionaryArray];
         
         [[[keyBehaviours should] have:[_sampleDictionaryArray count]] behaviors];
         [[[keyBehaviours firstObject] should] beKindOfClass:[TSFKeyBehaviour class]];
@@ -43,9 +48,10 @@ describe(@"TSFKeyBehaviourMapper", ^{
     
     it(@"maps a dictionary correctly with a key behaviour", ^{
         NSDictionary *dictionary = _sampleDictionaryArray[0];
-        TSFKeyBehaviour *keyBehaviour = [TSFKeyBehaviourMapper keyBehaviourWithDictionary:dictionary];
         
-        NSDictionary *mappedDictionary = [TSFKeyBehaviourMapper dictionaryWithKeyBehaviour:keyBehaviour];
+        TSFKeyBehaviour *keyBehaviour = [_keyBehaviourMapper keyBehaviourWithDictionary:dictionary];
+        
+        NSDictionary *mappedDictionary = [_keyBehaviourMapper dictionaryWithKeyBehaviour:keyBehaviour];
         
         [[mappedDictionary[@"id"] should] equal:dictionary[@"id"]];
         [[mappedDictionary[@"description"] should] equal:dictionary[@"description"]];
@@ -53,8 +59,9 @@ describe(@"TSFKeyBehaviourMapper", ^{
 	});
     
     it(@"maps an array of dictionaries correctly with key behaviours", ^{
-        NSArray *keyBehaviours = [TSFKeyBehaviourMapper keyBehavioursWithDictionaryArray:_sampleDictionaryArray];
-        NSArray *dictionaries = [TSFKeyBehaviourMapper dictionariesWithKeyBehaviourArray:keyBehaviours];
+        NSArray *keyBehaviours = [_keyBehaviourMapper keyBehavioursWithDictionaryArray:_sampleDictionaryArray];
+        TSFKeyBehaviourMapper *keyBehaviourMapper = [[TSFKeyBehaviourMapper alloc] init];
+        NSArray *dictionaries = [keyBehaviourMapper dictionariesWithKeyBehaviourArray:keyBehaviours];
         
         [[[dictionaries should] have:[_sampleDictionaryArray count]] items];
         [[[dictionaries firstObject] should] beKindOfClass:[NSDictionary class]];

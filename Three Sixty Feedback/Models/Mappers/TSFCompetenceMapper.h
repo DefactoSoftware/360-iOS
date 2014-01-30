@@ -11,7 +11,10 @@
 
 @interface TSFCompetenceMapper : NSObject
 
-+ (TSFCompetence *)competenceWithDictionary:(NSDictionary *)dictionary;
-+ (NSArray *)competencesWithDictionaryArray:(NSArray *)dictionaryArray;
+@property (nonatomic, strong) TSFKeyBehaviourMapper *keyBehaviourMapper;
+
+- (TSFCompetence *)competenceWithDictionary:(NSDictionary *)dictionary;
+- (NSArray *)competencesWithDictionaryArray:(NSArray *)dictionaryArray;
+- (NSDictionary *)dictionaryWithCompetence:(TSFCompetence *)competence;
 
 @end
