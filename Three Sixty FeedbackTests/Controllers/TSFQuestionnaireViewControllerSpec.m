@@ -31,6 +31,14 @@ describe(@"TSFQuestionnaireViewController", ^{
         [[_questionnaireViewController.questionnaireService shouldNot] beNil];
         [[_questionnaireViewController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];
 	});
+    
+    it(@"calls the questionnaire service for the questionnaire", ^{
+        id mockQuestionnaireService = [KWMock mockForClass:[TSFQuestionnaireService class]];
+        TSFQuestionnaire *stubQuestionnaire = [[TSFQuestionnaire alloc] init];
+        [[mockQuestionnaireService should] receive:@selector(questionnairesWithSuccess:failure:) andReturn:stubQuestionnaire];
+        
+        [_questionnaireViewController loadQuestionnaire];
+	});
 });
 
 SPEC_END

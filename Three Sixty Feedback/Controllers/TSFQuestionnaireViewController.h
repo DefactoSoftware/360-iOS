@@ -12,5 +12,8 @@
 @interface TSFQuestionnaireViewController : UIViewController
 
 @property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
+@property (nonatomic, strong) TSFQuestionnaire *questionnaire;
+
+- (void)loadQuestionnaire;
 
 @end
