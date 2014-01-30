@@ -10,28 +10,49 @@
 
 @implementation TSFCompetenceMapper
 
-+ (TSFCompetence *)competenceWithDictionary:(NSDictionary *)dictionary {
-  TSFCompetence *competence = [[TSFCompetence alloc] init];
-
-  competence.competenceId = dictionary[@"id"];
-  competence.title = dictionary[@"title"];
-  competence.comment = dictionary[@"comment"];
-  competence.keyBehaviours = [TSFKeyBehaviourMapper
-      keyBehavioursWithDictionaryArray:dictionary[@"key_behaviours"]];
-
-  return competence;
+- (id)init {
+	self = [super init];
+	if (self) {
+		_keyBehaviourMapper = [[TSFKeyBehaviourMapper alloc] init];
+	}
+    
+	return self;
 }
 
-+ (NSArray *)competencesWithDictionaryArray:(NSArray *)dictionaryArray {
-  NSMutableArray *competences = [[NSMutableArray alloc] init];
+- (TSFCompetence *)competenceWithDictionary:(NSDictionary *)dictionary {
+	TSFCompetence *competence = [[TSFCompetence alloc] init];
+    
+	competence.competenceId = dictionary[@"id"];
+	competence.title = dictionary[@"title"];
+	competence.comment = dictionary[@"comment"];
+	competence.keyBehaviours = [self.keyBehaviourMapper keyBehavioursWithDictionaryArray:dictionary[@"key_behaviours"]];
+    
+	return competence;
+}
 
-  for (NSDictionary *competenceDictionary in dictionaryArray) {
-    TSFCompetence *competence =
-        [TSFCompetenceMapper competenceWithDictionary:competenceDictionary];
-    [competences addObject:competence];
-  }
+- (NSArray *)competencesWithDictionaryArray:(NSArray *)dictionaryArray {
+	NSMutableArray *competences = [[NSMutableArray alloc] init];
+    
+	for (NSDictionary *competenceDictionary in dictionaryArray) {
+		TSFCompetence *competence =
+        [self competenceWithDictionary:competenceDictionary];
+		[competences addObject:competence];
+	}
+    
+	return competences;
+}
 
-  return competences;
+- (NSDictionary *)dictionaryWithCompetence:(TSFCompetence *)competence {
+	NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    
+	NSArray *keyBehaviourDictionaries = [self.keyBehaviourMapper dictionariesWithKeyBehaviourArray:competence.keyBehaviours];
+    
+	[dictionary setValue:competence.competenceId forKey:@"id"];
+	[dictionary setValue:competence.title forKey:@"title"];
+	[dictionary setValue:competence.comment forKey:@"comment"];
+	[dictionary setValue:keyBehaviourDictionaries forKey:@"key_behaviours"];
+    
+	return dictionary;
 }
 
 @end

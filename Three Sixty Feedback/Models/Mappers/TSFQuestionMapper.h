@@ -11,7 +11,7 @@
 
 @interface TSFQuestionMapper : NSObject
 
-+ (TSFQuestion *)questionWithDictionary:(NSDictionary *)dictionary;
-+ (NSArray *)questionsWithDictionaryArray:(NSArray *)dictionaryArray;
+- (TSFQuestion *)questionWithDictionary:(NSDictionary *)dictionary;
+- (NSArray *)questionsWithDictionaryArray:(NSArray *)dictionaryArray;
 
 @end

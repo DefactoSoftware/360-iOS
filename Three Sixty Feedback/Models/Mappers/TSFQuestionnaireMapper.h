@@ -13,7 +13,10 @@
 
 @interface TSFQuestionnaireMapper : NSObject
 
-+ (TSFQuestionnaire *)questionnaireWithDictionary:(NSDictionary *)dictionary;
-+ (NSArray *)questionnairesWithDictionaryArray:(NSArray *)dictionaryArray;
+@property (nonatomic, strong) TSFQuestionMapper *questionMapper;
+@property (nonatomic, strong) TSFCompetenceMapper *competenceMapper;
+
+- (TSFQuestionnaire *)questionnaireWithDictionary:(NSDictionary *)dictionary;
+- (NSArray *)questionnairesWithDictionaryArray:(NSArray *)dictionaryArray;
 
 @end
