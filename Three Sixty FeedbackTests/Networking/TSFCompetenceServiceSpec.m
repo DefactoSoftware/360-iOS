@@ -57,6 +57,8 @@ describe(@"TSFCompetenceService", ^{
                                       andReturn:_stubResponseCompetence
                                   withArguments:_stubResponseDictionary];
         
+        [_mockAPIClient stub:@selector(assessorToken) andReturn:_fakeToken];
+        
         [_mockAPIClient stub:@selector(PUT:parameters:success:failure:) withBlock: ^id (NSArray *params) {
             NSString *URL = params[0];
             NSDictionary *parameters = params[1];
@@ -70,11 +72,10 @@ describe(@"TSFCompetenceService", ^{
         
         [_competenceService updateCompetence:competence
                             forQuestionnaire:questionnaire
-                                   withToken:_fakeToken
-                                     success: ^(TSFCompetence *updatedCompetence) {
-                                         [[updatedCompetence should] equal:_stubResponseCompetence];
-                                     } failure: ^(NSError *error) {
-                                     }];
+                                 withSuccess: ^(TSFCompetence *updatedCompetence) {
+                                     [[updatedCompetence should] equal:_stubResponseCompetence];
+                                 } failure: ^(NSError *error) {
+                                 }];
 	});
 });
 

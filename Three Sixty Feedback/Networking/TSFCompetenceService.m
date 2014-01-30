@@ -24,8 +24,7 @@
 
 - (void)updateCompetence:(TSFCompetence *)competence
         forQuestionnaire:(TSFQuestionnaire *)questionnaire
-               withToken:(NSString *)token
-                 success:(TSFNetworkingSuccessBlock)success
+             withSuccess:(TSFNetworkingSuccessBlock)success
                  failure:(TSFNetworkingErrorBlock)failure {
 	__block TSFNetworkingSuccessBlock _successBlock = success;
 	__block TSFNetworkingErrorBlock _failureBlock = failure;
@@ -36,7 +35,7 @@
 	                        questionnaire.questionnaireId,
 	                        TSFAPIEndPointCompetences,
 	                        competence.competenceId,
-	                        token];
+	                        self.apiClient.assessorToken];
 	NSDictionary *competenceDictionary = [self.competenceMapper dictionaryWithCompetence:competence];
     
 	[self.apiClient PUT:requestUrl

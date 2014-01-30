@@ -20,8 +20,7 @@ static NSString *const TSFAPIEndPointCompetences = @"competences";
 + (TSFCompetenceService *)sharedService;
 - (void)updateCompetence:(TSFCompetence *)competence
         forQuestionnaire:(TSFQuestionnaire *)questionnaire
-               withToken:(NSString *)token
-                 success:(TSFNetworkingSuccessBlock)success
+             withSuccess:(TSFNetworkingSuccessBlock)success
                  failure:(TSFNetworkingErrorBlock)failure;
 
 @end
