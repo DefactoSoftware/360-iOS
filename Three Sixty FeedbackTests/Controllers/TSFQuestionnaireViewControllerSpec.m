@@ -26,6 +26,11 @@ describe(@"TSFQuestionnaireViewController", ^{
         [[_questionnaireViewController shouldNot] beNil];
         [[_questionnaireViewController should] beKindOfClass:[TSFQuestionnaireViewController class]];
 	});
+    
+    it(@"instantiates a questionnaire service", ^{
+        [[_questionnaireViewController.questionnaireService shouldNot] beNil];
+        [[_questionnaireViewController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];
+	});
 });
 
 SPEC_END

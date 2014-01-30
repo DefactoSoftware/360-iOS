@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFQuestionnaireService.h"
 
 @interface TSFQuestionnaireViewController : UIViewController
+
+@property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
 
 @end

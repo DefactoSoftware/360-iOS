@@ -8,10 +8,17 @@
 
 #import "TSFQuestionnaireViewController.h"
 
-@interface TSFQuestionnaireViewController ()
-
-@end
-
 @implementation TSFQuestionnaireViewController
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		_questionnaireService = [TSFQuestionnaireService sharedService];
+	}
+	return self;
+}
+
+- (void)viewDidLoad {
+}
 
 @end
