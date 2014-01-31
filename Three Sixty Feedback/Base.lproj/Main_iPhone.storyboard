@@ -85,7 +85,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="SzH-T9-Ks2" id="bBr-lL-cCv"/>
-                                            <outlet property="keyBehaviourRatingView" destination="e7e-76-eL8" id="8su-kN-ml3"/>
+                                            <outlet property="keyBehaviourRatingView" destination="e7e-76-eL8" id="uCa-gn-0in"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -94,13 +94,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="6A1-Sv-en3">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="RgW-o7-Atu"/>
-                        <barButtonItem key="rightBarButtonItem" title=">" id="WLh-7N-ZVO"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="RgW-o7-Atu">
+                            <connections>
+                                <action selector="previousCompetenceButtonPressed:" destination="vXZ-lx-hvc" id="ZuA-Ap-F48"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title=">" id="WLh-7N-ZVO">
+                            <connections>
+                                <action selector="nextCompetenceButtonPressed:" destination="vXZ-lx-hvc" id="X29-eg-PWY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="keyBehavioursTableView" destination="gze-0q-TXe" id="Zj9-UE-bme"/>
-                        <outlet property="nextKeyBehaviourButton" destination="WLh-7N-ZVO" id="fio-0f-zRd"/>
-                        <outlet property="previousKeyBehaviourButton" destination="RgW-o7-Atu" id="UT4-zf-zhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

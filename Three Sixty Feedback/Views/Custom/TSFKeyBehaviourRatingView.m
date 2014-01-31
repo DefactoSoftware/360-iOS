@@ -10,7 +10,6 @@
 
 @interface TSFKeyBehaviourRatingView()
 @property (nonatomic, strong) UIButton *selectedButton;
-@property (nonatomic, assign) NSInteger selectedKeyBehaviour;
 @property (nonatomic, strong) UIColor *selectedColor;
 @property (nonatomic, strong) UIColor *defaultColor;
 @end

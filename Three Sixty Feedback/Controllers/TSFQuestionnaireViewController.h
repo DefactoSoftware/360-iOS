@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "TSFQuestionnaireService.h"
+#import "TSFCompetenceService.h"
 #import "TSFGenerics.h"
 
 @interface TSFQuestionnaireViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
+@property (nonatomic, strong) TSFCompetenceService *competenceService;
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (weak, nonatomic) IBOutlet UITableView *keyBehavioursTableView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *previousKeyBehaviourButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextKeyBehaviourButton;
 
 - (void)loadQuestionnaire;
+- (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)previousCompetenceButtonPressed:(UIBarButtonItem *)sender;
 
 @end

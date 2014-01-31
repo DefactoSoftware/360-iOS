@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFKeyBehaviour.h"
+#import "TSFKeyBehaviourRatingView.h"
 
 @interface TSFKeyBehaviourCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet TSFKeyBehaviourCell *keyBehaviourRatingView;
+@property (weak, nonatomic) IBOutlet TSFKeyBehaviourRatingView *keyBehaviourRatingView;
 
 @end

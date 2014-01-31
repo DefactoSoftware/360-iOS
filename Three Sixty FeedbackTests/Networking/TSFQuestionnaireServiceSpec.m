@@ -67,6 +67,19 @@ describe(@"TSFQuestionnaireService", ^{
          
                                                  failure: ^(NSError *error) {}];
 	});
+    
+    it(@"reads the key behaviour rating cells and updates the competence", ^{
+        TSFQuestionnaire *fakeQuestionnaire = [[TSFQuestionnaire alloc] init];
+        fakeQuestionnaire.questionnaireId = [NSNumber numberWithInteger:arc4random()];
+        TSFCompetence *competence = [[TSFCompetence alloc] init];
+        competence.competenceId = [NSNumber numberWithInteger:arc4random()];
+        
+        
+        
+        fakeQuestionnaire.competences = @[competence];
+        
+        
+    });
 });
 
 SPEC_END

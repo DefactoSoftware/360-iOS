@@ -15,6 +15,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 
 @interface TSFQuestionnaireViewController ()
 @property (nonatomic, assign) NSInteger currentCompetenceNumber;
+@property (nonatomic, strong) NSArray *keyBehaviourRatingViews;
 @end
 
 @implementation TSFQuestionnaireViewController
@@ -23,6 +24,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 	self = [super initWithCoder:aDecoder];
 	if (self) {
 		_questionnaireService = [TSFQuestionnaireService sharedService];
+        _competenceService = [TSFCompetenceService sharedService];
 	}
 	return self;
 }
@@ -52,6 +54,38 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 	} failure: ^(NSError *error) {
 	    NSLog(@"Error loading questionnaires. Userinfo: %@. Error: %@", error.userInfo, error.localizedDescription);
 	}];
+}
+
+- (void)updateCompetence {
+    TSFCompetence *competence = self.questionnaire.competences[self.currentCompetenceNumber];
+    for (NSInteger i = 0; i < [competence.keyBehaviours count]; i++) {
+        NSIndexPath *keyBehaviourIndexPath = [NSIndexPath indexPathForItem:i inSection:0];
+        TSFKeyBehaviourCell *behaviourCell = (TSFKeyBehaviourCell *) [self tableView:self.keyBehavioursTableView
+                                       cellForRowAtIndexPath:keyBehaviourIndexPath];
+        NSInteger rating = behaviourCell.keyBehaviourRatingView.selectedKeyBehaviour;
+        
+        TSFKeyBehaviour *keyBehaviour = competence.keyBehaviours[i];
+        keyBehaviour.rating = @(rating);
+    }
+    
+    [self.competenceService updateCompetence:competence
+                            forQuestionnaire:self.questionnaire
+                                 withSuccess:^(TSFCompetence *updatedCompetence) {
+        
+    }
+                                     failure:^(NSError *error) {
+        
+    }];
+}
+
+#pragma mark - Navigate through competences
+
+- (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender {
+    [self updateCompetence];
+}
+
+- (IBAction)previousCompetenceButtonPressed:(UIBarButtonItem *)sender {
+    
 }
 
 #pragma mark - UITableView delegate
