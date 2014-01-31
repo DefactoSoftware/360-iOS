@@ -32,10 +32,19 @@ describe(@"TSFQuestionnaireViewController", ^{
         [[_questionnaireViewController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];
 	});
     
+    it(@"has a navigationbar button for the next key behaviour", ^{
+        [[_questionnaireViewController.nextKeyBehaviourButton shouldNot] beNil];
+    });
+    
+    it(@"has a navigationbar button for the previous key behaviour", ^{
+        [[_questionnaireViewController.previousKeyBehaviourButton shouldNot] beNil];
+    });
+    
     it(@"calls the questionnaire service for the questionnaire", ^{
         id mockQuestionnaireService = [KWMock mockForClass:[TSFQuestionnaireService class]];
-        TSFQuestionnaire *stubQuestionnaire = [[TSFQuestionnaire alloc] init];
-        [[mockQuestionnaireService should] receive:@selector(questionnairesWithSuccess:failure:) andReturn:stubQuestionnaire];
+        _questionnaireViewController.questionnaireService = mockQuestionnaireService;
+        
+        [[mockQuestionnaireService should] receive:@selector(questionnairesWithSuccess:failure:)];
         
         [_questionnaireViewController loadQuestionnaire];
 	});

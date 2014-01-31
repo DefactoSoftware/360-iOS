@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */; };
 		10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */; };
+		52E80F4A189BE1D4007A8A48 /* TSFCompetenceTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */; };
+		52E80F4D189BE313007A8A48 /* TSFKeyBehaviourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F4C189BE313007A8A48 /* TSFKeyBehaviourCell.m */; };
+		52E80F51189BE494007A8A48 /* TSFKeyBehaviourRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F50189BE494007A8A48 /* TSFKeyBehaviourRatingView.m */; };
 		E417281718994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */; };
 		E417281A18994C8000DD77B5 /* TSFQuestionnaireMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281918994C8000DD77B5 /* TSFQuestionnaireMapper.m */; };
 		E429DD4E189807B300BAFEC4 /* TSFAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E429DD4D189807B300BAFEC4 /* TSFAPIClient.m */; };
@@ -66,6 +69,13 @@
 		02440D1D9DA543F999900FB9 /* libPods-Three Sixty Feedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty Feedback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFAppDelegateSpec.m; sourceTree = "<group>"; };
 		30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty FeedbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52E80F45189BDCC1007A8A48 /* TSFGenerics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
+		52E80F48189BE1D4007A8A48 /* TSFCompetenceTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCompetenceTitleCell.h; path = Views/Cells/TSFCompetenceTitleCell.h; sourceTree = "<group>"; };
+		52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceTitleCell.m; path = Views/Cells/TSFCompetenceTitleCell.m; sourceTree = "<group>"; };
+		52E80F4B189BE313007A8A48 /* TSFKeyBehaviourCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFKeyBehaviourCell.h; path = Views/Cells/TSFKeyBehaviourCell.h; sourceTree = "<group>"; };
+		52E80F4C189BE313007A8A48 /* TSFKeyBehaviourCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFKeyBehaviourCell.m; path = Views/Cells/TSFKeyBehaviourCell.m; sourceTree = "<group>"; };
+		52E80F4F189BE494007A8A48 /* TSFKeyBehaviourRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFKeyBehaviourRatingView.h; path = Views/Custom/TSFKeyBehaviourRatingView.h; sourceTree = "<group>"; };
+		52E80F50189BE494007A8A48 /* TSFKeyBehaviourRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFKeyBehaviourRatingView.m; path = Views/Custom/TSFKeyBehaviourRatingView.m; sourceTree = "<group>"; };
 		62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty Feedback.xcconfig"; path = "Pods/Pods-Three Sixty Feedback.xcconfig"; sourceTree = "<group>"; };
 		C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty FeedbackTests.xcconfig"; path = "Pods/Pods-Three Sixty FeedbackTests.xcconfig"; sourceTree = "<group>"; };
 		E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireMapperSpec.m; path = Models/Mappers/TSFQuestionnaireMapperSpec.m; sourceTree = "<group>"; };
@@ -154,11 +164,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52E80F47189BE1BE007A8A48 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				52E80F48189BE1D4007A8A48 /* TSFCompetenceTitleCell.h */,
+				52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */,
+				52E80F4B189BE313007A8A48 /* TSFKeyBehaviourCell.h */,
+				52E80F4C189BE313007A8A48 /* TSFKeyBehaviourCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		52E80F4E189BE47D007A8A48 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				52E80F4F189BE494007A8A48 /* TSFKeyBehaviourRatingView.h */,
+				52E80F50189BE494007A8A48 /* TSFKeyBehaviourRatingView.m */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
 		E429DD48189806CD00BAFEC4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52E80F4E189BE47D007A8A48 /* Custom */,
+				52E80F47189BE1BE007A8A48 /* Cells */,
 				E4800B321897FD9A00FCE147 /* Main_iPhone.storyboard */,
 				E4800B351897FD9A00FCE147 /* Main_iPad.storyboard */,
+				52E80F45189BDCC1007A8A48 /* TSFGenerics.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -516,12 +549,15 @@
 				E453D6F51899557400052854 /* TSFQuestionnaireService.m in Sources */,
 				E455FF7C1899018A00F8C04C /* TSFQuestionnaire.m in Sources */,
 				E4800B3A1897FD9A00FCE147 /* TSFViewController.m in Sources */,
+				52E80F51189BE494007A8A48 /* TSFKeyBehaviourRatingView.m in Sources */,
 				E4800B311897FD9A00FCE147 /* TSFAppDelegate.m in Sources */,
 				E4800B2D1897FD9A00FCE147 /* main.m in Sources */,
 				E4C7F922189940A800B0E5F2 /* TSFCompetenceMapper.m in Sources */,
 				E455FF82189905DB00F8C04C /* TSFCompetence.m in Sources */,
 				E455FF9518991D1A00F8C04C /* TSFQuestion.m in Sources */,
+				52E80F4A189BE1D4007A8A48 /* TSFCompetenceTitleCell.m in Sources */,
 				E417281A18994C8000DD77B5 /* TSFQuestionnaireMapper.m in Sources */,
+				52E80F4D189BE313007A8A48 /* TSFKeyBehaviourCell.m in Sources */,
 				E455FF8B18990E8200F8C04C /* TSFKeyBehaviour.m in Sources */,
 				E4A7D79B18997A2500276FC0 /* TSFAssessorService.m in Sources */,
 				E4405874189A83BC001AEE13 /* TSFQuestionnaireViewController.m in Sources */,
