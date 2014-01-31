@@ -10,6 +10,7 @@
 
 @interface TSFKeyBehaviourRatingView()
 @property (nonatomic, strong) UIButton *selectedButton;
+@property (nonatomic, assign) NSInteger selectedKeyBehaviour;
 @property (nonatomic, strong) UIColor *selectedColor;
 @property (nonatomic, strong) UIColor *defaultColor;
 @end
@@ -51,6 +52,8 @@
     button.titleLabel.font = [UIFont fontWithName:@"Diwan Mishafi" size:13.0f];
     button.titleLabel.textAlignment = NSTextAlignmentCenter;
     
+    button.tag = number;
+    
     [button addTarget:self action:@selector(changeSelectedButton:) forControlEvents:UIControlEventTouchDown];
     
     return button;
@@ -58,8 +61,10 @@
 
 - (void)changeSelectedButton:(UIButton *)pressedButton {
     self.selectedButton.backgroundColor = self.defaultColor;
-    self.selectedButton = pressedButton;
     pressedButton.backgroundColor = self.selectedColor;
+    
+    self.selectedButton = pressedButton;
+    self.selectedKeyBehaviour = pressedButton.tag;
 }
 
 @end
