@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */; };
 		10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */; };
+		527FD0B9189DA634003E1E96 /* UIColor+TSFColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 527FD0B8189DA634003E1E96 /* UIColor+TSFColor.m */; };
 		52E80F4A189BE1D4007A8A48 /* TSFCompetenceTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */; };
 		52E80F4D189BE313007A8A48 /* TSFKeyBehaviourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F4C189BE313007A8A48 /* TSFKeyBehaviourCell.m */; };
 		52E80F51189BE494007A8A48 /* TSFKeyBehaviourRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F50189BE494007A8A48 /* TSFKeyBehaviourRatingView.m */; };
@@ -69,6 +70,8 @@
 		02440D1D9DA543F999900FB9 /* libPods-Three Sixty Feedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty Feedback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFAppDelegateSpec.m; sourceTree = "<group>"; };
 		30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty FeedbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		527FD0B7189DA634003E1E96 /* UIColor+TSFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+TSFColor.h"; path = "Views/Custom/UIColor+TSFColor.h"; sourceTree = "<group>"; };
+		527FD0B8189DA634003E1E96 /* UIColor+TSFColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+TSFColor.m"; path = "Views/Custom/UIColor+TSFColor.m"; sourceTree = "<group>"; };
 		52E80F45189BDCC1007A8A48 /* TSFGenerics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
 		52E80F48189BE1D4007A8A48 /* TSFCompetenceTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCompetenceTitleCell.h; path = Views/Cells/TSFCompetenceTitleCell.h; sourceTree = "<group>"; };
 		52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceTitleCell.m; path = Views/Cells/TSFCompetenceTitleCell.m; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 			children = (
 				52E80F4F189BE494007A8A48 /* TSFKeyBehaviourRatingView.h */,
 				52E80F50189BE494007A8A48 /* TSFKeyBehaviourRatingView.m */,
+				527FD0B7189DA634003E1E96 /* UIColor+TSFColor.h */,
+				527FD0B8189DA634003E1E96 /* UIColor+TSFColor.m */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 				E4800B2D1897FD9A00FCE147 /* main.m in Sources */,
 				E4C7F922189940A800B0E5F2 /* TSFCompetenceMapper.m in Sources */,
 				E455FF82189905DB00F8C04C /* TSFCompetence.m in Sources */,
+				527FD0B9189DA634003E1E96 /* UIColor+TSFColor.m in Sources */,
 				E455FF9518991D1A00F8C04C /* TSFQuestion.m in Sources */,
 				52E80F4A189BE1D4007A8A48 /* TSFCompetenceTitleCell.m in Sources */,
 				E417281A18994C8000DD77B5 /* TSFQuestionnaireMapper.m in Sources */,

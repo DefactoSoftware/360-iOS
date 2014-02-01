@@ -9,6 +9,8 @@
 #import "TSFQuestionnaireViewController.h"
 #import "TSFCompetenceTitleCell.h"
 #import "TSFKeyBehaviourCell.h"
+#import "NZAlertView.h"
+#import "UIColor+TSFColor.h"
 
 static NSString *const TSFCompetenceTitleCellIdentifier = @"TSFCompetenceTitleCell";
 static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
@@ -57,6 +59,18 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 	}];
 }
 
+- (void)displayValidationError {
+    NSString *validationErrorMessage = TSFLocalizedString(@"TSFQuestionnaireViewControllerValidationErrorMessage", @"Please fill in every question before moving on.");
+    NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
+                                                                title:nil
+                                                              message:validationErrorMessage
+                                                             delegate:nil];
+    [validationAlert setStatusBarColor:[UIColor redColor]];
+    [validationAlert setTextAlignment:NSTextAlignmentCenter];
+    
+    [validationAlert show];
+}
+
 - (BOOL)validateInput {
     TSFCompetence *currentCompetence = self.questionnaire.competences[self.currentCompetenceNumber];
     
@@ -74,6 +88,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 
 - (void)updateCompetence {
     if (![self validateInput]) {
+        [self displayValidationError];
         return;
     }
     
