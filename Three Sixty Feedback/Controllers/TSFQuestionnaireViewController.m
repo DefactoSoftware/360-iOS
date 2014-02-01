@@ -74,6 +74,10 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 - (BOOL)validateInput {
     TSFCompetence *currentCompetence = self.questionnaire.competences[self.currentCompetenceNumber];
     
+    if (![self.currentKeyBehaviourRatingViews count]) {
+        return NO;
+    }
+    
     if ([self.currentKeyBehaviourRatingViews count] < [currentCompetence.keyBehaviours count]) {
         return NO;
     }
@@ -120,6 +124,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
         [self.currentKeyBehaviourRatingViews removeAllObjects];
         
         [self.keyBehavioursTableView reloadData];
+        [self.keyBehavioursTableView setContentOffset:CGPointMake(0.0f, -self.keyBehavioursTableView.contentInset.top) animated:YES];
     }
 }
 
