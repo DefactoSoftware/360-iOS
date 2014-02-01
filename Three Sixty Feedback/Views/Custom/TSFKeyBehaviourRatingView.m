@@ -63,7 +63,7 @@
     pressedButton.backgroundColor = self.selectedColor;
     
     self.selectedButton = pressedButton;
-    self.selectedKeyBehaviour = pressedButton.tag;
+    self.selectedRating = pressedButton.tag;
 }
 
 @end

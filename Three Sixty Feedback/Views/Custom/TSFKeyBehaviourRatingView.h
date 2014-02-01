@@ -11,6 +11,6 @@
 @interface TSFKeyBehaviourRatingView : UIView
 
 @property (nonatomic, strong) NSMutableArray *ratingButtons;
-@property (nonatomic, assign) NSInteger selectedKeyBehaviour;
+@property (nonatomic, assign) NSInteger selectedRating;
 
 @end

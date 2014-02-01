@@ -15,7 +15,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 
 @interface TSFQuestionnaireViewController ()
 @property (nonatomic, assign) NSInteger currentCompetenceNumber;
-@property (nonatomic, strong) NSArray *keyBehaviourRatingViews;
+@property (nonatomic, strong) NSMutableArray *currentKeyBehaviourRatingViews;
 @end
 
 @implementation TSFQuestionnaireViewController
@@ -25,6 +25,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 	if (self) {
 		_questionnaireService = [TSFQuestionnaireService sharedService];
         _competenceService = [TSFCompetenceService sharedService];
+        _currentKeyBehaviourRatingViews = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
@@ -59,10 +60,8 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 - (void)updateCompetence {
     TSFCompetence *competence = self.questionnaire.competences[self.currentCompetenceNumber];
     for (NSInteger i = 0; i < [competence.keyBehaviours count]; i++) {
-        NSIndexPath *keyBehaviourIndexPath = [NSIndexPath indexPathForItem:i inSection:0];
-        TSFKeyBehaviourCell *behaviourCell = (TSFKeyBehaviourCell *) [self tableView:self.keyBehavioursTableView
-                                       cellForRowAtIndexPath:keyBehaviourIndexPath];
-        NSInteger rating = behaviourCell.keyBehaviourRatingView.selectedKeyBehaviour;
+        TSFKeyBehaviourRatingView *ratingView = self.currentKeyBehaviourRatingViews[i];
+        NSInteger rating = ratingView.selectedRating;
         
         TSFKeyBehaviour *keyBehaviour = competence.keyBehaviours[i];
         keyBehaviour.rating = @(rating);
@@ -71,10 +70,10 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
     [self.competenceService updateCompetence:competence
                             forQuestionnaire:self.questionnaire
                                  withSuccess:^(TSFCompetence *updatedCompetence) {
-        
+                                     NSLog(@"%@", updatedCompetence);
     }
                                      failure:^(NSError *error) {
-        
+                                         NSLog(@"Error updating competences. Error: %@. Userinfo: %@.", error.localizedDescription, error.userInfo);
     }];
 }
 
@@ -110,6 +109,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
     }
     
     keyBehaviourCell.descriptionLabel.text = keyBehaviour.keyBehaviourDescription;
+    [self.currentKeyBehaviourRatingViews addObject:keyBehaviourCell.keyBehaviourRatingView];
     
     return keyBehaviourCell;
 }
@@ -122,6 +122,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
     } else {
         NSInteger keyBehaviourNumber = indexPath.row - 1;
         TSFKeyBehaviour *currentKeyBehaviour = currentCompetence.keyBehaviours[keyBehaviourNumber];
+        
         return [self keyBehaviourCellWithKeyBehaviour:currentKeyBehaviour];
     }
 }
