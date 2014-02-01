@@ -57,7 +57,26 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 	}];
 }
 
+- (BOOL)validateInput {
+    TSFCompetence *currentCompetence = self.questionnaire.competences[self.currentCompetenceNumber];
+    
+    if ([self.currentKeyBehaviourRatingViews count] < [currentCompetence.keyBehaviours count]) {
+        return NO;
+    }
+    
+    for (TSFKeyBehaviourRatingView *ratingView in self.currentKeyBehaviourRatingViews) {
+        if (!ratingView.selectedRating) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (void)updateCompetence {
+    if (![self validateInput]) {
+        return;
+    }
+    
     TSFCompetence *competence = self.questionnaire.competences[self.currentCompetenceNumber];
     for (NSInteger i = 0; i < [competence.keyBehaviours count]; i++) {
         TSFKeyBehaviourRatingView *ratingView = self.currentKeyBehaviourRatingViews[i];
@@ -67,14 +86,26 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
         keyBehaviour.rating = @(rating);
     }
     
+    __weak TSFQuestionnaireViewController *_self = self;
     [self.competenceService updateCompetence:competence
                             forQuestionnaire:self.questionnaire
                                  withSuccess:^(TSFCompetence *updatedCompetence) {
-                                     NSLog(@"%@", updatedCompetence);
+                                     [_self navigateToNextCompetence];
     }
                                      failure:^(NSError *error) {
                                          NSLog(@"Error updating competences. Error: %@. Userinfo: %@.", error.localizedDescription, error.userInfo);
     }];
+}
+
+- (void)navigateToNextCompetence {
+    NSInteger newCompetenceNumber = self.currentCompetenceNumber + 1;
+    if ([self.questionnaire.competences count] > newCompetenceNumber) {
+        self.currentCompetenceNumber = newCompetenceNumber;
+        
+        [self.currentKeyBehaviourRatingViews removeAllObjects];
+        
+        [self.keyBehavioursTableView reloadData];
+    }
 }
 
 #pragma mark - Navigate through competences

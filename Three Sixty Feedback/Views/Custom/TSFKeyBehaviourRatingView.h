@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSMutableArray *ratingButtons;
 @property (nonatomic, assign) NSInteger selectedRating;
 
+- (void)resetButtons;
+
 @end

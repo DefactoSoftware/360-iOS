@@ -14,6 +14,7 @@
     [super layoutSubviews];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self.keyBehaviourRatingView resetButtons];
 }
 
 @end

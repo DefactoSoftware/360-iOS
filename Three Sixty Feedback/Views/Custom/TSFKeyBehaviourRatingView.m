@@ -80,4 +80,11 @@
 	self.selectedRating = pressedButton.tag;
 }
 
+- (void)resetButtons {
+    for (UIButton *button in self.ratingButtons) {
+        [button setBackgroundColor:self.defaultColor];
+    }
+    [self layoutSubviews];
+}
+
 @end
