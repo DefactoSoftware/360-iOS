@@ -84,6 +84,7 @@
     for (UIButton *button in self.ratingButtons) {
         [button setBackgroundColor:self.defaultColor];
     }
+    self.selectedRating = 0;
     [self layoutSubviews];
 }
 
