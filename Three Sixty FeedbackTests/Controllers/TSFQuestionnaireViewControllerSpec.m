@@ -14,15 +14,10 @@ SPEC_BEGIN(TSFQuestionnaireViewControllerSpec)
 
 describe(@"TSFQuestionnaireViewController", ^{
     __block TSFQuestionnaireViewController *_questionnaireViewController;
-    __block id _mockQuestionnaireService;
     
     beforeEach ( ^{
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
         _questionnaireViewController = [storyboard instantiateViewControllerWithIdentifier:@"TSFQuestionnaireViewController"];
-        
-        _mockQuestionnaireService = [KWMock mockForClass:[TSFQuestionnaireService class]];
-        _questionnaireViewController.questionnaireService = _mockQuestionnaireService;
-        [[_mockQuestionnaireService should] receive:@selector(questionnairesWithSuccess:failure:)];
         
         UIView *view = _questionnaireViewController.view;
         [[view shouldNot] beNil];
@@ -44,11 +39,6 @@ describe(@"TSFQuestionnaireViewController", ^{
     it(@"has an outlet for the next button", ^{
         [[_questionnaireViewController.nextButton shouldNot] beNil];
     });
-    
-    it(@"instantiates a questionnaire service", ^{
-        [[_questionnaireViewController.questionnaireService shouldNot] beNil];
-        [[_questionnaireViewController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];
-	});
     
     it(@"instantiates a competence service", ^{
         [[_questionnaireViewController.competenceService shouldNot] beNil];

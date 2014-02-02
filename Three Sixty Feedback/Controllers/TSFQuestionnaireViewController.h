@@ -21,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
-- (void)loadQuestionnaire;
 - (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)previousCompetenceButtonPressed:(UIBarButtonItem *)sender;
 - (BOOL)validateInput;

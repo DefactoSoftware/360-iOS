@@ -10,6 +10,8 @@
 		0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */; };
 		10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */; };
 		527FD0B9189DA634003E1E96 /* UIColor+TSFColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 527FD0B8189DA634003E1E96 /* UIColor+TSFColor.m */; };
+		52ACE465189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE464189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m */; };
+		52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */; };
 		52E80F4A189BE1D4007A8A48 /* TSFCompetenceTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */; };
 		52E80F4D189BE313007A8A48 /* TSFKeyBehaviourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F4C189BE313007A8A48 /* TSFKeyBehaviourCell.m */; };
 		52E80F51189BE494007A8A48 /* TSFKeyBehaviourRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F50189BE494007A8A48 /* TSFKeyBehaviourRatingView.m */; };
@@ -72,6 +74,9 @@
 		30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty FeedbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		527FD0B7189DA634003E1E96 /* UIColor+TSFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+TSFColor.h"; path = "Views/Custom/UIColor+TSFColor.h"; sourceTree = "<group>"; };
 		527FD0B8189DA634003E1E96 /* UIColor+TSFColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+TSFColor.m"; path = "Views/Custom/UIColor+TSFColor.m"; sourceTree = "<group>"; };
+		52ACE464189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireIntroViewControllerSpec.m; path = Controllers/TSFQuestionnaireIntroViewControllerSpec.m; sourceTree = "<group>"; };
+		52ACE466189EC07C0095F650 /* TSFQuestionnaireIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnaireIntroViewController.h; path = Controllers/TSFQuestionnaireIntroViewController.h; sourceTree = "<group>"; };
+		52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireIntroViewController.m; path = Controllers/TSFQuestionnaireIntroViewController.m; sourceTree = "<group>"; };
 		52E80F45189BDCC1007A8A48 /* TSFGenerics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
 		52E80F48189BE1D4007A8A48 /* TSFCompetenceTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCompetenceTitleCell.h; path = Views/Cells/TSFCompetenceTitleCell.h; sourceTree = "<group>"; };
 		52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceTitleCell.m; path = Views/Cells/TSFCompetenceTitleCell.m; sourceTree = "<group>"; };
@@ -208,6 +213,8 @@
 				E4800B391897FD9A00FCE147 /* TSFViewController.m */,
 				E4405872189A83BC001AEE13 /* TSFQuestionnaireViewController.h */,
 				E4405873189A83BC001AEE13 /* TSFQuestionnaireViewController.m */,
+				52ACE466189EC07C0095F650 /* TSFQuestionnaireIntroViewController.h */,
+				52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				E4405875189A83D7001AEE13 /* TSFQuestionnaireViewControllerSpec.m */,
+				52ACE464189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -552,6 +560,7 @@
 			files = (
 				E4405871189A6EA1001AEE13 /* TSFCompetenceService.m in Sources */,
 				E453D6F51899557400052854 /* TSFQuestionnaireService.m in Sources */,
+				52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */,
 				E455FF7C1899018A00F8C04C /* TSFQuestionnaire.m in Sources */,
 				E4800B3A1897FD9A00FCE147 /* TSFViewController.m in Sources */,
 				52E80F51189BE494007A8A48 /* TSFKeyBehaviourRatingView.m in Sources */,
@@ -591,6 +600,7 @@
 				E440586E189A6E30001AEE13 /* TSFCompetenceServiceSpec.m in Sources */,
 				E4A7D79D18997A3A00276FC0 /* TSFAssessorServiceSpec.m in Sources */,
 				E4C7F91A1899380900B0E5F2 /* TSFKeyBehaviourMapperSpec.m in Sources */,
+				52ACE465189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,7 +35,6 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
     self.title = TSFLocalizedString(@"TSFQuestionnaireViewControllerTitle", @"Feedback round");
     
     [self setUpKeyBehavioursTable];
-	[self loadQuestionnaire];
 }
 
 - (void)setUpKeyBehavioursTable {
@@ -54,17 +53,6 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
     } else {
         self.previousButton.enabled = NO;
     }
-}
-
-- (void)loadQuestionnaire {
-	__block typeof(self) _self = self;
-    
-	[self.questionnaireService questionnairesWithSuccess: ^(NSArray *questionnaires) {
-	    _self.questionnaire = [questionnaires firstObject];
-        [_self setUpKeyBehavioursTable];
-	} failure: ^(NSError *error) {
-	    NSLog(@"Error loading questionnaires. Userinfo: %@. Error: %@", error.userInfo, error.localizedDescription);
-	}];
 }
 
 - (void)checkPreviousButton {
