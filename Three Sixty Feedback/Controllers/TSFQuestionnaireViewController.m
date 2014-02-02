@@ -15,6 +15,8 @@
 static NSString *const TSFCompetenceTitleCellIdentifier = @"TSFCompetenceTitleCell";
 static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 
+static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSegue";
+
 @interface TSFQuestionnaireViewController ()
 @property (nonatomic, assign) NSInteger currentCompetenceNumber;
 @end
@@ -148,7 +150,11 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 #pragma mark - Navigate through competences
 
 - (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender {
-    [self updateCompetence];
+    if (self.currentCompetenceNumber + 1 == [self.questionnaire.competences count]) {
+        [self performSegueWithIdentifier:TSFFinishQuestionnaireSegue sender:self];
+    } else {
+        [self updateCompetence];
+    }
 }
 
 - (IBAction)previousCompetenceButtonPressed:(UIBarButtonItem *)sender {

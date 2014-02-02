@@ -50,10 +50,9 @@ describe(@"TSFQuestionnaireViewController", ^{
         _questionnaireViewController.competenceService = mockCompetenceService;
         
         TSFQuestionnaire *stubQuestionnaire = [[TSFQuestionnaire alloc] init];
-        stubQuestionnaire.questionnaireId = @(arc4random());
         TSFCompetence *stubCompetence = [[TSFCompetence alloc] init];
-        stubCompetence.competenceId = @(arc4random());
-        stubQuestionnaire.competences = @[stubCompetence];
+        TSFCompetence *stubCompetenceTwo = [[TSFCompetence alloc] init];
+        stubQuestionnaire.competences = @[stubCompetence, stubCompetenceTwo];
         TSFKeyBehaviour *stubKeyBehaviour = [[TSFKeyBehaviour alloc] init];
         stubCompetence.keyBehaviours = @[stubKeyBehaviour];
         _questionnaireViewController.questionnaire = stubQuestionnaire;
