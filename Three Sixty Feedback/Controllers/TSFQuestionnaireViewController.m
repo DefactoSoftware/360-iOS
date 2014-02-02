@@ -17,7 +17,6 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 
 @interface TSFQuestionnaireViewController ()
 @property (nonatomic, assign) NSInteger currentCompetenceNumber;
-@property (nonatomic, strong) NSMutableArray *currentKeyBehaviourRatingViews;
 @end
 
 @implementation TSFQuestionnaireViewController
@@ -121,11 +120,23 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
     if ([self.questionnaire.competences count] > newCompetenceNumber) {
         self.currentCompetenceNumber = newCompetenceNumber;
         
-        [self.currentKeyBehaviourRatingViews removeAllObjects];
-        
-        [self.keyBehavioursTableView reloadData];
-        [self.keyBehavioursTableView setContentOffset:CGPointMake(0.0f, -self.keyBehavioursTableView.contentInset.top) animated:YES];
+        [self reloadCompetenceTable];
     }
+}
+
+- (void)navigateToPreviousCompetence {
+    NSInteger newCompetenceNumber = self.currentCompetenceNumber - 1;
+    if (newCompetenceNumber > -1) {
+        self.currentCompetenceNumber = newCompetenceNumber;
+        
+        [self reloadCompetenceTable];
+    }
+}
+
+- (void)reloadCompetenceTable {
+    [self.currentKeyBehaviourRatingViews removeAllObjects];
+    [self.keyBehavioursTableView reloadData];
+    [self.keyBehavioursTableView setContentOffset:CGPointMake(0.0f, -self.keyBehavioursTableView.contentInset.top) animated:YES];
 }
 
 #pragma mark - Navigate through competences
@@ -135,7 +146,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 }
 
 - (IBAction)previousCompetenceButtonPressed:(UIBarButtonItem *)sender {
-    
+    [self navigateToPreviousCompetence];
 }
 
 #pragma mark - UITableView delegate
@@ -159,6 +170,7 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
                                                       reuseIdentifier:TSFKeyBehaviourCellIdentifier];
     }
     
+    keyBehaviourCell.keyBehaviour = keyBehaviour;
     keyBehaviourCell.descriptionLabel.text = keyBehaviour.keyBehaviourDescription;
     [self.currentKeyBehaviourRatingViews addObject:keyBehaviourCell.keyBehaviourRatingView];
     

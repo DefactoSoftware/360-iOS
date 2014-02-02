@@ -14,5 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet TSFKeyBehaviourRatingView *keyBehaviourRatingView;
+@property (nonatomic, strong) TSFKeyBehaviour *keyBehaviour;
 
 @end

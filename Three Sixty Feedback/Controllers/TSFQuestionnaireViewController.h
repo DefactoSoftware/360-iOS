@@ -17,9 +17,11 @@
 @property (nonatomic, strong) TSFCompetenceService *competenceService;
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (weak, nonatomic) IBOutlet UITableView *keyBehavioursTableView;
+@property (nonatomic, strong) NSMutableArray *currentKeyBehaviourRatingViews;
 
 - (void)loadQuestionnaire;
 - (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)previousCompetenceButtonPressed:(UIBarButtonItem *)sender;
+- (BOOL)validateInput;
 
 @end

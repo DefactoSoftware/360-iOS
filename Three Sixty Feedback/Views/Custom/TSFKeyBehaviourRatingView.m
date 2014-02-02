@@ -58,8 +58,15 @@
 
 	CGRect buttonRect = CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight);
 	UIButton *button = [[UIButton alloc] initWithFrame:buttonRect];
-	[button setTitle:[NSString stringWithFormat:@"%ld", number] forState:UIControlStateNormal];
-	button.backgroundColor = self.defaultColor;
+	[button setTitle:[NSString stringWithFormat:@"%d", number] forState:UIControlStateNormal];
+    
+    if (self.selectedRating == number) {
+        button.backgroundColor = self.selectedColor;
+        self.selectedButton = button;
+    } else {
+        button.backgroundColor = self.defaultColor;
+    }
+
 	button.layer.cornerRadius = buttonWidth / 2;
 
 	button.titleLabel.font = [UIFont fontWithName:@"Diwan Mishafi" size:13.0f];
@@ -85,6 +92,10 @@
         [button setBackgroundColor:self.defaultColor];
     }
     self.selectedRating = 0;
+}
+
+- (void)setRating:(NSNumber *)rating {
+    self.selectedRating = [rating integerValue];
     [self layoutSubviews];
 }
 
