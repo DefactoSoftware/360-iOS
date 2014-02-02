@@ -40,11 +40,20 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 
 - (void)setUpKeyBehavioursTable {
     self.currentCompetenceNumber = 0;
+    [self refreshPreviousButton];
     
     self.keyBehavioursTableView.dataSource = self;
     self.keyBehavioursTableView.delegate = self;
     
     [self.keyBehavioursTableView reloadData];
+}
+
+- (void)refreshPreviousButton {
+    if (self.currentCompetenceNumber) {
+        self.previousButton.enabled = YES;
+    } else {
+        self.previousButton.enabled = NO;
+    }
 }
 
 - (void)loadQuestionnaire {
@@ -56,6 +65,11 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 	} failure: ^(NSError *error) {
 	    NSLog(@"Error loading questionnaires. Userinfo: %@. Error: %@", error.userInfo, error.localizedDescription);
 	}];
+}
+
+- (void)checkPreviousButton {
+    if (self.currentCompetenceNumber) {
+    }
 }
 
 - (void)displayValidationError {
@@ -122,6 +136,8 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
         
         [self reloadCompetenceTable];
     }
+    
+    [self refreshPreviousButton];
 }
 
 - (void)navigateToPreviousCompetence {
@@ -131,6 +147,8 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
         
         [self reloadCompetenceTable];
     }
+    
+    [self refreshPreviousButton];
 }
 
 - (void)reloadCompetenceTable {

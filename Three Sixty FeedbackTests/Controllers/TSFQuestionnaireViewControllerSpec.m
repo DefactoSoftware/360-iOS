@@ -33,6 +33,18 @@ describe(@"TSFQuestionnaireViewController", ^{
         [[_questionnaireViewController should] beKindOfClass:[TSFQuestionnaireViewController class]];
 	});
     
+    it(@"has an outlet for the keyBehaviours tableView", ^{
+        [[_questionnaireViewController.keyBehavioursTableView shouldNot] beNil];
+    });
+    
+    it(@"has an outlet for the previous button", ^{
+        [[_questionnaireViewController.previousButton shouldNot] beNil];
+    });
+
+    it(@"has an outlet for the next button", ^{
+        [[_questionnaireViewController.nextButton shouldNot] beNil];
+    });
+    
     it(@"instantiates a questionnaire service", ^{
         [[_questionnaireViewController.questionnaireService shouldNot] beNil];
         [[_questionnaireViewController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];

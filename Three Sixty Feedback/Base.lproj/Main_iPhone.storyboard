@@ -107,6 +107,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="keyBehavioursTableView" destination="gze-0q-TXe" id="Zj9-UE-bme"/>
+                        <outlet property="nextButton" destination="WLh-7N-ZVO" id="mEB-oL-exB"/>
+                        <outlet property="previousButton" destination="RgW-o7-Atu" id="d1I-DR-f0c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -18,6 +18,8 @@
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (weak, nonatomic) IBOutlet UITableView *keyBehavioursTableView;
 @property (nonatomic, strong) NSMutableArray *currentKeyBehaviourRatingViews;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
 - (void)loadQuestionnaire;
 - (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender;
