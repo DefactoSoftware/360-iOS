@@ -26,7 +26,20 @@
     self.infoLabel.text = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerInfo", @"Druk op 'versturen' als je tevreden bent over de antwoorden die je hebt ingevuld.");
     
     NSString *sendTitle = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerSend", @"Versturen");
+    
     [self.sendButton setTitle:sendTitle forState:UIControlStateNormal];
+    
+    [self addGestureRecognizer];
+}
+
+- (void)addGestureRecognizer {
+    UISwipeGestureRecognizer *previousSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePreviousSwipeFrom:)];
+    [previousSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:previousSwipeRecognizer];
+}
+
+- (void)handlePreviousSwipeFrom:(UIGestureRecognizer *)recognizer {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)completionFailure {
