@@ -10,6 +10,7 @@
 #import "TSFGenerics.h"
 #import "NZAlertView.h"
 #import "TSFQuestionnaireViewController.h"
+#import "UIColor+TSFColor.h"
 
 @implementation TSFFinishQuestionnaireViewController
 
@@ -28,6 +29,7 @@
     NSString *sendTitle = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerSend", @"Versturen");
     
     [self.sendButton setTitle:sendTitle forState:UIControlStateNormal];
+    [self.sendButton setTintColor:[UIColor TSFOrangeColor]];
     
     [self addGestureRecognizer];
 }

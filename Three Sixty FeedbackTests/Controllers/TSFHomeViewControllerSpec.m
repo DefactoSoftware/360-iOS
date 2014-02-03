@@ -14,7 +14,6 @@ SPEC_BEGIN(TSFHomeViewControllerSpec)
 describe(@"TSFHomeViewController", ^{
     __block UIStoryboard *_storyboard;
     __block TSFHomeViewController*_homeViewController;
-    __block id _mockAssessorService;
     
     beforeEach (^{
         _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];

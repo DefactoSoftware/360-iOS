@@ -8,6 +8,7 @@
 
 #import "TSFQuestionnaireIntroViewController.h"
 #import "TSFQuestionnaireViewController.h"
+#import "UIColor+TSFColor.h"
 
 static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue";
 
@@ -39,8 +40,11 @@ static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue
     self.subjectLabel.text = [NSString stringWithFormat:self.subjectLabelFormat, @""];
     self.infoLabel.attributedText = [self createAttributedInfoString];
     [self.startButton setTitle:startButton forState:UIControlStateNormal];
+    [self.startButton setTintColor:[UIColor TSFOrangeColor]];
     
     self.startButton.enabled = NO;
+    
+    self.navigationController.navigationBar.tintColor = [UIColor TSFOrangeColor];
     [self loadQuestionnaire];
 }
 

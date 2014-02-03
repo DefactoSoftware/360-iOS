@@ -60,7 +60,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         buttonWidth = self.frame.size.height;
         buttonHeight = buttonWidth;
-        CGFloat margin = (self.frame.size.width - (_numberOfOptions * (buttonWidth * 2))) / 2;
+        CGFloat margin = (self.frame.size.width - (_numberOfOptions * (buttonWidth * 2))) / 2 + (buttonWidth / 2);
         buttonX = ((number - 1) * (buttonWidth * 2)) + margin;
         buttonY = 0;
     } else {

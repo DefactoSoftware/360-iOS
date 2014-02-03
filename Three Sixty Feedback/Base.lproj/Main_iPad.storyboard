@@ -179,10 +179,13 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLN-Li-kOe" customClass="TSFKeyBehaviourRatingView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLN-Li-kOe" customClass="TSFKeyBehaviourRatingView">
                                                     <rect key="frame" x="20" y="58" width="728" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="kCn-5y-c5j"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -239,7 +242,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWW-1q-c31">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWW-1q-c31">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -268,24 +271,25 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="leading" secondItem="BWW-1q-c31" secondAttribute="leading" constant="20" symbolic="YES" id="66M-t3-HrB"/>
-                                    <constraint firstItem="UoN-fi-1RW" firstAttribute="centerX" secondItem="ifq-hF-I6W" secondAttribute="centerX" id="89b-Gu-SC3"/>
-                                    <constraint firstAttribute="trailing" secondItem="zzD-wX-O1R" secondAttribute="trailing" constant="20" symbolic="YES" id="FdO-LX-ngf"/>
-                                    <constraint firstItem="UoN-fi-1RW" firstAttribute="top" secondItem="zzD-wX-O1R" secondAttribute="bottom" constant="8" symbolic="YES" id="M3s-YU-Rzf"/>
-                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="leading" secondItem="UoN-fi-1RW" secondAttribute="leading" id="X44-ag-tSM"/>
-                                    <constraint firstItem="ifq-hF-I6W" firstAttribute="top" secondItem="UoN-fi-1RW" secondAttribute="bottom" constant="130" id="d11-6g-CrX"/>
-                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="centerX" secondItem="BWW-1q-c31" secondAttribute="centerX" id="fAX-wn-Vh2"/>
-                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="top" secondItem="BWW-1q-c31" secondAttribute="top" constant="20" symbolic="YES" id="hSV-cq-dov"/>
-                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="trailing" secondItem="UoN-fi-1RW" secondAttribute="trailing" id="ssN-oi-Hme"/>
+                                    <constraint firstAttribute="bottom" secondItem="ifq-hF-I6W" secondAttribute="bottom" constant="794" id="09L-T9-RSK"/>
+                                    <constraint firstAttribute="trailing" secondItem="zzD-wX-O1R" secondAttribute="trailing" constant="20" symbolic="YES" id="18I-DI-haU"/>
+                                    <constraint firstItem="UoN-fi-1RW" firstAttribute="top" secondItem="zzD-wX-O1R" secondAttribute="bottom" constant="8" symbolic="YES" id="4gB-gS-Ukr"/>
+                                    <constraint firstItem="ifq-hF-I6W" firstAttribute="top" secondItem="BWW-1q-c31" secondAttribute="top" constant="200" id="8Zk-68-hOC"/>
+                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="top" secondItem="BWW-1q-c31" secondAttribute="top" constant="20" symbolic="YES" id="Exs-cg-j1h"/>
+                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="leading" secondItem="UoN-fi-1RW" secondAttribute="leading" id="OHQ-Rb-HlP"/>
+                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="centerX" secondItem="BWW-1q-c31" secondAttribute="centerX" id="WdY-sc-fKi"/>
+                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="leading" secondItem="BWW-1q-c31" secondAttribute="leading" constant="20" symbolic="YES" id="qyn-1I-Rxb"/>
+                                    <constraint firstItem="UoN-fi-1RW" firstAttribute="centerX" secondItem="ifq-hF-I6W" secondAttribute="centerX" id="w4u-ot-c6U"/>
+                                    <constraint firstItem="zzD-wX-O1R" firstAttribute="trailing" secondItem="UoN-fi-1RW" secondAttribute="trailing" id="ym0-0z-hPs"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BWW-1q-c31" firstAttribute="leading" secondItem="pBF-m8-YDf" secondAttribute="leading" id="FOO-ry-PvH"/>
-                            <constraint firstAttribute="bottom" secondItem="BWW-1q-c31" secondAttribute="bottom" id="IQS-xt-3Te"/>
-                            <constraint firstItem="BWW-1q-c31" firstAttribute="top" secondItem="pBF-m8-YDf" secondAttribute="top" id="RXU-eh-gDu"/>
-                            <constraint firstAttribute="trailing" secondItem="BWW-1q-c31" secondAttribute="trailing" id="uon-J4-j2R"/>
+                            <constraint firstItem="BWW-1q-c31" firstAttribute="leading" secondItem="pBF-m8-YDf" secondAttribute="leading" id="9ue-Ea-go4"/>
+                            <constraint firstItem="BWW-1q-c31" firstAttribute="top" secondItem="pBF-m8-YDf" secondAttribute="top" id="KYz-Ek-XHU"/>
+                            <constraint firstAttribute="trailing" secondItem="BWW-1q-c31" secondAttribute="trailing" id="ShX-nR-cBx"/>
+                            <constraint firstAttribute="bottom" secondItem="BWW-1q-c31" secondAttribute="bottom" id="xCs-ia-fD0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dGL-Qb-Lr9">

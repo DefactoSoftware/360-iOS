@@ -60,6 +60,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
                                          self.progressView.frame.size.height);
     
     self.progressView.progress = 0;
+    self.progressView.progressTintColor = [UIColor TSFOrangeColor];
     [self.view addSubview:self.progressView];
     
     [self.navigationController.navigationBar addSubview:self.progressView];
