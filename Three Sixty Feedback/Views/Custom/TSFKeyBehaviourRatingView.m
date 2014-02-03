@@ -52,14 +52,27 @@
 }
 
 - (UIButton *)ratingButtonWithNumber:(NSInteger)number {
-	CGFloat buttonWidth = self.frame.size.width / (_numberOfOptions * 2);
-	CGFloat buttonHeight = buttonWidth;
-	CGFloat buttonX = ((number * 2) - 2) * buttonWidth + (buttonWidth / 2);
-	CGFloat buttonY = 0;
-
+    CGFloat buttonWidth = 0;
+    CGFloat buttonHeight = 0;
+    CGFloat buttonX = 0;
+    CGFloat buttonY = 0;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        buttonWidth = self.frame.size.height;
+        buttonHeight = buttonWidth;
+        CGFloat margin = (self.frame.size.width - (_numberOfOptions * (buttonWidth * 2))) / 2;
+        buttonX = ((number - 1) * (buttonWidth * 2)) + margin;
+        buttonY = 0;
+    } else {
+        buttonWidth = self.frame.size.width / (_numberOfOptions * 2);
+        buttonHeight = buttonWidth;
+        buttonX = ((number * 2) - 2) * buttonWidth + (buttonWidth / 2);
+        buttonY = 0;
+    }
+    
 	CGRect buttonRect = CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight);
 	UIButton *button = [[UIButton alloc] initWithFrame:buttonRect];
-	[button setTitle:[NSString stringWithFormat:@"%d", number] forState:UIControlStateNormal];
+	[button setTitle:[NSString stringWithFormat:@"%ld", (long)number] forState:UIControlStateNormal];
     
     if (self.selectedRating == number) {
         button.backgroundColor = self.selectedColor;

@@ -23,26 +23,60 @@ describe(@"TSFQuestionnaireViewController", ^{
         [[view shouldNot] beNil];
 	});
     
-    it(@"instantiates correctly from the storyboard", ^{
-        [[_questionnaireViewController shouldNot] beNil];
-        [[_questionnaireViewController should] beKindOfClass:[TSFQuestionnaireViewController class]];
-	});
-    
-    it(@"has an outlet for the keyBehaviours tableView", ^{
-        [[_questionnaireViewController.keyBehavioursTableView shouldNot] beNil];
+    context(@"iPhone", ^{
+        it(@"instantiates correctly from the storyboard", ^{
+            [[_questionnaireViewController shouldNot] beNil];
+            [[_questionnaireViewController should] beKindOfClass:[TSFQuestionnaireViewController class]];
+        });
+        
+        it(@"has an outlet for the keyBehaviours tableView", ^{
+            [[_questionnaireViewController.keyBehavioursTableView shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the previous button", ^{
+            [[_questionnaireViewController.previousButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the next button", ^{
+            [[_questionnaireViewController.nextButton shouldNot] beNil];
+        });
+        
+        it(@"instantiates a competence service", ^{
+            [[_questionnaireViewController.competenceService shouldNot] beNil];
+            [[_questionnaireViewController.competenceService should] beKindOfClass:[TSFCompetenceService class]];
+        });
     });
     
-    it(@"has an outlet for the previous button", ^{
-        [[_questionnaireViewController.previousButton shouldNot] beNil];
-    });
-
-    it(@"has an outlet for the next button", ^{
-        [[_questionnaireViewController.nextButton shouldNot] beNil];
-    });
-    
-    it(@"instantiates a competence service", ^{
-        [[_questionnaireViewController.competenceService shouldNot] beNil];
-        [[_questionnaireViewController.competenceService should] beKindOfClass:[TSFCompetenceService class]];
+    context(@"iPad", ^{
+        beforeEach(^{
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
+            _questionnaireViewController = [storyboard instantiateViewControllerWithIdentifier:@"TSFQuestionnaireViewController"];
+            
+            UIView *view = _questionnaireViewController.view;
+            [[view shouldNot] beNil];
+        });
+        
+        it(@"instantiates correctly from the storyboard", ^{
+            [[_questionnaireViewController shouldNot] beNil];
+            [[_questionnaireViewController should] beKindOfClass:[TSFQuestionnaireViewController class]];
+        });
+        
+        it(@"has an outlet for the keyBehaviours tableView", ^{
+            [[_questionnaireViewController.keyBehavioursTableView shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the previous button", ^{
+            [[_questionnaireViewController.previousButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the next button", ^{
+            [[_questionnaireViewController.nextButton shouldNot] beNil];
+        });
+        
+        it(@"instantiates a competence service", ^{
+            [[_questionnaireViewController.competenceService shouldNot] beNil];
+            [[_questionnaireViewController.competenceService should] beKindOfClass:[TSFCompetenceService class]];
+        });
     });
     
     it(@"calls the competence service to update the competence when navigating to the next competence", ^{
@@ -86,7 +120,7 @@ describe(@"TSFQuestionnaireViewController", ^{
         });
         
         it(@"is not valid without key behaviour rating views", ^{
-            [[theValue([_questionnaireViewController validateInput]) should] beFalse];
+            [[theValue([_questionnaireViewController validateInput]) should] equal:theValue(NO)];
         });
         
         it(@"is not valid when not every key behaviour rating view is loaded", ^{
@@ -94,7 +128,7 @@ describe(@"TSFQuestionnaireViewController", ^{
             keyBehaviourRatingViewOne.selectedRating = 5;
             [_questionnaireViewController.currentKeyBehaviourRatingViews addObject:keyBehaviourRatingViewOne];
             
-            [[theValue([_questionnaireViewController validateInput]) should] beFalse];
+            [[theValue([_questionnaireViewController validateInput]) should] equal:theValue(NO)];
         });
         
         it(@"is not valid when not every key behaviour is rated", ^{
@@ -104,7 +138,7 @@ describe(@"TSFQuestionnaireViewController", ^{
             
             [_questionnaireViewController.currentKeyBehaviourRatingViews addObjectsFromArray:@[keyBehaviourRatingViewOne, keyBehaviourRatingViewTwo]];
             
-            [[theValue([_questionnaireViewController validateInput]) should] beFalse];
+            [[theValue([_questionnaireViewController validateInput]) should] equal:theValue(NO)];
         });
         
         it(@"is valid when every key behaviour rating view is loaded and rated", ^{
@@ -115,7 +149,7 @@ describe(@"TSFQuestionnaireViewController", ^{
             
             [_questionnaireViewController.currentKeyBehaviourRatingViews addObjectsFromArray:@[keyBehaviourRatingViewOne, keyBehaviourRatingViewTwo]];
             
-            [[theValue([_questionnaireViewController validateInput]) should] beTrue];
+            [[theValue([_questionnaireViewController validateInput]) should] equal:theValue(YES)];
         });
     });
 });

@@ -281,8 +281,18 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     } else {
         TSFCompetence *currentCompetence = self.questionnaire.competences[self.currentCompetenceNumber];
         TSFKeyBehaviour *currentKeyBehaviour = currentCompetence.keyBehaviours[indexPath.row - 1];
-        CGFloat textFontSize = 13.0f;
-        CGFloat textWidth = 280.0f;
+
+        CGFloat textFontSize;
+        CGFloat textWidth;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            textWidth = 728.0f;
+            textFontSize  = 17.0f;
+        } else {
+            textWidth = 280.0f;
+            textFontSize = 13.0f;
+        }
+        
+        CGFloat margin = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 110.0f : 95.0f;
         
         CGSize constraint = CGSizeMake(textWidth, 20000.0f);
         CGSize titleSize = [currentKeyBehaviour.keyBehaviourDescription boundingRectWithSize:constraint
@@ -290,7 +300,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
                                                           attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:textFontSize]}
                                                              context:nil].size;
         
-        return titleSize.height + 95.0f;
+        return titleSize.height + margin;
     }
 }
 
