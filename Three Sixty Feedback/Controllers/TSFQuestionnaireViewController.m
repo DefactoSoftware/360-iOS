@@ -19,6 +19,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 
 @interface TSFQuestionnaireViewController ()
 @property (nonatomic, assign) NSInteger currentCompetenceNumber;
+@property (nonatomic, strong) UIProgressView *progressView;
 @end
 
 @implementation TSFQuestionnaireViewController
@@ -33,13 +34,37 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 	return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self refreshProgressView];
+}
+
 - (void)viewDidLoad {
     self.title = TSFLocalizedString(@"TSFQuestionnaireViewControllerTitle", @"Feedback round");
+    [self addProgressView];
     [self loadQuestionnaire];
     
     [self setUpKeyBehavioursTable];
     [self addGestureRecognizers];
 }
+
+- (void)refreshProgressView {
+    self.progressView.progress = (float) self.currentCompetenceNumber / [self.questionnaire.competences count];
+}
+
+- (void)addProgressView {
+    self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+
+    self.progressView.frame = CGRectMake(0,
+                                         self.navigationController.navigationBar.frame.size.height - self.progressView.frame.size.height,
+                                         self.view.frame.size.width,
+                                         self.progressView.frame.size.height);
+    
+    self.progressView.progress = 0;
+    [self.view addSubview:self.progressView];
+    
+    [self.navigationController.navigationBar addSubview:self.progressView];
+}
+
 
 - (void)addGestureRecognizers {
     UISwipeGestureRecognizer *nextSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleNextSwipeFrom:)];
@@ -156,6 +181,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
         self.currentCompetenceNumber = newCompetenceNumber;
         
         [self reloadCompetenceTableToNext:YES];
+        [self refreshProgressView];
     }
     
     [self refreshPreviousButton];
@@ -167,6 +193,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
         self.currentCompetenceNumber = newCompetenceNumber;
         
         [self reloadCompetenceTableToNext:NO];
+        [self refreshProgressView];
     }
     
     [self refreshPreviousButton];
@@ -181,6 +208,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 
 - (void)updateCompetenceOrSendQuestionnaire {
     if (self.currentCompetenceNumber + 1 == [self.questionnaire.competences count]) {
+        self.progressView.progress = 1;
         [self performSegueWithIdentifier:TSFFinishQuestionnaireSegue sender:self];
     } else {
         [self updateCompetence];
