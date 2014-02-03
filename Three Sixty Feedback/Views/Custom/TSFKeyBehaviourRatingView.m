@@ -7,6 +7,7 @@
 //
 
 #import "TSFKeyBehaviourRatingView.h"
+#import "UIColor+TSFColor.h"
 
 @interface TSFKeyBehaviourRatingView ()
 @property (nonatomic, strong) UIButton *selectedButton;
@@ -40,7 +41,7 @@
 
 - (void)layoutSubviews {
 	self.defaultColor = [UIColor blackColor];
-	self.selectedColor = [UIColor redColor];
+	self.selectedColor = [UIColor TSFOrangeColor];
 
 	for (NSInteger i = 1; i <= _numberOfOptions; i++) {
 		UIButton *ratingButton = [self ratingButtonWithNumber:i];

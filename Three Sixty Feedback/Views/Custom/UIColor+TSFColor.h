@@ -10,5 +10,6 @@
 
 @interface UIColor (TSFColor)
 
++ (UIColor *)TSFOrangeColor;
 
 @end

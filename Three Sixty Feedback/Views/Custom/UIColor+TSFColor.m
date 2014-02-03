@@ -10,6 +10,8 @@
 
 @implementation UIColor (TSFColor)
 
-
++ (UIColor *)TSFOrangeColor {
+    return [UIColor colorWithRed:234.0f/255 green:190.0f/255 blue:47.0f/255 alpha:1];
+}
 
 @end
