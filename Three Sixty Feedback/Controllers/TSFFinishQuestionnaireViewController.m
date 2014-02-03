@@ -45,7 +45,9 @@
 
 - (void)completionSuccess {
     self.sendButton.hidden = YES;
+    self.previousButton.enabled = NO;
     self.infoLabel.text = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerCompletionSuccess", @"De vragenlijst is succesvol verzonden.");
+    [self.view layoutSubviews];
 }
 
 - (void)sendCompletion {

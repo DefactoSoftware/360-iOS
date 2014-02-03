@@ -219,6 +219,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="infoLabel" destination="RX1-mB-4Mq" id="o1C-US-9vo"/>
+                        <outlet property="previousButton" destination="gak-8L-Tx0" id="WdR-E4-rSJ"/>
                         <outlet property="sendButton" destination="HOJ-Yt-kej" id="OTu-fn-QJP"/>
                         <outlet property="thankLabel" destination="A5Y-xi-Zh6" id="ve1-wc-vF9"/>
                     </connections>
