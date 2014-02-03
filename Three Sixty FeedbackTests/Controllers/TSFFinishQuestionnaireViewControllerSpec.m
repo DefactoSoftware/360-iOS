@@ -52,6 +52,42 @@ describe(@"TSFFinishQuestionnaireViewController", ^{
         [[_finishQuestionnaireViewController.previousButton shouldNot] beNil];
     });
     
+    context(@"iPad", ^{
+        beforeEach(^{
+            _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
+            _finishQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFFinishQuestionnaireViewController"];
+            
+            UIView *view = _finishQuestionnaireViewController.view;
+            [[view shouldNot] beNil];
+        });
+        
+        it(@"instantiates correctly from the storyboard", ^{
+            [[_finishQuestionnaireViewController shouldNot] beNil];
+            [[_finishQuestionnaireViewController should] beKindOfClass:[TSFFinishQuestionnaireViewController class]];
+        });
+        
+        it(@"instantiates a reference to the assessor service", ^{
+            [[_finishQuestionnaireViewController.assessorService shouldNot] beNil];
+            [[_finishQuestionnaireViewController.assessorService should] beKindOfClass:[TSFAssessorService class]];
+        });
+        
+        it(@"has an outlet for the thank label", ^{
+            [[_finishQuestionnaireViewController.thankLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the info label", ^{
+            [[_finishQuestionnaireViewController.infoLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the send button", ^{
+            [[_finishQuestionnaireViewController.sendButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the previous button", ^{
+            [[_finishQuestionnaireViewController.previousButton shouldNot] beNil];
+        });
+    });
+    
     it(@"calls the assessor service to complete the questionnaire", ^{
         _finishQuestionnaireViewController.assessorService = _mockAssessorService;
         [[_mockAssessorService should] receive:@selector(completeCurrentAssessmentWithSuccess:failure:)];
