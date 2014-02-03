@@ -40,7 +40,7 @@
 }
 
 - (void)layoutSubviews {
-	self.defaultColor = [UIColor blackColor];
+	self.defaultColor = [UIColor TSFLightGreyColor];
 	self.selectedColor = [UIColor TSFOrangeColor];
 
 	for (NSInteger i = 1; i <= _numberOfOptions; i++) {
