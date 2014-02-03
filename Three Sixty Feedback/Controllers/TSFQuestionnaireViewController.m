@@ -38,6 +38,24 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     [self loadQuestionnaire];
     
     [self setUpKeyBehavioursTable];
+    [self addGestureRecognizers];
+}
+
+- (void)addGestureRecognizers {
+    UISwipeGestureRecognizer *nextSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleNextSwipeFrom:)];
+    UISwipeGestureRecognizer *previousSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePreviousSwipeFrom:)];
+    [nextSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [previousSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:nextSwipeRecognizer];
+    [self.view addGestureRecognizer:previousSwipeRecognizer];
+}
+
+- (void)handleNextSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+    [self updateCompetenceOrSendQuestionnaire];
+}
+
+- (void)handlePreviousSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+    [self navigateToPreviousCompetence];
 }
 
 - (void)loadQuestionnaire {
@@ -161,14 +179,18 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     [self.keyBehavioursTableView setContentOffset:CGPointMake(0.0f, -self.keyBehavioursTableView.contentInset.top) animated:YES];
 }
 
-#pragma mark - Navigate through competences
-
-- (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender {
+- (void)updateCompetenceOrSendQuestionnaire {
     if (self.currentCompetenceNumber + 1 == [self.questionnaire.competences count]) {
         [self performSegueWithIdentifier:TSFFinishQuestionnaireSegue sender:self];
     } else {
         [self updateCompetence];
     }
+}
+
+#pragma mark - Navigate through competences
+
+- (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender {
+    [self updateCompetenceOrSendQuestionnaire];
 }
 
 - (IBAction)previousCompetenceButtonPressed:(UIBarButtonItem *)sender {
