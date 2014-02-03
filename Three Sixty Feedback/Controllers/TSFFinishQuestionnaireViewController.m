@@ -11,8 +11,6 @@
 #import "NZAlertView.h"
 #import "TSFQuestionnaireViewController.h"
 
-static NSString *const TSFCancelFinishQuestionnaireSegue = @"TSFCancelFinishQuestionnaireSegue";
-
 @implementation TSFFinishQuestionnaireViewController
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -64,12 +62,12 @@ static NSString *const TSFCancelFinishQuestionnaireSegue = @"TSFCancelFinishQues
 }
 
 - (IBAction)previousButtonPressed:(id)sender {
-    [self performSegueWithIdentifier:TSFCancelFinishQuestionnaireSegue sender:self];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     TSFQuestionnaireViewController *destinationViewController = (TSFQuestionnaireViewController *)segue.destinationViewController;
-    
+
     [destinationViewController displayLastCompetence];
 }
 

@@ -137,7 +137,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     if ([self.questionnaire.competences count] > newCompetenceNumber) {
         self.currentCompetenceNumber = newCompetenceNumber;
         
-        [self reloadCompetenceTable];
+        [self reloadCompetenceTableToNext:YES];
     }
     
     [self refreshPreviousButton];
@@ -148,15 +148,16 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     if (newCompetenceNumber > -1) {
         self.currentCompetenceNumber = newCompetenceNumber;
         
-        [self reloadCompetenceTable];
+        [self reloadCompetenceTableToNext:NO];
     }
     
     [self refreshPreviousButton];
 }
 
-- (void)reloadCompetenceTable {
+- (void)reloadCompetenceTableToNext:(BOOL)next {
     [self.currentKeyBehaviourRatingViews removeAllObjects];
-    [self.keyBehavioursTableView reloadData];
+    NSInteger animation = next ? UITableViewRowAnimationLeft : UITableViewRowAnimationRight;
+    [self.keyBehavioursTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:animation];
     [self.keyBehavioursTableView setContentOffset:CGPointMake(0.0f, -self.keyBehavioursTableView.contentInset.top) animated:YES];
 }
 

@@ -221,7 +221,6 @@
                         <outlet property="infoLabel" destination="RX1-mB-4Mq" id="o1C-US-9vo"/>
                         <outlet property="sendButton" destination="HOJ-Yt-kej" id="OTu-fn-QJP"/>
                         <outlet property="thankLabel" destination="A5Y-xi-Zh6" id="ve1-wc-vF9"/>
-                        <segue destination="vXZ-lx-hvc" kind="push" identifier="TSFCancelFinishQuestionnaireSegue" id="4J9-nZ-r4d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WuZ-bV-9bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -246,7 +245,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFCompetenceTitleCell" rowHeight="95" id="82t-Ss-fEa" customClass="TSFCompetenceTitleCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="95"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="82t-Ss-fEa" id="VKS-hw-WAw">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
@@ -266,7 +265,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFKeyBehaviourCell" rowHeight="104" id="Kec-FM-UdD" customClass="TSFKeyBehaviourCell">
-                                        <rect key="frame" x="0.0" y="117" width="320" height="104"/>
+                                        <rect key="frame" x="0.0" y="181" width="320" height="104"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kec-FM-UdD" id="arC-9k-3MF">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
@@ -331,7 +330,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="4J9-nZ-r4d"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -10,6 +10,7 @@
 		0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */; };
 		10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */; };
 		527FD0B9189DA634003E1E96 /* UIColor+TSFColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 527FD0B8189DA634003E1E96 /* UIColor+TSFColor.m */; };
+		52AC9F03189F919E00C75471 /* TSFPreviousSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AC9F02189F919E00C75471 /* TSFPreviousSegue.m */; };
 		52ACE465189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE464189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m */; };
 		52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */; };
 		52ACE46B189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE46A189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m */; };
@@ -76,6 +77,8 @@
 		30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty FeedbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		527FD0B7189DA634003E1E96 /* UIColor+TSFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+TSFColor.h"; path = "Views/Custom/UIColor+TSFColor.h"; sourceTree = "<group>"; };
 		527FD0B8189DA634003E1E96 /* UIColor+TSFColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+TSFColor.m"; path = "Views/Custom/UIColor+TSFColor.m"; sourceTree = "<group>"; };
+		52AC9F01189F919E00C75471 /* TSFPreviousSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFPreviousSegue.h; path = Controllers/TSFPreviousSegue.h; sourceTree = "<group>"; };
+		52AC9F02189F919E00C75471 /* TSFPreviousSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFPreviousSegue.m; path = Controllers/TSFPreviousSegue.m; sourceTree = "<group>"; };
 		52ACE464189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireIntroViewControllerSpec.m; path = Controllers/TSFQuestionnaireIntroViewControllerSpec.m; sourceTree = "<group>"; };
 		52ACE466189EC07C0095F650 /* TSFQuestionnaireIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnaireIntroViewController.h; path = Controllers/TSFQuestionnaireIntroViewController.h; sourceTree = "<group>"; };
 		52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireIntroViewController.m; path = Controllers/TSFQuestionnaireIntroViewController.m; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */,
 				52ACE46C189EDC040095F650 /* TSFFinishQuestionnaireViewController.h */,
 				52ACE46D189EDC040095F650 /* TSFFinishQuestionnaireViewController.m */,
+				52AC9F01189F919E00C75471 /* TSFPreviousSegue.h */,
+				52AC9F02189F919E00C75471 /* TSFPreviousSegue.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -582,6 +587,7 @@
 				E417281A18994C8000DD77B5 /* TSFQuestionnaireMapper.m in Sources */,
 				52E80F4D189BE313007A8A48 /* TSFKeyBehaviourCell.m in Sources */,
 				52ACE46E189EDC040095F650 /* TSFFinishQuestionnaireViewController.m in Sources */,
+				52AC9F03189F919E00C75471 /* TSFPreviousSegue.m in Sources */,
 				E455FF8B18990E8200F8C04C /* TSFKeyBehaviour.m in Sources */,
 				E4A7D79B18997A2500276FC0 /* TSFAssessorService.m in Sources */,
 				E4405874189A83BC001AEE13 /* TSFQuestionnaireViewController.m in Sources */,
