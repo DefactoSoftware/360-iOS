@@ -107,9 +107,4 @@ static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue
     [self performSegueWithIdentifier:TSFStartQuestionnaireSegue sender:self];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    TSFQuestionnaireViewController *destinationController = (TSFQuestionnaireViewController *)segue.destinationViewController;
-    destinationController.questionnaire = self.questionnaire;
-}
-
 @end

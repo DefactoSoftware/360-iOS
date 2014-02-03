@@ -24,5 +24,6 @@
 - (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)previousCompetenceButtonPressed:(UIBarButtonItem *)sender;
 - (BOOL)validateInput;
+- (void)displayLastCompetence;
 
 @end

@@ -63,6 +63,7 @@ describe(@"TSFQuestionnaireService", ^{
         
         [_questionnaireService questionnairesWithSuccess: ^(NSArray *response) {
             [[response should] equal:_stubMappedResponse];
+            [[_questionnaireService.questionnaires should] equal:_stubMappedResponse];
 		}
          
                                                  failure: ^(NSError *error) {}];

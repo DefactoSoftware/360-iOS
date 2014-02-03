@@ -35,18 +35,31 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 
 - (void)viewDidLoad {
     self.title = TSFLocalizedString(@"TSFQuestionnaireViewControllerTitle", @"Feedback round");
+    [self loadQuestionnaire];
     
     [self setUpKeyBehavioursTable];
 }
 
+- (void)loadQuestionnaire {
+    self.questionnaire = [self.questionnaireService.questionnaires firstObject];
+}
+
 - (void)setUpKeyBehavioursTable {
-    self.currentCompetenceNumber = 0;
+    if (!self.currentCompetenceNumber) {
+        self.currentCompetenceNumber = 0;
+    }
     [self refreshPreviousButton];
     
     self.keyBehavioursTableView.dataSource = self;
     self.keyBehavioursTableView.delegate = self;
     
     [self.keyBehavioursTableView reloadData];
+}
+
+- (void)displayLastCompetence {
+    [self loadQuestionnaire];
+    NSInteger competenceNumber = [self.questionnaire.competences count] - 1;
+    self.currentCompetenceNumber = competenceNumber;
 }
 
 - (void)refreshPreviousButton {

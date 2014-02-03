@@ -9,6 +9,9 @@
 #import "TSFFinishQuestionnaireViewController.h"
 #import "TSFGenerics.h"
 #import "NZAlertView.h"
+#import "TSFQuestionnaireViewController.h"
+
+static NSString *const TSFCancelFinishQuestionnaireSegue = @"TSFCancelFinishQuestionnaireSegue";
 
 @implementation TSFFinishQuestionnaireViewController
 
@@ -61,6 +64,13 @@
 }
 
 - (IBAction)previousButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:TSFCancelFinishQuestionnaireSegue sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    TSFQuestionnaireViewController *destinationViewController = (TSFQuestionnaireViewController *)segue.destinationViewController;
+    
+    [destinationViewController displayLastCompetence];
 }
 
 @end

@@ -29,7 +29,9 @@
 	NSDictionary *parameters = @{ @"token" : self.apiClient.assessorToken };
     
 	[self.apiClient GET:questionnairesURL parameters:parameters success: ^(AFHTTPRequestOperation *operation, id responseObject) {
-	    success([self.questionnaireMapper questionnairesWithDictionaryArray:responseObject]);
+        NSArray *returnedQuestionnaires = [self.questionnaireMapper questionnairesWithDictionaryArray:responseObject];
+        self.questionnaires = returnedQuestionnaires;
+	    success(returnedQuestionnaires);
 	}
      
 	            failure:
