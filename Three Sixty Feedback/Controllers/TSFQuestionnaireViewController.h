@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TSFQuestionnaireService.h"
+#import "TSFCompetenceViewController.h"
 
 @interface TSFQuestionnaireViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
@@ -17,6 +18,8 @@
 @property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (nonatomic, strong) NSMutableArray *competenceViewControllers;
+@property (nonatomic, strong) NSArray *failedCompetenceUpdates;
+@property (nonatomic, strong) TSFCompetenceViewController *currentCompetenceViewController;
 
 - (void)loadCompetenceControllers;
 

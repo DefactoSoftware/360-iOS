@@ -9,7 +9,6 @@
 #import "TSFCompetenceViewController.h"
 #import "TSFCompetenceTitleCell.h"
 #import "TSFKeyBehaviourCell.h"
-#import "NZAlertView.h"
 #import "UIColor+TSFColor.h"
 
 static NSString *const TSFCompetenceTitleCellIdentifier = @"TSFCompetenceTitleCell";
@@ -54,18 +53,6 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     [self.keyBehavioursTableView reloadData];
 }
 
-- (void)displayValidationError {
-    NSString *validationErrorMessage = TSFLocalizedString(@"TSFCompetenceControllerValidationErrorMessage", @"Please fill in every question before moving on.");
-    NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
-                                                                title:nil
-                                                              message:validationErrorMessage
-                                                             delegate:nil];
-    [validationAlert setStatusBarColor:[UIColor redColor]];
-    [validationAlert setTextAlignment:NSTextAlignmentCenter];
-    
-    [validationAlert show];
-}
-
 - (BOOL)validateInput {
     if (![self.currentKeyBehaviourRatingViews count]) {
         return NO;
@@ -87,7 +74,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     __block TSFUpdateCompetenceBlock _completionBlock = completion;
     
     if (![self validateInput]) {
-        [self displayValidationError];
+        completion(NO);
         return;
     }
     
