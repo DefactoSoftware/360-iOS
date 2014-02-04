@@ -9,7 +9,7 @@
 #import "TSFFinishQuestionnaireViewController.h"
 #import "TSFGenerics.h"
 #import "NZAlertView.h"
-#import "TSFQuestionnaireViewController.h"
+#import "TSFCompetenceViewController.h"
 #import "UIColor+TSFColor.h"
 
 @implementation TSFFinishQuestionnaireViewController
@@ -84,10 +84,5 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    TSFQuestionnaireViewController *destinationViewController = (TSFQuestionnaireViewController *)segue.destinationViewController;
-
-    [destinationViewController displayLastCompetence];
-}
 
 @end
