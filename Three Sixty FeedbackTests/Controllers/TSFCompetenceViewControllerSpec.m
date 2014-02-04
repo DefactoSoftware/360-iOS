@@ -116,6 +116,7 @@ describe(@"TSFCompetenceViewController", ^{
             _stubQuestionnaire.competences = @[_stubCompetence];
             
             _competenceViewController.questionnaire = _stubQuestionnaire;
+            _competenceViewController.competence = _stubCompetence;
         });
         
         it(@"is not valid without key behaviour rating views", ^{

@@ -8,6 +8,7 @@
 
 #import "TSFQuestionnaireViewController.h"
 #import "TSFCompetenceViewController.h"
+#import "UIColor+TSFColor.h"
 
 static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewController";
 
@@ -23,29 +24,50 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
 }
 
 - (void)viewDidLoad {
+    self.title = TSFLocalizedString(@"TSFQuestionnaireViewControllerTitle", @"Feedback round");
 
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    self.pageControl.pageIndicatorTintColor = [UIColor TSFLightGreyColor];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor TSFOrangeColor];
     
-    [self loadCompetenceControllers:animated];
+    [self loadCompetenceControllers];
+    [self initializePageController];
 }
 
-- (void)loadCompetenceControllers:(BOOL)animated {
+- (void)initializePageController {
+    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                                                          navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                                        options:nil];
+    self.pageController.dataSource = self;
+    self.pageController.delegate = self;
+    
+    CGRect frame = self.view.bounds;
+    frame.origin.y = self.navigationController.navigationBar.frame.size.height;
+    frame.size.height -= self.pageControl.frame.size.height;
+    self.pageController.view.frame = frame;
+    
+    if ([self.competenceViewControllers count]) {
+        TSFCompetenceViewController *initialViewController = [self competenceViewControllerForCompetenceNumber:0];
+        NSArray *viewControllers = @[initialViewController];
+        [self.pageController setViewControllers:viewControllers
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:NO
+                                     completion:nil];
+    }
+        
+    [self addChildViewController:self.pageController];
+    [self.view addSubview:self.pageController.view];
+    [self.pageController didMoveToParentViewController:self];
+    
+    self.pageControl.numberOfPages = [self.questionnaire.competences count];
+}
+
+- (void)loadCompetenceControllers {
     for (NSInteger i = 0; i < [self.questionnaire.competences count]; i++) {
-        [self loadScrollViewWithPage:i];
+        [self createCompetenceControllerForNumber:i];
     }
     
     self.pageControl.currentPage = 0;
     [self.pageControl setNumberOfPages:[self.questionnaire.competences count]];
-    
-    TSFCompetenceViewController *competenceViewController = [self competenceViewControllerForCompetenceNumber:self.pageControl.currentPage];
-    if (!competenceViewController.view.superview) {
-        [competenceViewController viewWillAppear:animated];
-    }
-    
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * [self.childViewControllers count], self.scrollView.frame.size.height);
 }
 
 - (TSFCompetenceViewController *)currentCompetenceViewController {
@@ -53,13 +75,17 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
 }
 
 - (TSFCompetenceViewController *)competenceViewControllerForCompetenceNumber:(NSInteger)competenceNumber {
+    if ([self.competenceViewControllers count] <= competenceNumber) {
+        return nil;
+    }
+    
     return self.competenceViewControllers[competenceNumber];
 }
 
-- (void)loadScrollViewWithPage:(NSInteger)pageNumber {
-    if (pageNumber < 0) {
+- (void)createCompetenceControllerForNumber:(NSInteger)number {
+    if (number < 0) {
         return;
-    } else if (pageNumber >= [self.questionnaire.competences count]) {
+    } else if (number >= [self.questionnaire.competences count]) {
         return;
     }
 
@@ -69,23 +95,15 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
     
     TSFCompetenceViewController *competenceViewController = [storyboard instantiateViewControllerWithIdentifier:TSFCompetenceViewControllerTag];
     competenceViewController.questionnaire = self.questionnaire;
-    competenceViewController.competence = self.questionnaire.competences[pageNumber];
+    competenceViewController.competence = self.questionnaire.competences[number];
+    competenceViewController.index = number;
     
     if (!competenceViewController) {
         return;
     }
-    
-    if (!competenceViewController.view.superview) {
-        CGRect frame = self.scrollView.frame;
-        frame.origin.x = frame.size.width * pageNumber;
-        frame.origin.y = 0;
-        competenceViewController.view.frame = frame;
-        [self.scrollView addSubview:competenceViewController.view];
-    }
-    
+
     [self.competenceViewControllers addObject:competenceViewController];
 }
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     TSFCompetenceViewController *competenceViewController = [self currentCompetenceViewController];
@@ -110,9 +128,41 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
     [super viewDidDisappear:animated];
 }
 
-#pragma mark - PageControl changePage action
-- (IBAction)changePage:(id)sender {
+#pragma mark - PageViewController
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    TSFCompetenceViewController *competenceViewController = (TSFCompetenceViewController *)viewController;
+    NSInteger index = competenceViewController.index - 1;
     
+    if (index < 0) {
+        return nil;
+    }
+    
+    return [self competenceViewControllerForCompetenceNumber:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    TSFCompetenceViewController *competenceViewController = (TSFCompetenceViewController *)viewController;
+    NSInteger index = competenceViewController.index + 1;
+    
+    if (index >= self.competenceViewControllers.count) {
+        return nil;
+    }
+    
+    return [self competenceViewControllerForCompetenceNumber:index];
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+    return [self.competenceViewControllers count];
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+    return 0;
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
+    TSFCompetenceViewController *newCompetenceViewController = (TSFCompetenceViewController *)pendingViewControllers[0];
+    self.pageControl.currentPage = newCompetenceViewController.index;
 }
 
 @end
