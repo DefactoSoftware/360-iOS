@@ -104,6 +104,48 @@ describe(@"TSFQuestionnaireViewController", ^{
             [[theValue(firstCompetenceViewController.index) should] equal:theValue(0)];
             [[theValue(secondCompetenceViewController.index) should] equal:theValue(1)];
         });
+        
+        it(@"sets the first competence view controller as the current", ^{
+            [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[0]];
+        });
+        
+        context(@"navigating to next competence", ^{
+            __block id _mockCompetenceViewController;
+            
+            beforeEach(^{
+                _mockCompetenceViewController = [KWMock mockForClass:[TSFCompetenceViewController class]];
+                _questionnaireViewController.currentCompetenceViewController = _mockCompetenceViewController;
+                _questionnaireViewController.competenceViewControllers[0] = _mockCompetenceViewController;
+            });
+            
+            it(@"updates the current competence view controller", ^{
+                [[_mockCompetenceViewController should] receive:@selector(index) andReturn:0 withCount:2];
+                
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                              didFinishAnimating:YES
+                                         previousViewControllers:@[_questionnaireViewController.competenceViewControllers[0]]
+                                             transitionCompleted:YES];
+                [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[1]];
+            });
+            
+            it(@"calls the validation method on the competence view controller", ^{
+                [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:NO];
+                
+                TSFCompetenceViewController *newViewController = [[TSFCompetenceViewController alloc] init];
+                newViewController.index = 1;
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController willTransitionToViewControllers:@[newViewController]];
+            });
+            
+            it(@"calls the update method on the competence view controller when the validation succeeds", ^{
+                [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(YES)];
+                [[_mockCompetenceViewController should] receive:@selector(updateCompetenceWithCompletion:)];
+                
+                TSFCompetenceViewController *newViewController = [[TSFCompetenceViewController alloc] init];
+                newViewController.index = 1;
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController willTransitionToViewControllers:@[newViewController]];
+            });
+            
+        });
     });
 });
 

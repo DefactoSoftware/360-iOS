@@ -9,6 +9,7 @@
 #import "TSFQuestionnaireViewController.h"
 #import "TSFCompetenceViewController.h"
 #import "UIColor+TSFColor.h"
+#import "NZAlertView.h"
 
 static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewController";
 
@@ -68,10 +69,9 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
     
     self.pageControl.currentPage = 0;
     [self.pageControl setNumberOfPages:[self.questionnaire.competences count]];
-}
-
-- (TSFCompetenceViewController *)currentCompetenceViewController {
-    return [self competenceViewControllerForCompetenceNumber:self.pageControl.currentPage];
+    if ([self.competenceViewControllers count]) {
+        self.currentCompetenceViewController = self.competenceViewControllers[0];
+    }
 }
 
 - (TSFCompetenceViewController *)competenceViewControllerForCompetenceNumber:(NSInteger)competenceNumber {
@@ -104,28 +104,17 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
 
     [self.competenceViewControllers addObject:competenceViewController];
 }
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    TSFCompetenceViewController *competenceViewController = [self currentCompetenceViewController];
-    if (competenceViewController.view.superview) {
-        [competenceViewController viewDidAppear:animated];
-    }
-}
 
-- (void)viewWillDisappear:(BOOL)animated {
-    TSFCompetenceViewController *competenceViewController = [self currentCompetenceViewController];
-    if (competenceViewController.view.superview) {
-        [competenceViewController viewWillDisappear:animated];
-    }
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    TSFCompetenceViewController *competenceViewController = [self currentCompetenceViewController];
-    if (competenceViewController.view.superview) {
-        [competenceViewController viewDidDisappear:animated];
-    }
-    [super viewDidDisappear:animated];
+- (void)displayValidationError {
+    NSString *validationErrorMessage = TSFLocalizedString(@"TSFCompetenceControllerValidationErrorMessage", @"Please fill in every question before moving on.");
+    NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
+                                                                title:nil
+                                                              message:validationErrorMessage
+                                                             delegate:nil];
+    [validationAlert setStatusBarColor:[UIColor redColor]];
+    [validationAlert setTextAlignment:NSTextAlignmentCenter];
+    
+    [validationAlert show];
 }
 
 #pragma mark - PageViewController
@@ -141,7 +130,8 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
     return [self competenceViewControllerForCompetenceNumber:index];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController {
     TSFCompetenceViewController *competenceViewController = (TSFCompetenceViewController *)viewController;
     NSInteger index = competenceViewController.index + 1;
     
@@ -160,7 +150,28 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
     return 0;
 }
 
+- (void)pageViewController:(UIPageViewController *)pageViewController
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray *)previousViewControllers
+       transitionCompleted:(BOOL)completed {
+    if (completed) {
+        TSFCompetenceViewController *previousViewController = previousViewControllers[0];
+        if (previousViewController.index < [self.competenceViewControllers count]) {
+            self.currentCompetenceViewController = self.competenceViewControllers[previousViewController.index + 1];
+        }
+    }
+}
+
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
+    __weak typeof (self) _self = self;
+    if ([self.currentCompetenceViewController validateInput]) {
+        [self.currentCompetenceViewController updateCompetenceWithCompletion:^(BOOL success) {
+            if (!success) {
+                [_self displayValidationError];
+            }
+        }];
+    }
+    
     TSFCompetenceViewController *newCompetenceViewController = (TSFCompetenceViewController *)pendingViewControllers[0];
     self.pageControl.currentPage = newCompetenceViewController.index;
 }
