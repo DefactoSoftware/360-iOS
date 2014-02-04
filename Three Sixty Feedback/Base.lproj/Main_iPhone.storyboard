@@ -189,12 +189,12 @@
                         <outlet property="subjectLabel" destination="pJ4-zG-ABY" id="ROz-Ks-fKx"/>
                         <outlet property="timeLabel" destination="gMG-gq-1qA" id="ugQ-rT-LWb"/>
                         <outlet property="titleLabel" destination="n8A-Vq-opH" id="cvc-0k-llh"/>
-                        <segue destination="vXZ-lx-hvc" kind="push" identifier="TSFStartQuestionnaireSegue" id="dSV-1S-ifR"/>
+                        <segue destination="iq2-1O-ouh" kind="push" identifier="TSFStartQuestionnaireSegue" id="yfP-d5-pWA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuy-PD-R66" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="42"/>
+            <point key="canvasLocation" x="479" y="42"/>
         </scene>
         <!--Finish Questionnaire View Controller-->
         <scene sceneID="1BR-jC-qm5">
@@ -280,17 +280,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WuZ-bV-9bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="42"/>
+            <point key="canvasLocation" x="1747" y="42"/>
         </scene>
         <!--Questionnaire View Controller-->
+        <scene sceneID="lwO-kT-Ek7">
+            <objects>
+                <viewController storyboardIdentifier="TSFQuestionnaireViewController" id="iq2-1O-ouh" customClass="TSFQuestionnaireViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YZI-Gs-VIo"/>
+                        <viewControllerLayoutGuide type="bottom" id="wCy-BA-bmL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dBe-Xv-l7H">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqS-At-79F">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="g3m-7v-C1J">
+                                <rect key="frame" x="140" y="266" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changePage:" destination="iq2-1O-ouh" eventType="valueChanged" id="W7U-QD-8qO"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jIV-D8-2AC"/>
+                    <connections>
+                        <outlet property="pageControl" destination="g3m-7v-C1J" id="dsw-b6-Pas"/>
+                        <outlet property="scrollView" destination="nqS-At-79F" id="nG7-V2-hqd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xd8-Ka-322" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897" y="42"/>
+        </scene>
+        <!--Competence View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="TSFQuestionnaireViewController" id="vXZ-lx-hvc" customClass="TSFQuestionnaireViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TSFCompetenceViewController" id="vXZ-lx-hvc" customClass="TSFCompetenceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LWT-Wc-44P"/>
                         <viewControllerLayoutGuide type="bottom" id="PO5-19-jzP"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS" customClass="TSFQuetsionnaireView">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -300,7 +336,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFCompetenceTitleCell" rowHeight="95" id="82t-Ss-fEa" customClass="TSFCompetenceTitleCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="95"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="82t-Ss-fEa" id="VKS-hw-WAw">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
@@ -320,7 +356,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFKeyBehaviourCell" rowHeight="104" id="Kec-FM-UdD" customClass="TSFKeyBehaviourCell">
-                                        <rect key="frame" x="0.0" y="181" width="320" height="104"/>
+                                        <rect key="frame" x="0.0" y="117" width="320" height="104"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kec-FM-UdD" id="arC-9k-3MF">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
@@ -389,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912" y="42"/>
+            <point key="canvasLocation" x="1365" y="42"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yqF-2C-cbz">

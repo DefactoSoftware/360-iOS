@@ -118,7 +118,6 @@
                         <outlet property="subjectLabel" destination="fgA-6d-bh7" id="qx1-og-CUH"/>
                         <outlet property="timeLabel" destination="ZDK-Dc-pOG" id="z5c-1n-y2a"/>
                         <outlet property="titleLabel" destination="gIX-r6-E7T" id="Rix-fL-Bb0"/>
-                        <segue destination="lct-4F-n7C" kind="push" identifier="TSFStartQuestionnaireSegue" id="xrV-nF-SdI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9F-ww-lxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -126,9 +125,36 @@
             <point key="canvasLocation" x="1100" y="-138"/>
         </scene>
         <!--Questionnaire View Controller-->
+        <scene sceneID="3xQ-KX-XdI">
+            <objects>
+                <viewController storyboardIdentifier="TSFQuestionnaireViewController" id="oV1-Nx-ZRL" customClass="TSFQuestionnaireViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FMy-ft-NJB"/>
+                        <viewControllerLayoutGuide type="bottom" id="9sF-sh-AIb"/>
+                    </layoutGuides>
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" id="5q3-Ng-EUO">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7Dp-fH-Bfu">
+                                <rect key="frame" x="365" y="967" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
+                        </subviews>
+                    </scrollView>
+                    <connections>
+                        <outlet property="pageControl" destination="7Dp-fH-Bfu" id="5iZ-T9-Tt3"/>
+                        <outlet property="scrollView" destination="5q3-Ng-EUO" id="mNy-Iy-ijO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mLt-M5-gCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2242" y="-718"/>
+        </scene>
+        <!--Competence View Controller-->
         <scene sceneID="lfc-4Z-saM">
             <objects>
-                <viewController storyboardIdentifier="TSFQuestionnaireViewController" id="lct-4F-n7C" customClass="TSFQuestionnaireViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TSFCompetenceViewController" id="lct-4F-n7C" customClass="TSFCompetenceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0tT-a5-5ba"/>
                         <viewControllerLayoutGuide type="bottom" id="WfT-pI-oe9"/>
@@ -143,7 +169,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFCompetenceTitleCell" rowHeight="95" id="lgb-Mo-G2r" customClass="TSFCompetenceTitleCell">
-                                        <rect key="frame" x="0.0" y="86" width="768" height="95"/>
+                                        <rect key="frame" x="0.0" y="22" width="768" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lgb-Mo-G2r" id="32u-jn-IPD">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="94"/>
@@ -163,7 +189,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFKeyBehaviourCell" rowHeight="114" id="Ra9-Gv-Pis" customClass="TSFKeyBehaviourCell">
-                                        <rect key="frame" x="0.0" y="181" width="768" height="114"/>
+                                        <rect key="frame" x="0.0" y="117" width="768" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ra9-Gv-Pis" id="m4q-xd-amx">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="113"/>
@@ -232,7 +258,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Js-NE-mrj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="2011" y="-107"/>
+=======
+            <point key="canvasLocation" x="3110" y="-711"/>
+>>>>>>> Use separate CompetenceViewController, place CompetenceViewController in QuestionnaireViewController paged scrollview
         </scene>
         <!--Finish Questionnaire View Controller-->
         <scene sceneID="GeC-4s-bFc">
@@ -311,7 +341,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ode-8l-h87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="2916" y="-112"/>
+=======
+            <point key="canvasLocation" x="3956" y="-711"/>
+>>>>>>> Use separate CompetenceViewController, place CompetenceViewController in QuestionnaireViewController paged scrollview
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OEH-rP-4xp">
