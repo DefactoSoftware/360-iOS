@@ -1,5 +1,5 @@
 //
-//  TSFHomeViewController.h
+//  TSFBaseViewController.h
 //  Three Sixty Feedback
 //
 //  Created by Girgis Ghattas on 03-02-14.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TSFHomeViewController : UIViewController
+@interface TSFBaseViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *introLabel;
+@property (nonatomic, strong) UIProgressView *progressView;
 
 @end

@@ -27,6 +27,7 @@ static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     NSString *titleLabel = TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerWelcome", @"Welkom,");
     self.subjectLabelFormat = TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerSubject", @"De vragen in deze ronde gaan over %@.");
     NSString *introLabel = TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerIntro", @"Je bent uitgenodigd om mee te doen met een 360°-feedbackronde.");

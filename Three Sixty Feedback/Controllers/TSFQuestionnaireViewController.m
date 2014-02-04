@@ -19,7 +19,6 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 
 @interface TSFQuestionnaireViewController ()
 @property (nonatomic, assign) NSInteger currentCompetenceNumber;
-@property (nonatomic, strong) UIProgressView *progressView;
 @end
 
 @implementation TSFQuestionnaireViewController
@@ -35,12 +34,14 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self refreshProgressView];
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     self.title = TSFLocalizedString(@"TSFQuestionnaireViewControllerTitle", @"Feedback round");
-    [self addProgressView];
     [self loadQuestionnaire];
     
     [self setUpKeyBehavioursTable];
@@ -50,22 +51,6 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 - (void)refreshProgressView {
     self.progressView.progress = (float) self.currentCompetenceNumber / [self.questionnaire.competences count];
 }
-
-- (void)addProgressView {
-    self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
-
-    self.progressView.frame = CGRectMake(0,
-                                         self.navigationController.navigationBar.frame.size.height - self.progressView.frame.size.height,
-                                         self.view.frame.size.width,
-                                         self.progressView.frame.size.height);
-    
-    self.progressView.progress = 0;
-    self.progressView.progressTintColor = [UIColor TSFOrangeColor];
-    [self.view addSubview:self.progressView];
-    
-    [self.navigationController.navigationBar addSubview:self.progressView];
-}
-
 
 - (void)addGestureRecognizers {
     UISwipeGestureRecognizer *nextSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleNextSwipeFrom:)];

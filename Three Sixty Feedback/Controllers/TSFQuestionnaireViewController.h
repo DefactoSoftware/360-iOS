@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFBaseViewController.h"
 #import "TSFQuestionnaireService.h"
 #import "TSFCompetenceService.h"
 #import "TSFGenerics.h"
 
-@interface TSFQuestionnaireViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TSFQuestionnaireViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
 @property (nonatomic, strong) TSFCompetenceService *competenceService;

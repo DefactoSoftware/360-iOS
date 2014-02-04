@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TSFAssessorService.h"
+#import "TSFBaseViewController.h"
 
-@interface TSFFinishQuestionnaireViewController : UIViewController
+@interface TSFFinishQuestionnaireViewController : TSFBaseViewController
 
 @property (nonatomic, strong) TSFAssessorService *assessorService;
 @property (weak, nonatomic) IBOutlet UILabel *thankLabel;

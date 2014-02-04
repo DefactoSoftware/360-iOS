@@ -40,6 +40,12 @@
 }
 
 - (void)layoutSubviews {
+    for (UIView *view in self.subviews) {
+        [view removeFromSuperview];
+    }
+
+    [super layoutSubviews];
+
 	self.defaultColor = [UIColor TSFLightGreyColor];
 	self.selectedColor = [UIColor TSFOrangeColor];
 

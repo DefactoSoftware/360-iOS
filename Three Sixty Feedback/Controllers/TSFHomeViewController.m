@@ -12,6 +12,8 @@
 @implementation TSFHomeViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     self.title = TSFLocalizedString(@"TSFHomeViewControllerTitle", @"360° Feedback");
     self.introLabel.text = TSFLocalizedString(@"TSFHomeViewControllerIntroText", @"Welkom. Om een feedbackronde in te vullen kan je op de link in de uitnodigingsmail tikken.");
 }
