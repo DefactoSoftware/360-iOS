@@ -9,15 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "TSFQuestionnaireService.h"
 
-@interface TSFQuestionnaireViewController : UIViewController
+@interface TSFQuestionnaireViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
+@property (nonatomic, strong) UIPageViewController *pageController;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (nonatomic, strong) NSMutableArray *competenceViewControllers;
 
-- (void)loadCompetenceControllers:(BOOL)animated;
-- (IBAction)changePage:(id)sender;
+- (void)loadCompetenceControllers;
 
 @end

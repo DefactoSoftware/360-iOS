@@ -29,10 +29,6 @@ describe(@"TSFQuestionnaireViewController", ^{
         [[_questionnaireViewController should] beKindOfClass:[TSFQuestionnaireViewController class]];
 	});
     
-    it(@"has an outlet for the scrollview", ^{
-        [[_questionnaireViewController.scrollView shouldNot] beNil];
-    });
-    
     it(@"has an outlet for the page control", ^{
         [[_questionnaireViewController.pageControl shouldNot] beNil];
     });
@@ -56,10 +52,6 @@ describe(@"TSFQuestionnaireViewController", ^{
             [[_questionnaireViewController should] beKindOfClass:[TSFQuestionnaireViewController class]];
         });
         
-        it(@"has an outlet for the scrollview", ^{
-            [[_questionnaireViewController.scrollView shouldNot] beNil];
-        });
-        
         it(@"has an outlet for the page control", ^{
             [[_questionnaireViewController.pageControl shouldNot] beNil];
         });
@@ -68,6 +60,11 @@ describe(@"TSFQuestionnaireViewController", ^{
             [[_questionnaireViewController.questionnaireService shouldNot] beNil];
             [[_questionnaireViewController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];
         });
+    });
+    
+    it(@"has a pagecontroller", ^{
+        [[_questionnaireViewController.pageController shouldNot] beNil];
+        [[_questionnaireViewController.pageController should] beKindOfClass:[UIPageViewController class]];
     });
     
     context(@"with a questionnaire", ^{
@@ -82,8 +79,8 @@ describe(@"TSFQuestionnaireViewController", ^{
             
             _questionnaire.competences = @[_competenceOne, _competenceTwo];
             _questionnaireViewController.questionnaire = _questionnaire;
-            
-            [_questionnaireViewController loadCompetenceControllers:NO];
+
+            [_questionnaireViewController loadCompetenceControllers];
         });
         
         it(@"instantiates competence viewcontrollers based on the questionnaires competences", ^{
@@ -98,6 +95,14 @@ describe(@"TSFQuestionnaireViewController", ^{
 
             TSFCompetenceViewController *secondCompetenceViewController = _questionnaireViewController.competenceViewControllers[1];
             [[secondCompetenceViewController.competence should] equal:_competenceTwo];
+        });
+        
+        it(@"sets the correct index on the competence viewcontroller", ^{
+            TSFCompetenceViewController *firstCompetenceViewController = _questionnaireViewController.competenceViewControllers[0];
+            TSFCompetenceViewController *secondCompetenceViewController = _questionnaireViewController.competenceViewControllers[1];
+            
+            [[theValue(firstCompetenceViewController.index) should] equal:theValue(0)];
+            [[theValue(secondCompetenceViewController.index) should] equal:theValue(1)];
         });
     });
 });

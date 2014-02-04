@@ -44,8 +44,6 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = TSFLocalizedString(@"TSFQuestionnaireViewControllerTitle", @"Feedback round");
     [self setUpKeyBehavioursTable];
 }
 
@@ -57,7 +55,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 }
 
 - (void)displayValidationError {
-    NSString *validationErrorMessage = TSFLocalizedString(@"TSFQuestionnaireViewControllerValidationErrorMessage", @"Please fill in every question before moving on.");
+    NSString *validationErrorMessage = TSFLocalizedString(@"TSFCompetenceControllerValidationErrorMessage", @"Please fill in every question before moving on.");
     NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
                                                                 title:nil
                                                               message:validationErrorMessage
