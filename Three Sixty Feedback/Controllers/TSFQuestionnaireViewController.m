@@ -24,6 +24,7 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
         _questionnaireService = [TSFQuestionnaireService sharedService];
         _questionnaire = [_questionnaireService.questionnaires firstObject];
         _competenceViewControllers = [[NSMutableArray alloc] init];
+        _invalidCompetenceViewControllers = [[NSMapTable alloc] init];
     }
     return self;
 }
@@ -134,6 +135,8 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
             }
         }];
     } else {
+        [self.invalidCompetenceViewControllers setObject:self.currentCompetenceViewController
+                                                  forKey:[NSNumber numberWithInteger:self.currentCompetenceViewController.index]];
         [self displayValidationError];
     }
 }
