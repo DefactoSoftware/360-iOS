@@ -10,6 +10,8 @@
 #import "TSFQuestionnaireService.h"
 #import "TSFCompetenceViewController.h"
 
+typedef void (^TSFUpdateCurrentCompetenceViewControllerBlock)(BOOL);
+
 @interface TSFQuestionnaireViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageController;
@@ -22,5 +24,6 @@
 @property (nonatomic, strong) TSFCompetenceViewController *currentCompetenceViewController;
 
 - (void)loadCompetenceControllers;
+- (void)updateCurrentCompetenceViewControllerWithCompletion:(TSFUpdateCurrentCompetenceViewControllerBlock)completion;
 
 @end

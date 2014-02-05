@@ -109,7 +109,7 @@ describe(@"TSFQuestionnaireViewController", ^{
             [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[0]];
         });
         
-        context(@"navigating to next competence", ^{
+        context(@"updating the competence", ^{
             __block id _mockCompetenceViewController;
             
             beforeEach(^{
@@ -118,33 +118,52 @@ describe(@"TSFQuestionnaireViewController", ^{
                 _questionnaireViewController.competenceViewControllers[0] = _mockCompetenceViewController;
             });
             
-            it(@"updates the current competence view controller", ^{
-                [[_mockCompetenceViewController should] receive:@selector(index) andReturn:0 withCount:2];
-                
-                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
-                                              didFinishAnimating:YES
-                                         previousViewControllers:@[_questionnaireViewController.competenceViewControllers[0]]
-                                             transitionCompleted:YES];
-                [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[1]];
-            });
-            
-            it(@"calls the validation method on the competence view controller", ^{
-                [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:NO];
-                
-                TSFCompetenceViewController *newViewController = [[TSFCompetenceViewController alloc] init];
-                newViewController.index = 1;
-                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController willTransitionToViewControllers:@[newViewController]];
-            });
-            
             it(@"calls the update method on the competence view controller when the validation succeeds", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(YES)];
                 [[_mockCompetenceViewController should] receive:@selector(updateCompetenceWithCompletion:)];
                 
-                TSFCompetenceViewController *newViewController = [[TSFCompetenceViewController alloc] init];
-                newViewController.index = 1;
-                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController willTransitionToViewControllers:@[newViewController]];
+                [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
             });
             
+            it(@"does not call the update method when the validation fails", ^{
+                [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(NO)];
+                
+                [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
+            });
+        });
+        
+        context(@"navigating to next competence", ^{
+            __block id _mockCompetenceViewController;
+            
+            beforeEach(^{
+                _mockCompetenceViewController = [KWMock mockForClass:[TSFCompetenceViewController class]];
+                _questionnaireViewController.currentCompetenceViewController = _mockCompetenceViewController;
+                _questionnaireViewController.competenceViewControllers[0] = _mockCompetenceViewController;
+                
+                _questionnaireViewController.currentCompetenceViewController = _questionnaireViewController.competenceViewControllers[0];
+            });
+            
+            it(@"updates the current competence view controller to the new one", ^{
+                [[_mockCompetenceViewController should] receive:@selector(validateInput)];
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                 willTransitionToViewControllers:@[_questionnaireViewController.competenceViewControllers[1]]];
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                              didFinishAnimating:YES
+                                         previousViewControllers:@[_questionnaireViewController.competenceViewControllers[1]]
+                                             transitionCompleted:YES];
+                [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[1]];
+            });
+            
+            it(@"does not update the current competence view controller when the animation is not completed", ^{
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                 willTransitionToViewControllers:@[_questionnaireViewController.competenceViewControllers[1]]];
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                              didFinishAnimating:YES
+                                         previousViewControllers:@[_questionnaireViewController.competenceViewControllers[1]]
+                                             transitionCompleted:NO];
+                
+                [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[0]];
+            });
         });
     });
 });
