@@ -83,6 +83,19 @@ describe(@"TSFQuestionnaireViewController", ^{
             [_questionnaireViewController loadCompetenceControllers];
         });
         
+        it(@"stores the competence view controller in the list of validation errored controllers when validation fails", ^{
+            NSInteger randomIndex = arc4random();
+            
+            id mockCompetenceViewController = [KWMock mockForClass:[TSFCompetenceViewController class]];
+            _questionnaireViewController.currentCompetenceViewController = mockCompetenceViewController;
+            [[mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(NO)];
+            [[mockCompetenceViewController should] receive:@selector(index) andReturn:theValue(randomIndex)];
+            
+            [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
+            [[theValue([_questionnaireViewController.invalidCompetenceViewControllers count]) should] equal:theValue(1)];
+            [[[_questionnaireViewController.invalidCompetenceViewControllers objectForKey:[NSNumber numberWithInteger:randomIndex]] should] equal:mockCompetenceViewController];
+        });
+        
         it(@"instantiates competence viewcontrollers based on the questionnaires competences", ^{
             [[theValue([_questionnaireViewController.competenceViewControllers count]) should] equal:theValue(2)];
             [[[_questionnaireViewController.competenceViewControllers firstObject] should] beKindOfClass:[TSFCompetenceViewController class]];
@@ -126,6 +139,7 @@ describe(@"TSFQuestionnaireViewController", ^{
             });
             
             it(@"does not call the update method when the validation fails", ^{
+                [[_mockCompetenceViewController should] receive:@selector(index)];
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(NO)];
                 
                 [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
@@ -133,18 +147,18 @@ describe(@"TSFQuestionnaireViewController", ^{
         });
         
         context(@"navigating to next competence", ^{
-            __block id _mockCompetenceViewController;
+            __block TSFCompetenceViewController *_competenceViewController;
             
             beforeEach(^{
-                _mockCompetenceViewController = [KWMock mockForClass:[TSFCompetenceViewController class]];
-                _questionnaireViewController.currentCompetenceViewController = _mockCompetenceViewController;
-                _questionnaireViewController.competenceViewControllers[0] = _mockCompetenceViewController;
+                _competenceViewController = [[TSFCompetenceViewController alloc] init];
+                
+                _questionnaireViewController.currentCompetenceViewController = _competenceViewController;
+                _questionnaireViewController.competenceViewControllers[0] = _competenceViewController;
                 
                 _questionnaireViewController.currentCompetenceViewController = _questionnaireViewController.competenceViewControllers[0];
             });
             
             it(@"updates the current competence view controller to the new one", ^{
-                [[_mockCompetenceViewController should] receive:@selector(validateInput)];
                 [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
                                  willTransitionToViewControllers:@[_questionnaireViewController.competenceViewControllers[1]]];
                 [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
