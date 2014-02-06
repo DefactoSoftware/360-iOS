@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
+@property (nonatomic, assign) NSInteger index;
 
 - (void)sendCompletion;
 - (IBAction)sendButtonPressed:(id)sender;

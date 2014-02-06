@@ -9,6 +9,7 @@
 #import "Kiwi.h"
 #import "TSFQuestionnaireViewController.h"
 #import "TSFCompetenceViewController.h"
+#import "TSFFinishQuestionnaireViewController.h"
 
 SPEC_BEGIN(TSFQuestionnaireViewControllerSpec)
 
@@ -67,6 +68,15 @@ describe(@"TSFQuestionnaireViewController", ^{
         [[_questionnaireViewController.pageController should] beKindOfClass:[UIPageViewController class]];
     });
     
+    it(@"creates a finish questionnaire viewcontroller", ^{
+        [_questionnaireViewController createFinishQuestionnaireViewController];
+        TSFFinishQuestionnaireViewController *finishQuestionnaireViewController = _questionnaireViewController.finishQuestionnaireViewController;
+        
+        [[finishQuestionnaireViewController shouldNot] beNil];
+        [[finishQuestionnaireViewController should] beKindOfClass:[TSFFinishQuestionnaireViewController class]];
+        [[theValue(finishQuestionnaireViewController.index) should] equal:theValue(0)];
+    });
+    
     context(@"with a questionnaire", ^{
         __block TSFQuestionnaire *_questionnaire;
         __block TSFCompetence *_competenceOne;
@@ -85,26 +95,29 @@ describe(@"TSFQuestionnaireViewController", ^{
         
         context(@"storing the controllers after update", ^{
             __block id _mockCompetenceViewController;
-            __block NSInteger _randomIndex;
+            __block TSFCompetenceViewController *_pendingCompetenceViewController;
+            __block NSInteger _index;
             
             beforeEach(^{
                 _mockCompetenceViewController = [KWMock mockForClass:[TSFCompetenceViewController class]];
-                _randomIndex = arc4random();
+                _index = 0;
                 _questionnaireViewController.currentCompetenceViewController = _mockCompetenceViewController;
+                _pendingCompetenceViewController = [[TSFCompetenceViewController alloc] init];
+                _pendingCompetenceViewController.index = _index + 1;
             });
             
             it(@"stores the competence view controller in the list of validation errored controllers when validation fails", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(NO)];
-                [[_mockCompetenceViewController should] receive:@selector(index) andReturn:theValue(_randomIndex)];
+                [[_mockCompetenceViewController should] receive:@selector(index) andReturn:theValue(_index)];
                 
                 [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
                 [[theValue([_questionnaireViewController.invalidCompetenceViewControllers count]) should] equal:theValue(1)];
-                [[[_questionnaireViewController.invalidCompetenceViewControllers objectForKey:@(_randomIndex)] should] equal:_mockCompetenceViewController];
+                [[[_questionnaireViewController.invalidCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
             });
             
             it(@"stores the competence view controller in the list of succeeded controllers when the update succeeds", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(YES)];
-                [[_mockCompetenceViewController should] receive:@selector(index) andReturn:theValue(_randomIndex)];
+                [[_mockCompetenceViewController should] receive:@selector(index) andReturn:theValue(_index) withCount:2];
                 [_mockCompetenceViewController stub:@selector(updateCompetenceWithCompletion:) withBlock:^id(NSArray *params) {
                     void (^completionBlock)(BOOL success) = params[0];
                     completionBlock(YES);
@@ -112,30 +125,35 @@ describe(@"TSFQuestionnaireViewController", ^{
                 }];
                 
                 [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                 willTransitionToViewControllers:@[_pendingCompetenceViewController]];
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
                                               didFinishAnimating:YES
                                          previousViewControllers:@[[[TSFCompetenceViewController alloc] init]]
                                              transitionCompleted:YES];
                 
                 [[theValue([_questionnaireViewController.succeededCompetenceViewControllers count]) should] equal:theValue(1)];
-                [[[_questionnaireViewController.succeededCompetenceViewControllers objectForKey:@(_randomIndex)] should] equal:_mockCompetenceViewController];
+                [[[_questionnaireViewController.succeededCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
             });
             
             it(@"stores the competence view controller in the list of errored controllers when the update fails", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(YES)];
-                [[_mockCompetenceViewController should] receive:@selector(index) andReturn:theValue(_randomIndex)];
+                [[_mockCompetenceViewController should] receive:@selector(index) andReturn:theValue(_index) withCount:2];
                 [_mockCompetenceViewController stub:@selector(updateCompetenceWithCompletion:) withBlock:^id(NSArray *params) {
                     void (^completionBlock)(BOOL success) = params[0];
                     completionBlock(NO);
                     return nil;
                 }];
                 
+                TSFCompetenceViewController *competenceViewController = [[TSFCompetenceViewController alloc] init];
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                 willTransitionToViewControllers:@[_pendingCompetenceViewController]];
                 [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
                                               didFinishAnimating:YES
                                          previousViewControllers:@[[[TSFCompetenceViewController alloc] init]]
                                              transitionCompleted:YES];
                 
                 [[theValue([_questionnaireViewController.erroredCompetenceViewControllers count]) should] equal:theValue(1)];
-                [[[_questionnaireViewController.erroredCompetenceViewControllers objectForKey:@(_randomIndex)] should] equal:_mockCompetenceViewController];
+                [[[_questionnaireViewController.erroredCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
             });
         });
         
@@ -211,6 +229,18 @@ describe(@"TSFQuestionnaireViewController", ^{
                 [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[1]];
             });
             
+            it(@"does not update the current competence view controller when navigating to the previous one", ^{
+                id mockCompetenceViewController = [KWMock mockForClass:[TSFCompetenceViewController class]];
+                _questionnaireViewController.competenceViewControllers[1] = mockCompetenceViewController;
+                
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                 willTransitionToViewControllers:@[_questionnaireViewController.competenceViewControllers[0]]];
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                              didFinishAnimating:YES 
+                                         previousViewControllers:@[_questionnaireViewController.competenceViewControllers[0]]
+                                             transitionCompleted:YES];
+            });
+            
             it(@"does not update the current competence view controller when the animation is not completed", ^{
                 [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
                                  willTransitionToViewControllers:@[_questionnaireViewController.competenceViewControllers[1]]];
@@ -220,6 +250,24 @@ describe(@"TSFQuestionnaireViewController", ^{
                                              transitionCompleted:NO];
                 
                 [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[0]];
+            });
+            
+            it(@"presents the finish questionnaire viewcontroller at the end", ^{
+                UIViewController *finalViewController = [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                                                       viewControllerAfterViewController:_questionnaireViewController.competenceViewControllers[1]];
+                
+                [[finalViewController should] beKindOfClass:[TSFFinishQuestionnaireViewController class]];
+            });
+            
+            it(@"presents the last competence viewcontroller when navigating backwards from the final viewcontroller", ^{
+                [_questionnaireViewController createFinishQuestionnaireViewController];
+                TSFFinishQuestionnaireViewController *finalViewController = _questionnaireViewController.finishQuestionnaireViewController;
+                
+                UIViewController *competenceController = [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                                                       viewControllerBeforeViewController:finalViewController];
+            
+                [[competenceController shouldNot] beNil];
+                [[competenceController should] beKindOfClass:[TSFCompetenceViewController class]];
             });
         });
     });
