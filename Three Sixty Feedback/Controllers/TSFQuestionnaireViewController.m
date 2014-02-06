@@ -69,7 +69,7 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     [self.view addSubview:self.pageController.view];
     [self.pageController didMoveToParentViewController:self];
     
-    self.pageControl.numberOfPages = [self.questionnaire.competences count];
+    self.pageControl.numberOfPages = [self.questionnaire.competences count] + 1;
 }
 
 - (void)loadCompetenceControllers {
@@ -143,13 +143,17 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
 - (void)updateCurrentCompetenceViewControllerWithCompletion:(TSFUpdateCurrentCompetenceViewControllerBlock)completion {
     __weak typeof (self) _self = self;
     __block TSFUpdateCurrentCompetenceViewControllerBlock _completion = completion;
+    __block TSFCompetenceViewController *_updatingViewController = self.currentCompetenceViewController;
     
     if ([self.currentCompetenceViewController validateInput]) {
+        [self.invalidCompetenceViewControllers removeObjectForKey:@(self.currentCompetenceViewController.index)];
+        
         [self.currentCompetenceViewController updateCompetenceWithCompletion:^(BOOL success) {
             if (!success) {
                 [_self displayValidationError];
                 _completion(NO);
             } else {
+                [_self.erroredCompetenceViewControllers removeObjectForKey:@(_updatingViewController.index)];
                 _completion(YES);
             }
         }];
