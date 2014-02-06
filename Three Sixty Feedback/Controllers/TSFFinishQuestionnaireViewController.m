@@ -34,20 +34,6 @@
     [self.sendButton setTintColor:[UIColor TSFOrangeColor]];
 }
 
-- (void)completionFailure {
-    NSString *validationErrorMessage = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerError", @"Er is iets misgegaan bij het versturen.");
-    NSString *validationErrorTitle = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerErrorMessage", @"Probeer het nogmaals.");
-
-    NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
-                                                                title:validationErrorTitle
-                                                              message:validationErrorMessage
-                                                             delegate:nil];
-    [validationAlert setStatusBarColor:[UIColor redColor]];
-    [validationAlert setTextAlignment:NSTextAlignmentCenter];
-    
-    [validationAlert show];
-}
-
 - (void)completionSuccess {
     self.sendButton.hidden = YES;
     self.previousButton.enabled = NO;
@@ -55,17 +41,13 @@
     [self.view layoutSubviews];
 }
 
-- (void)sendCompletion {
-    __weak typeof (self) _self = self;
-    [self.assessorService completeCurrentAssessmentWithSuccess:^(NSNumber *completed) {
-        [_self completionSuccess];
-    } failure:^(NSError *error) {
-        [_self completionFailure];
-    }];
-}
-
 - (IBAction)sendButtonPressed:(id)sender {
-    [self sendCompletion];
+    __weak typeof (self) _self = self;
+    [self.questionnaireViewController completeQuestionnaireWithCompletion:^(BOOL success) {
+        if (success) {
+            [_self completionSuccess];
+        }
+    }];
 }
 
 - (IBAction)previousButtonPressed:(id)sender {

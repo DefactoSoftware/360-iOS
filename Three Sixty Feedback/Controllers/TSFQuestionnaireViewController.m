@@ -126,6 +126,7 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     }
     
     finishQuestionnaireViewController.index = [self.competenceViewControllers count];
+    finishQuestionnaireViewController.questionnaireViewController = self;
     self.finishQuestionnaireViewController = finishQuestionnaireViewController;
 }
 
@@ -133,6 +134,34 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     NSString *validationErrorMessage = TSFLocalizedString(@"TSFCompetenceControllerValidationErrorMessage", @"Please fill in every question before moving on.");
     NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
                                                                 title:nil
+                                                              message:validationErrorMessage
+                                                             delegate:nil];
+    [validationAlert setStatusBarColor:[UIColor redColor]];
+    [validationAlert setTextAlignment:NSTextAlignmentCenter];
+    
+    [validationAlert show];
+}
+
+- (void)displayUpdateError {
+    NSString *validationErrorMessage = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerUpdateError", @"Er is iets misgegaan bij het versturen van de competentie.");
+    NSString *validationErrorTitle = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerUpdateErrorMessage", @"Probeer het nogmaals.");
+    
+    NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
+                                                                title:validationErrorTitle
+                                                              message:validationErrorMessage
+                                                             delegate:nil];
+    [validationAlert setStatusBarColor:[UIColor redColor]];
+    [validationAlert setTextAlignment:NSTextAlignmentCenter];
+    
+    [validationAlert show];
+}
+
+- (void)displayCompletionError {
+    NSString *validationErrorMessage = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerError", @"Er is iets misgegaan bij het versturen.");
+    NSString *validationErrorTitle = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerErrorMessage", @"Probeer het nogmaals.");
+    
+    NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
+                                                                title:validationErrorTitle
                                                               message:validationErrorMessage
                                                              delegate:nil];
     [validationAlert setStatusBarColor:[UIColor redColor]];
@@ -151,7 +180,7 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
         
         [self.currentCompetenceViewController updateCompetenceWithCompletion:^(BOOL success) {
             if (!success) {
-                [_self displayValidationError];
+                [_self displayUpdateError];
                 _completion(NO);
             } else {
                 [_self.erroredCompetenceViewControllers removeObjectForKey:@(_updatingViewController.index)];
@@ -230,7 +259,7 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     self.pendingCompetenceViewController = newCompetenceViewController;
 }
 
-- (void)completeQuestionnaire {
+- (void)completeQuestionnaireWithCompletion:(TSFCompleteQuestionnaireViewControllerBlock)completion {
     [self.assessorService completeCurrentAssessmentWithSuccess:^(NSNumber *success) {
         
     } failure:^(NSError *error) {

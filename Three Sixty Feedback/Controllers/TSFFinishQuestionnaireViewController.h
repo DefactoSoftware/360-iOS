@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TSFAssessorService.h"
 #import "TSFBaseViewController.h"
+#import "TSFQuestionnaireViewController.h"
+
+@class TSFQuestionnaireViewController;
 
 @interface TSFFinishQuestionnaireViewController : TSFBaseViewController
 
@@ -18,8 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) TSFQuestionnaireViewController *questionnaireViewController;
 
-- (void)sendCompletion;
 - (IBAction)sendButtonPressed:(id)sender;
 - (IBAction)previousButtonPressed:(id)sender;
 

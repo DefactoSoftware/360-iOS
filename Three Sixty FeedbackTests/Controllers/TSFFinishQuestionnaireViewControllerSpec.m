@@ -87,6 +87,25 @@ describe(@"TSFFinishQuestionnaireViewController", ^{
             [[_finishQuestionnaireViewController.previousButton shouldNot] beNil];
         });
     });
+    
+    context(@"pressing the send button", ^{
+        __block id _mockQuestionnaireViewController;
+        
+        beforeEach(^{
+            _mockQuestionnaireViewController = [KWMock mockForClass:[TSFQuestionnaireViewController class]];
+            _finishQuestionnaireViewController.questionnaireViewController = _mockQuestionnaireViewController;
+        });
+        
+        it(@"calls the questionnaire viewcontroller when the user presses the send button", ^{
+            [[_mockQuestionnaireViewController should] receive:@selector(completeQuestionnaireWithCompletion:)];
+            
+            [_finishQuestionnaireViewController sendButtonPressed:nil];
+        });
+        
+        it(@"calls the questionnaire viewcontroller to notify that the completion succeeded", ^{
+            [_mockQuestionnaireViewController stub:@selector() withBlock:<#^id(NSArray *params)block#>
+        });
+    });
 });
 
 SPEC_END
