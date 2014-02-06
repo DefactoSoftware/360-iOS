@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TSFQuestionnaireService.h"
 #import "TSFCompetenceViewController.h"
+#import "TSFFinishQuestionnaireViewController.h"
 
 typedef void (^TSFUpdateCurrentCompetenceViewControllerBlock)(BOOL);
 
@@ -24,8 +25,10 @@ typedef void (^TSFUpdateCurrentCompetenceViewControllerBlock)(BOOL);
 @property (nonatomic, strong) NSMapTable *succeededCompetenceViewControllers;
 @property (nonatomic, strong) NSMapTable *erroredCompetenceViewControllers;
 @property (nonatomic, strong) TSFCompetenceViewController *currentCompetenceViewController;
+@property (nonatomic, strong) TSFFinishQuestionnaireViewController *finishQuestionnaireViewController;
 
 - (void)loadCompetenceControllers;
+- (void)createFinishQuestionnaireViewController;
 - (void)updateCurrentCompetenceViewControllerWithCompletion:(TSFUpdateCurrentCompetenceViewControllerBlock)completion;
 
 @end

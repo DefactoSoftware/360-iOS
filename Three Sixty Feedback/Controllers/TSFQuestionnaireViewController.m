@@ -8,10 +8,12 @@
 
 #import "TSFQuestionnaireViewController.h"
 #import "TSFCompetenceViewController.h"
+#import "TSFFinishQuestionnaireViewController.h"
 #import "UIColor+TSFColor.h"
 #import "NZAlertView.h"
 
 static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewController";
+static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQuestionnaireViewController";
 
 @interface TSFQuestionnaireViewController()
 @property (nonatomic, strong) TSFCompetenceViewController *pendingCompetenceViewController;
@@ -38,6 +40,7 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
     self.pageControl.currentPageIndicatorTintColor = [UIColor TSFOrangeColor];
     
     [self loadCompetenceControllers];
+    [self createFinishQuestionnaireViewController];
     [self initializePageController];
 }
 
@@ -89,18 +92,20 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
     return self.competenceViewControllers[competenceNumber];
 }
 
+- (UIStoryboard *)currentStoryboard {
+    UIApplication *application = [UIApplication sharedApplication];
+    UIWindow *backWindow = application.windows[0];
+    return backWindow.rootViewController.storyboard;
+}
+
 - (void)createCompetenceControllerForNumber:(NSInteger)number {
     if (number < 0) {
         return;
     } else if (number >= [self.questionnaire.competences count]) {
         return;
     }
-
-    UIApplication *application = [UIApplication sharedApplication];
-    UIWindow *backWindow = application.windows[0];
-    UIStoryboard *storyboard = backWindow.rootViewController.storyboard;
     
-    TSFCompetenceViewController *competenceViewController = [storyboard instantiateViewControllerWithIdentifier:TSFCompetenceViewControllerTag];
+    TSFCompetenceViewController *competenceViewController = [[self currentStoryboard] instantiateViewControllerWithIdentifier:TSFCompetenceViewControllerTag];
     competenceViewController.questionnaire = self.questionnaire;
     competenceViewController.competence = self.questionnaire.competences[number];
     competenceViewController.index = number;
@@ -110,6 +115,17 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
     }
 
     [self.competenceViewControllers addObject:competenceViewController];
+}
+
+- (void)createFinishQuestionnaireViewController {
+    TSFFinishQuestionnaireViewController *finishQuestionnaireViewController = [[self currentStoryboard] instantiateViewControllerWithIdentifier:TSFFinishQuestionnaireViewControllerTag];
+
+    if (!finishQuestionnaireViewController) {
+        return;
+    }
+    
+    finishQuestionnaireViewController.index = [self.competenceViewControllers count];
+    self.finishQuestionnaireViewController = finishQuestionnaireViewController;
 }
 
 - (void)displayValidationError {
@@ -162,7 +178,9 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
     TSFCompetenceViewController *competenceViewController = (TSFCompetenceViewController *)viewController;
     NSInteger index = competenceViewController.index + 1;
     
-    if (index >= self.competenceViewControllers.count) {
+    if (index == self.competenceViewControllers.count) {
+        return self.finishQuestionnaireViewController;
+    } else if (index > self.competenceViewControllers.count) {
         return nil;
     }
     
@@ -170,7 +188,7 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
 }
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    return [self.competenceViewControllers count];
+    return [self.competenceViewControllers count] + 1;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
@@ -181,7 +199,7 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed {
-    if (completed) {
+    if (completed && (self.pendingCompetenceViewController.index >= self.currentCompetenceViewController.index) && (self.pendingCompetenceViewController.index < [self.competenceViewControllers count])) {
         __weak typeof (self) _self = self;
         __weak TSFCompetenceViewController *_updatedCompetenceViewController = self.currentCompetenceViewController;
         [self updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {
