@@ -32,18 +32,6 @@
     
     [self.sendButton setTitle:sendTitle forState:UIControlStateNormal];
     [self.sendButton setTintColor:[UIColor TSFOrangeColor]];
-    
-    [self addGestureRecognizer];
-}
-
-- (void)addGestureRecognizer {
-    UISwipeGestureRecognizer *previousSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePreviousSwipeFrom:)];
-    [previousSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [self.view addGestureRecognizer:previousSwipeRecognizer];
-}
-
-- (void)handlePreviousSwipeFrom:(UIGestureRecognizer *)recognizer {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)completionFailure {

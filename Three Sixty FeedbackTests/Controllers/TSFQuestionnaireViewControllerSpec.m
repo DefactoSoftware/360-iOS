@@ -38,6 +38,11 @@ describe(@"TSFQuestionnaireViewController", ^{
         [[_questionnaireViewController.questionnaireService shouldNot] beNil];
         [[_questionnaireViewController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];
     });
+    
+    it(@"has a reference to the assessor service", ^{
+        [[_questionnaireViewController.assessorService shouldNot] beNil];
+        [[_questionnaireViewController.assessorService should] beKindOfClass:[TSFAssessorService class]];
+    });
 
     context(@"iPad", ^{
         beforeEach (^{
@@ -91,6 +96,15 @@ describe(@"TSFQuestionnaireViewController", ^{
             _questionnaireViewController.questionnaire = _questionnaire;
 
             [_questionnaireViewController loadCompetenceControllers];
+        });
+        
+        it(@"calls the assessor service to complete the questionnaire", ^{
+            id mockAssessorService = [KWMock mockForClass:[TSFAssessorService class]];
+            
+            _questionnaireViewController.assessorService = mockAssessorService;
+            [[mockAssessorService should] receive:@selector(completeCurrentAssessmentWithSuccess:failure:)];
+            
+            [_questionnaireViewController completeQuestionnaire];
         });
         
         context(@"storing the controllers after update", ^{

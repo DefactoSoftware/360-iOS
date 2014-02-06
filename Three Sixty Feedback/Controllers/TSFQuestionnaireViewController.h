@@ -19,6 +19,7 @@ typedef void (^TSFUpdateCurrentCompetenceViewControllerBlock)(BOOL);
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
+@property (nonatomic, strong) TSFAssessorService *assessorService;
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (nonatomic, strong) NSMutableArray *competenceViewControllers;
 @property (nonatomic, strong) NSMapTable *invalidCompetenceViewControllers;
@@ -30,5 +31,6 @@ typedef void (^TSFUpdateCurrentCompetenceViewControllerBlock)(BOOL);
 - (void)loadCompetenceControllers;
 - (void)createFinishQuestionnaireViewController;
 - (void)updateCurrentCompetenceViewControllerWithCompletion:(TSFUpdateCurrentCompetenceViewControllerBlock)completion;
+- (void)completeQuestionnaire;
 
 @end

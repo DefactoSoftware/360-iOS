@@ -87,13 +87,6 @@ describe(@"TSFFinishQuestionnaireViewController", ^{
             [[_finishQuestionnaireViewController.previousButton shouldNot] beNil];
         });
     });
-    
-    it(@"calls the assessor service to complete the questionnaire", ^{
-        _finishQuestionnaireViewController.assessorService = _mockAssessorService;
-        [[_mockAssessorService should] receive:@selector(completeCurrentAssessmentWithSuccess:failure:)];
-
-        [_finishQuestionnaireViewController sendCompletion];
-    });
 });
 
 SPEC_END
