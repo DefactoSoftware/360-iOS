@@ -12,6 +12,9 @@
 #import "TSFFinishQuestionnaireViewController.h"
 
 typedef void (^TSFUpdateCurrentCompetenceViewControllerBlock)(BOOL);
+typedef void (^TSFCompleteQuestionnaireViewControllerBlock)(BOOL);
+
+@class TSFFinishQuestionnaireViewController;
 
 @interface TSFQuestionnaireViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
@@ -30,7 +33,8 @@ typedef void (^TSFUpdateCurrentCompetenceViewControllerBlock)(BOOL);
 
 - (void)loadCompetenceControllers;
 - (void)createFinishQuestionnaireViewController;
+- (void)displayCompletionError;
 - (void)updateCurrentCompetenceViewControllerWithCompletion:(TSFUpdateCurrentCompetenceViewControllerBlock)completion;
-- (void)completeQuestionnaire;
+- (void)completeQuestionnaireWithCompletion:(TSFCompleteQuestionnaireViewControllerBlock)completion;
 
 @end

@@ -80,6 +80,7 @@ describe(@"TSFQuestionnaireViewController", ^{
         [[finishQuestionnaireViewController shouldNot] beNil];
         [[finishQuestionnaireViewController should] beKindOfClass:[TSFFinishQuestionnaireViewController class]];
         [[theValue(finishQuestionnaireViewController.index) should] equal:theValue(0)];
+        [[finishQuestionnaireViewController.questionnaireViewController should] equal:_questionnaireViewController];
     });
     
     context(@"with a questionnaire", ^{
@@ -104,7 +105,7 @@ describe(@"TSFQuestionnaireViewController", ^{
             _questionnaireViewController.assessorService = mockAssessorService;
             [[mockAssessorService should] receive:@selector(completeCurrentAssessmentWithSuccess:failure:)];
             
-            [_questionnaireViewController completeQuestionnaire];
+            [_questionnaireViewController completeQuestionnaireWithCompletion:^(BOOL success) {}];
         });
         
         context(@"storing the controllers after update", ^{
