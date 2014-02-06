@@ -15,6 +15,7 @@
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 	    _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:TSFAPIBaseURL]];
+        _sharedClient.assessorToken = @"jqBFK-bUPa0M2yX-XrEO2A";
 	});
     
 	return _sharedClient;
