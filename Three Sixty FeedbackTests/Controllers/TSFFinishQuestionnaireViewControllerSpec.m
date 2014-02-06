@@ -101,10 +101,6 @@ describe(@"TSFFinishQuestionnaireViewController", ^{
             
             [_finishQuestionnaireViewController sendButtonPressed:nil];
         });
-        
-        it(@"calls the questionnaire viewcontroller to notify that the completion succeeded", ^{
-            [_mockQuestionnaireViewController stub:@selector() withBlock:<#^id(NSArray *params)block#>
-        });
     });
 });
 
