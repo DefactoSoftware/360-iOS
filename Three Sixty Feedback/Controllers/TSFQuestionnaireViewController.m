@@ -25,6 +25,8 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
         _questionnaire = [_questionnaireService.questionnaires firstObject];
         _competenceViewControllers = [[NSMutableArray alloc] init];
         _invalidCompetenceViewControllers = [[NSMapTable alloc] init];
+        _succeededCompetenceViewControllers = [[NSMapTable alloc] init];
+        _erroredCompetenceViewControllers = [[NSMapTable alloc] init];
     }
     return self;
 }
@@ -130,13 +132,14 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
         [self.currentCompetenceViewController updateCompetenceWithCompletion:^(BOOL success) {
             if (!success) {
                 [_self displayValidationError];
+                _completion(NO);
             } else {
                 _completion(YES);
             }
         }];
     } else {
         [self.invalidCompetenceViewControllers setObject:self.currentCompetenceViewController
-                                                  forKey:[NSNumber numberWithInteger:self.currentCompetenceViewController.index]];
+                                                  forKey:@(self.currentCompetenceViewController.index)];
         [self displayValidationError];
     }
 }
@@ -179,7 +182,18 @@ static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewContr
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed {
     if (completed) {
-        [self updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
+        __weak typeof (self) _self = self;
+        __weak TSFCompetenceViewController *_updatedCompetenceViewController = self.currentCompetenceViewController;
+        [self updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {
+            if (success) {
+                [_self.succeededCompetenceViewControllers setObject:_updatedCompetenceViewController
+                                                             forKey:@(_updatedCompetenceViewController.index)];
+            } else {
+                [_self.erroredCompetenceViewControllers setObject:_updatedCompetenceViewController
+                                                           forKey:@(_updatedCompetenceViewController.index)];
+            }
+            
+        }];
         self.currentCompetenceViewController = self.pendingCompetenceViewController;
     }
 }
