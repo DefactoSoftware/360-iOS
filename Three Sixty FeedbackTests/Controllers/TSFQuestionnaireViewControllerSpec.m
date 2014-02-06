@@ -120,7 +120,7 @@ describe(@"TSFQuestionnaireViewController", ^{
                                  willTransitionToViewControllers:@[_pendingCompetenceViewController]];
                 [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
                                               didFinishAnimating:YES
-                                         previousViewControllers:@[[[TSFCompetenceViewController alloc] init]]
+                                         previousViewControllers:@[_mockCompetenceViewController]
                                              transitionCompleted:YES];
                 
                 [[theValue([_questionnaireViewController.succeededCompetenceViewControllers count]) should] equal:theValue(1)];
@@ -250,6 +250,18 @@ describe(@"TSFQuestionnaireViewController", ^{
                                          previousViewControllers:@[_questionnaireViewController.competenceViewControllers[1]]
                                              transitionCompleted:YES];
                 [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[1]];
+            });
+            
+            it(@"updates the current competence view controller to the new one when navigating backwards", ^{
+                _questionnaireViewController.currentCompetenceViewController = _questionnaireViewController.competenceViewControllers[1];
+                
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                 willTransitionToViewControllers:@[_questionnaireViewController.competenceViewControllers[0]]];
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                              didFinishAnimating:YES
+                                         previousViewControllers:@[_questionnaireViewController.competenceViewControllers[0]]
+                                             transitionCompleted:YES];
+                [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[0]];
             });
             
             it(@"does not update the current competence view controller when navigating to the previous one", ^{
