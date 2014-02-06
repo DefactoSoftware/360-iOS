@@ -24,6 +24,7 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
         _questionnaireService = [TSFQuestionnaireService sharedService];
+        _assessorService = [TSFAssessorService sharedService];
         _questionnaire = [_questionnaireService.questionnaires firstObject];
         _competenceViewControllers = [[NSMutableArray alloc] init];
         _invalidCompetenceViewControllers = [[NSMapTable alloc] init];
@@ -227,6 +228,14 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     TSFCompetenceViewController *newCompetenceViewController = (TSFCompetenceViewController *)pendingViewControllers[0];
     self.pendingCompetenceViewController = newCompetenceViewController;
+}
+
+- (void)completeQuestionnaire {
+    [self.assessorService completeCurrentAssessmentWithSuccess:^(NSNumber *success) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 @end
