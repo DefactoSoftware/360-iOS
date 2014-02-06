@@ -21,6 +21,8 @@ typedef void (^TSFUpdateCurrentCompetenceViewControllerBlock)(BOOL);
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (nonatomic, strong) NSMutableArray *competenceViewControllers;
 @property (nonatomic, strong) NSMapTable *invalidCompetenceViewControllers;
+@property (nonatomic, strong) NSMapTable *succeededCompetenceViewControllers;
+@property (nonatomic, strong) NSMapTable *erroredCompetenceViewControllers;
 @property (nonatomic, strong) TSFCompetenceViewController *currentCompetenceViewController;
 
 - (void)loadCompetenceControllers;
