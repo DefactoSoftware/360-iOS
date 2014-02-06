@@ -203,19 +203,22 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed {
-    if (completed && (self.pendingCompetenceViewController.index >= self.currentCompetenceViewController.index) && (self.pendingCompetenceViewController.index < [self.competenceViewControllers count])) {
-        __weak typeof (self) _self = self;
-        __weak TSFCompetenceViewController *_updatedCompetenceViewController = self.currentCompetenceViewController;
-        [self updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {
-            if (success) {
-                [_self.succeededCompetenceViewControllers setObject:_updatedCompetenceViewController
-                                                             forKey:@(_updatedCompetenceViewController.index)];
-            } else {
-                [_self.erroredCompetenceViewControllers setObject:_updatedCompetenceViewController
-                                                           forKey:@(_updatedCompetenceViewController.index)];
-            }
-            
-        }];
+    if (completed) {
+        if (self.pendingCompetenceViewController.index >= self.currentCompetenceViewController.index && (self.pendingCompetenceViewController.index < [self.competenceViewControllers count])) {
+            __weak typeof (self) _self = self;
+            __weak TSFCompetenceViewController *_updatedCompetenceViewController = self.currentCompetenceViewController;
+            [self updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {
+                if (success) {
+                    [_self.succeededCompetenceViewControllers setObject:_updatedCompetenceViewController
+                                                                 forKey:@(_updatedCompetenceViewController.index)];
+                } else {
+                    [_self.erroredCompetenceViewControllers setObject:_updatedCompetenceViewController
+                                                               forKey:@(_updatedCompetenceViewController.index)];
+                }
+                
+            }];
+        }
+        
         self.currentCompetenceViewController = self.pendingCompetenceViewController;
     }
 }
