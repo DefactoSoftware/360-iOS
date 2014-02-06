@@ -220,12 +220,12 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
         }
         
         self.currentCompetenceViewController = self.pendingCompetenceViewController;
+        self.pageControl.currentPage = self.currentCompetenceViewController.index;
     }
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     TSFCompetenceViewController *newCompetenceViewController = (TSFCompetenceViewController *)pendingViewControllers[0];
-    self.pageControl.currentPage = newCompetenceViewController.index;
     self.pendingCompetenceViewController = newCompetenceViewController;
 }
 
