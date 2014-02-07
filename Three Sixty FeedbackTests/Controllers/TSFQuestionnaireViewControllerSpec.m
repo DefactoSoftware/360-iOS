@@ -320,6 +320,55 @@ describe(@"TSFQuestionnaireViewController", ^{
                 [[competenceController should] beKindOfClass:[TSFCompetenceViewController class]];
             });
         });
+        
+        context(@"checking failed competences before completing the questionnaire", ^{
+            __block id _mockPageController;
+            __block id _mockAssessorService;
+            
+            beforeEach(^{
+                _mockPageController = [KWMock mockForClass:[UIPageViewController class]];
+                _mockAssessorService = [KWMock mockForClass:[TSFAssessorService class]];
+                
+                _questionnaireViewController.pageController = _mockPageController;
+                _questionnaireViewController.assessorService = _mockAssessorService;
+                _questionnaireViewController.currentCompetenceViewController = _questionnaireViewController.competenceViewControllers[1];
+            });
+            
+            it(@"switches to the invalid competence before sending", ^{
+                [_questionnaireViewController.invalidCompetenceViewControllers setObject:_questionnaireViewController.competenceViewControllers[0]
+                                                                                  forKey:@(0)];
+                [_questionnaireViewController.invalidCompetenceViewControllers setObject:_questionnaireViewController.competenceViewControllers[1]
+                                                                                  forKey:@(1)];
+                [[_mockPageController should] receive:@selector(setViewControllers:direction:animated:completion:)
+                                        withArguments:@[_questionnaireViewController.competenceViewControllers[0]], [KWAny any], theValue(NO), [KWAny any]];
+                
+                BOOL check = [_questionnaireViewController completeQuestionnaireCheck];
+                
+                [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[0]];
+                [[theValue(check) should] equal:theValue(NO)];
+            });
+            
+            it(@"switches to the errored competence before sending", ^{
+                [_questionnaireViewController.erroredCompetenceViewControllers setObject:_questionnaireViewController.competenceViewControllers[0]
+                                                                                  forKey:@(0)];
+                [_questionnaireViewController.erroredCompetenceViewControllers setObject:_questionnaireViewController.competenceViewControllers[1]
+                                                                                  forKey:@(1)];
+                
+                [[_mockPageController should] receive:@selector(setViewControllers:direction:animated:completion:)
+                                        withArguments:@[_questionnaireViewController.competenceViewControllers[0]], [KWAny any], theValue(NO), [KWAny any]];
+                
+                BOOL check = [_questionnaireViewController completeQuestionnaireCheck];
+                
+                [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[0]];
+                [[theValue(check) should] equal:theValue(NO)];
+            });
+            
+            it(@"returns yes when there are no invalid or errored competences", ^{
+                BOOL check = [_questionnaireViewController completeQuestionnaireCheck];
+                
+                [[theValue(check) should] equal:theValue(YES)];
+            });
+        });
     });
 });
 
