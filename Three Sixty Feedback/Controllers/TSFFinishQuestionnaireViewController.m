@@ -42,7 +42,7 @@
 }
 
 - (IBAction)sendButtonPressed:(id)sender {
-    __weak typeof (self) _self = self;
+    __block typeof (self) _self = self;
     [self.questionnaireViewController completeQuestionnaireWithCompletion:^(BOOL success) {
         if (success) {
             [_self completionSuccess];
