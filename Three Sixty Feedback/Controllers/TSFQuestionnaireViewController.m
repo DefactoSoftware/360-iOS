@@ -45,6 +45,9 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     [self initializePageController];
 }
 
+#pragma mark - Initializing page controller and child viewcontrollers
+
+
 - (void)initializePageController {
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -130,6 +133,8 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     self.finishQuestionnaireViewController = finishQuestionnaireViewController;
 }
 
+#pragma mark - Alert messages
+
 - (void)displayValidationError {
     NSString *validationErrorMessage = TSFLocalizedString(@"TSFCompetenceControllerValidationErrorMessage", @"Please fill in every question before moving on.");
     NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
@@ -170,6 +175,8 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     [validationAlert show];
 }
 
+#pragma mark - Updating and completing
+
 - (void)updateCurrentCompetenceViewControllerWithCompletion:(TSFUpdateCurrentCompetenceViewControllerBlock)completion {
     __weak typeof (self) _self = self;
     __block TSFUpdateCurrentCompetenceViewControllerBlock _completion = completion;
@@ -194,7 +201,15 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     }
 }
 
-#pragma mark - PageViewController
+- (void)completeQuestionnaireWithCompletion:(TSFCompleteQuestionnaireViewControllerBlock)completion {
+    [self.assessorService completeCurrentAssessmentWithSuccess:^(NSNumber *success) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+#pragma mark - PageViewController delegate
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     TSFCompetenceViewController *competenceViewController = (TSFCompetenceViewController *)viewController;
@@ -257,14 +272,6 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     TSFCompetenceViewController *newCompetenceViewController = (TSFCompetenceViewController *)pendingViewControllers[0];
     self.pendingCompetenceViewController = newCompetenceViewController;
-}
-
-- (void)completeQuestionnaireWithCompletion:(TSFCompleteQuestionnaireViewControllerBlock)completion {
-    [self.assessorService completeCurrentAssessmentWithSuccess:^(NSNumber *success) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
 }
 
 @end
