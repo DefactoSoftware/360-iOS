@@ -41,6 +41,10 @@
     [self.view layoutSubviews];
 }
 
+- (void)canComplete {
+    self.sendButton.enabled = YES;
+}
+
 - (IBAction)sendButtonPressed:(id)sender {
     __block typeof (self) _self = self;
     [self.questionnaireViewController completeQuestionnaireWithCompletion:^(BOOL success) {

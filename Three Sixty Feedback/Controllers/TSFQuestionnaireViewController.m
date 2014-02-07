@@ -177,9 +177,8 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
 
 #pragma mark - Updating and completing
 
-- (void)updateCurrentCompetenceViewControllerWithCompletion:(TSFUpdateCurrentCompetenceViewControllerBlock)completion {
+- (void)updateCurrentCompetenceViewController {
     __weak typeof (self) _self = self;
-    __block TSFUpdateCurrentCompetenceViewControllerBlock _completion = completion;
     __block TSFCompetenceViewController *_updatingViewController = self.currentCompetenceViewController;
     
     if ([self.currentCompetenceViewController validateInput]) {
@@ -187,20 +186,22 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
         
         [self.currentCompetenceViewController updateCompetenceWithCompletion:^(BOOL success) {
             if (!success) {
-                [_self displayUpdateError];
-                [_self.erroredCompetenceViewControllers setObject:_updatingViewController forKey:@(_updatingViewController.index)];
-                _completion(NO);
+                [_self.erroredCompetenceViewControllers setObject:_updatingViewController
+                                                           forKey:@(_updatingViewController.index)];
             } else {
                 [_self.erroredCompetenceViewControllers removeObjectForKey:@(_updatingViewController.index)];
-                _completion(YES);
             }
+            [_self.updatedCompetenceViewControllers setObject:_updatingViewController
+                                                       forKey:@(_updatingViewController.index)];
+            [_self completeQuestionnaireCheck];
         }];
     } else {
         [self.invalidCompetenceViewControllers setObject:self.currentCompetenceViewController
                                                   forKey:@(self.currentCompetenceViewController.index)];
+        [_self.updatedCompetenceViewControllers setObject:_updatingViewController
+                                                   forKey:@(_updatingViewController.index)];
+        [_self completeQuestionnaireCheck];
     }
-    
-    [self.updatedCompetenceViewControllers setObject:_updatingViewController forKey:@(_updatingViewController.index)];
 }
 
 - (void)jumpToCompetencePage:(NSInteger)page {
@@ -213,7 +214,7 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     self.pageControl.currentPage = self.currentCompetenceViewController.index;
 }
 
-- (BOOL)completeQuestionnaireCheck {
+- (BOOL)failedCompetencesCheck {
     if ([self.invalidCompetenceViewControllers count]) {
         NSEnumerator *invalidControllersEnumerator = [self.invalidCompetenceViewControllers objectEnumerator];
         TSFCompetenceViewController *firstInvalidCompetenceViewController = [invalidControllersEnumerator nextObject];
@@ -227,14 +228,19 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
         [self displayUpdateError];
         return NO;
     }
-    
     return YES;
+}
+
+- (void)completeQuestionnaireCheck {
+    if ([self.updatedCompetenceViewControllers count] == [self.competenceViewControllers count]) {
+        [self.finishQuestionnaireViewController canComplete];
+    }
 }
 
 - (void)completeQuestionnaireWithCompletion:(TSFCompleteQuestionnaireViewControllerBlock)completion {
     __block TSFCompleteQuestionnaireViewControllerBlock _completion = completion;
     
-    if ([self completeQuestionnaireCheck]) {
+    if ([self failedCompetencesCheck]) {
         [self.assessorService completeCurrentAssessmentWithSuccess:^(NSNumber *success) {
             _completion(YES);
         } failure:^(NSError *error) {
@@ -284,9 +290,7 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
        transitionCompleted:(BOOL)completed {
     if (completed) {
         if (self.pendingCompetenceViewController.index >= self.currentCompetenceViewController.index && (self.pendingCompetenceViewController.index <= [self.competenceViewControllers count])) {
-            __block typeof (self) _self = self;
-            [self updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {
-            }];
+            [self updateCurrentCompetenceViewController];
         }
         
         self.currentCompetenceViewController = self.pendingCompetenceViewController;

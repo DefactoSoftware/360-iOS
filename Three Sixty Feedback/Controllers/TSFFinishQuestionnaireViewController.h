@@ -23,6 +23,7 @@
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) TSFQuestionnaireViewController *questionnaireViewController;
 
+- (void)canComplete;
 - (IBAction)sendButtonPressed:(id)sender;
 - (IBAction)previousButtonPressed:(id)sender;
 

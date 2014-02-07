@@ -145,7 +145,7 @@ describe(@"TSFQuestionnaireViewController", ^{
             it(@"stores the competence view controller in the list of validation errored controllers when validation fails", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(NO)];
                 
-                [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
+                [_questionnaireViewController updateCurrentCompetenceViewController];
                 [[theValue([_questionnaireViewController.invalidCompetenceViewControllers count]) should] equal:theValue(1)];
                 [[[_questionnaireViewController.invalidCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
                 [[[_questionnaireViewController.updatedCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
@@ -156,7 +156,7 @@ describe(@"TSFQuestionnaireViewController", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(YES)];
                 [[_mockCompetenceViewController should] receive:@selector(updateCompetenceWithCompletion:)];
                 
-                [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
+                [_questionnaireViewController updateCurrentCompetenceViewController];
                 
                 [[theValue([_questionnaireViewController.invalidCompetenceViewControllers count]) should] equal:theValue(0)];
             });
@@ -190,7 +190,7 @@ describe(@"TSFQuestionnaireViewController", ^{
                     return nil;
                 }];
                 
-                [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
+                [_questionnaireViewController updateCurrentCompetenceViewController];
                 
                 [[theValue([_questionnaireViewController.erroredCompetenceViewControllers count]) should] equal:theValue(0)];
             });
@@ -236,13 +236,13 @@ describe(@"TSFQuestionnaireViewController", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(YES)];
                 [[_mockCompetenceViewController should] receive:@selector(updateCompetenceWithCompletion:)];
                 
-                [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
+                [_questionnaireViewController updateCurrentCompetenceViewController];
             });
             
             it(@"does not call the update method when the validation fails", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(NO)];
                 
-                [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
+                [_questionnaireViewController updateCurrentCompetenceViewController];
             });
         });
         
@@ -343,7 +343,7 @@ describe(@"TSFQuestionnaireViewController", ^{
                 [[_mockPageController should] receive:@selector(setViewControllers:direction:animated:completion:)
                                         withArguments:@[_questionnaireViewController.competenceViewControllers[0]], [KWAny any], theValue(NO), [KWAny any]];
                 
-                BOOL check = [_questionnaireViewController completeQuestionnaireCheck];
+                BOOL check = [_questionnaireViewController failedCompetencesCheck];
                 
                 [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[0]];
                 [[theValue(check) should] equal:theValue(NO)];
@@ -358,16 +358,54 @@ describe(@"TSFQuestionnaireViewController", ^{
                 [[_mockPageController should] receive:@selector(setViewControllers:direction:animated:completion:)
                                         withArguments:@[_questionnaireViewController.competenceViewControllers[0]], [KWAny any], theValue(NO), [KWAny any]];
                 
-                BOOL check = [_questionnaireViewController completeQuestionnaireCheck];
+                BOOL check = [_questionnaireViewController failedCompetencesCheck];
                 
                 [[_questionnaireViewController.currentCompetenceViewController should] equal:_questionnaireViewController.competenceViewControllers[0]];
                 [[theValue(check) should] equal:theValue(NO)];
             });
             
             it(@"returns yes when there are no invalid or errored competences", ^{
-                BOOL check = [_questionnaireViewController completeQuestionnaireCheck];
+                BOOL check = [_questionnaireViewController failedCompetencesCheck];
                 
                 [[theValue(check) should] equal:theValue(YES)];
+            });
+        });
+        
+        context(@"notifying the FinishQuestionnaireViewController when every competence is updated", ^{
+            __block id _mockFinishQuestionnaireViewController;
+            __block id _mockCompetenceViewController;
+            
+            beforeEach(^{
+                _mockFinishQuestionnaireViewController = [KWMock mockForClass:[TSFFinishQuestionnaireViewController class]];
+                _mockCompetenceViewController = [KWMock mockForClass:[TSFCompetenceViewController class]];
+                _questionnaireViewController.finishQuestionnaireViewController = _mockFinishQuestionnaireViewController;
+                _questionnaireViewController.competenceViewControllers[0] = _mockCompetenceViewController;
+                _questionnaireViewController.currentCompetenceViewController = _mockCompetenceViewController;
+                
+                [_mockCompetenceViewController stub:@selector(validateInput) andReturn:theValue(YES)];
+                [_mockCompetenceViewController stub:@selector(index) andReturn:theValue(0)];
+            });
+            
+            it(@"notifies the FinishQuestionnaireViewController that every competence is updated", ^{
+                TSFCompetenceViewController *lastCompetenceViewController = _questionnaireViewController.competenceViewControllers[1];
+                [_questionnaireViewController.updatedCompetenceViewControllers setObject:lastCompetenceViewController
+                                                                                  forKey:@(lastCompetenceViewController.index)];
+                
+                [_mockCompetenceViewController stub:@selector(updateCompetenceWithCompletion:) withBlock:^id(NSArray *params) {
+                    void (^completionBlock)(BOOL success) = params[0];
+                    completionBlock(YES);
+                    return nil;
+                }];
+                [[_mockFinishQuestionnaireViewController should] receive:@selector(canComplete)];
+                
+                [_questionnaireViewController pageViewController:_questionnaireViewController.pageController
+                                              didFinishAnimating:YES
+                                         previousViewControllers:@[_questionnaireViewController.competenceViewControllers[0]]
+                                             transitionCompleted:YES];
+            });
+            
+            it(@"does not notify the FinishQuestionnaireController when not every competence is updated", ^{
+                [_questionnaireViewController completeQuestionnaireCheck];
             });
         });
     });

@@ -56,6 +56,11 @@ describe(@"TSFFinishQuestionnaireViewController", ^{
         [[theValue(_finishQuestionnaireViewController.sendButton.enabled) should] equal:theValue(NO)];
     });
     
+    it(@"makes the send button enabled when the questionnaire is completable", ^{
+        [_finishQuestionnaireViewController canComplete];
+        [[theValue(_finishQuestionnaireViewController.sendButton.enabled) should] equal:theValue(YES)];
+    });
+    
     context(@"iPad", ^{
         beforeEach(^{
             _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
