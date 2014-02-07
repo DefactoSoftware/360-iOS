@@ -52,6 +52,10 @@ describe(@"TSFFinishQuestionnaireViewController", ^{
         [[_finishQuestionnaireViewController.previousButton shouldNot] beNil];
     });
     
+    it(@"disables the send button initially", ^{
+        [[theValue(_finishQuestionnaireViewController.sendButton.enabled) should] equal:theValue(NO)];
+    });
+    
     context(@"iPad", ^{
         beforeEach(^{
             _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];

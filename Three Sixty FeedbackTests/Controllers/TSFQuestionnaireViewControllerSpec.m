@@ -123,7 +123,7 @@ describe(@"TSFQuestionnaireViewController", ^{
                 [_mockCompetenceViewController stub:@selector(index) andReturn:theValue(_index)];
             });
             
-            it(@"stores the competence view controller in the list of succeeded controllers when the update succeeds", ^{
+            it(@"stores the competence view controller in the list of updated controllers when the update is done", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(YES)];
                 [_mockCompetenceViewController stub:@selector(updateCompetenceWithCompletion:) withBlock:^id(NSArray *params) {
                     void (^completionBlock)(BOOL success) = params[0];
@@ -138,8 +138,8 @@ describe(@"TSFQuestionnaireViewController", ^{
                                          previousViewControllers:@[_mockCompetenceViewController]
                                              transitionCompleted:YES];
                 
-                [[theValue([_questionnaireViewController.succeededCompetenceViewControllers count]) should] equal:theValue(1)];
-                [[[_questionnaireViewController.succeededCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
+                [[theValue([_questionnaireViewController.updatedCompetenceViewControllers count]) should] equal:theValue(1)];
+                [[[_questionnaireViewController.updatedCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
             });
             
             it(@"stores the competence view controller in the list of validation errored controllers when validation fails", ^{
@@ -148,6 +148,7 @@ describe(@"TSFQuestionnaireViewController", ^{
                 [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
                 [[theValue([_questionnaireViewController.invalidCompetenceViewControllers count]) should] equal:theValue(1)];
                 [[[_questionnaireViewController.invalidCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
+                [[[_questionnaireViewController.updatedCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
             });
             
             it(@"removes the stored invalid controller when the update succeeds", ^{
@@ -177,6 +178,7 @@ describe(@"TSFQuestionnaireViewController", ^{
                 
                 [[theValue([_questionnaireViewController.erroredCompetenceViewControllers count]) should] equal:theValue(1)];
                 [[[_questionnaireViewController.erroredCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
+                [[[_questionnaireViewController.updatedCompetenceViewControllers objectForKey:@(_index)] should] equal:_mockCompetenceViewController];
             });
             
             it(@"removes the stored errored controller when the update succeeds", ^{
@@ -227,18 +229,17 @@ describe(@"TSFQuestionnaireViewController", ^{
                 _mockCompetenceViewController = [KWMock mockForClass:[TSFCompetenceViewController class]];
                 _questionnaireViewController.currentCompetenceViewController = _mockCompetenceViewController;
                 _questionnaireViewController.competenceViewControllers[0] = _mockCompetenceViewController;
+                [_mockCompetenceViewController stub:@selector(index)];
             });
             
             it(@"calls the update method on the competence view controller when the validation succeeds", ^{
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(YES)];
                 [[_mockCompetenceViewController should] receive:@selector(updateCompetenceWithCompletion:)];
-                [[_mockCompetenceViewController should] receive:@selector(index)];
                 
                 [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
             });
             
             it(@"does not call the update method when the validation fails", ^{
-                [[_mockCompetenceViewController should] receive:@selector(index)];
                 [[_mockCompetenceViewController should] receive:@selector(validateInput) andReturn:theValue(NO)];
                 
                 [_questionnaireViewController updateCurrentCompetenceViewControllerWithCompletion:^(BOOL success) {}];
