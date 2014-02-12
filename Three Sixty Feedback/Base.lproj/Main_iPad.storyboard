@@ -226,6 +226,41 @@
                                             <outlet property="keyBehaviourRatingView" destination="gLN-Li-kOe" id="v2E-lC-j97"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFCommentaryCell" rowHeight="114" id="knG-w1-ygj" customClass="TSFCommentaryCell">
+                                        <rect key="frame" x="0.0" y="231" width="768" height="114"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="knG-w1-ygj" id="ahV-kO-vSw">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="113"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="728" translatesAutoresizingMaskIntoConstraints="NO" id="yUB-WB-3tC">
+                                                    <rect key="frame" x="20" y="20" width="728" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Z7w-WX-c6G"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FfH-3z-4vP">
+                                                    <rect key="frame" x="20" y="49" width="728" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yUB-WB-3tC" firstAttribute="leading" secondItem="ahV-kO-vSw" secondAttribute="leading" constant="20" symbolic="YES" id="3oH-ki-5GG"/>
+                                                <constraint firstAttribute="trailing" secondItem="yUB-WB-3tC" secondAttribute="trailing" constant="20" symbolic="YES" id="4sr-h7-exm"/>
+                                                <constraint firstItem="yUB-WB-3tC" firstAttribute="top" secondItem="ahV-kO-vSw" secondAttribute="top" constant="20" symbolic="YES" id="NmL-DG-I62"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentaryTextView" destination="FfH-3z-4vP" id="g2b-6D-Iyq"/>
+                                            <outlet property="titleLabel" destination="yUB-WB-3tC" id="wuu-0F-Ubd"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
