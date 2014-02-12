@@ -28,6 +28,7 @@
 		52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */; };
 		52ACE46B189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE46A189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m */; };
 		52ACE46E189EDC040095F650 /* TSFFinishQuestionnaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE46D189EDC040095F650 /* TSFFinishQuestionnaireViewController.m */; };
+		52BD22C618ABFE1900D14390 /* TSFCommentaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BD22C518ABFE1900D14390 /* TSFCommentaryCell.m */; };
 		52E80F4A189BE1D4007A8A48 /* TSFCompetenceTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */; };
 		52E80F4D189BE313007A8A48 /* TSFKeyBehaviourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F4C189BE313007A8A48 /* TSFKeyBehaviourCell.m */; };
 		52E80F51189BE494007A8A48 /* TSFKeyBehaviourRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F50189BE494007A8A48 /* TSFKeyBehaviourRatingView.m */; };
@@ -123,6 +124,8 @@
 		52ACE46A189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFFinishQuestionnaireViewControllerSpec.m; path = Controllers/TSFFinishQuestionnaireViewControllerSpec.m; sourceTree = "<group>"; };
 		52ACE46C189EDC040095F650 /* TSFFinishQuestionnaireViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFFinishQuestionnaireViewController.h; path = Controllers/TSFFinishQuestionnaireViewController.h; sourceTree = "<group>"; };
 		52ACE46D189EDC040095F650 /* TSFFinishQuestionnaireViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFFinishQuestionnaireViewController.m; path = Controllers/TSFFinishQuestionnaireViewController.m; sourceTree = "<group>"; };
+		52BD22C418ABFE1900D14390 /* TSFCommentaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCommentaryCell.h; path = Views/Cells/TSFCommentaryCell.h; sourceTree = "<group>"; };
+		52BD22C518ABFE1900D14390 /* TSFCommentaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCommentaryCell.m; path = Views/Cells/TSFCommentaryCell.m; sourceTree = "<group>"; };
 		52E80F45189BDCC1007A8A48 /* TSFGenerics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
 		52E80F48189BE1D4007A8A48 /* TSFCompetenceTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCompetenceTitleCell.h; path = Views/Cells/TSFCompetenceTitleCell.h; sourceTree = "<group>"; };
 		52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceTitleCell.m; path = Views/Cells/TSFCompetenceTitleCell.m; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				526B425F18B5004700DC1310 /* TSFLoginViewControllerSpec.m */,
 				527AF15818B62E7400604A3A /* TSFMainViewControllerSpec.m */,
 				5226DBD018B748D100CCDAE4 /* TSFPasswordRequestViewControllerSpec.m */,
+				52BD22C418ABFE1900D14390 /* TSFCommentaryCell.h */,
+				52BD22C518ABFE1900D14390 /* TSFCommentaryCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -670,6 +675,7 @@
 				E455FF8B18990E8200F8C04C /* TSFKeyBehaviour.m in Sources */,
 				527AF15C18B62EE200604A3A /* TSFMainViewController.m in Sources */,
 				E4A7D79B18997A2500276FC0 /* TSFAssessorService.m in Sources */,
+				52BD22C618ABFE1900D14390 /* TSFCommentaryCell.m in Sources */,
 				52ECB6EB189FF403007C7636 /* TSFBaseViewController.m in Sources */,
 				52ECB6F718A0E511007C7636 /* TSFQuestionnaireViewController.m in Sources */,
 				E4405874189A83BC001AEE13 /* TSFCompetenceViewController.m in Sources */,
