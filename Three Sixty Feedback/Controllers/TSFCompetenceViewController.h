@@ -14,7 +14,7 @@
 
 typedef void (^TSFUpdateCompetenceBlock)(BOOL);
 
-@interface TSFCompetenceViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TSFCompetenceViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) TSFCompetenceService *competenceService;

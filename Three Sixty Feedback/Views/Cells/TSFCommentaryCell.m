@@ -7,7 +7,17 @@
 //
 
 #import "TSFCommentaryCell.h"
+#import "TSFGenerics.h"
+#import "UIColor+TSFColor.h"
 
 @implementation TSFCommentaryCell
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.titleLabel.text = TSFLocalizedString(@"TSFCommentaryCellTitle", @"Commentaar (optioneel)");
+    self.textView.layer.borderWidth = 1.0f;
+    self.textView.layer.cornerRadius = 5.0f;
+    self.textView.layer.borderColor = [[UIColor TSFLightGreyColor] CGColor];
+}
 
 @end

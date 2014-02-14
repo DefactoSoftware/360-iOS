@@ -4,6 +4,7 @@ target :"Three Sixty Feedback" do
   pod 'AFNetworking'
   pod 'NZAlertView'
   pod 'CRToast'
+  pod 'TPKeyboardAvoiding'
 end
 
 target :"Three Sixty FeedbackTests", :exclusive => true do
