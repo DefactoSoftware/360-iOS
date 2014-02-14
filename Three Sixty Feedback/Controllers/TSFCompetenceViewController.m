@@ -9,11 +9,17 @@
 #import "TSFCompetenceViewController.h"
 #import "TSFCompetenceTitleCell.h"
 #import "TSFKeyBehaviourCell.h"
+#import "TSFCommentaryCell.h"
 #import "UIColor+TSFColor.h"
 
 static NSString *const TSFCompetenceTitleCellIdentifier = @"TSFCompetenceTitleCell";
 static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
+static NSString *const TSFCommentaryCellIdentifier = @"TSFCommentaryCell";
 static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSegue";
+
+@interface TSFCompetenceViewController()
+@property (nonatomic, strong) UITextView *commentaryTextView;
+@end
 
 @implementation TSFCompetenceViewController
 
@@ -44,6 +50,12 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpKeyBehavioursTable];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void)dismissKeyboard {
+    [self.commentaryTextView resignFirstResponder];
 }
 
 - (void)setUpKeyBehavioursTable {    
@@ -97,6 +109,10 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     }];
 }
 
+- (NSInteger)numberOfCells {
+    return self.competence.keyBehaviours.count + 2;
+}
+
 #pragma mark - UITableView delegate
 
 - (TSFCompetenceTitleCell *)competenceTitleCellWithCompetence:(TSFCompetence *)competence {
@@ -125,9 +141,22 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     return keyBehaviourCell;
 }
 
+- (TSFCommentaryCell *)commentaryCell {
+    TSFCommentaryCell *commentaryCell = [self.keyBehavioursTableView dequeueReusableCellWithIdentifier:TSFCommentaryCellIdentifier];
+    if (!commentaryCell) {
+        commentaryCell = [[TSFCommentaryCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                            reuseIdentifier:TSFCompetenceTitleCellIdentifier];
+    }
+    self.commentaryTextView = commentaryCell.textView;
+    self.commentaryTextView.delegate = self;
+    return commentaryCell;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return [self competenceTitleCellWithCompetence:self.competence];
+    } else if (indexPath.row == [self numberOfCells] - 1) {
+        return [self commentaryCell];
     } else {
         NSInteger keyBehaviourNumber = indexPath.row - 1;
         TSFKeyBehaviour *currentKeyBehaviour = self.competence.keyBehaviours[keyBehaviourNumber];
@@ -137,13 +166,14 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger numberOfRows = [self.competence.keyBehaviours count] + 1;
-    return numberOfRows;
+    return [self numberOfCells];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return 70.0f;
+    } else if (indexPath.row == [self numberOfCells] - 1) {
+        return 120.0f;
     } else {
         TSFKeyBehaviour *currentKeyBehaviour = self.competence.keyBehaviours[indexPath.row - 1];
 

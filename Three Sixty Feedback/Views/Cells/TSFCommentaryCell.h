@@ -10,5 +10,5 @@
 
 @interface TSFCommentaryCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UITextField *commentaryTextView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
