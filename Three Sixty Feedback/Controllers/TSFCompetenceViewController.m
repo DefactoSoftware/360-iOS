@@ -17,10 +17,6 @@ static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 static NSString *const TSFCommentaryCellIdentifier = @"TSFCommentaryCell";
 static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSegue";
 
-@interface TSFCompetenceViewController()
-@property (nonatomic, strong) UITextView *commentaryTextView;
-@end
-
 @implementation TSFCompetenceViewController
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -97,6 +93,8 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
         TSFKeyBehaviour *keyBehaviour = self.competence.keyBehaviours[i];
         keyBehaviour.rating = @(rating);
     }
+    
+    self.competence.comment = self.commentaryTextView.text;
 
     [self.competenceService updateCompetence:self.competence
                             forQuestionnaire:self.questionnaire
@@ -149,6 +147,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     }
     self.commentaryTextView = commentaryCell.textView;
     self.commentaryTextView.delegate = self;
+    self.commentaryTextView.text = self.competence.comment;
     return commentaryCell;
 }
 
