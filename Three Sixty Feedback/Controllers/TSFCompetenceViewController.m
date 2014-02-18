@@ -54,7 +54,8 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     [self.commentaryTextView resignFirstResponder];
 }
 
-- (void)setUpKeyBehavioursTable {    
+- (void)setUpKeyBehavioursTable {
+    self.keyBehavioursTableView.separatorInset = UIEdgeInsetsMake(0, 10.0f, 0, 10.0f);
     self.keyBehavioursTableView.dataSource = self;
     self.keyBehavioursTableView.delegate = self;
     
@@ -147,7 +148,13 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
     }
     self.commentaryTextView = commentaryCell.textView;
     self.commentaryTextView.delegate = self;
-    self.commentaryTextView.text = self.competence.comment;
+    
+    if (![self.competence.comment isKindOfClass:[NSNull class]]) {
+        self.commentaryTextView.text = self.competence.comment;
+    }
+    
+    commentaryCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return commentaryCell;
 }
 
