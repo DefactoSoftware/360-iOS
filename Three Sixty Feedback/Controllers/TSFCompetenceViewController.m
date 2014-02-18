@@ -15,6 +15,7 @@
 static NSString *const TSFCompetenceTitleCellIdentifier = @"TSFCompetenceTitleCell";
 static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 static NSString *const TSFCommentaryCellIdentifier = @"TSFCommentaryCell";
+static NSString *const TSFNavigationCellIdentifier = @"TSFNavigationCell";
 static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSegue";
 
 @implementation TSFCompetenceViewController

@@ -62,6 +62,22 @@ describe(@"TSFQuestionnaireViewController", ^{
             [[_questionnaireViewController.pageControl shouldNot] beNil];
         });
         
+        it(@"has an outlet for the first key behaviour button", ^{
+            [[_questionnaireViewController.firstButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the last key behaviour button", ^{
+            [[_questionnaireViewController.lastButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the next key behaviour button", ^{
+            [[_questionnaireViewController.nextButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the previous key behaviour button", ^{
+            [[_questionnaireViewController.previousButton shouldNot] beNil];
+        });
+        
         it(@"has a reference to the questionnaire service", ^{
             [[_questionnaireViewController.questionnaireService shouldNot] beNil];
             [[_questionnaireViewController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];

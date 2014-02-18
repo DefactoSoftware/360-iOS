@@ -30,6 +30,10 @@ typedef void (^TSFCompleteQuestionnaireViewControllerBlock)(BOOL);
 @property (nonatomic, strong) NSMapTable *erroredCompetenceViewControllers;
 @property (nonatomic, strong) TSFCompetenceViewController *currentCompetenceViewController;
 @property (nonatomic, strong) TSFFinishQuestionnaireViewController *finishQuestionnaireViewController;
+@property (weak, nonatomic) IBOutlet UIButton *previousButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (weak, nonatomic) IBOutlet UIButton *firstButton;
+@property (weak, nonatomic) IBOutlet UIButton *lastButton;
 
 - (void)loadCompetenceControllers;
 - (void)createFinishQuestionnaireViewController;
@@ -38,5 +42,9 @@ typedef void (^TSFCompleteQuestionnaireViewControllerBlock)(BOOL);
 - (void)completeQuestionnaireCheck;
 - (void)updateCurrentCompetenceViewController;
 - (void)completeQuestionnaireWithCompletion:(TSFCompleteQuestionnaireViewControllerBlock)completion;
+- (IBAction)previousButtonPressed:(id)sender;
+- (IBAction)firstButtonPressed:(id)sender;
+- (IBAction)lastButtonPressed:(id)sender;
+- (IBAction)nextButtonPressed:(id)sender;
 
 @end

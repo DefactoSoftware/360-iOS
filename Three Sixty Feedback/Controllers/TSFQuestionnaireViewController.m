@@ -58,6 +58,9 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     CGRect frame = self.view.bounds;
     frame.origin.y = self.navigationController.navigationBar.frame.size.height;
     frame.size.height -= self.pageControl.frame.size.height;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        frame.size.height -= self.firstButton.frame.size.height + 20.0f;
+    }
     self.pageController.view.frame = frame;
     
     if ([self.competenceViewControllers count]) {
@@ -247,6 +250,18 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
             _completion(NO);
         }];
     }
+}
+
+- (IBAction)previousButtonPressed:(id)sender {
+}
+
+- (IBAction)firstButtonPressed:(id)sender {
+}
+
+- (IBAction)lastButtonPressed:(id)sender {
+}
+
+- (IBAction)nextButtonPressed:(id)sender {
 }
 
 #pragma mark - PageViewController delegate

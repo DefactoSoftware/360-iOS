@@ -137,16 +137,99 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="CVi-M4-hmy">
-                                <rect key="frame" x="0.0" y="967" width="768" height="37"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OCH-pr-Mc3">
+                                <rect key="frame" x="0.0" y="922" width="768" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </pageControl>
+                                <subviews>
+                                    <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="CVi-M4-hmy">
+                                        <rect key="frame" x="0.0" y="65" width="768" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </pageControl>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Axk-f2-5fM">
+                                        <rect key="frame" x="118" y="34" width="50" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" image="backward-7" backgroundImage="LightGrayButton">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="previousButtonPressed:" destination="oV1-Nx-ZRL" eventType="touchUpInside" id="UTh-HX-0wT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSP-bb-jFh">
+                                        <rect key="frame" x="20" y="34" width="90" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="0R4-sN-XcA"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" title="Begin" backgroundImage="LightGrayButton">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="firstButtonPressed:" destination="oV1-Nx-ZRL" eventType="touchUpInside" id="8wT-ru-0zd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCb-t6-E3Q">
+                                        <rect key="frame" x="658" y="34" width="90" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="XpO-48-YAq"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" title="Eind" backgroundImage="LightGrayButton">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="lastButtonPressed:" destination="oV1-Nx-ZRL" eventType="touchUpInside" id="pzO-UP-LkB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hag-So-6nU">
+                                        <rect key="frame" x="600" y="34" width="50" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" image="forward-7" backgroundImage="LightGrayButton">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButtonPressed:" destination="oV1-Nx-ZRL" eventType="touchUpInside" id="dKX-3B-cyp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Axk-f2-5fM" secondAttribute="bottom" constant="34" id="1xo-IV-f67"/>
+                                    <constraint firstItem="bSP-bb-jFh" firstAttribute="leading" secondItem="OCH-pr-Mc3" secondAttribute="leading" constant="20" symbolic="YES" id="4t4-O2-GoN"/>
+                                    <constraint firstItem="Axk-f2-5fM" firstAttribute="top" secondItem="OCH-pr-Mc3" secondAttribute="top" constant="34" id="IyB-rd-nNy"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hag-So-6nU" secondAttribute="bottom" constant="34" id="MfU-VN-2qU"/>
+                                    <constraint firstItem="CVi-M4-hmy" firstAttribute="leading" secondItem="OCH-pr-Mc3" secondAttribute="leading" id="PlN-cl-DjI"/>
+                                    <constraint firstAttribute="bottom" secondItem="CVi-M4-hmy" secondAttribute="bottom" id="Qz9-Ix-VDQ"/>
+                                    <constraint firstItem="iCb-t6-E3Q" firstAttribute="top" secondItem="Hag-So-6nU" secondAttribute="top" id="UST-eA-5oa"/>
+                                    <constraint firstAttribute="trailing" secondItem="iCb-t6-E3Q" secondAttribute="trailing" constant="20" symbolic="YES" id="be9-Qf-Ykk"/>
+                                    <constraint firstItem="iCb-t6-E3Q" firstAttribute="leading" secondItem="Hag-So-6nU" secondAttribute="trailing" constant="8" id="e8j-FA-d9s"/>
+                                    <constraint firstItem="bSP-bb-jFh" firstAttribute="top" secondItem="OCH-pr-Mc3" secondAttribute="top" constant="34" id="hAC-cI-HoJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="CVi-M4-hmy" secondAttribute="trailing" id="kCY-db-wf1"/>
+                                    <constraint firstItem="iCb-t6-E3Q" firstAttribute="bottom" secondItem="Hag-So-6nU" secondAttribute="bottom" id="mY9-d8-hyA"/>
+                                    <constraint firstAttribute="bottom" secondItem="bSP-bb-jFh" secondAttribute="bottom" constant="34" id="qBk-nN-xIL"/>
+                                    <constraint firstItem="Hag-So-6nU" firstAttribute="top" secondItem="OCH-pr-Mc3" secondAttribute="top" constant="34" id="txQ-5Q-sIT"/>
+                                    <constraint firstItem="Axk-f2-5fM" firstAttribute="leading" secondItem="bSP-bb-jFh" secondAttribute="trailing" constant="8" symbolic="YES" id="zrX-Vh-8ee"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="OCH-pr-Mc3" secondAttribute="bottom" id="E9W-tm-hny"/>
+                            <constraint firstAttribute="trailing" secondItem="OCH-pr-Mc3" secondAttribute="trailing" id="Mtw-cy-AIk"/>
+                            <constraint firstItem="OCH-pr-Mc3" firstAttribute="leading" secondItem="ZK9-br-DfD" secondAttribute="leading" id="fgn-Dg-rEV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qGW-a9-Cj9"/>
                     <connections>
+                        <outlet property="firstButton" destination="bSP-bb-jFh" id="Nbz-RN-pKR"/>
+                        <outlet property="lastButton" destination="iCb-t6-E3Q" id="3VQ-iN-gua"/>
+                        <outlet property="nextButton" destination="Hag-So-6nU" id="ofc-w0-fn9"/>
                         <outlet property="pageControl" destination="CVi-M4-hmy" id="VkG-hH-kjl"/>
+                        <outlet property="previousButton" destination="Axk-f2-5fM" id="aIy-fb-hkk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mLt-M5-gCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -393,6 +476,11 @@
             <point key="canvasLocation" x="501" y="-718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LightGrayButton" width="50" height="50"/>
+        <image name="backward-7" width="30" height="30"/>
+        <image name="forward-7" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>
