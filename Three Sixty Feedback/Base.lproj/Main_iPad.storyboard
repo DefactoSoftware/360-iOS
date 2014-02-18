@@ -118,11 +118,12 @@
                         <outlet property="subjectLabel" destination="fgA-6d-bh7" id="qx1-og-CUH"/>
                         <outlet property="timeLabel" destination="ZDK-Dc-pOG" id="z5c-1n-y2a"/>
                         <outlet property="titleLabel" destination="gIX-r6-E7T" id="Rix-fL-Bb0"/>
+                        <segue destination="oV1-Nx-ZRL" kind="push" identifier="TSFStartQuestionnaireSegue" id="Ehi-tb-Yb6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9F-ww-lxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1391" y="-711"/>
+            <point key="canvasLocation" x="1411" y="-711"/>
         </scene>
         <!--Questionnaire View Controller-->
         <scene sceneID="3xQ-KX-XdI">
@@ -142,6 +143,7 @@
                             </pageControl>
                         </subviews>
                     </scrollView>
+                    <navigationItem key="navigationItem" id="qGW-a9-Cj9"/>
                     <connections>
                         <outlet property="pageControl" destination="7Dp-fH-Bfu" id="5iZ-T9-Tt3"/>
                         <outlet property="scrollView" destination="5q3-Ng-EUO" id="mNy-Iy-ijO"/>
@@ -163,7 +165,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CXG-NB-dYQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CXG-NB-dYQ" customClass="TPKeyboardAvoidingTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
