@@ -25,6 +25,7 @@ typedef void (^TSFUpdateCompetenceBlock)(BOOL);
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) UITextView *commentaryTextView;
 
 - (TSFCompetenceViewController *)initWithCompetence:(TSFCompetence *)competence questionnaire:(TSFQuestionnaire *)questionnaire;
 - (BOOL)validateInput;

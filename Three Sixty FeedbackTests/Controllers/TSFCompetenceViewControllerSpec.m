@@ -79,25 +79,50 @@ describe(@"TSFCompetenceViewController", ^{
         });
     });
     
-    it(@"calls the competence service to update the competence when navigating to the next competence", ^{
-        id mockCompetenceService = [KWMock mockForClass:[TSFCompetenceService class]];
-        _competenceViewController.competenceService = mockCompetenceService;
+    context(@"calling the competence service to update", ^{
+        __block id _mockCompetenceService;
+        __block TSFQuestionnaire *_stubQuestionnaire;
+        __block TSFCompetence *_stubCompetence;
+        __block TSFKeyBehaviour *_stubKeyBehaviour;
         
-        TSFQuestionnaire *stubQuestionnaire = [[TSFQuestionnaire alloc] init];
-        TSFCompetence *stubCompetence = [[TSFCompetence alloc] init];
-        TSFKeyBehaviour *stubKeyBehaviour = [[TSFKeyBehaviour alloc] init];
-        stubCompetence.keyBehaviours = @[stubKeyBehaviour];
-        _competenceViewController.questionnaire = stubQuestionnaire;
-        _competenceViewController.competence = stubCompetence;
+        beforeEach(^{
+            _mockCompetenceService = [KWMock mockForClass:[TSFCompetenceService class]];
+            _competenceViewController.competenceService = _mockCompetenceService;
+            
+            _stubQuestionnaire = [[TSFQuestionnaire alloc] init];
+            _stubCompetence = [[TSFCompetence alloc] init];
+            _stubKeyBehaviour = [[TSFKeyBehaviour alloc] init];
+            _stubCompetence.keyBehaviours = @[_stubKeyBehaviour];
+            _competenceViewController.questionnaire = _stubQuestionnaire;
+            _competenceViewController.competence = _stubCompetence;
+            
+            TSFKeyBehaviourRatingView *stubKeyBehaviourRatingView = [[TSFKeyBehaviourRatingView alloc] init];
+            stubKeyBehaviourRatingView.selectedRating = 1;
+            [_competenceViewController.currentKeyBehaviourRatingViews addObject:stubKeyBehaviourRatingView];
+        });
         
-        TSFKeyBehaviourRatingView *stubKeyBehaviourRatingView = [[TSFKeyBehaviourRatingView alloc] init];
-        stubKeyBehaviourRatingView.selectedRating = 1;
-        [_competenceViewController.currentKeyBehaviourRatingViews addObject:stubKeyBehaviourRatingView];
+        it(@"calls the competence service to update the competence when navigating to the next competence", ^{
+            [[_mockCompetenceService should] receive:@selector(updateCompetence:forQuestionnaire:withSuccess:failure:)
+                                      withArguments:_stubCompetence, _stubQuestionnaire, [KWAny any], [KWAny any]];
+            
+            [_competenceViewController updateCompetenceWithCompletion:nil];
+        });
         
-        [[mockCompetenceService should] receive:@selector(updateCompetence:forQuestionnaire:withSuccess:failure:)
-                                  withArguments:stubCompetence, stubQuestionnaire, [KWAny any], [KWAny any]];
-        
-        [_competenceViewController updateCompetenceWithCompletion:nil];
+        it(@"calls the competence service to update with the correct commentary", ^{
+            [[_mockCompetenceService should] receive:@selector(updateCompetence:forQuestionnaire:withSuccess:failure:)];
+            __block NSString *_stubComment = [NSString stringWithFormat:@"%d", arc4random()];
+            
+            [_mockCompetenceService stub:@selector(updateCompetence:forQuestionnaire:withSuccess:failure:) withBlock:^id(NSArray *params) {
+                TSFCompetence *stubCompetence = (TSFCompetence *)params[0];
+                [[stubCompetence.comment should] equal:_stubComment];
+                
+                return nil;
+            }];
+            
+            _competenceViewController.commentaryTextView = [[UITextView alloc] init];
+            _competenceViewController.commentaryTextView.text = _stubComment;
+            [_competenceViewController updateCompetenceWithCompletion:nil];
+        });
     });
     
     context(@"validating the user input", ^{
