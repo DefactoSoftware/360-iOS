@@ -16,6 +16,7 @@ static NSString *const TSFCompetenceTitleCellIdentifier = @"TSFCompetenceTitleCe
 static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
 static NSString *const TSFCommentaryCellIdentifier = @"TSFCommentaryCell";
 static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSegue";
+static NSInteger const TSFCompetenceViewControllerExtraCellsCount = 2;
 
 @implementation TSFCompetenceViewController
 
@@ -109,7 +110,7 @@ static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSeg
 }
 
 - (NSInteger)numberOfCells {
-    return self.competence.keyBehaviours.count + 2;
+    return self.competence.keyBehaviours.count + TSFCompetenceViewControllerExtraCellsCount;
 }
 
 #pragma mark - UITableView delegate
