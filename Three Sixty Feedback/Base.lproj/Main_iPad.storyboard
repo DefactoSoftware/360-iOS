@@ -381,6 +381,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAY-ni-aKe">
+                                <rect key="frame" x="115" y="338" width="539" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="oMw-Nf-rSz" eventType="touchUpInside" id="mCh-v6-S7l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -388,6 +398,7 @@
                     <connections>
                         <outlet property="emailLabel" destination="s9R-Ub-e9g" id="p9Q-pw-CZF"/>
                         <outlet property="emailTextField" destination="7EZ-7p-OZI" id="N1X-7g-Y9M"/>
+                        <outlet property="loginButton" destination="hAY-ni-aKe" id="HsQ-rR-mgx"/>
                         <outlet property="passwordLabel" destination="XpU-qp-wy9" id="W9t-xC-7BF"/>
                         <outlet property="passwordTextField" destination="DWp-0V-dQW" id="ny8-Q7-BBp"/>
                     </connections>
