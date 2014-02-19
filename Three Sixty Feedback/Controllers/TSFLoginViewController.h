@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TSFLoginViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @end

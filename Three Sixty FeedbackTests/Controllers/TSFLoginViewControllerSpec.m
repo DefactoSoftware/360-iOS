@@ -19,10 +19,21 @@ describe(@"TSFLoginViewController", ^{
         beforeEach(^{
             _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
             _loginViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFLoginViewController"];
+            [[[_loginViewController view] shouldNot] beNil];
         });
         
         it(@"instantiates correctly from the storyboard", ^{
             [[_loginViewController shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the email adress field and label", ^{
+            [[_loginViewController.emailLabel shouldNot] beNil];
+            [[_loginViewController.emailTextField shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the password field and label", ^{
+            [[_loginViewController.passwordLabel shouldNot] beNil];
+            [[_loginViewController.passwordTextField shouldNot] beNil];
         });
     });
     
@@ -33,10 +44,21 @@ describe(@"TSFLoginViewController", ^{
         beforeEach(^{
             _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
             _loginViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFLoginViewController"];
+            [[[_loginViewController view] shouldNot] beNil];
         });
         
         it(@"instantiates correctly from the storyboard", ^{
             [[_loginViewController shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the email adress field and label", ^{
+            [[_loginViewController.emailLabel shouldNot] beNil];
+            [[_loginViewController.emailTextField shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the password field and label", ^{
+            [[_loginViewController.passwordLabel shouldNot] beNil];
+            [[_loginViewController.passwordTextField shouldNot] beNil];
         });
     });
 });
