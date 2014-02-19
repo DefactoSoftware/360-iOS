@@ -22,6 +22,8 @@
 		52ECB6EB189FF403007C7636 /* TSFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ECB6EA189FF403007C7636 /* TSFBaseViewController.m */; };
 		526B425C18B5002100DC1310 /* TSFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B425B18B5002100DC1310 /* TSFLoginViewController.m */; };
 		526B426018B5004700DC1310 /* TSFLoginViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B425F18B5004700DC1310 /* TSFLoginViewControllerSpec.m */; };
+		526B426618B5069000DC1310 /* TSFSessionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B426518B5069000DC1310 /* TSFSessionService.m */; };
+		526B426918B506AC00DC1310 /* TSFSessionServiceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B426818B506AC00DC1310 /* TSFSessionServiceSpec.m */; };
 		E417281718994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */; };
 		E417281A18994C8000DD77B5 /* TSFQuestionnaireMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281918994C8000DD77B5 /* TSFQuestionnaireMapper.m */; };
 		E429DD4E189807B300BAFEC4 /* TSFAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E429DD4D189807B300BAFEC4 /* TSFAPIClient.m */; };
@@ -103,6 +105,9 @@
 		526B425B18B5002100DC1310 /* TSFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFLoginViewController.m; path = Controllers/TSFLoginViewController.m; sourceTree = "<group>"; };
 		526B425F18B5004700DC1310 /* TSFLoginViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFLoginViewControllerSpec.m; path = Controllers/TSFLoginViewControllerSpec.m; sourceTree = "<group>"; };
 		526B426118B504A400DC1310 /* TSFGenerics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
+		526B426418B5069000DC1310 /* TSFSessionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFSessionService.h; path = Networking/TSFSessionService.h; sourceTree = "<group>"; };
+		526B426518B5069000DC1310 /* TSFSessionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFSessionService.m; path = Networking/TSFSessionService.m; sourceTree = "<group>"; };
+		526B426818B506AC00DC1310 /* TSFSessionServiceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFSessionServiceSpec.m; path = Networking/TSFSessionServiceSpec.m; sourceTree = "<group>"; };
 		62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty Feedback.xcconfig"; path = "Pods/Pods-Three Sixty Feedback.xcconfig"; sourceTree = "<group>"; };
 		C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty FeedbackTests.xcconfig"; path = "Pods/Pods-Three Sixty FeedbackTests.xcconfig"; sourceTree = "<group>"; };
 		E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireMapperSpec.m; path = Models/Mappers/TSFQuestionnaireMapperSpec.m; sourceTree = "<group>"; };
@@ -258,6 +263,8 @@
 				E4A7D79A18997A2500276FC0 /* TSFAssessorService.m */,
 				E440586F189A6EA1001AEE13 /* TSFCompetenceService.h */,
 				E4405870189A6EA1001AEE13 /* TSFCompetenceService.m */,
+				526B426418B5069000DC1310 /* TSFSessionService.h */,
+				526B426518B5069000DC1310 /* TSFSessionService.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -269,6 +276,7 @@
 				E453D6F11899552000052854 /* TSFQuestionnaireServiceSpec.m */,
 				E4A7D79C18997A3A00276FC0 /* TSFAssessorServiceSpec.m */,
 				E440586D189A6E30001AEE13 /* TSFCompetenceServiceSpec.m */,
+				526B426818B506AC00DC1310 /* TSFSessionServiceSpec.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -606,6 +614,7 @@
 				E417281A18994C8000DD77B5 /* TSFQuestionnaireMapper.m in Sources */,
 				52E80F4D189BE313007A8A48 /* TSFKeyBehaviourCell.m in Sources */,
 				52ACE46E189EDC040095F650 /* TSFFinishQuestionnaireViewController.m in Sources */,
+				526B426618B5069000DC1310 /* TSFSessionService.m in Sources */,
 				E455FF8B18990E8200F8C04C /* TSFKeyBehaviour.m in Sources */,
 				E4A7D79B18997A2500276FC0 /* TSFAssessorService.m in Sources */,
 				52ECB6EB189FF403007C7636 /* TSFBaseViewController.m in Sources */,
@@ -628,6 +637,7 @@
 				52ACE46B189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m in Sources */,
 				E455FF7F189904A200F8C04C /* TSFCompetenceSpec.m in Sources */,
 				E4405876189A83D7001AEE13 /* TSFQuestionnaireViewControllerSpec.m in Sources */,
+				526B426918B506AC00DC1310 /* TSFSessionServiceSpec.m in Sources */,
 				E455FF791899004F00F8C04C /* TSFQuestionnaireSpec.m in Sources */,
 				E4C7F924189940B400B0E5F2 /* TSFCompetenceMapperSpec.m in Sources */,
 				522DB4AE189FB807002EE50D /* TSFHomeViewControllerSpec.m in Sources */,
