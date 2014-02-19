@@ -257,17 +257,42 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     if (previousCompetenceViewControllerIndex >= 0) {
         TSFCompetenceViewController *previousViewController = self.competenceViewControllers[previousCompetenceViewControllerIndex];
         
+        if ([[self.pageController.viewControllers firstObject] isKindOfClass:[TSFFinishQuestionnaireViewController class]]) {
+            previousViewController = [self.competenceViewControllers lastObject];
+        }
+        
+        self.currentCompetenceViewController = previousViewController;
+        
         __block typeof (self) _self = self;
-        [self.pageController setViewControllers:@[previousViewController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+        [self.pageController setViewControllers:@[previousViewController]
+                                      direction:UIPageViewControllerNavigationDirectionReverse
+                                       animated:YES
+                                     completion:^(BOOL finished) {
             _self.pageControl.currentPage -= 1;
         }];
     }
 }
 
 - (IBAction)firstButtonPressed:(id)sender {
+    __block typeof (self) _self = self;
+    [self.pageController setViewControllers:@[[self.competenceViewControllers firstObject]]
+                                  direction:UIPageViewControllerNavigationDirectionReverse
+                                   animated:NO
+                                 completion:^(BOOL finished) {
+        _self.pageControl.currentPage = 0;
+        _self.currentCompetenceViewController = [_self.competenceViewControllers firstObject];
+    }];
 }
 
 - (IBAction)lastButtonPressed:(id)sender {
+    __weak typeof (self) _self = self;
+    [self.pageController setViewControllers:@[self.finishQuestionnaireViewController]
+                                  direction:UIPageViewControllerNavigationDirectionForward
+                                   animated:NO
+                                 completion:^(BOOL finished) {
+                                     _self.pageControl.currentPage = [_self.competenceViewControllers count];
+        _self.currentCompetenceViewController = [_self.competenceViewControllers lastObject];
+    }];
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
@@ -287,7 +312,7 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
                                   direction:UIPageViewControllerNavigationDirectionForward
                                    animated:YES
                                  completion:^(BOOL finished) {
-     _self.pageControl.currentPage +=   1;
+     _self.pageControl.currentPage += 1;
     }];
 }
 

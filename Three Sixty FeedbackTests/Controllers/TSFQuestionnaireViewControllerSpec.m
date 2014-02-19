@@ -440,6 +440,7 @@ describe(@"TSFQuestionnaireViewController", ^{
                     [[_mockPageController should] receive:@selector(setViewControllers:direction:animated:completion:)
                                             withArguments:@[nextViewController], theValue(UIPageViewControllerNavigationDirectionForward), theValue(YES), [KWAny any]];
                     [_questionnaireViewController nextButtonPressed:nil];
+                    [[_questionnaireViewController.currentCompetenceViewController should] equal:nextViewController];
                 });
                 
                 it(@"navigates to the finish controller", ^{
@@ -462,6 +463,10 @@ describe(@"TSFQuestionnaireViewController", ^{
             });
             
             context(@"navigating to the previous page", ^{
+                beforeEach(^{
+                    [_mockPageController stub:@selector(viewControllers) andReturn:@[_questionnaireViewController.competenceViewControllers[1]]];
+                });
+                
                 it(@"navigates to the previous competence", ^{
                     _questionnaireViewController.currentCompetenceViewController = _questionnaireViewController.competenceViewControllers[1];
                     TSFCompetenceViewController *previousViewController = _questionnaireViewController.competenceViewControllers[0];
@@ -469,6 +474,7 @@ describe(@"TSFQuestionnaireViewController", ^{
                     [[_mockPageController should] receive:@selector(setViewControllers:direction:animated:completion:)
                                             withArguments:@[previousViewController], theValue(UIPageViewControllerNavigationDirectionReverse), theValue(YES), [KWAny any]];
                     [_questionnaireViewController previousButtonPressed:nil];
+                    [[_questionnaireViewController.currentCompetenceViewController should] equal:previousViewController];
                 });
                 
                 it(@"does not navigate when on the first competence viewcontroller", ^{
@@ -489,14 +495,73 @@ describe(@"TSFQuestionnaireViewController", ^{
                     [_questionnaireViewController previousButtonPressed:nil];
                     [[theValue(_questionnaireViewController.pageControl.currentPage) should] equal:theValue(pageIndicatorNumber - 1)];
                 });
+                
+                it(@"navigates to the last competence page when the finish page is shown", ^{
+                    [_mockPageController stub:@selector(viewControllers) andReturn:@[_questionnaireViewController.finishQuestionnaireViewController]];
+                    _questionnaireViewController.currentCompetenceViewController = _questionnaireViewController.competenceViewControllers[1];
+                    [[_mockPageController should] receive:@selector(setViewControllers:direction:animated:completion:) withArguments:@[[_questionnaireViewController.competenceViewControllers lastObject]], theValue(UIPageViewControllerNavigationDirectionReverse), theValue(YES), [KWAny any]];
+                    
+                    [_questionnaireViewController previousButtonPressed:nil];
+                });
             });
             
-            it(@"navigates to the finish page", ^{
+            context(@"navigating to the finish page", ^{
+                it(@"navigates to the finish page", ^{
+                    [[_mockPageController should] receive:@selector(setViewControllers:direction:animated:completion:)
+                                            withArguments:@[_questionnaireViewController.finishQuestionnaireViewController], [KWAny any], theValue(NO), [KWAny any]];
+                    [_questionnaireViewController lastButtonPressed:nil];
+                });
                 
+                it(@"updates the page indicator", ^{
+                    [_mockPageController stub:@selector(setViewControllers:direction:animated:completion:) withBlock:^id(NSArray *params) {
+                        void (^completionBlock)(BOOL success) = params[3];
+                        completionBlock(YES);
+                        return nil;
+                    }];
+                    [_questionnaireViewController lastButtonPressed:nil];
+                    NSInteger competenceCount = [_questionnaireViewController.competenceViewControllers count];
+                    [[theValue(_questionnaireViewController.pageControl.currentPage) should] equal:theValue(competenceCount - 1)];
+                });
+                
+                it(@"sets the last competence view controller as the current competence view controller", ^{
+                    [_mockPageController stub:@selector(setViewControllers:direction:animated:completion:) withBlock:^id(NSArray *params) {
+                        void (^completionBlock)(BOOL success) = params[3];
+                        completionBlock(YES);
+                        return nil;
+                    }];
+                    [_questionnaireViewController lastButtonPressed:nil];
+                    [[_questionnaireViewController.currentCompetenceViewController should] equal:[_questionnaireViewController.competenceViewControllers lastObject]];
+                });
             });
             
-            it(@"navigates to the first key bejaviour", ^{
+            
+            context(@"navigating to the first page", ^{
+                it(@"navigates to the first page", ^{
+                    [[_mockPageController should] receive:@selector(setViewControllers:direction:animated:completion:)
+                                            withArguments:@[[_questionnaireViewController.competenceViewControllers firstObject]], [KWAny any], theValue(NO), [KWAny any]];
+                    [_questionnaireViewController firstButtonPressed:nil];
+                });
                 
+                it(@"updates the page indicator", ^{
+                    _questionnaireViewController.pageControl.currentPage = 1;
+                    [_mockPageController stub:@selector(setViewControllers:direction:animated:completion:) withBlock:^id(NSArray *params) {
+                        void (^completionBlock)(BOOL success) = params[3];
+                        completionBlock(YES);
+                        return nil;
+                    }];
+                    [_questionnaireViewController firstButtonPressed:nil];
+                    [[theValue(_questionnaireViewController.pageControl.currentPage) should] equal:theValue(0)];
+                });
+                
+                it(@"sets the first competence view controller as the current competence view controller", ^{
+                    [_mockPageController stub:@selector(setViewControllers:direction:animated:completion:) withBlock:^id(NSArray *params) {
+                        void (^completionBlock)(BOOL success) = params[3];
+                        completionBlock(YES);
+                        return nil;
+                    }];
+                    [_questionnaireViewController firstButtonPressed:nil];
+                    [[_questionnaireViewController.currentCompetenceViewController should] equal:[_questionnaireViewController.competenceViewControllers firstObject]];
+                });
             });
         });
     });
