@@ -102,6 +102,7 @@
 		526B425A18B5002100DC1310 /* TSFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFLoginViewController.h; path = Controllers/TSFLoginViewController.h; sourceTree = "<group>"; };
 		526B425B18B5002100DC1310 /* TSFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFLoginViewController.m; path = Controllers/TSFLoginViewController.m; sourceTree = "<group>"; };
 		526B425F18B5004700DC1310 /* TSFLoginViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFLoginViewControllerSpec.m; path = Controllers/TSFLoginViewControllerSpec.m; sourceTree = "<group>"; };
+		526B426118B504A400DC1310 /* TSFGenerics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
 		62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty Feedback.xcconfig"; path = "Pods/Pods-Three Sixty Feedback.xcconfig"; sourceTree = "<group>"; };
 		C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty FeedbackTests.xcconfig"; path = "Pods/Pods-Three Sixty FeedbackTests.xcconfig"; sourceTree = "<group>"; };
 		E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireMapperSpec.m; path = Models/Mappers/TSFQuestionnaireMapperSpec.m; sourceTree = "<group>"; };
@@ -220,6 +221,7 @@
 				E4800B321897FD9A00FCE147 /* Main_iPhone.storyboard */,
 				E4800B351897FD9A00FCE147 /* Main_iPad.storyboard */,
 				52E80F45189BDCC1007A8A48 /* TSFGenerics.h */,
+				526B426118B504A400DC1310 /* TSFGenerics.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";

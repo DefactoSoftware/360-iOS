@@ -7,7 +7,14 @@
 //
 
 #import "TSFLoginViewController.h"
+#import "TSFGenerics.h"
 
 @implementation TSFLoginViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.emailLabel.text = TSFLocalizedString(@"TSFLoginViewControllerEmail", @"E-mail address");
+    self.passwordLabel.text = TSFLocalizedString(@"TSFLoginViewControllerPassword", @"Password");
+}
 
 @end
