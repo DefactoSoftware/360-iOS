@@ -253,6 +253,15 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
 }
 
 - (IBAction)previousButtonPressed:(id)sender {
+    NSInteger previousCompetenceViewControllerIndex = self.currentCompetenceViewController.index - 1;
+    if (previousCompetenceViewControllerIndex >= 0) {
+        TSFCompetenceViewController *previousViewController = self.competenceViewControllers[previousCompetenceViewControllerIndex];
+        
+        __block typeof (self) _self = self;
+        [self.pageController setViewControllers:@[previousViewController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+            _self.pageControl.currentPage -= 1;
+        }];
+    }
 }
 
 - (IBAction)firstButtonPressed:(id)sender {
@@ -262,6 +271,24 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
+    [self updateCurrentCompetenceViewController];
+    
+    __block UIViewController *_nextViewController;
+    if (self.currentCompetenceViewController.index + 1 == [self.competenceViewControllers count]) {
+        _nextViewController = self.finishQuestionnaireViewController;
+    } else {
+        NSInteger newCompetenceControllerIndex = self.currentCompetenceViewController.index + 1;
+        _nextViewController = [self competenceViewControllerForCompetenceNumber:newCompetenceControllerIndex];
+        self.currentCompetenceViewController = (TSFCompetenceViewController *)_nextViewController;
+    }
+    
+    __block typeof (self) _self = self;
+    [self.pageController setViewControllers:@[_nextViewController]
+                                  direction:UIPageViewControllerNavigationDirectionForward
+                                   animated:YES
+                                 completion:^(BOOL finished) {
+     _self.pageControl.currentPage +=   1;
+    }];
 }
 
 #pragma mark - PageViewController delegate
