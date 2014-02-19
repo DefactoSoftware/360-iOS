@@ -281,37 +281,39 @@
                                             <outlet property="nameLabel" destination="FTh-MV-euI" id="pfu-Rz-lbA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFKeyBehaviourCell" rowHeight="114" id="Ra9-Gv-Pis" customClass="TSFKeyBehaviourCell">
-                                        <rect key="frame" x="0.0" y="117" width="768" height="114"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFKeyBehaviourCell" rowHeight="136" id="Ra9-Gv-Pis" customClass="TSFKeyBehaviourCell">
+                                        <rect key="frame" x="0.0" y="117" width="768" height="136"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ra9-Gv-Pis" id="m4q-xd-amx">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="113"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="728" translatesAutoresizingMaskIntoConstraints="NO" id="odE-lR-umi">
                                                     <rect key="frame" x="20" y="20" width="728" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="hb1-r8-i3V"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="r2a-ZH-O5E"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLN-Li-kOe" customClass="TSFKeyBehaviourRatingView">
-                                                    <rect key="frame" x="20" y="63" width="728" height="35"/>
+                                                    <rect key="frame" x="20" y="63" width="728" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="GKv-2i-STm"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="odE-lR-umi" firstAttribute="trailing" secondItem="gLN-Li-kOe" secondAttribute="trailing" id="Boz-Mj-KLe"/>
-                                                <constraint firstAttribute="trailing" secondItem="odE-lR-umi" secondAttribute="trailing" constant="20" symbolic="YES" id="OIg-ff-OVW"/>
-                                                <constraint firstItem="odE-lR-umi" firstAttribute="leading" secondItem="gLN-Li-kOe" secondAttribute="leading" id="QNh-mU-Xus"/>
-                                                <constraint firstItem="odE-lR-umi" firstAttribute="top" secondItem="m4q-xd-amx" secondAttribute="top" constant="20" symbolic="YES" id="acc-iS-X4G"/>
-                                                <constraint firstAttribute="bottom" secondItem="gLN-Li-kOe" secondAttribute="bottom" constant="15" id="rbV-eh-RRq"/>
-                                                <constraint firstItem="odE-lR-umi" firstAttribute="leading" secondItem="m4q-xd-amx" secondAttribute="leading" constant="20" symbolic="YES" id="yAn-5I-u0R"/>
-                                                <constraint firstItem="gLN-Li-kOe" firstAttribute="top" secondItem="odE-lR-umi" secondAttribute="bottom" constant="17" id="z2C-5o-XGU"/>
+                                                <constraint firstItem="odE-lR-umi" firstAttribute="top" secondItem="m4q-xd-amx" secondAttribute="top" constant="20" symbolic="YES" id="62z-kc-O70"/>
+                                                <constraint firstItem="odE-lR-umi" firstAttribute="leading" secondItem="m4q-xd-amx" secondAttribute="leading" constant="20" symbolic="YES" id="deH-JP-sIF"/>
+                                                <constraint firstItem="odE-lR-umi" firstAttribute="leading" secondItem="gLN-Li-kOe" secondAttribute="leading" id="hab-5H-eBL"/>
+                                                <constraint firstItem="gLN-Li-kOe" firstAttribute="top" secondItem="odE-lR-umi" secondAttribute="bottom" constant="17" id="iMI-Os-4oj"/>
+                                                <constraint firstAttribute="trailing" secondItem="odE-lR-umi" secondAttribute="trailing" constant="20" symbolic="YES" id="w6j-FR-72T"/>
+                                                <constraint firstItem="odE-lR-umi" firstAttribute="trailing" secondItem="gLN-Li-kOe" secondAttribute="trailing" id="wUr-wS-Ikh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -320,7 +322,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFCommentaryCell" rowHeight="114" id="knG-w1-ygj" customClass="TSFCommentaryCell">
-                                        <rect key="frame" x="0.0" y="231" width="768" height="114"/>
+                                        <rect key="frame" x="0.0" y="253" width="768" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="knG-w1-ygj" id="ahV-kO-vSw">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="113"/>
@@ -336,8 +338,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geV-dw-NFE">
-                                                    <rect key="frame" x="21" y="49" width="728" height="57"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geV-dw-NFE">
+                                                    <rect key="frame" x="20" y="49" width="728" height="57"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
