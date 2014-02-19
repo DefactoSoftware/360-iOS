@@ -16,7 +16,12 @@
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor TSFLightGreyColor];
     pageControl.currentPageIndicatorTintColor = [UIColor TSFOrangeColor];
-    
+
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    [[TSFAPIClient sharedClient] setAssessorTokenWithURL:url];
     return YES;
 }
 

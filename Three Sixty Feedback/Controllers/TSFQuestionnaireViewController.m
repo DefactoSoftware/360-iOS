@@ -57,9 +57,9 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     
     CGRect frame = self.view.bounds;
     frame.origin.y = self.navigationController.navigationBar.frame.size.height;
-    frame.size.height -= self.pageControl.frame.size.height;
+    frame.size.height -= self.pageControl.frame.size.height * 2;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        frame.size.height -= self.firstButton.frame.size.height + 20.0f;
+        frame.size.height -= self.firstButton.frame.size.height;
     }
     self.pageController.view.frame = frame;
     
@@ -289,14 +289,6 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     }
     
     return [self competenceViewControllerForCompetenceNumber:index];
-}
-
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    return [self.competenceViewControllers count] + 1;
-}
-
-- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
-    return 0;
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController

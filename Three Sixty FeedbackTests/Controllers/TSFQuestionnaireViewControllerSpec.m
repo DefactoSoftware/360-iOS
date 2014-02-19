@@ -46,7 +46,7 @@ describe(@"TSFQuestionnaireViewController", ^{
 
     context(@"iPad", ^{
         beforeEach (^{
-            _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
             _questionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFQuestionnaireViewController"];
             
             UIView *view = _questionnaireViewController.view;
