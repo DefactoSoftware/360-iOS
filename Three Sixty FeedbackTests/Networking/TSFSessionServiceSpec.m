@@ -39,6 +39,8 @@ describe(@"TSFSessionService", ^{
     context(@"creating a new session", ^{
         __block NSString *_sampleEmail = [NSString stringWithFormat:@"%d", arc4random()];
         __block NSString *_samplePassword = [NSString stringWithFormat:@"%d", arc4random()];
+        __block NSDictionary *_sampleResponse = @{ @"first_name": [NSString stringWithFormat:@"%d", arc4random()] };
+        __block TSFUser *_stubUser = [[TSFUser alloc] init];
         
         it(@"calls the APIClient to POST the user", ^{
             NSDictionary *expectedParameters = @{ @"email": _sampleEmail, @"password": _samplePassword };
@@ -50,9 +52,6 @@ describe(@"TSFSessionService", ^{
         });
         
         it(@"parses the responded user and returns this in the success block", ^{
-            __block NSDictionary *_sampleResponse = @{ @"first_name": [NSString stringWithFormat:@"%d", arc4random()] };
-            __block TSFUser *_stubUser = [[TSFUser alloc] init];
-            
             [_mockAPIClient stub:@selector(POST:parameters:success:failure:) withBlock:^id(NSArray *params) {
                 void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
                 successBlock(nil, _sampleResponse);
@@ -62,9 +61,20 @@ describe(@"TSFSessionService", ^{
 
             [_sessionService createNewSessionWithEmail:_sampleEmail password:_samplePassword success:^(TSFUser *user) {
                 [[user should] equal:_stubUser];
-            } failure:^(NSError *error) {
-                
+            } failure:^(NSError *error) {}];
+        });
+        
+        it(@"assigns the signed in user to itself", ^{
+            [_mockAPIClient stub:@selector(POST:parameters:success:failure:) withBlock:^id(NSArray *params) {
+                void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
+                successBlock(nil, _sampleResponse);
+                return nil;
             }];
+            [[_mockUserMapper should] receive:@selector(userWithDictionary:) andReturn:_stubUser withArguments:_sampleResponse];
+            
+            [_sessionService createNewSessionWithEmail:_sampleEmail password:_samplePassword success:^(TSFUser *user) {
+                [[_sessionService.signedInUser should] equal:_stubUser];
+            } failure:^(NSError *error) {}];
         });
     });
     

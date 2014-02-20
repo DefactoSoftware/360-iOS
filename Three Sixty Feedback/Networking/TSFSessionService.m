@@ -34,6 +34,7 @@
     [self.apiClient POST:TSFAPIEndPointSessions parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *responseUser = (NSDictionary *)responseObject;
         TSFUser *user = [_self.userMapper userWithDictionary:responseUser];
+        _self.signedInUser = user;
         _success(user);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         _failure(error);

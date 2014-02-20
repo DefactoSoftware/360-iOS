@@ -18,6 +18,7 @@ static NSString *const TSFAPIEndPointSessionDelete = @"users/sign_out";
 
 @property (nonatomic, strong) TSFAPIClient *apiClient;
 @property (nonatomic, strong) TSFUserMapper *userMapper;
+@property (nonatomic, strong) TSFUser *signedInUser;
 
 + (TSFSessionService *)sharedService;
 - (void)createNewSessionWithEmail:(NSString *)email
