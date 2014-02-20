@@ -40,11 +40,6 @@ describe(@"TSFSessionService", ^{
         __block NSString *_sampleEmail = [NSString stringWithFormat:@"%d", arc4random()];
         __block NSString *_samplePassword = [NSString stringWithFormat:@"%d", arc4random()];
         
-        beforeEach(^{
-            _mockAPIClient = [KWMock mockForClass:[TSFAPIClient class]];
-            _sessionService.apiClient = _mockAPIClient;
-        });
-        
         it(@"calls the APIClient to POST the user", ^{
             NSDictionary *expectedParameters = @{ @"email": _sampleEmail, @"password": _samplePassword };
             [[_mockAPIClient should] receive:@selector(POST:parameters:success:failure:)
@@ -67,6 +62,17 @@ describe(@"TSFSessionService", ^{
 
             [_sessionService createNewSessionWithEmail:_sampleEmail password:_samplePassword success:^(TSFUser *user) {
                 [[user should] equal:_stubUser];
+            } failure:^(NSError *error) {
+                
+            }];
+        });
+    });
+    
+    context(@"deleting the current session", ^{
+        it(@"calls the APIClient to DELETE the session", ^{
+            [[_mockAPIClient should] receive:@selector(DELETE:parameters:success:failure:)
+                               withArguments:TSFAPIEndPointSessionDelete, [KWAny any], [KWAny any], [KWAny any]];
+            [_sessionService deleteCurrentSessionWithSuccess:^(id response) {
             } failure:^(NSError *error) {
                 
             }];

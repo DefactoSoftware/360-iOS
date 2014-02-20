@@ -42,4 +42,19 @@
     }];
 }
 
+- (void)deleteCurrentSessionWithSuccess:(TSFNetworkingSuccessBlock)success
+                                failure:(TSFNetworkingErrorBlock)failure {
+    __block TSFNetworkingSuccessBlock _success = success;
+    __block TSFNetworkingErrorBlock _failure = failure;
+    
+    [self.apiClient DELETE:TSFAPIEndPointSessionDelete
+                parameters:nil
+                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                       _success(@YES);
+    }
+                   failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                       _failure(error);
+    }];
+}
+
 @end

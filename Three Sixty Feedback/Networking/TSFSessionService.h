@@ -11,7 +11,8 @@
 #import "TSFUserMapper.h"
 #import "TSFUser.h"
 
-static NSString *const TSFAPIEndPointSessions = @"sessions";
+static NSString *const TSFAPIEndPointSessions = @"users/sign_in";
+static NSString *const TSFAPIEndPointSessionDelete = @"users/sign_out";
 
 @interface TSFSessionService : NSObject
 
@@ -23,5 +24,7 @@ static NSString *const TSFAPIEndPointSessions = @"sessions";
                          password:(NSString *)password
                           success:(TSFNetworkingSuccessBlock)success
                           failure:(TSFNetworkingErrorBlock)failure;
+- (void)deleteCurrentSessionWithSuccess:(TSFNetworkingSuccessBlock)success
+                                failure:(TSFNetworkingErrorBlock)failure;
 
 @end
