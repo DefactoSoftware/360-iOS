@@ -39,12 +39,13 @@
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
+    __weak typeof(self) _self = self;
     [self.sessionService createNewSessionWithEmail:self.emailTextField.text
                                           password:self.passwordTextField.text
                                            success:^(TSFUser *user) {
-        
+       [_self performSegueWithIdentifier:@"TSFLoginSegue" sender:_self];
     } failure:^(NSError *error) {
-        
+        NSLog(@"Error logging in. Message: %@", error.localizedDescription);
     }];
 }
 @end

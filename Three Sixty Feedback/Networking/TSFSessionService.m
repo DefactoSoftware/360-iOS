@@ -27,26 +27,24 @@
                           success:(TSFNetworkingSuccessBlock)success
                           failure:(TSFNetworkingErrorBlock)failure {
     NSDictionary *parameters = @{ @"email": email, @"password": password };
-    
-    __weak TSFNetworkingSuccessBlock _success = success;
-    __weak typeof(self) _self = self;
-    [self.apiClient POST:TSFAPIEndPointSessions
-              parameters:parameters
-                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                     TSFUser *user = [_self.userMapper userWithDictionary:(NSDictionary *)responseObject];
-                     _success(user);
-                     
-    }
-                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                     
-    }];
-}
-
-- (void)deleteCurrentSessionWithSuccess:(TSFNetworkingSuccessBlock)success
-                                failure:(TSFNetworkingErrorBlock)failure {
+    __block typeof (self) _self = self;
     __block TSFNetworkingSuccessBlock _success = success;
     __block TSFNetworkingErrorBlock _failure = failure;
     
+    [self.apiClient POST:TSFAPIEndPointSessions parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *responseUser = (NSDictionary *)responseObject;
+        TSFUser *user = [_self.userMapper userWithDictionary:responseUser];
+        _success(user);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        _failure(error);
+    }];
+
+}
+
+- (void)deleteCurrentSessionWithSuccess:(TSFNetworkingSuccessBlock)success
+                                failure:(TSFNetworkingErrorBlock)failure {    
+    __weak TSFNetworkingSuccessBlock _success = success;
+    __weak TSFNetworkingErrorBlock _failure = failure;
     [self.apiClient DELETE:TSFAPIEndPointSessionDelete
                 parameters:nil
                    success:^(AFHTTPRequestOperation *operation, id responseObject) {

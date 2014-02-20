@@ -14,7 +14,7 @@
 static NSString *const TSFAPIEndPointSessions = @"users/sign_in";
 static NSString *const TSFAPIEndPointSessionDelete = @"users/sign_out";
 
-@interface TSFSessionService : NSObject
+@interface TSFSessionService : NSObject <NSURLConnectionDataDelegate>
 
 @property (nonatomic, strong) TSFAPIClient *apiClient;
 @property (nonatomic, strong) TSFUserMapper *userMapper;

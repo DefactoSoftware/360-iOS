@@ -422,7 +422,7 @@
                                 <rect key="frame" x="20" y="112" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYZ-2h-3Am">
                                 <rect key="frame" x="20" y="83" width="280" height="21"/>
@@ -441,7 +441,7 @@
                                 <rect key="frame" x="20" y="191" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOX-od-J1s">
                                 <rect key="frame" x="20" y="244" width="280" height="30"/>
@@ -463,11 +463,31 @@
                         <outlet property="loginButton" destination="BOX-od-J1s" id="PJg-UK-UJM"/>
                         <outlet property="passwordLabel" destination="eqS-5C-D6f" id="JsP-eB-sYy"/>
                         <outlet property="passwordTextField" destination="AIw-HS-eKb" id="nEk-jg-ENz"/>
+                        <segue destination="6f8-Hd-enX" kind="push" identifier="TSFLoginSegue" id="Qbo-oi-gAP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDS-qI-Cd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1146" y="194"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="ucZ-9z-YyA">
+            <objects>
+                <viewController storyboardIdentifier="TSFMainViewController" id="6f8-Hd-enX" customClass="TSFMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lgw-Jp-GdE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mbh-3Z-fu9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NzK-SU-BSJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mca-Yv-jmY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1On-8j-G8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1548" y="188"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -359,7 +359,7 @@
                                 <rect key="frame" x="115" y="163" width="539" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9R-Ub-e9g">
                                 <rect key="frame" x="115" y="134" width="539" height="21"/>
@@ -379,7 +379,7 @@
                                 <rect key="frame" x="115" y="270" width="539" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAY-ni-aKe">
                                 <rect key="frame" x="115" y="338" width="539" height="30"/>
@@ -388,7 +388,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginButtonPressed:" destination="oMw-Nf-rSz" eventType="touchUpInside" id="mCh-v6-S7l"/>
+                                    <action selector="loginButtonPressed:" destination="oMw-Nf-rSz" eventType="touchUpInside" id="1D2-hf-ocR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -401,11 +401,31 @@
                         <outlet property="loginButton" destination="hAY-ni-aKe" id="HsQ-rR-mgx"/>
                         <outlet property="passwordLabel" destination="XpU-qp-wy9" id="W9t-xC-7BF"/>
                         <outlet property="passwordTextField" destination="DWp-0V-dQW" id="ny8-Q7-BBp"/>
+                        <segue destination="tvG-ix-HSa" kind="push" identifier="TSFLoginSegue" id="u2r-bE-5vi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3k-c6-kJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2293" y="-138"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="njQ-Yv-X5D">
+            <objects>
+                <viewController storyboardIdentifier="TSFMainViewController" id="tvG-ix-HSa" customClass="TSFMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NB3-Ex-MXb"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Ps-5u-Jsq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FZQ-77-zTn">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zqY-Qe-WaW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KHm-C6-CX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3240" y="-138"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
