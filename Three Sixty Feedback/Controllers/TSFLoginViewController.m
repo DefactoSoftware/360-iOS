@@ -6,9 +6,12 @@
 //  Copyright (c) 2014 Defacto. All rights reserved.
 //
 
+#import "TSFAppDelegate.h"
 #import "TSFLoginViewController.h"
 #import "TSFGenerics.h"
 #import <CRToast/CRToast.h>
+
+static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController";
 
 @implementation TSFLoginViewController
 
@@ -44,7 +47,8 @@
     [self.sessionService createNewSessionWithEmail:self.emailTextField.text
                                           password:self.passwordTextField.text
                                            success:^(TSFUser *user) {
-       [_self performSegueWithIdentifier:@"TSFLoginSegue" sender:_self];
+       TSFAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+       delegate.window.rootViewController = [_self.storyboard instantiateViewControllerWithIdentifier:TSFMainViewControllerIdentifier];
     } failure:^(NSError *error) {
         NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFLoginViewControllerFail", @"Failed logging in"),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),

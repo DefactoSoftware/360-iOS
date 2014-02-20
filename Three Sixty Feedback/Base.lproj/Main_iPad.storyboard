@@ -401,7 +401,6 @@
                         <outlet property="loginButton" destination="hAY-ni-aKe" id="HsQ-rR-mgx"/>
                         <outlet property="passwordLabel" destination="XpU-qp-wy9" id="W9t-xC-7BF"/>
                         <outlet property="passwordTextField" destination="DWp-0V-dQW" id="ny8-Q7-BBp"/>
-                        <segue destination="tvG-ix-HSa" kind="push" identifier="TSFLoginSegue" id="u2r-bE-5vi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3k-c6-kJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

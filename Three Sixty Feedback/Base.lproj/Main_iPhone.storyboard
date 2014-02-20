@@ -463,7 +463,6 @@
                         <outlet property="loginButton" destination="BOX-od-J1s" id="PJg-UK-UJM"/>
                         <outlet property="passwordLabel" destination="eqS-5C-D6f" id="JsP-eB-sYy"/>
                         <outlet property="passwordTextField" destination="AIw-HS-eKb" id="nEk-jg-ENz"/>
-                        <segue destination="6f8-Hd-enX" kind="push" identifier="TSFLoginSegue" id="Qbo-oi-gAP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDS-qI-Cd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
