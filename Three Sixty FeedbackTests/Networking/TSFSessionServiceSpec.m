@@ -14,11 +14,14 @@ SPEC_BEGIN(TSFSessionServiceSpec)
 describe(@"TSFSessionService", ^{
     __block TSFSessionService *_sessionService;
     __block id _mockAPIClient;
+    __block id _mockUserMapper;
     
     beforeEach ( ^{
         _sessionService = [TSFSessionService sharedService];
         _mockAPIClient = [KWMock mockForClass:[TSFAPIClient class]];
+        _mockUserMapper = [KWMock mockForClass:[TSFUserMapper class]];
         _sessionService.apiClient = _mockAPIClient;
+        _sessionService.userMapper = _mockUserMapper;
 	});
     
     it(@"instantiates correctly", ^{
@@ -28,6 +31,47 @@ describe(@"TSFSessionService", ^{
     it(@"has an instance of the APIClient", ^{
         [[_sessionService.apiClient should] beKindOfClass:[TSFAPIClient class]];
 	});
+    
+    it(@"has an instance of a UserMapper", ^{
+        [[_sessionService.userMapper should] beKindOfClass:[TSFUserMapper class]];
+    });
+    
+    context(@"creating a new session", ^{
+        __block NSString *_sampleEmail = [NSString stringWithFormat:@"%d", arc4random()];
+        __block NSString *_samplePassword = [NSString stringWithFormat:@"%d", arc4random()];
+        
+        beforeEach(^{
+            _mockAPIClient = [KWMock mockForClass:[TSFAPIClient class]];
+            _sessionService.apiClient = _mockAPIClient;
+        });
+        
+        it(@"calls the APIClient to POST the user", ^{
+            NSDictionary *expectedParameters = @{ @"email": _sampleEmail, @"password": _samplePassword };
+            [[_mockAPIClient should] receive:@selector(POST:parameters:success:failure:)
+                               withArguments:TSFAPIEndPointSessions, expectedParameters, [KWAny any], [KWAny any]];
+            
+            
+            [_sessionService createNewSessionWithEmail:_sampleEmail password:_samplePassword success:^(id user) {} failure:^(NSError *error) {}];
+        });
+        
+        it(@"parses the responded user and returns this in the success block", ^{
+            __block NSDictionary *_sampleResponse = @{ @"first_name": [NSString stringWithFormat:@"%d", arc4random()] };
+            __block TSFUser *_stubUser = [[TSFUser alloc] init];
+            
+            [_mockAPIClient stub:@selector(POST:parameters:success:failure:) withBlock:^id(NSArray *params) {
+                void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
+                successBlock(nil, _sampleResponse);
+                return nil;
+            }];
+            [[_mockUserMapper should] receive:@selector(userWithDictionary:) andReturn:_stubUser withArguments:_sampleResponse];
+
+            [_sessionService createNewSessionWithEmail:_sampleEmail password:_samplePassword success:^(TSFUser *user) {
+                [[user should] equal:_stubUser];
+            } failure:^(NSError *error) {
+                
+            }];
+        });
+    });
 });
 
 SPEC_END
