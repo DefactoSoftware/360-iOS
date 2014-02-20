@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFSessionService.h"
 
 @interface TSFLoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
@@ -14,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (nonatomic, strong) TSFSessionService *sessionService;
 
 - (IBAction)loginButtonPressed:(id)sender;
 @end

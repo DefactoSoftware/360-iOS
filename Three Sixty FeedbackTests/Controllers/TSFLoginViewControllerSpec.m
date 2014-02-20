@@ -12,16 +12,16 @@
 SPEC_BEGIN(TSFLoginViewControllerSpec)
 
 describe(@"TSFLoginViewController", ^{
+    __block UIStoryboard *_storyboard;
+    __block TSFLoginViewController *_loginViewController;
+    
+    beforeEach(^{
+        _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        _loginViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFLoginViewController"];
+        [[[_loginViewController view] shouldNot] beNil];
+    });
+    
     context(@"iPhone", ^{
-        __block UIStoryboard *_storyboard;
-        __block TSFLoginViewController *_loginViewController;
-        
-        beforeEach(^{
-            _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-            _loginViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFLoginViewController"];
-            [[[_loginViewController view] shouldNot] beNil];
-        });
-        
         it(@"instantiates correctly from the storyboard", ^{
             [[_loginViewController shouldNot] beNil];
         });
@@ -68,6 +68,25 @@ describe(@"TSFLoginViewController", ^{
         it(@"has an outlet for the login button", ^{
             [[_loginViewController.loginButton shouldNot] beNil];
         });
+    });
+    
+    it(@"has an instance of the session service", ^{
+        [[_loginViewController.sessionService should] beKindOfClass:[TSFSessionService class]];
+    });
+    
+    it(@"calls the session service to login", ^{
+        id mockSessionService = [KWMock mockForClass:[TSFSessionService class]];
+        _loginViewController.sessionService = mockSessionService;
+        
+        NSString *stubEmail = [NSString stringWithFormat:@"%d", arc4random()];
+        NSString *stubPassword = [NSString stringWithFormat:@"%d", arc4random()];
+        _loginViewController.emailTextField.text = stubEmail;
+        _loginViewController.passwordTextField.text = stubPassword;
+        
+        [[mockSessionService should] receive:@selector(createNewSessionWithEmail:password:success:failure:)
+                               withArguments:stubEmail, stubPassword, [KWAny any], [KWAny any]];
+        
+        [_loginViewController loginButtonPressed:nil];
     });
 });
 

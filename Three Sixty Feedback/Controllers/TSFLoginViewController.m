@@ -11,6 +11,25 @@
 
 @implementation TSFLoginViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil {
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (void)sharedSetup {
+    _sessionService = [TSFSessionService sharedService];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = TSFLocalizedString(@"TSFLoginViewControllerTitle", @"Login");
@@ -20,5 +39,12 @@
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
+    [self.sessionService createNewSessionWithEmail:self.emailTextField.text
+                                          password:self.passwordTextField.text
+                                           success:^(TSFUser *user) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 @end
