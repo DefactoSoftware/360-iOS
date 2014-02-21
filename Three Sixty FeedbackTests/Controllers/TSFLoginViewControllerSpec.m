@@ -39,6 +39,10 @@ describe(@"TSFLoginViewController", ^{
         it(@"has an outlet for the login button", ^{
             [[_loginViewController.loginButton shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the request password button", ^{
+            [[_loginViewController.requestPasswordButton shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -67,6 +71,10 @@ describe(@"TSFLoginViewController", ^{
         
         it(@"has an outlet for the login button", ^{
             [[_loginViewController.loginButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the request password button", ^{
+            [[_loginViewController.requestPasswordButton shouldNot] beNil];
         });
     });
     

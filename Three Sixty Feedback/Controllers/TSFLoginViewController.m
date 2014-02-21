@@ -12,6 +12,7 @@
 #import <CRToast/CRToast.h>
 
 static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController";
+static NSString *const TSFRequestPasswordSegue = @"TSFRequestPasswordSegue";
 
 @implementation TSFLoginViewController
 
@@ -40,6 +41,7 @@ static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController
     self.emailLabel.text = TSFLocalizedString(@"TSFLoginViewControllerEmail", @"E-mail address");
     self.passwordLabel.text = TSFLocalizedString(@"TSFLoginViewControllerPassword", @"Password");
     [self.loginButton setTitle:TSFLocalizedString(@"TSFLoginViewControllerButton", @"Login") forState:UIControlStateNormal];
+    [self.requestPasswordButton setTitle:TSFLocalizedString(@"TSFLoginViewControllerRequestPasswordButton", @"Forgot password?") forState:UIControlStateNormal];
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
@@ -57,4 +59,9 @@ static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController
         NSLog(@"Error logging in. Message: %@", error.localizedDescription);
     }];
 }
+
+- (IBAction)requestPasswordButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:TSFRequestPasswordSegue sender:self];
+}
+
 @end

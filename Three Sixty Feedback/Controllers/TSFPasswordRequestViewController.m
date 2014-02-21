@@ -7,7 +7,15 @@
 //
 
 #import "TSFPasswordRequestViewController.h"
+#import "TSFGenerics.h"
 
 @implementation TSFPasswordRequestViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.navigationItem.title = TSFLocalizedString(@"TSFPasswordRequestViewControllerTitle", @"Forgot password");
+    self.emailLabel.text = TSFLocalizedString(@"TSFPasswordRequestEmailLabel", @"E-mail address");
+    [self.requestButton setTitle:TSFLocalizedString(@"TSFPasswordRequestButton", @"Request new password") forState:UIControlStateNormal];
+}
 
 @end

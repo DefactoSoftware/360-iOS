@@ -444,13 +444,24 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOX-od-J1s">
-                                <rect key="frame" x="20" y="244" width="280" height="30"/>
+                                <rect key="frame" x="26" y="254" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="4kN-BX-lE1" eventType="touchUpInside" id="9oN-aa-YNy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aA-As-QDJ">
+                                <rect key="frame" x="20" y="229" width="280" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestPasswordButtonPressed:" destination="4kN-BX-lE1" eventType="touchUpInside" id="clV-kS-XNv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -463,11 +474,13 @@
                         <outlet property="loginButton" destination="BOX-od-J1s" id="PJg-UK-UJM"/>
                         <outlet property="passwordLabel" destination="eqS-5C-D6f" id="JsP-eB-sYy"/>
                         <outlet property="passwordTextField" destination="AIw-HS-eKb" id="nEk-jg-ENz"/>
+                        <outlet property="requestPasswordButton" destination="7aA-As-QDJ" id="BYq-nU-myw"/>
+                        <segue destination="uQC-Z4-Rbd" kind="push" identifier="TSFRequestPasswordSegue" id="T15-b8-UHU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDS-qI-Cd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="194"/>
+            <point key="canvasLocation" x="1139" y="194"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="ucZ-9z-YyA">
@@ -499,12 +512,71 @@
                     <view key="view" contentMode="scaleToFill" id="uUa-Jh-72P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVW-NW-2NT">
+                                <rect key="frame" x="20" y="83" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="xWU-BE-zA6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mC2-kN-J32">
+                                <rect key="frame" x="20" y="112" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMs-zl-F9c">
+                                <rect key="frame" x="20" y="150" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="4kN-BX-lE1" eventType="touchUpInside" id="SlI-oU-jYo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="thK-Q4-7bU">
+                                <rect key="frame" x="20" y="188" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="WEJ-ec-Qh6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KMs-zl-F9c" firstAttribute="top" secondItem="mC2-kN-J32" secondAttribute="bottom" constant="8" symbolic="YES" id="1j6-aK-Iv6"/>
+                            <constraint firstItem="KMs-zl-F9c" firstAttribute="trailing" secondItem="thK-Q4-7bU" secondAttribute="trailing" id="4WR-Gg-9GX"/>
+                            <constraint firstItem="mC2-kN-J32" firstAttribute="trailing" secondItem="aVW-NW-2NT" secondAttribute="trailing" id="ADu-2y-eLe"/>
+                            <constraint firstAttribute="trailing" secondItem="aVW-NW-2NT" secondAttribute="trailing" constant="20" symbolic="YES" id="D1b-fm-2RL"/>
+                            <constraint firstItem="KMs-zl-F9c" firstAttribute="leading" secondItem="mC2-kN-J32" secondAttribute="leading" id="Ntz-3X-CtM"/>
+                            <constraint firstItem="KMs-zl-F9c" firstAttribute="trailing" secondItem="mC2-kN-J32" secondAttribute="trailing" id="Q8a-br-yAS"/>
+                            <constraint firstItem="mC2-kN-J32" firstAttribute="leading" secondItem="aVW-NW-2NT" secondAttribute="leading" id="QnI-Ca-3IS"/>
+                            <constraint firstItem="thK-Q4-7bU" firstAttribute="top" secondItem="KMs-zl-F9c" secondAttribute="bottom" constant="8" symbolic="YES" id="WN8-Jh-Fcp"/>
+                            <constraint firstItem="aVW-NW-2NT" firstAttribute="leading" secondItem="uUa-Jh-72P" secondAttribute="leading" constant="20" symbolic="YES" id="fOR-q0-SVh"/>
+                            <constraint firstItem="aVW-NW-2NT" firstAttribute="top" secondItem="VzE-ph-V0z" secondAttribute="bottom" constant="19" id="kOW-Dn-rPe"/>
+                            <constraint firstItem="thK-Q4-7bU" firstAttribute="leading" secondItem="KMs-zl-F9c" secondAttribute="leading" id="ncG-V3-O8L"/>
+                            <constraint firstItem="mC2-kN-J32" firstAttribute="top" secondItem="aVW-NW-2NT" secondAttribute="bottom" constant="8" symbolic="YES" id="q7U-h3-0c5"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Paj-gP-UCl"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="aVW-NW-2NT" id="qHr-Gw-VSg"/>
+                        <outlet property="emailTextField" destination="mC2-kN-J32" id="eES-2x-bcU"/>
+                        <outlet property="requestButton" destination="KMs-zl-F9c" id="Ur4-k7-87K"/>
+                        <outlet property="successLabel" destination="thK-Q4-7bU" id="mdA-L4-yR1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edw-BF-8YE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="-498"/>
+            <point key="canvasLocation" x="1139" y="-474"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
