@@ -16,6 +16,7 @@ static NSString *const TSFAPIEndPointQuestionnaires = @"questionnaires";
 
 @property (nonatomic, strong) TSFAPIClient *apiClient;
 @property (nonatomic, strong) TSFQuestionnaireMapper *questionnaireMapper;
+@property (nonatomic, strong) NSArray *questionnaires;
 
 + (TSFQuestionnaireService *)sharedService;
 - (void)questionnairesWithSuccess:(TSFNetworkingSuccessBlock)success

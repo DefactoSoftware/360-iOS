@@ -36,6 +36,7 @@ describe(@"TSFAssessorService", ^{
         
         [_mockAPIClient stub:@selector(assessorToken) andReturn:_fakeToken];
         
+        [[_mockAPIClient should] receive:@selector(PUT:parameters:success:failure:)];
         [_mockAPIClient stub:@selector(PUT:parameters:success:failure:) withBlock: ^id (NSArray *params) {
             NSString *URL = params[0];
             NSDictionary *parameters = params[1];
@@ -46,16 +47,12 @@ describe(@"TSFAssessorService", ^{
             successBlock(nil, _stubResponse);
             return nil;
 		}];
-        
-        __block bool _succeeded = NO;
+    
         [_assessorService completeCurrentAssessmentWithSuccess: ^(id response) {
-            _succeeded = YES;
             [[response should] beTrue];
 		} failure: ^(NSError *error) {
 		}];
-        
-        [[theValue(_succeeded) shouldNotEventually] equal:theValue(false)];
-	});
+    });
 });
 
 SPEC_END
