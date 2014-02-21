@@ -73,6 +73,22 @@ describe(@"TSFPasswordRequestViewController", ^{
             [[_passwordRequestViewController.requestButton shouldNot] beNil];
         });
     });
+    
+    it(@"has a reference to the sessionservice", ^{
+        [[_passwordRequestViewController.sessionService should] beKindOfClass:[TSFSessionService class]];
+    });
+    
+    it(@"calls the sessionservice to request a new password", ^{
+        id mockSessionService = [KWMock mockForClass:[TSFSessionService class]];
+        _passwordRequestViewController.sessionService = mockSessionService;
+        NSString *stubEmail = [NSString stringWithFormat:@"%d", arc4random()];
+        _passwordRequestViewController.emailTextField.text = stubEmail;
+        
+        [[mockSessionService should] receive:@selector(createNewPasswordRequestForEmail:withSuccess:failure:)
+                               withArguments:stubEmail, [KWAny any], [KWAny any]];
+        
+        [_passwordRequestViewController requestNewPassword];
+    });
 });
 
 SPEC_END
