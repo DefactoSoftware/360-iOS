@@ -56,4 +56,18 @@
     }];
 }
 
+- (void)createNewPasswordRequestForEmail:(NSString *)email
+                             withSuccess:(TSFNetworkingSuccessBlock)success
+                                 failure:(TSFNetworkingErrorBlock)failure {
+    __block TSFNetworkingSuccessBlock _success = success;
+    __block TSFNetworkingErrorBlock _failure = failure;
+    NSDictionary *parameters = @{ @"email": email };
+    
+    [self.apiClient POST:TSFAPIEndPointPassword parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        _success(@YES);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        _failure(error);
+    }];
+}
+
 @end

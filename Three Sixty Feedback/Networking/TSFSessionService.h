@@ -13,6 +13,7 @@
 
 static NSString *const TSFAPIEndPointSessions = @"users/sign_in";
 static NSString *const TSFAPIEndPointSessionDelete = @"users/sign_out";
+static NSString *const TSFAPIEndPointPassword = @"users/password";
 
 @interface TSFSessionService : NSObject <NSURLConnectionDataDelegate>
 
@@ -27,5 +28,8 @@ static NSString *const TSFAPIEndPointSessionDelete = @"users/sign_out";
                           failure:(TSFNetworkingErrorBlock)failure;
 - (void)deleteCurrentSessionWithSuccess:(TSFNetworkingSuccessBlock)success
                                 failure:(TSFNetworkingErrorBlock)failure;
+- (void)createNewPasswordRequestForEmail:(NSString *)email
+                             withSuccess:(TSFNetworkingSuccessBlock)success
+                                 failure:(TSFNetworkingErrorBlock)failure;
 
 @end
