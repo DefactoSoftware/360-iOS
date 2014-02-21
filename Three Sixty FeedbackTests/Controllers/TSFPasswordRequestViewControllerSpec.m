@@ -41,6 +41,10 @@ describe(@"TSFPasswordRequestViewController", ^{
         it(@"has an outlet for the success label", ^{
             [[_passwordRequestViewController.successLabel shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the close button", ^{
+            [[_passwordRequestViewController.closeButton shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -71,6 +75,10 @@ describe(@"TSFPasswordRequestViewController", ^{
 
         it(@"has an outlet for the request button", ^{
             [[_passwordRequestViewController.requestButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the close button", ^{
+            [[_passwordRequestViewController.closeButton shouldNot] beNil];
         });
     });
     

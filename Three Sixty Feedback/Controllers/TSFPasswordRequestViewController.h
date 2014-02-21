@@ -16,8 +16,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *requestButton;
 @property (weak, nonatomic) IBOutlet UILabel *successLabel;
 @property (nonatomic, strong) TSFSessionService *sessionService;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
 - (void)requestNewPassword;
 - (IBAction)requestButtonPressed:(id)sender;
+- (IBAction)closeButtonPressed:(id)sender;
 
 @end

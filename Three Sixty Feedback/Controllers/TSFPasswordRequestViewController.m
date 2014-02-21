@@ -35,6 +35,7 @@
     self.navigationItem.title = TSFLocalizedString(@"TSFPasswordRequestViewControllerTitle", @"Forgot password");
     self.emailLabel.text = TSFLocalizedString(@"TSFPasswordRequestEmailLabel", @"E-mail address");
     [self.requestButton setTitle:TSFLocalizedString(@"TSFPasswordRequestButton", @"Request new password") forState:UIControlStateNormal];
+    [self.closeButton setTitle:TSFLocalizedString(@"TSFPasswordRequestCloseButton", @"Close") forState:UIControlStateNormal];
 }
 
 - (void)requestNewPassword {
@@ -53,6 +54,12 @@
 
 - (IBAction)requestButtonPressed:(id)sender {
     [self requestNewPassword];
+}
+
+- (IBAction)closeButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 @end
