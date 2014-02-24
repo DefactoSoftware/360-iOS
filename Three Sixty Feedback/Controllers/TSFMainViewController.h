@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RESideMenu.h"
 
-@interface TSFMainViewController : UIViewController
+@interface TSFMainViewController : RESideMenu
 
 @end
