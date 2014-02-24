@@ -11,10 +11,6 @@
 
 @implementation TSFFinishedQuestionnairesViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.title = TSFLocalizedString(@"TSFFinishedQuestionnairesViewControllerTitle", @"Finished questionnaires");
