@@ -58,7 +58,7 @@ describe(@"TSFSessionService", ^{
                 return nil;
             }];
             [[_mockUserMapper should] receive:@selector(userWithDictionary:) andReturn:_stubUser withArguments:_sampleResponse];
-
+            
             [_sessionService createNewSessionWithEmail:_sampleEmail password:_samplePassword success:^(TSFUser *user) {
                 [[user should] equal:_stubUser];
             } failure:^(NSError *error) {}];

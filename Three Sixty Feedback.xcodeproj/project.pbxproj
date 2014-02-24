@@ -123,6 +123,7 @@
 		527FD0B8189DA634003E1E96 /* UIColor+TSFColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+TSFColor.m"; path = "Views/Custom/UIColor+TSFColor.m"; sourceTree = "<group>"; };
 		5290DBBC18BBA8EE0074AF78 /* TSFQuestionnaireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnaireCell.h; path = Views/Cells/TSFQuestionnaireCell.h; sourceTree = "<group>"; };
 		5290DBBD18BBA8EE0074AF78 /* TSFQuestionnaireCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireCell.m; path = Views/Cells/TSFQuestionnaireCell.m; sourceTree = "<group>"; };
+		5290DBBF18BBAA6A0074AF78 /* TSFNetworkingBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSFNetworkingBlocks.h; path = Networking/TSFNetworkingBlocks.h; sourceTree = "<group>"; };
 		529B507E18BB55050089CC4A /* TSFPasswordRequestViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFPasswordRequestViewControllerSpec.m; path = Controllers/TSFPasswordRequestViewControllerSpec.m; sourceTree = "<group>"; };
 		529B508018BB55350089CC4A /* TSFMainViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFMainViewControllerSpec.m; path = Controllers/TSFMainViewControllerSpec.m; sourceTree = "<group>"; };
 		529F267418BB9E3C0088D0D2 /* TSFQuestionnairesTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnairesTabBarController.h; path = Controllers/TSFQuestionnairesTabBarController.h; sourceTree = "<group>"; };
@@ -333,6 +334,7 @@
 				E4405870189A6EA1001AEE13 /* TSFCompetenceService.m */,
 				526B426418B5069000DC1310 /* TSFSessionService.h */,
 				526B426518B5069000DC1310 /* TSFSessionService.m */,
+				5290DBBF18BBAA6A0074AF78 /* TSFNetworkingBlocks.h */,
 			);
 			name = Networking;
 			sourceTree = "<group>";

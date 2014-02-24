@@ -75,6 +75,7 @@ describe(@"TSFQuestionnaireService", ^{
         
         [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock:^id(NSArray *params) {
             NSString *URL = params[0];
+            NSDictionary *parameters = params[1];
             void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
             
             [[URL should] equal:TSFAPIEndPointUserQuestionnaires];
