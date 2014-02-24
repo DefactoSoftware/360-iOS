@@ -15,6 +15,8 @@
 #import "TSFFinishedQuestionnairesViewController.h"
 #import "TSFAssessorService.h"
 
+@class TSFActiveQuestionnairesViewController;
+
 @interface TSFQuestionnairesTabBarController : UITabBarController
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;

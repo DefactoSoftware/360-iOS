@@ -14,6 +14,28 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 
 @implementation TSFActiveQuestionnairesViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil
+                           bundle:nibBundleOrNil];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (void)sharedSetup {
+    _questionnairesTabBarController = [[TSFQuestionnairesTabBarController alloc] init];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.questionnairesTableView.dataSource = self;
@@ -25,15 +47,14 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
     self.tabBarController.navigationItem.title = TSFLocalizedString(@"TSFActiveQuestionnairesViewControllerTitle", @"Active questionnaires");
 }
 
-- (void)displayQuestionnaires:(NSArray *)questionnaires {
-    self.questionnaires = questionnaires;
+- (void)reloadData {
     [self.questionnairesTableView reloadData];
 }
 
 #pragma mark - UITableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.questionnaires count];
+    return [self.questionnairesTabBarController.questionnaires count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -42,7 +63,7 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
         questionnaireCell = [[TSFQuestionnaireCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                         reuseIdentifier:TSFQuestionnaireCellIdentifier];
     }
-    TSFQuestionnaire *questionnaire = self.questionnaires[indexPath.row];
+    TSFQuestionnaire *questionnaire = self.questionnairesTabBarController.questionnaires[indexPath.row];
     
     if ([questionnaire.subject class] != [NSNull class]) {
         questionnaireCell.titleLabel.text = questionnaire.subject;

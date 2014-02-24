@@ -64,7 +64,7 @@ describe(@"TSFQuestionnairesTabBarController", ^{
             [_questionnairesTabBarController loadQuestionnaires];
         });
         
-        it(@"displays the questionnaires in the active questionnaires viewcontroller", ^{
+        it(@"calls the active questionnaires viewcontroller to reload data", ^{
             id mockActiveQuestionnairesViewController = [KWMock mockForClass:[TSFActiveQuestionnairesViewController class]];
             __block NSArray *_stubQuestionnaires = @[ [[TSFQuestionnaire alloc] init], [[TSFQuestionnaire alloc] init] ];
             
@@ -74,8 +74,7 @@ describe(@"TSFQuestionnairesTabBarController", ^{
                 return nil;
             }];
             
-            [[mockActiveQuestionnairesViewController should] receive:@selector(displayQuestionnaires:)
-                                                       withArguments:_stubQuestionnaires];
+            [[mockActiveQuestionnairesViewController should] receive:@selector(reloadData)];
             
             _questionnairesTabBarController.activeQuestionnairesViewController = mockActiveQuestionnairesViewController;
             [_questionnairesTabBarController loadQuestionnaires];
@@ -123,6 +122,21 @@ describe(@"TSFQuestionnairesTabBarController", ^{
             
             TSFQuestionnaire *questionnaire = [_questionnairesTabBarController.questionnaires firstObject];
             [[questionnaire.assessors should] equal:_stubAssessors];
+        });
+        
+        it(@"calls the viewcontrollers to reload their data", ^{
+            [_mockAssessorService stub:@selector(assessorsForQuestionnaireId:withSuccess:failure:) withBlock:^id(NSArray *params) {
+                void (^successBlock)(id responseObject) = params[1];
+                successBlock(@YES);
+                return nil;
+            }];
+            
+            id mockActiveQuestionnairesViewController = [KWMock mockForClass:[TSFActiveQuestionnairesViewController class]];
+            _questionnairesTabBarController.activeQuestionnairesViewController = mockActiveQuestionnairesViewController;
+            
+            [[mockActiveQuestionnairesViewController should] receive:@selector(reloadData) withCount:2];
+            
+            [_questionnairesTabBarController loadAssessors];
         });
     });
 });

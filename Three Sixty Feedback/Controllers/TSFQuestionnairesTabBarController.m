@@ -48,7 +48,7 @@
     
     [self.questionnaireService userQuestionnairesWithSuccess:^(NSArray *questionnaires) {
         _self.questionnaires = questionnaires;
-        [_self.activeQuestionnairesViewController displayQuestionnaires:questionnaires];
+        [_self.activeQuestionnairesViewController reloadData];
     } failure:^(NSError *error) {
         NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFQuestionnairesTabBarControllerError", @"Failed getting questionnaires."),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
@@ -59,11 +59,14 @@
 }
 
 - (void)loadAssessors {
+    __weak typeof (self) _self = self;
+    
     for (TSFQuestionnaire *questionnaire in self.questionnaires) {
         __block TSFQuestionnaire *_questionnaire = questionnaire;
         
         [self.assessorService assessorsForQuestionnaireId:questionnaire.questionnaireId withSuccess:^(NSArray *assessors) {
             _questionnaire.assessors = assessors;
+            [_self.activeQuestionnairesViewController reloadData];
         } failure:^(NSError *error) {
             
         }];

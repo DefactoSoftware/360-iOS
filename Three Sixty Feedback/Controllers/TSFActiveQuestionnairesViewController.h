@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFQuestionnairesTabBarController.h"
 #import "TSFQuestionnaire.h"
+
+@class TSFQuestionnairesTabBarController;
 
 @interface TSFActiveQuestionnairesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) TSFQuestionnairesTabBarController *questionnairesTabBarController;
 @property (nonatomic, strong) NSArray *questionnaires;
 @property (weak, nonatomic) IBOutlet UITableView *questionnairesTableView;
 
-- (void)displayQuestionnaires:(NSArray *)questionnaires;
+- (void)reloadData;
 
 @end

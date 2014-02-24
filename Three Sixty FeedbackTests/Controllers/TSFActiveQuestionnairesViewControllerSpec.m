@@ -50,18 +50,8 @@ describe(@"TSFActiveQuestionnairesViewcontroller", ^{
         });
     });
     
-    it(@"sets the active questionnaires and reloads the tableview", ^{
-        id mockTableView = [KWMock mockForClass:[UITableView class]];
-        _activeQuestionnairesViewController.questionnairesTableView = mockTableView;
-        
-        TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
-        TSFQuestionnaire *questionnaireTwo = [[TSFQuestionnaire alloc] init];
-        
-        NSArray *activeQuestionnaires = @[ questionnaire, questionnaireTwo ];
-        
-        [[mockTableView should] receive:@selector(reloadData)];
-        [_activeQuestionnairesViewController displayQuestionnaires:activeQuestionnaires];
-        [[_activeQuestionnairesViewController.questionnaires should] equal:activeQuestionnaires];
+    it(@"has a reference to the questionnaires tabbar controller", ^{
+        [[_activeQuestionnairesViewController.questionnairesTabBarController should] beKindOfClass:[TSFQuestionnairesTabBarController class]];
     });
 });
 
