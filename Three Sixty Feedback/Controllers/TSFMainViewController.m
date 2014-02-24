@@ -8,6 +8,15 @@
 
 #import "TSFMainViewController.h"
 
+static NSString *const TSFMainContentViewControllerIdentifier = @"TSFMainViewControllerNavigation";
+static NSString *const TSFMenuViewControllerIdentifier = @"TSFMenuViewController";
+
 @implementation TSFMainViewController
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:TSFMainContentViewControllerIdentifier];
+    self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:TSFMenuViewControllerIdentifier];
+}
 
 @end
