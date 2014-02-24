@@ -9,7 +9,7 @@
 #import "TSFFinishQuestionnaireViewController.h"
 #import "TSFGenerics.h"
 #import "NZAlertView.h"
-#import "TSFQuestionnaireViewController.h"
+#import "TSFCompetenceViewController.h"
 #import "UIColor+TSFColor.h"
 
 @implementation TSFFinishQuestionnaireViewController
@@ -32,32 +32,6 @@
     
     [self.sendButton setTitle:sendTitle forState:UIControlStateNormal];
     [self.sendButton setTintColor:[UIColor TSFOrangeColor]];
-    
-    [self addGestureRecognizer];
-}
-
-- (void)addGestureRecognizer {
-    UISwipeGestureRecognizer *previousSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePreviousSwipeFrom:)];
-    [previousSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [self.view addGestureRecognizer:previousSwipeRecognizer];
-}
-
-- (void)handlePreviousSwipeFrom:(UIGestureRecognizer *)recognizer {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)completionFailure {
-    NSString *validationErrorMessage = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerError", @"Er is iets misgegaan bij het versturen.");
-    NSString *validationErrorTitle = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerErrorMessage", @"Probeer het nogmaals.");
-
-    NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
-                                                                title:validationErrorTitle
-                                                              message:validationErrorMessage
-                                                             delegate:nil];
-    [validationAlert setStatusBarColor:[UIColor redColor]];
-    [validationAlert setTextAlignment:NSTextAlignmentCenter];
-    
-    [validationAlert show];
 }
 
 - (void)completionSuccess {
@@ -67,27 +41,22 @@
     [self.view layoutSubviews];
 }
 
-- (void)sendCompletion {
-    __weak typeof (self) _self = self;
-    [self.assessorService completeCurrentAssessmentWithSuccess:^(NSNumber *completed) {
-        [_self completionSuccess];
-    } failure:^(NSError *error) {
-        [_self completionFailure];
-    }];
+- (void)canComplete {
+    self.sendButton.enabled = YES;
 }
 
 - (IBAction)sendButtonPressed:(id)sender {
-    [self sendCompletion];
+    __block typeof (self) _self = self;
+    [self.questionnaireViewController completeQuestionnaireWithCompletion:^(BOOL success) {
+        if (success) {
+            [_self completionSuccess];
+        }
+    }];
 }
 
 - (IBAction)previousButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    TSFQuestionnaireViewController *destinationViewController = (TSFQuestionnaireViewController *)segue.destinationViewController;
-
-    [destinationViewController displayLastCompetence];
-}
 
 @end

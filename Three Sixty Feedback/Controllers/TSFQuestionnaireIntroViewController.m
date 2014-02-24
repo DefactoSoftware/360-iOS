@@ -7,7 +7,7 @@
 //
 
 #import "TSFQuestionnaireIntroViewController.h"
-#import "TSFQuestionnaireViewController.h"
+#import "TSFCompetenceViewController.h"
 #import "UIColor+TSFColor.h"
 
 static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue";

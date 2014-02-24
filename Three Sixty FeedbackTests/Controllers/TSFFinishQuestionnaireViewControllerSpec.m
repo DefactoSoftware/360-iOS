@@ -52,6 +52,15 @@ describe(@"TSFFinishQuestionnaireViewController", ^{
         [[_finishQuestionnaireViewController.previousButton shouldNot] beNil];
     });
     
+    it(@"disables the send button initially", ^{
+        [[theValue(_finishQuestionnaireViewController.sendButton.enabled) should] equal:theValue(NO)];
+    });
+    
+    it(@"makes the send button enabled when the questionnaire is completable", ^{
+        [_finishQuestionnaireViewController canComplete];
+        [[theValue(_finishQuestionnaireViewController.sendButton.enabled) should] equal:theValue(YES)];
+    });
+    
     context(@"iPad", ^{
         beforeEach(^{
             _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
@@ -88,11 +97,19 @@ describe(@"TSFFinishQuestionnaireViewController", ^{
         });
     });
     
-    it(@"calls the assessor service to complete the questionnaire", ^{
-        _finishQuestionnaireViewController.assessorService = _mockAssessorService;
-        [[_mockAssessorService should] receive:@selector(completeCurrentAssessmentWithSuccess:failure:)];
-
-        [_finishQuestionnaireViewController sendCompletion];
+    context(@"pressing the send button", ^{
+        __block id _mockQuestionnaireViewController;
+        
+        beforeEach(^{
+            _mockQuestionnaireViewController = [KWMock mockForClass:[TSFQuestionnaireViewController class]];
+            _finishQuestionnaireViewController.questionnaireViewController = _mockQuestionnaireViewController;
+        });
+        
+        it(@"calls the questionnaire viewcontroller when the user presses the send button", ^{
+            [[_mockQuestionnaireViewController should] receive:@selector(completeQuestionnaireWithCompletion:)];
+            
+            [_finishQuestionnaireViewController sendButtonPressed:nil];
+        });
     });
 });
 

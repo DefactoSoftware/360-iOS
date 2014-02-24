@@ -2,296 +2,305 @@
 //  TSFQuestionnaireViewController.m
 //  Three Sixty Feedback
 //
-//  Created by Girgis on 30/01/14.
+//  Created by Girgis Ghattas on 04-02-14.
 //  Copyright (c) 2014 Defacto. All rights reserved.
 //
 
 #import "TSFQuestionnaireViewController.h"
-#import "TSFCompetenceTitleCell.h"
-#import "TSFKeyBehaviourCell.h"
-#import "NZAlertView.h"
+#import "TSFCompetenceViewController.h"
+#import "TSFFinishQuestionnaireViewController.h"
 #import "UIColor+TSFColor.h"
+#import "NZAlertView.h"
 
-static NSString *const TSFCompetenceTitleCellIdentifier = @"TSFCompetenceTitleCell";
-static NSString *const TSFKeyBehaviourCellIdentifier = @"TSFKeyBehaviourCell";
+static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewController";
+static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQuestionnaireViewController";
 
-static NSString *const TSFFinishQuestionnaireSegue = @"TSFFinishQuestionnaireSegue";
-
-@interface TSFQuestionnaireViewController ()
-@property (nonatomic, assign) NSInteger currentCompetenceNumber;
+@interface TSFQuestionnaireViewController()
+@property (nonatomic, strong) TSFCompetenceViewController *pendingCompetenceViewController;
 @end
 
 @implementation TSFQuestionnaireViewController
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-	self = [super initWithCoder:aDecoder];
-	if (self) {
-		_questionnaireService = [TSFQuestionnaireService sharedService];
-        _competenceService = [TSFCompetenceService sharedService];
-        _currentKeyBehaviourRatingViews = [[NSMutableArray alloc] init];
-	}
-	return self;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self refreshProgressView];
+    if ((self = [super initWithCoder:aDecoder])) {
+        _questionnaireService = [TSFQuestionnaireService sharedService];
+        _assessorService = [TSFAssessorService sharedService];
+        _questionnaire = [_questionnaireService.questionnaires firstObject];
+        _competenceViewControllers = [[NSMutableArray alloc] init];
+        _invalidCompetenceViewControllers = [[NSMapTable alloc] init];
+        _updatedCompetenceViewControllers = [[NSMapTable alloc] init];
+        _erroredCompetenceViewControllers = [[NSMapTable alloc] init];
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
     self.title = TSFLocalizedString(@"TSFQuestionnaireViewControllerTitle", @"Feedback round");
-    [self loadQuestionnaire];
+
+    self.pageControl.pageIndicatorTintColor = [UIColor TSFLightGreyColor];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor TSFOrangeColor];
     
-    [self setUpKeyBehavioursTable];
-    [self addGestureRecognizers];
+    [self loadCompetenceControllers];
+    [self createFinishQuestionnaireViewController];
+    [self initializePageController];
 }
 
-- (void)refreshProgressView {
-    self.progressView.progress = (float) self.currentCompetenceNumber / [self.questionnaire.competences count];
-}
+#pragma mark - Initializing page controller and child viewcontrollers
 
-- (void)addGestureRecognizers {
-    UISwipeGestureRecognizer *nextSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleNextSwipeFrom:)];
-    UISwipeGestureRecognizer *previousSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePreviousSwipeFrom:)];
-    [nextSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
-    [previousSwipeRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [self.view addGestureRecognizer:nextSwipeRecognizer];
-    [self.view addGestureRecognizer:previousSwipeRecognizer];
-}
 
-- (void)handleNextSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
-    [self updateCompetenceOrSendQuestionnaire];
-}
-
-- (void)handlePreviousSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
-    [self navigateToPreviousCompetence];
-}
-
-- (void)loadQuestionnaire {
-    self.questionnaire = [self.questionnaireService.questionnaires firstObject];
-}
-
-- (void)setUpKeyBehavioursTable {
-    if (!self.currentCompetenceNumber) {
-        self.currentCompetenceNumber = 0;
+- (void)initializePageController {
+    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                                                          navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                                        options:nil];
+    self.pageController.dataSource = self;
+    self.pageController.delegate = self;
+    
+    CGRect frame = self.view.bounds;
+    frame.origin.y = self.navigationController.navigationBar.frame.size.height;
+    frame.size.height -= self.pageControl.frame.size.height;
+    self.pageController.view.frame = frame;
+    
+    if ([self.competenceViewControllers count]) {
+        TSFCompetenceViewController *initialViewController = [self competenceViewControllerForCompetenceNumber:0];
+        NSArray *viewControllers = @[initialViewController];
+        [self.pageController setViewControllers:viewControllers
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:NO
+                                     completion:nil];
     }
-    [self refreshPreviousButton];
+        
+    [self addChildViewController:self.pageController];
+    [self.view addSubview:self.pageController.view];
+    [self.pageController didMoveToParentViewController:self];
     
-    self.keyBehavioursTableView.dataSource = self;
-    self.keyBehavioursTableView.delegate = self;
-    
-    [self.keyBehavioursTableView reloadData];
+    self.pageControl.numberOfPages = [self.questionnaire.competences count] + 1;
 }
 
-- (void)displayLastCompetence {
-    [self loadQuestionnaire];
-    NSInteger competenceNumber = [self.questionnaire.competences count] - 1;
-    self.currentCompetenceNumber = competenceNumber;
-}
-
-- (void)refreshPreviousButton {
-    if (self.currentCompetenceNumber) {
-        self.previousButton.enabled = YES;
-    } else {
-        self.previousButton.enabled = NO;
+- (void)loadCompetenceControllers {
+    for (NSInteger i = 0; i < [self.questionnaire.competences count]; i++) {
+        [self createCompetenceControllerForNumber:i];
+    }
+    
+    self.pageControl.currentPage = 0;
+    [self.pageControl setNumberOfPages:[self.questionnaire.competences count]];
+    if ([self.competenceViewControllers count]) {
+        self.currentCompetenceViewController = self.competenceViewControllers[0];
     }
 }
 
-- (void)checkPreviousButton {
-    if (self.currentCompetenceNumber) {
+- (TSFCompetenceViewController *)competenceViewControllerForCompetenceNumber:(NSInteger)competenceNumber {
+    if ([self.competenceViewControllers count] <= competenceNumber) {
+        return nil;
     }
+    
+    return self.competenceViewControllers[competenceNumber];
 }
+
+- (UIStoryboard *)currentStoryboard {
+    UIApplication *application = [UIApplication sharedApplication];
+    UIWindow *backWindow = application.windows[0];
+    return backWindow.rootViewController.storyboard;
+}
+
+- (void)createCompetenceControllerForNumber:(NSInteger)number {
+    if (number < 0) {
+        return;
+    } else if (number >= [self.questionnaire.competences count]) {
+        return;
+    }
+    
+    TSFCompetenceViewController *competenceViewController = [[self currentStoryboard] instantiateViewControllerWithIdentifier:TSFCompetenceViewControllerTag];
+    competenceViewController.questionnaire = self.questionnaire;
+    competenceViewController.competence = self.questionnaire.competences[number];
+    competenceViewController.index = number;
+    
+    if (!competenceViewController) {
+        return;
+    }
+
+    [self.competenceViewControllers addObject:competenceViewController];
+}
+
+- (void)createFinishQuestionnaireViewController {
+    TSFFinishQuestionnaireViewController *finishQuestionnaireViewController = [[self currentStoryboard] instantiateViewControllerWithIdentifier:TSFFinishQuestionnaireViewControllerTag];
+
+    if (!finishQuestionnaireViewController) {
+        return;
+    }
+    
+    finishQuestionnaireViewController.index = [self.competenceViewControllers count];
+    finishQuestionnaireViewController.questionnaireViewController = self;
+    self.finishQuestionnaireViewController = finishQuestionnaireViewController;
+}
+
+#pragma mark - Alert messages
 
 - (void)displayValidationError {
-    NSString *validationErrorMessage = TSFLocalizedString(@"TSFQuestionnaireViewControllerValidationErrorMessage", @"Please fill in every question before moving on.");
-    NZAlertView *validationAlert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
+    NSString *message = TSFLocalizedString(@"TSFCompetenceControllerValidationErrorMessage", @"Please fill in every question before moving on.");
+    NZAlertView *alert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
                                                                 title:nil
-                                                              message:validationErrorMessage
+                                                              message:message
                                                              delegate:nil];
-    [validationAlert setStatusBarColor:[UIColor redColor]];
-    [validationAlert setTextAlignment:NSTextAlignmentCenter];
+    [alert setStatusBarColor:[UIColor redColor]];
+    [alert setTextAlignment:NSTextAlignmentCenter];
     
-    [validationAlert show];
+    [alert show];
 }
 
-- (BOOL)validateInput {
-    TSFCompetence *currentCompetence = self.questionnaire.competences[self.currentCompetenceNumber];
+- (void)displayUpdateError {
+    NSString *message = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerUpdateError", @"Er is iets misgegaan bij het versturen van de competentie.");
+    NSString *title = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerUpdateErrorMessage", @"Probeer het nogmaals.");
     
-    if (![self.currentKeyBehaviourRatingViews count]) {
-        return NO;
+    NZAlertView *alert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
+                                                                title:title
+                                                              message:message
+                                                             delegate:nil];
+    [alert setStatusBarColor:[UIColor redColor]];
+    [alert setTextAlignment:NSTextAlignmentCenter];
+    
+    [alert show];
+}
+
+- (void)displayCompletionError {
+    NSString *message = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerError", @"Er is iets misgegaan bij het versturen.");
+    NSString *title = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerErrorMessage", @"Probeer het nogmaals.");
+    
+    NZAlertView *alert = [[NZAlertView alloc] initWithStyle:NZAlertStyleError
+                                                                title:title
+                                                              message:message
+                                                             delegate:nil];
+    [alert setStatusBarColor:[UIColor redColor]];
+    [alert setTextAlignment:NSTextAlignmentCenter];
+    
+    [alert show];
+}
+
+#pragma mark - Updating and completing
+
+- (void)updateCurrentCompetenceViewController {
+    __weak typeof (self) _self = self;
+    __block TSFCompetenceViewController *_updatingViewController = self.currentCompetenceViewController;
+    
+    if ([self.currentCompetenceViewController validateInput]) {
+        [self.invalidCompetenceViewControllers removeObjectForKey:@(self.currentCompetenceViewController.index)];
+        
+        [self.currentCompetenceViewController updateCompetenceWithCompletion:^(BOOL success) {
+            if (!success) {
+                [_self.erroredCompetenceViewControllers setObject:_updatingViewController
+                                                           forKey:@(_updatingViewController.index)];
+            } else {
+                [_self.erroredCompetenceViewControllers removeObjectForKey:@(_updatingViewController.index)];
+            }
+            [_self.updatedCompetenceViewControllers setObject:_updatingViewController
+                                                       forKey:@(_updatingViewController.index)];
+            [_self completeQuestionnaireCheck];
+        }];
+    } else {
+        [self.invalidCompetenceViewControllers setObject:self.currentCompetenceViewController
+                                                  forKey:@(self.currentCompetenceViewController.index)];
+        [_self.updatedCompetenceViewControllers setObject:_updatingViewController
+                                                   forKey:@(_updatingViewController.index)];
+        [_self completeQuestionnaireCheck];
     }
+}
+
+- (void)jumpToCompetencePage:(NSInteger)page {
+    self.currentCompetenceViewController = self.competenceViewControllers[page];
+    [self.pageController setViewControllers:@[self.currentCompetenceViewController]
+                                  direction:UIPageViewControllerNavigationDirectionReverse
+                                   animated:NO
+                                 completion:^(BOOL finished) {}];
     
-    if ([self.currentKeyBehaviourRatingViews count] < [currentCompetence.keyBehaviours count]) {
+    self.pageControl.currentPage = self.currentCompetenceViewController.index;
+}
+
+- (BOOL)failedCompetencesCheck {
+    if ([self.invalidCompetenceViewControllers count]) {
+        NSEnumerator *invalidControllersEnumerator = [self.invalidCompetenceViewControllers objectEnumerator];
+        TSFCompetenceViewController *firstInvalidCompetenceViewController = [invalidControllersEnumerator nextObject];
+        [self jumpToCompetencePage:firstInvalidCompetenceViewController.index];
+        [self displayValidationError];
         return NO;
-    }
-    
-    for (TSFKeyBehaviourRatingView *ratingView in self.currentKeyBehaviourRatingViews) {
-        if (!ratingView.selectedRating) {
-            return NO;
-        }
+    } else if ([self.erroredCompetenceViewControllers count]) {
+        NSEnumerator *erroredControllersEnumerator = [self.erroredCompetenceViewControllers objectEnumerator];
+        TSFCompetenceViewController *firstErroredCompetenceViewController = [erroredControllersEnumerator nextObject];
+        [self jumpToCompetencePage:firstErroredCompetenceViewController.index];
+        [self displayUpdateError];
+        return NO;
     }
     return YES;
 }
 
-- (void)updateCompetence {
-    if (![self validateInput]) {
-        [self displayValidationError];
-        return;
+- (void)completeQuestionnaireCheck {
+    if ([self.updatedCompetenceViewControllers count] == [self.competenceViewControllers count]) {
+        [self.finishQuestionnaireViewController canComplete];
+    }
+}
+
+- (void)completeQuestionnaireWithCompletion:(TSFCompleteQuestionnaireViewControllerBlock)completion {
+    __block TSFCompleteQuestionnaireViewControllerBlock _completion = completion;
+    
+    if ([self failedCompetencesCheck]) {
+        [self.assessorService completeCurrentAssessmentWithSuccess:^(NSNumber *success) {
+            _completion(YES);
+        } failure:^(NSError *error) {
+            _completion(NO);
+        }];
+    }
+}
+
+#pragma mark - PageViewController delegate
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    TSFCompetenceViewController *competenceViewController = (TSFCompetenceViewController *)viewController;
+    NSInteger index = competenceViewController.index - 1;
+    
+    if (index < 0) {
+        return nil;
     }
     
-    TSFCompetence *competence = self.questionnaire.competences[self.currentCompetenceNumber];
-    for (NSInteger i = 0; i < [competence.keyBehaviours count]; i++) {
-        TSFKeyBehaviourRatingView *ratingView = self.currentKeyBehaviourRatingViews[i];
-        NSInteger rating = ratingView.selectedRating;
-        
-        TSFKeyBehaviour *keyBehaviour = competence.keyBehaviours[i];
-        keyBehaviour.rating = @(rating);
+    return [self competenceViewControllerForCompetenceNumber:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController {
+    TSFCompetenceViewController *competenceViewController = (TSFCompetenceViewController *)viewController;
+    NSInteger index = competenceViewController.index + 1;
+    
+    if (index == self.competenceViewControllers.count) {
+        return self.finishQuestionnaireViewController;
+    } else if (index > self.competenceViewControllers.count) {
+        return nil;
     }
     
-    __weak TSFQuestionnaireViewController *_self = self;
-    [self.competenceService updateCompetence:competence
-                            forQuestionnaire:self.questionnaire
-                                 withSuccess:^(TSFCompetence *updatedCompetence) {
-                                     [_self navigateToNextCompetence];
-    }
-                                     failure:^(NSError *error) {
-                                         NSLog(@"Error updating competences. Error: %@. Userinfo: %@.", error.localizedDescription, error.userInfo);
-    }];
+    return [self competenceViewControllerForCompetenceNumber:index];
 }
 
-- (void)navigateToNextCompetence {
-    NSInteger newCompetenceNumber = self.currentCompetenceNumber + 1;
-    if ([self.questionnaire.competences count] > newCompetenceNumber) {
-        self.currentCompetenceNumber = newCompetenceNumber;
-        
-        [self reloadCompetenceTableToNext:YES];
-        [self refreshProgressView];
-    }
-    
-    [self refreshPreviousButton];
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+    return [self.competenceViewControllers count] + 1;
 }
 
-- (void)navigateToPreviousCompetence {
-    NSInteger newCompetenceNumber = self.currentCompetenceNumber - 1;
-    if (newCompetenceNumber > -1) {
-        self.currentCompetenceNumber = newCompetenceNumber;
-        
-        [self reloadCompetenceTableToNext:NO];
-        [self refreshProgressView];
-    }
-    
-    [self refreshPreviousButton];
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+    return 0;
 }
 
-- (void)reloadCompetenceTableToNext:(BOOL)next {
-    [self.currentKeyBehaviourRatingViews removeAllObjects];
-    NSInteger animation = next ? UITableViewRowAnimationLeft : UITableViewRowAnimationRight;
-    [self.keyBehavioursTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:animation];
-    [self.keyBehavioursTableView setContentOffset:CGPointMake(0.0f, -self.keyBehavioursTableView.contentInset.top) animated:YES];
-}
-
-- (void)updateCompetenceOrSendQuestionnaire {
-    if (self.currentCompetenceNumber + 1 == [self.questionnaire.competences count]) {
-        self.progressView.progress = 1;
-        [self performSegueWithIdentifier:TSFFinishQuestionnaireSegue sender:self];
-    } else {
-        [self updateCompetence];
-    }
-}
-
-#pragma mark - Navigate through competences
-
-- (IBAction)nextCompetenceButtonPressed:(UIBarButtonItem *)sender {
-    [self updateCompetenceOrSendQuestionnaire];
-}
-
-- (IBAction)previousCompetenceButtonPressed:(UIBarButtonItem *)sender {
-    [self navigateToPreviousCompetence];
-}
-
-#pragma mark - UITableView delegate
-
-- (TSFCompetenceTitleCell *)competenceTitleCellWithCompetence:(TSFCompetence *)competence {
-    TSFCompetenceTitleCell *competenceTitleCell = [self.keyBehavioursTableView dequeueReusableCellWithIdentifier:TSFCompetenceTitleCellIdentifier];
-	if (!competenceTitleCell) {
-		competenceTitleCell = [[TSFCompetenceTitleCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                            reuseIdentifier:TSFCompetenceTitleCellIdentifier];
-	}
-    
-    competenceTitleCell.nameLabel.text = competence.title;
-
-    return competenceTitleCell;
-}
-
-- (TSFKeyBehaviourCell *)keyBehaviourCellWithKeyBehaviour:(TSFKeyBehaviour *)keyBehaviour {
-    TSFKeyBehaviourCell *keyBehaviourCell = [self.keyBehavioursTableView dequeueReusableCellWithIdentifier:TSFKeyBehaviourCellIdentifier];
-    if (!keyBehaviourCell) {
-        keyBehaviourCell = [[TSFKeyBehaviourCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                      reuseIdentifier:TSFKeyBehaviourCellIdentifier];
-    }
-    
-    keyBehaviourCell.keyBehaviour = keyBehaviour;
-    keyBehaviourCell.descriptionLabel.text = keyBehaviour.keyBehaviourDescription;
-    [self.currentKeyBehaviourRatingViews addObject:keyBehaviourCell.keyBehaviourRatingView];
-    
-    return keyBehaviourCell;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TSFCompetence *currentCompetence = self.questionnaire.competences[self.currentCompetenceNumber];
-    
-    if (indexPath.row == 0) {
-        return [self competenceTitleCellWithCompetence:currentCompetence];
-    } else {
-        NSInteger keyBehaviourNumber = indexPath.row - 1;
-        TSFKeyBehaviour *currentKeyBehaviour = currentCompetence.keyBehaviours[keyBehaviourNumber];
-        
-        return [self keyBehaviourCellWithKeyBehaviour:currentKeyBehaviour];
-    }
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger numberOfRows = 0;
-    if (self.questionnaire && [self.questionnaire.competences count]) {
-        TSFCompetence *currentCompetence = self.questionnaire.competences[self.currentCompetenceNumber];
-        numberOfRows = [currentCompetence.keyBehaviours count] + 1;
-    }
-    return numberOfRows;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return 70.0f;
-    } else {
-        TSFCompetence *currentCompetence = self.questionnaire.competences[self.currentCompetenceNumber];
-        TSFKeyBehaviour *currentKeyBehaviour = currentCompetence.keyBehaviours[indexPath.row - 1];
-
-        CGFloat textFontSize;
-        CGFloat textWidth;
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            textWidth = 728.0f;
-            textFontSize  = 17.0f;
-        } else {
-            textWidth = 280.0f;
-            textFontSize = 13.0f;
+- (void)pageViewController:(UIPageViewController *)pageViewController
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray *)previousViewControllers
+       transitionCompleted:(BOOL)completed {
+    if (completed) {
+        if (self.pendingCompetenceViewController.index >= self.currentCompetenceViewController.index && (self.pendingCompetenceViewController.index <= [self.competenceViewControllers count])) {
+            [self updateCurrentCompetenceViewController];
         }
         
-        CGFloat margin = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 110.0f : 95.0f;
-        
-        CGSize constraint = CGSizeMake(textWidth, 20000.0f);
-        CGSize titleSize = [currentKeyBehaviour.keyBehaviourDescription boundingRectWithSize:constraint
-                                                             options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
-                                                          attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:textFontSize]}
-                                                             context:nil].size;
-        
-        return titleSize.height + margin;
+        self.currentCompetenceViewController = self.pendingCompetenceViewController;
+        self.pageControl.currentPage = self.currentCompetenceViewController.index;
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.01f;
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
+    TSFCompetenceViewController *newCompetenceViewController = (TSFCompetenceViewController *)pendingViewControllers[0];
+    self.pendingCompetenceViewController = newCompetenceViewController;
 }
 
 @end
