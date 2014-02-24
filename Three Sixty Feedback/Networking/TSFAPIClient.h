@@ -8,8 +8,7 @@
 
 #import "AFHTTPRequestOperationManager.h"
 
-static NSString *const TSFAPIBaseURL =
-@"http://backend360staging.herokuapp.com/api/v1/";
+static NSString *const TSFAPIBaseURL = @"https://backend360staging.herokuapp.com/api/v1/";
 
 typedef void (^TSFNetworkingSuccessBlock)(id);
 typedef void (^TSFNetworkingErrorBlock)(NSError *);
