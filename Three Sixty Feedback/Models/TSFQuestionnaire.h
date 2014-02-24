@@ -18,5 +18,6 @@
 @property(nonatomic, strong) NSString *subject;
 @property(nonatomic, strong) NSArray *questions;
 @property(nonatomic, strong) NSArray *competences;
+@property(nonatomic, strong) NSArray *assessors;
 
 @end

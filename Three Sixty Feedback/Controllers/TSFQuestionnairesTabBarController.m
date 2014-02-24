@@ -47,6 +47,7 @@
     __weak typeof (self) _self = self;
     
     [self.questionnaireService userQuestionnairesWithSuccess:^(NSArray *questionnaires) {
+        _self.questionnaires = questionnaires;
         [_self.activeQuestionnairesViewController displayQuestionnaires:questionnaires];
     } failure:^(NSError *error) {
         NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFQuestionnairesTabBarControllerError", @"Failed getting questionnaires."),
@@ -58,7 +59,15 @@
 }
 
 - (void)loadAssessors {
-    
+    for (TSFQuestionnaire *questionnaire in self.questionnaires) {
+        __block TSFQuestionnaire *_questionnaire = questionnaire;
+        
+        [self.assessorService assessorsForQuestionnaireId:questionnaire.questionnaireId withSuccess:^(NSArray *assessors) {
+            _questionnaire.assessors = assessors;
+        } failure:^(NSError *error) {
+            
+        }];
+    }
 }
 
 - (IBAction)menuButtonPressed:(id)sender {

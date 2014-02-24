@@ -79,6 +79,50 @@ describe(@"TSFQuestionnairesTabBarController", ^{
             
             _questionnairesTabBarController.activeQuestionnairesViewController = mockActiveQuestionnairesViewController;
             [_questionnairesTabBarController loadQuestionnaires];
+            
+            [[_questionnairesTabBarController.questionnaires should] equal:_stubQuestionnaires];
+        });
+    });
+    
+    context(@"getting the questionnaires assessors", ^{
+        __block id _mockAssessorService;
+        __block TSFQuestionnaire *_questionnaire;
+        __block TSFQuestionnaire *_questionnaireTwo;
+        
+        beforeEach(^{
+            _mockAssessorService = [KWMock mockForClass:[TSFAssessorService class]];
+            _questionnairesTabBarController.assessorService = _mockAssessorService;
+            
+            _questionnaire = [[TSFQuestionnaire alloc] init];
+            _questionnaireTwo = [[TSFQuestionnaire alloc] init];
+            _questionnaire.questionnaireId = @(arc4random());
+            _questionnaireTwo.questionnaireId = @(arc4random());
+            
+            _questionnairesTabBarController.questionnaires = @[ _questionnaire, _questionnaireTwo ];
+        });
+        
+        it(@"calls the assessor service for every questionnaire", ^{
+            [[_mockAssessorService should] receive:@selector(assessorsForQuestionnaireId:withSuccess:failure:)
+                                     withArguments:_questionnaire.questionnaireId, [KWAny any], [KWAny any]];
+            [[_mockAssessorService should] receive:@selector(assessorsForQuestionnaireId:withSuccess:failure:)
+                                     withArguments:_questionnaireTwo.questionnaireId, [KWAny any], [KWAny any]];
+            
+            [_questionnairesTabBarController loadAssessors];
+        });
+        
+        it(@"sets the assessors in the questionnaire object", ^{
+            __block NSArray *_stubAssessors = @[ [[TSFAssessor alloc] init], [[TSFAssessor alloc] init] ];
+            
+            [_mockAssessorService stub:@selector(assessorsForQuestionnaireId:withSuccess:failure:) withBlock:^id(NSArray *params) {
+                void (^successBlock)(id response) = params[1];
+                successBlock(_stubAssessors);
+                return nil;
+            }];
+            
+            [_questionnairesTabBarController loadAssessors];
+            
+            TSFQuestionnaire *questionnaire = [_questionnairesTabBarController.questionnaires firstObject];
+            [[questionnaire.assessors should] equal:_stubAssessors];
         });
     });
 });
