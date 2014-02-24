@@ -63,22 +63,34 @@ describe(@"TSFQuestionnaireService", ^{
         
         [_questionnaireService questionnairesWithSuccess: ^(NSArray *response) {
             [[response should] equal:_stubMappedResponse];
-            [[_questionnaireService.questionnaires should] equal:_stubMappedResponse];
 		}
          
                                                  failure: ^(NSError *error) {}];
 	});
     
-    it(@"reads the key behaviour rating cells and updates the competence", ^{
-        TSFQuestionnaire *fakeQuestionnaire = [[TSFQuestionnaire alloc] init];
-        fakeQuestionnaire.questionnaireId = [NSNumber numberWithInteger:arc4random()];
-        TSFCompetence *competence = [[TSFCompetence alloc] init];
-        competence.competenceId = [NSNumber numberWithInteger:arc4random()];
+    it(@"calls the API for a list of questionnaires for the signed in user", ^{
+        __block NSArray *_stubResponse = @[@{ @"id": @(arc4random()) }];
+        __block NSArray *_stubMappedResponse = [[[TSFQuestionnaireMapper alloc] init]
+                                                questionnairesWithDictionaryArray:_stubResponse];
         
+        [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock:^id(NSArray *params) {
+            NSString *URL = params[0];
+            NSDictionary *parameters = params[1];
+            void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
+            
+            [[URL should] equal:TSFAPIEndPointUserQuestionnaires];
+            successBlock(nil, _stubResponse);
+            return nil;
+        }];
         
+        [[_mockQuestionnaireMapper should] receive:@selector(questionnairesWithDictionaryArray:)
+                                         andReturn:_stubMappedResponse
+                                     withArguments:_stubResponse];
         
-        fakeQuestionnaire.competences = @[competence];
-        
+        [_questionnaireService userQuestionnairesWithSuccess: ^(NSArray *response) {
+            [[response should] equal:_stubMappedResponse];
+        }
+                                                     failure: ^(NSError *error) {}];
         
     });
 });

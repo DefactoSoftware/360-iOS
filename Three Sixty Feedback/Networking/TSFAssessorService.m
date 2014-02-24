@@ -16,6 +16,7 @@
 	dispatch_once(&onceToken, ^{
 	    _sharedService = [[self alloc] init];
 	    _sharedService.apiClient = [TSFAPIClient sharedClient];
+        _sharedService.assessorMapper = [[TSFAssessorMapper alloc] init];
 	});
     
 	return _sharedService;
@@ -35,6 +36,26 @@
 	} failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
 	    failure(error);
 	}];
+}
+
+- (void)assessorsForQuestionnaireId:(NSNumber *)questionnaireId
+                        withSuccess:(TSFNetworkingSuccessBlock)success
+                            failure:(TSFNetworkingErrorBlock)failure {
+    NSString *questionnairesURL = [NSString stringWithFormat:@"%@%@%@%@", TSFAPIBaseURL,
+                                   TSFAPIEndPointQuestionnaires,
+                                   questionnaireId,
+                                   TSFAPIEndPointAssessors];
+    
+    __block TSFNetworkingSuccessBlock _successBlock = success;
+    __weak typeof (self) _self = self;
+    
+    [self.apiClient GET:questionnairesURL parameters:Nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *assessorsDictionaryArrray = (NSArray *)responseObject;
+        NSArray *mappedAssessors = [_self.assessorMapper assessorsWithDictionaryArray:assessorsDictionaryArrray];
+        _successBlock(mappedAssessors);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 }
 
 @end

@@ -14,8 +14,9 @@
 	static TSFAPIClient *_sharedClient = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-	    _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:TSFAPIBaseURL]];
-        _sharedClient.assessorToken = @"jqBFK-bUPa0M2yX-XrEO2A";
+	    _sharedClient =
+        [[self alloc] initWithBaseURL:[NSURL URLWithString:TSFAPIBaseURL]];
+        _sharedClient.assessorToken = @"KooSLx35F1ca3Q3F6G8pgw";
 	});
     
 	return _sharedClient;
@@ -24,8 +25,8 @@
 - (void)setAssessorTokenWithURL:(NSURL *)url {
 	NSError *regexError = nil;
 	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"token=([^&]*)"
-	                                                                       options:0
-	                                                                         error:&regexError];
+                                                                           options:0
+                                                                             error:&regexError];
 	NSString *input = [url description];
 	[regex enumerateMatchesInString:input
 	                        options:0
@@ -36,6 +37,30 @@
                                  self.assessorToken = [input substringWithRange:accessTokenRange];
                              }
                          }];
+}
+
+- (void)instantiateSessionService {
+    if (!self.sessionService) {
+        self.sessionService = [TSFSessionService sharedService];
+    }
+}
+
+- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)request
+                                                    success:(void (^)(AFHTTPRequestOperation *, id))success
+                                                    failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
+    [self instantiateSessionService];
+    
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    
+    TSFUser *signedInUser = self.sessionService.signedInUser;
+    if (signedInUser) {
+        [mutableRequest addValue:signedInUser.email forHTTPHeaderField:TSFAPIHeaderFieldFrom];
+        [mutableRequest addValue:signedInUser.authToken forHTTPHeaderField:TSFAPIHeaderFieldAuthorization];
+    }
+    
+    return [super HTTPRequestOperationWithRequest:mutableRequest
+                                          success:success
+                                          failure:failure];
 }
 
 @end

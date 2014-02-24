@@ -10,10 +10,13 @@
 #import "TSFAPIClient.h"
 #import "TSFUserMapper.h"
 #import "TSFUser.h"
+#import "TSFNetworkingBlocks.h"
 
 static NSString *const TSFAPIEndPointSessions = @"users/sign_in";
 static NSString *const TSFAPIEndPointSessionDelete = @"users/sign_out";
 static NSString *const TSFAPIEndPointPassword = @"users/password";
+
+@class TSFAPIClient;
 
 @interface TSFSessionService : NSObject <NSURLConnectionDataDelegate>
 

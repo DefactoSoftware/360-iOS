@@ -29,13 +29,27 @@
 	NSDictionary *parameters = @{ @"token" : self.apiClient.assessorToken };
     
 	[self.apiClient GET:questionnairesURL parameters:parameters success: ^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray *returnedQuestionnaires = [self.questionnaireMapper questionnairesWithDictionaryArray:responseObject];
-        self.questionnaires = returnedQuestionnaires;
-	    success(returnedQuestionnaires);
+        NSArray *questionnaires = [self.questionnaireMapper questionnairesWithDictionaryArray:responseObject];
+        self.questionnaires = questionnaires;
+        success(questionnaires);
 	}
      
 	            failure:
 	 ^(AFHTTPRequestOperation *operation, NSError *error) { failure(error); }];
+}
+
+- (void)userQuestionnairesWithSuccess:(TSFNetworkingSuccessBlock)success
+                              failure:(TSFNetworkingErrorBlock)failure {
+    __block TSFNetworkingSuccessBlock _success = success;
+    __block TSFNetworkingErrorBlock _failure = failure;
+    __block typeof (self) _self = self;
+    
+    [self.apiClient GET:TSFAPIEndPointUserQuestionnaires parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *questionnaires = [_self.questionnaireMapper questionnairesWithDictionaryArray:(NSArray *)responseObject];
+        _success(questionnaires);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        _failure(error);
+    }];
 }
 
 @end
