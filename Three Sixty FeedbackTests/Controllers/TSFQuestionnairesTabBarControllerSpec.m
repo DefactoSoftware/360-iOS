@@ -46,7 +46,8 @@ describe(@"TSFQuestionnairesTabBarController", ^{
         [[_questionnairesTabBarController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];
     });
     
-    it(@"has a reference to the api client", ^{
+    it(@"has a reference to the assessor service", ^{
+        [[_questionnairesTabBarController.assessorService should] beKindOfClass:[TSFAssessorService class]];
     });
     
     context(@"getting the user's questionnaires", ^{

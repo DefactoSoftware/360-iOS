@@ -29,6 +29,7 @@
 
 - (void)sharedSetup {
     _questionnaireService = [TSFQuestionnaireService sharedService];
+    _assessorService = [TSFAssessorService sharedService];
 }
 
 - (void)viewDidLoad {
@@ -54,6 +55,10 @@
         [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
         NSLog(@"Error getting user questionnaires: %@.", error);
     }];
+}
+
+- (void)loadAssessors {
+    
 }
 
 - (IBAction)menuButtonPressed:(id)sender {
