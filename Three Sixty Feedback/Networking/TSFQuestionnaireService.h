@@ -11,6 +11,7 @@
 #import "TSFQuestionnaireMapper.h"
 
 static NSString *const TSFAPIEndPointQuestionnaires = @"questionnaires";
+static NSString *const TSFAPIEndPointUserQuestionnaires = @"users/me/questionnaires";
 
 @interface TSFQuestionnaireService : NSObject
 
@@ -21,5 +22,7 @@ static NSString *const TSFAPIEndPointQuestionnaires = @"questionnaires";
 + (TSFQuestionnaireService *)sharedService;
 - (void)questionnairesWithSuccess:(TSFNetworkingSuccessBlock)success
                           failure:(TSFNetworkingErrorBlock)failure;
+- (void)userQuestionnairesWithSuccess:(TSFNetworkingSuccessBlock)success
+                              failure:(TSFNetworkingErrorBlock)failure;
 
 @end

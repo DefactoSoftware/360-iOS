@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFQuestionnaire.h"
 
-@interface TSFActiveQuestionnairesViewController : UIViewController
+@interface TSFActiveQuestionnairesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) NSArray *questionnaires;
+@property (weak, nonatomic) IBOutlet UITableView *questionnairesTableView;
+
+- (void)displayQuestionnaires:(NSArray *)questionnaires;
 
 @end
