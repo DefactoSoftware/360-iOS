@@ -115,8 +115,10 @@
 }
 
 - (void)setRating:(NSNumber *)rating {
-    self.selectedRating = [rating integerValue];
-    [self layoutSubviews];
+    if ([rating class] != [NSNull class]) {
+        self.selectedRating = [rating integerValue];
+        [self layoutSubviews];
+    }
 }
 
 @end
