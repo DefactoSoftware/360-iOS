@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */; };
 		10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */; };
+		522662DC18BB6759001797EF /* TSFCompetenceViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 522662DB18BB6759001797EF /* TSFCompetenceViewControllerSpec.m */; };
 		5226DBCE18B748B100CCDAE4 /* TSFPasswordRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5226DBCD18B748B100CCDAE4 /* TSFPasswordRequestViewController.m */; };
 		522DB4AB189FB6BA002EE50D /* TSFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522DB4AA189FB6BA002EE50D /* TSFHomeViewController.m */; };
 		522DB4AE189FB807002EE50D /* TSFHomeViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 522DB4AD189FB807002EE50D /* TSFHomeViewControllerSpec.m */; };
@@ -42,7 +43,6 @@
 		E440586E189A6E30001AEE13 /* TSFCompetenceServiceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E440586D189A6E30001AEE13 /* TSFCompetenceServiceSpec.m */; };
 		E4405871189A6EA1001AEE13 /* TSFCompetenceService.m in Sources */ = {isa = PBXBuildFile; fileRef = E4405870189A6EA1001AEE13 /* TSFCompetenceService.m */; };
 		E4405874189A83BC001AEE13 /* TSFCompetenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4405873189A83BC001AEE13 /* TSFCompetenceViewController.m */; };
-		E4405876189A83D7001AEE13 /* TSFCompetenceViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E4405875189A83D7001AEE13 /* TSFCompetenceViewControllerSpec.m */; };
 		E453D6F21899552000052854 /* TSFQuestionnaireServiceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E453D6F11899552000052854 /* TSFQuestionnaireServiceSpec.m */; };
 		E453D6F51899557400052854 /* TSFQuestionnaireService.m in Sources */ = {isa = PBXBuildFile; fileRef = E453D6F41899557400052854 /* TSFQuestionnaireService.m */; };
 		E455FF791899004F00F8C04C /* TSFQuestionnaireSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E455FF781899004F00F8C04C /* TSFQuestionnaireSpec.m */; };
@@ -92,6 +92,7 @@
 		02440D1D9DA543F999900FB9 /* libPods-Three Sixty Feedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty Feedback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFAppDelegateSpec.m; sourceTree = "<group>"; };
 		30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty FeedbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		522662DB18BB6759001797EF /* TSFCompetenceViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceViewControllerSpec.m; path = Controllers/TSFCompetenceViewControllerSpec.m; sourceTree = "<group>"; };
 		5226DBCC18B748B100CCDAE4 /* TSFPasswordRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFPasswordRequestViewController.h; path = Controllers/TSFPasswordRequestViewController.h; sourceTree = "<group>"; };
 		5226DBCD18B748B100CCDAE4 /* TSFPasswordRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFPasswordRequestViewController.m; path = Controllers/TSFPasswordRequestViewController.m; sourceTree = "<group>"; };
 		5226DBD018B748D100CCDAE4 /* TSFPasswordRequestViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFPasswordRequestViewControllerSpec.m; path = Controllers/TSFPasswordRequestViewControllerSpec.m; sourceTree = "<group>"; };
@@ -151,7 +152,6 @@
 		E4405870189A6EA1001AEE13 /* TSFCompetenceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceService.m; path = Networking/TSFCompetenceService.m; sourceTree = "<group>"; };
 		E4405872189A83BC001AEE13 /* TSFCompetenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCompetenceViewController.h; path = Controllers/TSFCompetenceViewController.h; sourceTree = "<group>"; };
 		E4405873189A83BC001AEE13 /* TSFCompetenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceViewController.m; path = Controllers/TSFCompetenceViewController.m; sourceTree = "<group>"; };
-		E4405875189A83D7001AEE13 /* TSFCompetenceViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceViewControllerSpec.m; path = Controllers/TSFCompetenceViewControllerSpec.m; sourceTree = "<group>"; };
 		E453D6F11899552000052854 /* TSFQuestionnaireServiceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireServiceSpec.m; path = Networking/TSFQuestionnaireServiceSpec.m; sourceTree = "<group>"; };
 		E453D6F31899557400052854 /* TSFQuestionnaireService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnaireService.h; path = Networking/TSFQuestionnaireService.h; sourceTree = "<group>"; };
 		E453D6F41899557400052854 /* TSFQuestionnaireService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireService.m; path = Networking/TSFQuestionnaireService.m; sourceTree = "<group>"; };
@@ -326,13 +326,12 @@
 			isa = PBXGroup;
 			children = (
 				529B507E18BB55050089CC4A /* TSFPasswordRequestViewControllerSpec.m */,
-				E4405875189A83D7001AEE13 /* TSFQuestionnaireViewControllerSpec.m */,
 				529B508018BB55350089CC4A /* TSFMainViewControllerSpec.m */,
 				52ACE464189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m */,
+				522662DB18BB6759001797EF /* TSFCompetenceViewControllerSpec.m */,
 				52ACE46A189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m */,
 				522DB4AD189FB807002EE50D /* TSFHomeViewControllerSpec.m */,
 				526B425F18B5004700DC1310 /* TSFLoginViewControllerSpec.m */,
-				E4405875189A83D7001AEE13 /* TSFCompetenceViewControllerSpec.m */,
 				52ACE464189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m */,
 				52ACE46A189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m */,
 				522DB4AD189FB807002EE50D /* TSFHomeViewControllerSpec.m */,
@@ -692,15 +691,14 @@
 			files = (
 				E455FF9218991CAA00F8C04C /* TSFQuestionSpec.m in Sources */,
 				52ECB6F418A0E481007C7636 /* TSFQuestionnaireViewControllerSpec.m in Sources */,
+				522662DC18BB6759001797EF /* TSFCompetenceViewControllerSpec.m in Sources */,
 				0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */,
 				E4C7F91C18993E1300B0E5F2 /* TSFQuestionMapperSpec.m in Sources */,
 				E417281718994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m in Sources */,
 				529B508118BB55350089CC4A /* TSFMainViewControllerSpec.m in Sources */,
 				52ACE46B189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m in Sources */,
 				E455FF7F189904A200F8C04C /* TSFCompetenceSpec.m in Sources */,
-				E4405876189A83D7001AEE13 /* TSFQuestionnaireViewControllerSpec.m in Sources */,
 				526B426918B506AC00DC1310 /* TSFSessionServiceSpec.m in Sources */,
-				E4405876189A83D7001AEE13 /* TSFCompetenceViewControllerSpec.m in Sources */,
 				E455FF791899004F00F8C04C /* TSFQuestionnaireSpec.m in Sources */,
 				E4C7F924189940B400B0E5F2 /* TSFCompetenceMapperSpec.m in Sources */,
 				522DB4AE189FB807002EE50D /* TSFHomeViewControllerSpec.m in Sources */,
