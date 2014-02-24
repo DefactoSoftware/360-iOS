@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */; };
+		079E00CE18BB74360094C090 /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079E00CD18BB74360094C090 /* NewRelicAgent.framework */; };
+		079E00D018BB745F0094C090 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079E00CF18BB745F0094C090 /* CoreTelephony.framework */; };
+		079E00D218BB74670094C090 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079E00D118BB74670094C090 /* SystemConfiguration.framework */; };
+		079E00D418BB74760094C090 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 079E00D318BB74760094C090 /* libz.dylib */; };
 		10E60C29E1EF4AFE963BD5CE /* libPods-Three Sixty FeedbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */; };
 		522662DC18BB6759001797EF /* TSFCompetenceViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 522662DB18BB6759001797EF /* TSFCompetenceViewControllerSpec.m */; };
 		5226DBCE18B748B100CCDAE4 /* TSFPasswordRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5226DBCD18B748B100CCDAE4 /* TSFPasswordRequestViewController.m */; };
 		522DB4AB189FB6BA002EE50D /* TSFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522DB4AA189FB6BA002EE50D /* TSFHomeViewController.m */; };
 		522DB4AE189FB807002EE50D /* TSFHomeViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 522DB4AD189FB807002EE50D /* TSFHomeViewControllerSpec.m */; };
 		526B425C18B5002100DC1310 /* TSFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B425B18B5002100DC1310 /* TSFLoginViewController.m */; };
-		526B426018B5004700DC1310 /* TSFLoginViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B425F18B5004700DC1310 /* TSFLoginViewControllerSpec.m */; };
 		526B426618B5069000DC1310 /* TSFSessionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B426518B5069000DC1310 /* TSFSessionService.m */; };
 		526B426918B506AC00DC1310 /* TSFSessionServiceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B426818B506AC00DC1310 /* TSFSessionServiceSpec.m */; };
 		527AF14D18B6113400604A3A /* TSFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 527AF14C18B6113400604A3A /* TSFUser.m */; };
@@ -91,17 +94,19 @@
 /* Begin PBXFileReference section */
 		02440D1D9DA543F999900FB9 /* libPods-Three Sixty Feedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty Feedback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0765E13F189968D800D64B2B /* TSFAppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFAppDelegateSpec.m; sourceTree = "<group>"; };
+		079E00CD18BB74360094C090 /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NewRelicAgent.framework; sourceTree = "<group>"; };
+		079E00CF18BB745F0094C090 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		079E00D118BB74670094C090 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		079E00D318BB74760094C090 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		30296737650743E89942BB02 /* libPods-Three Sixty FeedbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Three Sixty FeedbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		522662DB18BB6759001797EF /* TSFCompetenceViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceViewControllerSpec.m; path = Controllers/TSFCompetenceViewControllerSpec.m; sourceTree = "<group>"; };
 		5226DBCC18B748B100CCDAE4 /* TSFPasswordRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFPasswordRequestViewController.h; path = Controllers/TSFPasswordRequestViewController.h; sourceTree = "<group>"; };
 		5226DBCD18B748B100CCDAE4 /* TSFPasswordRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFPasswordRequestViewController.m; path = Controllers/TSFPasswordRequestViewController.m; sourceTree = "<group>"; };
-		5226DBD018B748D100CCDAE4 /* TSFPasswordRequestViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFPasswordRequestViewControllerSpec.m; path = Controllers/TSFPasswordRequestViewControllerSpec.m; sourceTree = "<group>"; };
 		522DB4A9189FB6BA002EE50D /* TSFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFHomeViewController.h; path = Controllers/TSFHomeViewController.h; sourceTree = "<group>"; };
 		522DB4AA189FB6BA002EE50D /* TSFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFHomeViewController.m; path = Controllers/TSFHomeViewController.m; sourceTree = "<group>"; };
 		522DB4AD189FB807002EE50D /* TSFHomeViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFHomeViewControllerSpec.m; path = Controllers/TSFHomeViewControllerSpec.m; sourceTree = "<group>"; };
 		526B425A18B5002100DC1310 /* TSFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFLoginViewController.h; path = Controllers/TSFLoginViewController.h; sourceTree = "<group>"; };
 		526B425B18B5002100DC1310 /* TSFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFLoginViewController.m; path = Controllers/TSFLoginViewController.m; sourceTree = "<group>"; };
-		526B425F18B5004700DC1310 /* TSFLoginViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFLoginViewControllerSpec.m; path = Controllers/TSFLoginViewControllerSpec.m; sourceTree = "<group>"; };
 		526B426118B504A400DC1310 /* TSFGenerics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
 		526B426418B5069000DC1310 /* TSFSessionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFSessionService.h; path = Networking/TSFSessionService.h; sourceTree = "<group>"; };
 		526B426518B5069000DC1310 /* TSFSessionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFSessionService.m; path = Networking/TSFSessionService.m; sourceTree = "<group>"; };
@@ -112,7 +117,6 @@
 		527AF15118B611AB00604A3A /* TSFUserMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFUserMapper.h; path = Models/Mappers/TSFUserMapper.h; sourceTree = "<group>"; };
 		527AF15218B611AB00604A3A /* TSFUserMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFUserMapper.m; path = Models/Mappers/TSFUserMapper.m; sourceTree = "<group>"; };
 		527AF15518B611C100604A3A /* TSFUserMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFUserMapperSpec.m; path = Models/Mappers/TSFUserMapperSpec.m; sourceTree = "<group>"; };
-		527AF15818B62E7400604A3A /* TSFMainViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFMainViewControllerSpec.m; path = Controllers/TSFMainViewControllerSpec.m; sourceTree = "<group>"; };
 		527AF15A18B62EE200604A3A /* TSFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFMainViewController.h; path = Controllers/TSFMainViewController.h; sourceTree = "<group>"; };
 		527AF15B18B62EE200604A3A /* TSFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFMainViewController.m; path = Controllers/TSFMainViewController.m; sourceTree = "<group>"; };
 		527FD0B7189DA634003E1E96 /* UIColor+TSFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+TSFColor.h"; path = "Views/Custom/UIColor+TSFColor.h"; sourceTree = "<group>"; };
@@ -205,8 +209,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079E00D418BB74760094C090 /* libz.dylib in Frameworks */,
+				079E00D218BB74670094C090 /* SystemConfiguration.framework in Frameworks */,
+				079E00D018BB745F0094C090 /* CoreTelephony.framework in Frameworks */,
 				E4800B231897FD9A00FCE147 /* CoreGraphics.framework in Frameworks */,
 				E4800B251897FD9A00FCE147 /* UIKit.framework in Frameworks */,
+				079E00CE18BB74360094C090 /* NewRelicAgent.framework in Frameworks */,
 				E4800B211897FD9A00FCE147 /* Foundation.framework in Frameworks */,
 				F0FBDD2E96ED4C558BDC16E7 /* libPods-Three Sixty Feedback.a in Frameworks */,
 			);
@@ -233,9 +241,6 @@
 				52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */,
 				52E80F4B189BE313007A8A48 /* TSFKeyBehaviourCell.h */,
 				52E80F4C189BE313007A8A48 /* TSFKeyBehaviourCell.m */,
-				526B425F18B5004700DC1310 /* TSFLoginViewControllerSpec.m */,
-				527AF15818B62E7400604A3A /* TSFMainViewControllerSpec.m */,
-				5226DBD018B748D100CCDAE4 /* TSFPasswordRequestViewControllerSpec.m */,
 				52BD22C418ABFE1900D14390 /* TSFCommentaryCell.h */,
 				52BD22C518ABFE1900D14390 /* TSFCommentaryCell.m */,
 			);
@@ -331,7 +336,6 @@
 				522662DB18BB6759001797EF /* TSFCompetenceViewControllerSpec.m */,
 				52ACE46A189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m */,
 				522DB4AD189FB807002EE50D /* TSFHomeViewControllerSpec.m */,
-				526B425F18B5004700DC1310 /* TSFLoginViewControllerSpec.m */,
 				52ACE464189EBFC20095F650 /* TSFQuestionnaireIntroViewControllerSpec.m */,
 				52ACE46A189ED83C0095F650 /* TSFFinishQuestionnaireViewControllerSpec.m */,
 				522DB4AD189FB807002EE50D /* TSFHomeViewControllerSpec.m */,
@@ -395,6 +399,10 @@
 		E4800B1F1897FD9A00FCE147 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				079E00D318BB74760094C090 /* libz.dylib */,
+				079E00D118BB74670094C090 /* SystemConfiguration.framework */,
+				079E00CF18BB745F0094C090 /* CoreTelephony.framework */,
+				079E00CD18BB74360094C090 /* NewRelicAgent.framework */,
 				E4800B201897FD9A00FCE147 /* Foundation.framework */,
 				E4800B221897FD9A00FCE147 /* CoreGraphics.framework */,
 				E4800B241897FD9A00FCE147 /* UIKit.framework */,
@@ -705,7 +713,6 @@
 				E453D6F21899552000052854 /* TSFQuestionnaireServiceSpec.m in Sources */,
 				E455FF8518990DB000F8C04C /* TSFKeyBehaviourSpec.m in Sources */,
 				527AF15618B611C100604A3A /* TSFUserMapperSpec.m in Sources */,
-				526B426018B5004700DC1310 /* TSFLoginViewControllerSpec.m in Sources */,
 				E429DD51189809A400BAFEC4 /* TSFAPIClientSpec.m in Sources */,
 				E440586E189A6E30001AEE13 /* TSFCompetenceServiceSpec.m in Sources */,
 				E4A7D79D18997A3A00276FC0 /* TSFAssessorServiceSpec.m in Sources */,
@@ -844,6 +851,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jurre/defacto/360-iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Three Sixty Feedback/Three Sixty Feedback-Prefix.pch";
 				INFOPLIST_FILE = "Three Sixty Feedback/Three Sixty Feedback-Info.plist";
@@ -861,6 +872,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jurre/defacto/360-iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Three Sixty Feedback/Three Sixty Feedback-Prefix.pch";
 				INFOPLIST_FILE = "Three Sixty Feedback/Three Sixty Feedback-Info.plist";

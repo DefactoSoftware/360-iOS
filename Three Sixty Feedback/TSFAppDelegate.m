@@ -8,21 +8,23 @@
 #import "TSFAppDelegate.h"
 #import "TSFAPIClient.h"
 #import "UIColor+TSFColor.h"
+#import <NewRelicAgent/NewRelic.h>
 
 @implementation TSFAppDelegate
 
-- (BOOL)application:(UIApplication *)application
+- (BOOL)              application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor TSFLightGreyColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor TSFOrangeColor];
-    
-    return YES;
+	[NewRelicAgent startWithApplicationToken:@"AAcdbb4ecaa17a343373909799efb5260bb689207b"];
+	UIPageControl *pageControl = [UIPageControl appearance];
+	pageControl.pageIndicatorTintColor = [UIColor TSFLightGreyColor];
+	pageControl.currentPageIndicatorTintColor = [UIColor TSFOrangeColor];
+
+	return YES;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    [[TSFAPIClient sharedClient] setAssessorTokenWithURL:url];
-    return YES;
+	[[TSFAPIClient sharedClient] setAssessorTokenWithURL:url];
+	return YES;
 }
 
 @end
