@@ -7,7 +7,12 @@
 //
 
 #import "TSFUserQuestionnaireViewController.h"
+#import "TSFGenerics.h"
 
 @implementation TSFUserQuestionnaireViewController
+
+- (void)viewDidLoad {
+    self.navigationItem.title = TSFLocalizedString(@"TSFUserQuestionnaireViewControllerTitle", @"Assessors");
+}
 
 @end
