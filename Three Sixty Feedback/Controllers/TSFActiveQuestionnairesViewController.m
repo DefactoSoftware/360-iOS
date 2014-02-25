@@ -70,6 +70,8 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
     } else {
         questionnaireCell.titleLabel.text = TSFLocalizedString(@"TSFActiveQuestionnairesViewControllerNoSubject", @"No subject");
     }
+    
+    questionnaireCell.assessorsCountLabel.text = [NSString stringWithFormat:@"%lu", (long)[questionnaire.assessors count]];
     return questionnaireCell;
 }
 
