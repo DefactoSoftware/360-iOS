@@ -353,7 +353,7 @@
                                             <outlet property="assessorsCountLabel" destination="Smj-w3-xkN" id="xKJ-gn-CN9"/>
                                             <outlet property="subjectLabel" destination="bU3-Rc-kA8" id="Uc0-dp-DOH"/>
                                             <outlet property="titleLabel" destination="nBI-hm-xCe" id="KjM-gh-Rd4"/>
-                                            <segue destination="hAb-iY-ovo" kind="push" identifier="TSFUserQuestionnaireViewController" id="Wb8-OS-aKT"/>
+                                            <segue destination="hAb-iY-ovo" kind="push" id="1Ag-hG-2XH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -419,18 +419,34 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="um3-Mk-Jd2">
+                                        <rect key="frame" x="20" y="107" width="728" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="kf1-ET-ln5" kind="popover" identifier="TSFAssessorsPopoverSegue" popoverAnchorView="um3-Mk-Jd2" id="GaU-IS-tKi">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="pJj-at-F6u" firstAttribute="leading" secondItem="Mma-tR-RP5" secondAttribute="leading" constant="20" symbolic="YES" id="5U4-c9-eRp"/>
                                     <constraint firstItem="pJj-at-F6u" firstAttribute="centerX" secondItem="Mma-tR-RP5" secondAttribute="centerX" id="Bv1-h1-mnG"/>
                                     <constraint firstAttribute="trailing" secondItem="pJj-at-F6u" secondAttribute="trailing" constant="20" symbolic="YES" id="Idk-kq-IOV"/>
                                     <constraint firstItem="3Xe-NM-xw7" firstAttribute="leading" secondItem="pJj-at-F6u" secondAttribute="leading" id="RL4-Hx-Khv"/>
+                                    <constraint firstItem="um3-Mk-Jd2" firstAttribute="leading" secondItem="ZHH-ur-zzA" secondAttribute="leading" id="Roi-sK-XDM"/>
                                     <constraint firstItem="pJj-at-F6u" firstAttribute="top" secondItem="Mma-tR-RP5" secondAttribute="top" constant="20" symbolic="YES" id="SqN-O2-5Hi"/>
+                                    <constraint firstItem="um3-Mk-Jd2" firstAttribute="trailing" secondItem="ZHH-ur-zzA" secondAttribute="trailing" id="VlW-Jg-zdv"/>
                                     <constraint firstItem="3Xe-NM-xw7" firstAttribute="trailing" secondItem="ZHH-ur-zzA" secondAttribute="trailing" id="YRQ-b9-tW4"/>
                                     <constraint firstItem="ZHH-ur-zzA" firstAttribute="top" secondItem="3Xe-NM-xw7" secondAttribute="bottom" constant="8" symbolic="YES" id="dcq-NP-T5c"/>
                                     <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="ZHH-ur-zzA" secondAttribute="bottom" constant="925" id="dnT-7B-xHK"/>
                                     <constraint firstItem="pJj-at-F6u" firstAttribute="trailing" secondItem="3Xe-NM-xw7" secondAttribute="trailing" id="gJb-OV-xkA"/>
                                     <constraint firstItem="3Xe-NM-xw7" firstAttribute="leading" secondItem="ZHH-ur-zzA" secondAttribute="leading" id="pQ9-8x-wvw"/>
+                                    <constraint firstItem="um3-Mk-Jd2" firstAttribute="top" secondItem="ZHH-ur-zzA" secondAttribute="bottom" constant="8" symbolic="YES" id="vWk-8N-duE"/>
+                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="um3-Mk-Jd2" secondAttribute="bottom" constant="887" id="xm5-Ll-7Hf"/>
                                     <constraint firstItem="3Xe-NM-xw7" firstAttribute="top" secondItem="pJj-at-F6u" secondAttribute="bottom" constant="8" symbolic="YES" id="yUM-tM-1DU"/>
                                 </constraints>
                             </scrollView>
@@ -445,6 +461,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="qZl-35-hlo"/>
                     <connections>
+                        <outlet property="assessorsButton" destination="um3-Mk-Jd2" id="aqf-qy-1cY"/>
                         <outlet property="descriptionLabel" destination="ZHH-ur-zzA" id="4Xf-e3-bpg"/>
                         <outlet property="scrollView" destination="Mma-tR-RP5" id="J6c-oN-vk4"/>
                         <outlet property="subjectLabel" destination="pJj-at-F6u" id="bMP-ck-mA1"/>
@@ -455,14 +472,14 @@
             </objects>
             <point key="canvasLocation" x="4933" y="1095"/>
         </scene>
-        <!--User Questionnaire View Controller-->
+        <!--User Questionnaire Tab Bar Controller-->
         <scene sceneID="Ef1-d9-Icg">
             <objects>
-                <tabBarController storyboardIdentifier="TSFUserQuestionnaireViewController" definesPresentationContext="YES" id="hAb-iY-ovo" customClass="TSFUserQuestionnaireViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TSFUserQuestionnaireTabBarController" definesPresentationContext="YES" id="hAb-iY-ovo" customClass="TSFUserQuestionnaireTabBarController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="70x-mV-lmb"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="Kjz-nm-Pnc">
+                    <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" id="Kjz-nm-Pnc">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -494,7 +511,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFAssessorCell" id="caj-Sz-UKt" customClass="TSFAssessorCell">
-                                        <rect key="frame" x="0.0" y="86" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="caj-Sz-UKt" id="zBT-bS-rSR">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -587,7 +604,7 @@
                                             <outlet property="assessorsCountLabel" destination="L3r-ti-6Ec" id="Im1-do-xcs"/>
                                             <outlet property="subjectLabel" destination="PZt-fa-PTe" id="1v7-vi-dc3"/>
                                             <outlet property="titleLabel" destination="530-gu-qat" id="Nf6-q5-BET"/>
-                                            <segue destination="hAb-iY-ovo" kind="push" identifier="TSFUserQuestionnaireViewController" id="5R6-Nn-97Q"/>
+                                            <segue destination="hAb-iY-ovo" kind="push" id="O1g-2H-SaU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1005,6 +1022,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Wb8-OS-aKT"/>
+        <segue reference="O1g-2H-SaU"/>
+        <segue reference="GaU-IS-tKi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,18 +8,18 @@
 
 #import "Kiwi.h"
 #import "TSFUserQuestionnaireAssessorsViewController.h"
-#import "TSFUserQuestionnaireViewController.h"
+#import "TSFUserQuestionnaireTabBarController.h"
 
 SPEC_BEGIN(TSFUserQuestionnaireAssessorViewControllerSpec)
 
 describe(@"TSFUserQuestionnaireAssessorsViewController", ^{
     __block UIStoryboard *_storyboard;
-    __block TSFUserQuestionnaireViewController *_userQuestionnaireViewController;
+    __block TSFUserQuestionnaireTabBarController *_userQuestionnaireViewController;
     __block TSFUserQuestionnaireAssessorsViewController *_userQuestionnaireAssessorsViewController;
     
     beforeEach(^{
         _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireViewController"];
+        _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireTabBarController"];
         _userQuestionnaireAssessorsViewController = [_userQuestionnaireViewController.viewControllers lastObject];
         [[[_userQuestionnaireViewController view] shouldNot] beNil];
         [[[_userQuestionnaireAssessorsViewController view] shouldNot] beNil];
@@ -33,12 +33,12 @@ describe(@"TSFUserQuestionnaireAssessorsViewController", ^{
     
     context(@"iPad", ^{
         __block UIStoryboard *_storyboard;
-        __block TSFUserQuestionnaireViewController *_userQuestionnaireViewController;
+        __block TSFUserQuestionnaireTabBarController *_userQuestionnaireViewController;
         __block TSFUserQuestionnaireAssessorsViewController *_userQuestionnaireAssessorsViewController;
         
         beforeEach(^{
             _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
-            _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireViewController"];
+            _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireTabBarController"];
             _userQuestionnaireAssessorsViewController = [_userQuestionnaireViewController.viewControllers lastObject];
             [[[_userQuestionnaireViewController view] shouldNot] beNil];
             [[[_userQuestionnaireAssessorsViewController view] shouldNot] beNil];

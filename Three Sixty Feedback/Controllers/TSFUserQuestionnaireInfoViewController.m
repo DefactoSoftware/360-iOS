@@ -7,45 +7,31 @@
 //
 
 #import "TSFUserQuestionnaireInfoViewController.h"
-#import "TSFUserQuestionnaireViewController.h"
+#import "TSFUserQuestionnaireAssessorsViewController.h"
 #import "TSFGenerics.h"
 
-@interface TSFUserQuestionnaireInfoViewController()
-@property (nonatomic, strong) TSFUserQuestionnaireViewController *userQuestionnaireViewController;
-@end
+static NSString *const TSFQuestionnaireAssessorsSegueIdentifier = @"TSFAssessorsPopoverSegue";
 
 @implementation TSFUserQuestionnaireInfoViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self sharedSetup];
-    }
-    return self;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self sharedSetup];
-    }
-    return self;
-}
-
-- (void)sharedSetup {
-    _userQuestionnaireViewController = (TSFUserQuestionnaireViewController *)self.tabBarController;
-}
-
 - (void)viewDidLoad {
-    TSFQuestionnaire *questionnaire = self.userQuestionnaireViewController.questionnaire;
-    
     self.tabBarController.tabBarItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTab", @"My questionnaire");
+    [self.assessorsButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoAssessorsBUtton", @"Assessors") forState:UIControlStateNormal];
     
     NSString *subjectFormat = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerSubjectFormat", @"This questionnaire is about %@.");
     NSString *templateFormat = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTemplateFormat", @"(A %@ questionnaire)");
-    self.subjectLabel.text = [NSString stringWithFormat:subjectFormat, questionnaire.subject];
-    self.titleLabel.text = [NSString stringWithFormat:templateFormat, questionnaire.title];
-    self.descriptionLabel.text = questionnaire.questionnaireDescription;
+    self.subjectLabel.text = [NSString stringWithFormat:subjectFormat, self.questionnaire.subject];
+    self.titleLabel.text = [NSString stringWithFormat:templateFormat, self.questionnaire.title];
+    self.descriptionLabel.text = self.questionnaire.questionnaireDescription;
+}
+
+#pragma mark - Prepare for segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:TSFQuestionnaireAssessorsSegueIdentifier]) {
+        TSFUserQuestionnaireAssessorsViewController *destinationViewController = (TSFUserQuestionnaireAssessorsViewController *)segue.destinationViewController;
+        destinationViewController.questionnaire = self.questionnaire;
+    }
 }
 
 @end

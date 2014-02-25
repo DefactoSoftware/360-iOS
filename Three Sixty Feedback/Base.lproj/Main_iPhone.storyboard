@@ -864,13 +864,13 @@
             </objects>
             <point key="canvasLocation" x="2362" y="1078"/>
         </scene>
-        <!--User Questionnaire View Controller-->
+        <!--User Questionnaire Tab Bar Controller-->
         <scene sceneID="sSW-PN-3zQ">
             <objects>
-                <tabBarController storyboardIdentifier="TSFUserQuestionnaireViewController" definesPresentationContext="YES" id="dNf-8O-MhP" customClass="TSFUserQuestionnaireViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TSFUserQuestionnaireTabBarController" definesPresentationContext="YES" id="dNf-8O-MhP" customClass="TSFUserQuestionnaireTabBarController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="QK4-VM-RFK"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="QCB-Ad-wcg">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
