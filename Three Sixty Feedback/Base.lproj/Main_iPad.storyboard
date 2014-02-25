@@ -475,10 +475,10 @@
             </objects>
             <point key="canvasLocation" x="3951" y="1649"/>
         </scene>
-        <!--View Controller - Item 2-->
+        <!--User Questionnaire Assessors View Controller - Item 2-->
         <scene sceneID="Ked-mp-9sD">
             <objects>
-                <viewController id="kf1-ET-ln5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TSFUserQuestionnaireAssessorsViewController" id="kf1-ET-ln5" customClass="TSFUserQuestionnaireAssessorsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nlL-nG-V29"/>
                         <viewControllerLayoutGuide type="bottom" id="C1Z-Zc-zvt"/>
@@ -486,9 +486,19 @@
                     <view key="view" contentMode="scaleToFill" id="R9S-XT-Ilo">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QNi-dp-LWl">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="ZuQ-oq-xpT"/>
+                    <connections>
+                        <outlet property="assessorsTableView" destination="QNi-dp-LWl" id="2aQ-Pq-6ov"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLQ-dX-BTP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
