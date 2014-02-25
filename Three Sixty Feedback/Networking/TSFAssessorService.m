@@ -59,4 +59,22 @@
     }];
 }
 
+- (void)remindAssessorWithId:(NSNumber *)assessorId
+                     success:(TSFNetworkingSuccessBlock)success
+                     failure:(TSFNetworkingErrorBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@/%ld/%@",
+                     TSFAPIBaseURL,
+                     TSFAPIEndPointAssessors,
+                     (long)[assessorId integerValue],
+                     TSFAPIEndPointReminders];
+    
+    __block TSFNetworkingSuccessBlock _success = success;
+    __block TSFNetworkingErrorBlock _failure = failure;
+    [self.apiClient POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        _success(@YES);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        _failure(error);
+    }];
+}
+
 @end

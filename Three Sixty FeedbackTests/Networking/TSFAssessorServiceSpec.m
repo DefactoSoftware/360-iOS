@@ -31,7 +31,10 @@ describe(@"TSFAssessorService", ^{
     
     it(@"calls the API to complete the assessment", ^{
         __block NSString *_fakeToken = [NSString stringWithFormat:@"%d", arc4random()];
-        __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@?token=%@", TSFAPIBaseURL, TSFAPIEndPointCurrentAssessor, _fakeToken];
+        __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@?token=%@",
+                                                 TSFAPIBaseURL,
+                                                 TSFAPIEndPointCurrentAssessor,
+                                                 _fakeToken];
         __block NSNumber *_stubResponse = @(arc4random());
         
         [_mockAPIClient stub:@selector(assessorToken) andReturn:_fakeToken];
@@ -57,12 +60,34 @@ describe(@"TSFAssessorService", ^{
         [[theValue(_succeeded) shouldNotEventually] equal:theValue(false)];
 	});
     
+    it(@"calls the API to remind an assessor", ^{
+        NSNumber *assessorId = @(arc4random());
+        NSString *expectedRequestURL = [NSString stringWithFormat:@"%@%@/%ld/%@",
+                                        TSFAPIBaseURL,
+                                        TSFAPIEndPointAssessors,
+                                        (long)[assessorId integerValue],
+                                        TSFAPIEndPointReminders];
+        
+        [[_mockAPIClient should] receive:@selector(POST:parameters:success:failure:)
+                           withArguments:expectedRequestURL, [KWAny any], [KWAny any], [KWAny any]];
+        
+        [_assessorService remindAssessorWithId:assessorId
+                                       success:^(id responseObject) {
+                                       }
+                                       failure:^(NSError *error) {
+        }];
+    });
+    
     it(@"calls the API for a list of assessors for a questionnaire", ^{
         __block id _mockAssessorMapper = [KWMock mockForClass:[TSFAssessorMapper class]];
         _assessorService.assessorMapper = _mockAssessorMapper;
         
         __block NSNumber *questionnaireId = @(arc4random());
-        __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@/%@/%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires, questionnaireId, TSFAPIEndPointAssessors];
+        __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@/%@/%@",
+                                                 TSFAPIBaseURL,
+                                                 TSFAPIEndPointQuestionnaires,
+                                                 questionnaireId,
+                                                 TSFAPIEndPointAssessors];
         __block NSArray *_stubResponse = @[ @{ @"id": @(arc4random()) } ];
         __block NSArray *_stubMappedResponse = @[ [[TSFAssessor alloc] init], [[TSFAssessor alloc] init] ];
         
@@ -71,7 +96,8 @@ describe(@"TSFAssessorService", ^{
             successBlock(nil, _stubResponse);
             return nil;
 		}];
-        [[_mockAPIClient should] receive:@selector(GET:parameters:success:failure:) withArguments:_expectedRequestURL, [KWAny any], [KWAny any], [KWAny any]];
+        [[_mockAPIClient should] receive:@selector(GET:parameters:success:failure:)
+                           withArguments:_expectedRequestURL, [KWAny any], [KWAny any], [KWAny any]];
         
         [[_mockAssessorMapper should] receive:@selector(assessorsWithDictionaryArray:)
                                     andReturn:_stubMappedResponse
