@@ -11,6 +11,7 @@
 @interface TSFAssessorCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *remindedAtLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *completedImageView;
 
 @end

@@ -29,4 +29,11 @@
     return date;
 }
 
++ (NSString *)stringFromDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    NSString *string = [dateFormatter stringFromDate:date];
+    return string;
+}
+
 @end
