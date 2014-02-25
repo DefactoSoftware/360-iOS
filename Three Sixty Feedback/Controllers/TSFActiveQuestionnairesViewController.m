@@ -71,7 +71,9 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
         questionnaireCell.titleLabel.text = TSFLocalizedString(@"TSFActiveQuestionnairesViewControllerNoSubject", @"No subject");
     }
     
-    questionnaireCell.assessorsCountLabel.text = [NSString stringWithFormat:@"%lu", (long)[questionnaire.assessors count]];
+    NSInteger assessorsCount = [questionnaire.assessors count];
+    NSInteger completedAssessorsCount = [questionnaire completedAssessors];
+    questionnaireCell.assessorsCountLabel.text = [NSString stringWithFormat:@"%lu/%lu", completedAssessorsCount, assessorsCount];
     return questionnaireCell;
 }
 
