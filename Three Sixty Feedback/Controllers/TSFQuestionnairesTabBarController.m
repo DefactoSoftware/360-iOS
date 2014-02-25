@@ -38,7 +38,7 @@
     ((UITabBarItem *)self.tabBar.items[1]).title = TSFLocalizedString(@"TSFFinishedQuestionnairesViewControllerTabTitle", @"Finished");
     
     self.activeQuestionnairesViewController = [self.viewControllers firstObject];
-    self.finishedQuestionnairesViewController = [self.viewControllers lastObject];
+    self.completedQuestionnairesViewController = [self.viewControllers lastObject];
     
     [self loadQuestionnaires];
 }
@@ -48,7 +48,9 @@
     
     [self.questionnaireService userQuestionnairesWithSuccess:^(NSArray *questionnaires) {
         _self.questionnaires = questionnaires;
-        [_self.activeQuestionnairesViewController displayQuestionnaires:questionnaires];
+        [_self.activeQuestionnairesViewController reloadData];
+        [_self.completedQuestionnairesViewController reloadData];
+        [_self loadAssessors];
     } failure:^(NSError *error) {
         NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFQuestionnairesTabBarControllerError", @"Failed getting questionnaires."),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
@@ -59,13 +61,17 @@
 }
 
 - (void)loadAssessors {
+    __weak typeof (self) _self = self;
+    
     for (TSFQuestionnaire *questionnaire in self.questionnaires) {
         __block TSFQuestionnaire *_questionnaire = questionnaire;
         
         [self.assessorService assessorsForQuestionnaireId:questionnaire.questionnaireId withSuccess:^(NSArray *assessors) {
             _questionnaire.assessors = assessors;
+            [_self.activeQuestionnairesViewController reloadData];
+            [_self.completedQuestionnairesViewController reloadData];
         } failure:^(NSError *error) {
-            
+            NSLog(@"Error getting user's questionnaire's assessors: %@.", error);
         }];
     }
 }

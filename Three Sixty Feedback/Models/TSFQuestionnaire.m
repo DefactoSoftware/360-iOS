@@ -10,4 +10,24 @@
 
 @implementation TSFQuestionnaire
 
+- (NSInteger)completedAssessors {
+    NSInteger countCompletedAssessors = 0;
+    for (TSFAssessor *assessor in self.assessors) {
+        if (assessor.completed) {
+            countCompletedAssessors++;
+        }
+    }
+    return countCompletedAssessors;
+}
+
+- (BOOL)completed {
+    BOOL completed = YES;
+    for (TSFAssessor *assessor in self.assessors) {
+        if (completed) {
+            completed = assessor.completed;
+        }
+    }
+    return completed;
+}
+
 @end

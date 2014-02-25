@@ -41,12 +41,13 @@
 - (void)assessorsForQuestionnaireId:(NSNumber *)questionnaireId
                         withSuccess:(TSFNetworkingSuccessBlock)success
                             failure:(TSFNetworkingErrorBlock)failure {
-    NSString *questionnairesURL = [NSString stringWithFormat:@"%@%@%@%@", TSFAPIBaseURL,
+    NSString *questionnairesURL = [NSString stringWithFormat:@"%@%@/%@/%@", TSFAPIBaseURL,
                                    TSFAPIEndPointQuestionnaires,
                                    questionnaireId,
                                    TSFAPIEndPointAssessors];
     
     __block TSFNetworkingSuccessBlock _successBlock = success;
+    __block TSFNetworkingErrorBlock _failureBlock = failure;
     __weak typeof (self) _self = self;
     
     [self.apiClient GET:questionnairesURL parameters:Nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -54,7 +55,7 @@
         NSArray *mappedAssessors = [_self.assessorMapper assessorsWithDictionaryArray:assessorsDictionaryArrray];
         _successBlock(mappedAssessors);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        _failureBlock(error);
     }];
 }
 
