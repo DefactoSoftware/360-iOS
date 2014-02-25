@@ -868,6 +868,7 @@
         <scene sceneID="sSW-PN-3zQ">
             <objects>
                 <tabBarController storyboardIdentifier="TSFUserQuestionnaireViewController" definesPresentationContext="YES" id="dNf-8O-MhP" customClass="TSFUserQuestionnaireViewController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="QK4-VM-RFK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="QCB-Ad-wcg">
@@ -893,17 +894,51 @@
                         <viewControllerLayoutGuide type="bottom" id="5GI-dk-9yL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IKy-fp-WN4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="w94-P2-OHX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="w94-P2-OHX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFAssessorCell" id="YhO-w7-ogd" customClass="TSFAssessorCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YhO-w7-ogd" id="JAf-Oa-wqi">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDQ-9K-4gd">
+                                                    <rect key="frame" x="46" y="11" width="254" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3RU-WB-Go7">
+                                                    <rect key="frame" x="20" y="13" width="18" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="completedImageView" destination="3RU-WB-Go7" id="7ou-Wz-GHd"/>
+                                            <outlet property="emailLabel" destination="mDQ-9K-4gd" id="WjC-yQ-tbq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="w94-P2-OHX" secondAttribute="trailing" id="Dmc-BI-rQV"/>
+                            <constraint firstAttribute="bottom" secondItem="w94-P2-OHX" secondAttribute="bottom" id="Kbq-Av-g6I"/>
+                            <constraint firstItem="w94-P2-OHX" firstAttribute="top" secondItem="IKy-fp-WN4" secondAttribute="top" id="cuF-ME-MbS"/>
+                            <constraint firstItem="w94-P2-OHX" firstAttribute="leading" secondItem="IKy-fp-WN4" secondAttribute="leading" id="fZF-wk-MTf"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="Item 2" id="b2s-Dn-hc2"/>
                     <connections>
                         <outlet property="assessorsTableView" destination="w94-P2-OHX" id="Vz4-KI-eQ1"/>
@@ -911,7 +946,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTr-O5-GlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="1720"/>
+            <point key="canvasLocation" x="2362" y="1777"/>
         </scene>
         <!--Completed Questionnaires View Controller - Item-->
         <scene sceneID="Xpz-lw-l5R">
@@ -1068,6 +1103,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="h4O-Ny-TY2"/>
+        <segue reference="aCo-zT-PiY"/>
     </inferredMetricsTieBreakers>
 </document>
