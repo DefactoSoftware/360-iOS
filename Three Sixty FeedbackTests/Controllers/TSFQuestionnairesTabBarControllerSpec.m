@@ -74,7 +74,7 @@ describe(@"TSFQuestionnairesTabBarController", ^{
                 return nil;
             }];
             
-            [[mockActiveQuestionnairesViewController should] receive:@selector(reloadData)];
+            [[mockActiveQuestionnairesViewController should] receive:@selector(reloadData) withCountAtLeast:1];
             
             _questionnairesTabBarController.activeQuestionnairesViewController = mockActiveQuestionnairesViewController;
             [_questionnairesTabBarController loadQuestionnaires];

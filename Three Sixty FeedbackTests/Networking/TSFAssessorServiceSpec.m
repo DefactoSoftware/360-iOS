@@ -62,18 +62,16 @@ describe(@"TSFAssessorService", ^{
         _assessorService.assessorMapper = _mockAssessorMapper;
         
         __block NSNumber *questionnaireId = @(arc4random());
-        __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@%@%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires, questionnaireId, TSFAPIEndPointAssessors];
+        __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@/%@/%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires, questionnaireId, TSFAPIEndPointAssessors];
         __block NSArray *_stubResponse = @[ @{ @"id": @(arc4random()) } ];
         __block NSArray *_stubMappedResponse = @[ [[TSFAssessor alloc] init], [[TSFAssessor alloc] init] ];
         
         [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock: ^id (NSArray *params) {
-            NSString *URL = params[0];
             void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
-            
-            [[URL should] equal:_expectedRequestURL];
             successBlock(nil, _stubResponse);
             return nil;
 		}];
+        [[_mockAPIClient should] receive:@selector(GET:parameters:success:failure:) withArguments:_expectedRequestURL, [KWAny any], [KWAny any], [KWAny any]];
         
         [[_mockAssessorMapper should] receive:@selector(assessorsWithDictionaryArray:)
                                     andReturn:_stubMappedResponse
@@ -82,8 +80,7 @@ describe(@"TSFAssessorService", ^{
         [_assessorService assessorsForQuestionnaireId:questionnaireId withSuccess:^(id response) {
             [[response should] equal:_stubMappedResponse];
             
-        } failure: ^(NSError *error) {
-            
+        } failure: ^(NSError *error) { 
         }];
     });
 });

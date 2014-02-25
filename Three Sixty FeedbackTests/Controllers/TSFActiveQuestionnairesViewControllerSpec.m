@@ -49,10 +49,6 @@ describe(@"TSFActiveQuestionnairesViewcontroller", ^{
             [[_activeQuestionnairesViewController.questionnairesTableView shouldNot] beNil];
         });
     });
-    
-    it(@"has a reference to the questionnaires tabbar controller", ^{
-        [[_activeQuestionnairesViewController.questionnairesTabBarController should] beKindOfClass:[TSFQuestionnairesTabBarController class]];
-    });
 });
 
 SPEC_END

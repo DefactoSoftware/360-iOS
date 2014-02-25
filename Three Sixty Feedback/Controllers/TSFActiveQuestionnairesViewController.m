@@ -33,7 +33,7 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 }
 
 - (void)sharedSetup {
-    _questionnairesTabBarController = [[TSFQuestionnairesTabBarController alloc] init];
+    _questionnairesTabBarController = (TSFQuestionnairesTabBarController *)self.tabBarController;
 }
 
 - (void)viewDidLoad {

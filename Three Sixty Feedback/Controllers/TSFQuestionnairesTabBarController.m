@@ -49,6 +49,7 @@
     [self.questionnaireService userQuestionnairesWithSuccess:^(NSArray *questionnaires) {
         _self.questionnaires = questionnaires;
         [_self.activeQuestionnairesViewController reloadData];
+        [_self loadAssessors];
     } failure:^(NSError *error) {
         NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFQuestionnairesTabBarControllerError", @"Failed getting questionnaires."),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
@@ -68,7 +69,7 @@
             _questionnaire.assessors = assessors;
             [_self.activeQuestionnairesViewController reloadData];
         } failure:^(NSError *error) {
-            
+            NSLog(@"Error getting user's questionnaire's assessors: %@.", error);
         }];
     }
 }
