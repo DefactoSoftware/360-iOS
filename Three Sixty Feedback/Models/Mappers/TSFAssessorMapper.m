@@ -17,7 +17,10 @@
     assessor.token = dictionary[@"token"];
     assessor.email = dictionary[@"email"];
     assessor.completed = [dictionary[@"completed"] boolValue];
-    assessor.lastRemindedAt = [NSDate dateWithISO8601String:dictionary[@"last_reminded_at"]];
+    
+    if ([dictionary[@"last_reminded_at"] class] != [NSNull class]) {
+        assessor.lastRemindedAt = [NSDate dateWithISO8601String:dictionary[@"last_reminded_at"]];   
+    }
     
     return assessor;
 }
