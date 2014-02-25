@@ -47,6 +47,7 @@
 		52BE6F5518BCCAA2000B2DC7 /* TSFUserQuestionnaireInfoViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE6F5418BCCAA2000B2DC7 /* TSFUserQuestionnaireInfoViewControllerSpec.m */; };
 		52BE6F5818BCD9F1000B2DC7 /* TSFUserQuestionnaireAssessorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE6F5718BCD9F1000B2DC7 /* TSFUserQuestionnaireAssessorsViewController.m */; };
 		52BE6F5B18BCDA00000B2DC7 /* TSFUserQuestionnaireAssessorsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE6F5A18BCDA00000B2DC7 /* TSFUserQuestionnaireAssessorsViewControllerSpec.m */; };
+		52BE6F5E18BCDB89000B2DC7 /* TSFAssessorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE6F5D18BCDB89000B2DC7 /* TSFAssessorCell.m */; };
 		52E80F4A189BE1D4007A8A48 /* TSFCompetenceTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */; };
 		52E80F4D189BE313007A8A48 /* TSFKeyBehaviourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F4C189BE313007A8A48 /* TSFKeyBehaviourCell.m */; };
 		52E80F51189BE494007A8A48 /* TSFKeyBehaviourRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F50189BE494007A8A48 /* TSFKeyBehaviourRatingView.m */; };
@@ -172,6 +173,8 @@
 		52BE6F5618BCD9F1000B2DC7 /* TSFUserQuestionnaireAssessorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFUserQuestionnaireAssessorsViewController.h; path = Controllers/TSFUserQuestionnaireAssessorsViewController.h; sourceTree = "<group>"; };
 		52BE6F5718BCD9F1000B2DC7 /* TSFUserQuestionnaireAssessorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFUserQuestionnaireAssessorsViewController.m; path = Controllers/TSFUserQuestionnaireAssessorsViewController.m; sourceTree = "<group>"; };
 		52BE6F5A18BCDA00000B2DC7 /* TSFUserQuestionnaireAssessorsViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFUserQuestionnaireAssessorsViewControllerSpec.m; path = Controllers/TSFUserQuestionnaireAssessorsViewControllerSpec.m; sourceTree = "<group>"; };
+		52BE6F5C18BCDB89000B2DC7 /* TSFAssessorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFAssessorCell.h; path = Views/Cells/TSFAssessorCell.h; sourceTree = "<group>"; };
+		52BE6F5D18BCDB89000B2DC7 /* TSFAssessorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFAssessorCell.m; path = Views/Cells/TSFAssessorCell.m; sourceTree = "<group>"; };
 		52E80F45189BDCC1007A8A48 /* TSFGenerics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
 		52E80F48189BE1D4007A8A48 /* TSFCompetenceTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCompetenceTitleCell.h; path = Views/Cells/TSFCompetenceTitleCell.h; sourceTree = "<group>"; };
 		52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCompetenceTitleCell.m; path = Views/Cells/TSFCompetenceTitleCell.m; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 				529F268D18BBA0310088D0D2 /* TSFMenuCell.m */,
 				5290DBBC18BBA8EE0074AF78 /* TSFQuestionnaireCell.h */,
 				5290DBBD18BBA8EE0074AF78 /* TSFQuestionnaireCell.m */,
+				52BE6F5C18BCDB89000B2DC7 /* TSFAssessorCell.h */,
+				52BE6F5D18BCDB89000B2DC7 /* TSFAssessorCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -736,6 +741,7 @@
 				E4800B2D1897FD9A00FCE147 /* main.m in Sources */,
 				E4C7F922189940A800B0E5F2 /* TSFCompetenceMapper.m in Sources */,
 				E455FF82189905DB00F8C04C /* TSFCompetence.m in Sources */,
+				52BE6F5E18BCDB89000B2DC7 /* TSFAssessorCell.m in Sources */,
 				527FD0B9189DA634003E1E96 /* UIColor+TSFColor.m in Sources */,
 				52BE6F4618BCA428000B2DC7 /* TSFCompletedQuestionnairesViewController.m in Sources */,
 				526B425C18B5002100DC1310 /* TSFLoginViewController.m in Sources */,

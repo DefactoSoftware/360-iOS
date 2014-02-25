@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TSFUserQuestionnaireAssessorsViewController : UIViewController
+@interface TSFUserQuestionnaireAssessorsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
 
