@@ -10,4 +10,9 @@
 
 @implementation TSFAssessorCell
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
 @end
