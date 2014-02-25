@@ -13,6 +13,7 @@
 
 static NSString *const TSFAPIEndPointCurrentAssessor = @"assessors/current";
 static NSString *const TSFAPIEndPointAssessors = @"assessors";
+static NSString *const TSFAPIEndPointReminders = @"reminders";
 
 @interface TSFAssessorService : NSObject
 
@@ -25,4 +26,8 @@ static NSString *const TSFAPIEndPointAssessors = @"assessors";
 - (void)assessorsForQuestionnaireId:(NSNumber *)questionnaireId
                         withSuccess:(TSFNetworkingSuccessBlock)success
                             failure:(TSFNetworkingErrorBlock)failure;
+- (void)remindAssessorWithId:(NSNumber *)assessorId
+                     success:(TSFNetworkingSuccessBlock)success
+                     failure:(TSFNetworkingErrorBlock)failure;
+
 @end
