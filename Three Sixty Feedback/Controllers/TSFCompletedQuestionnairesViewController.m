@@ -9,6 +9,7 @@
 #import "TSFCompletedQuestionnairesViewController.h"
 #import "TSFGenerics.h"
 #import "TSFQuestionnaireCell.h"
+#import "TSFUserQuestionnaireViewController.h"
 
 static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 
@@ -72,6 +73,13 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
     }
     
     return questionnaire;
+}
+
+#pragma mark - Prepare for segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    TSFUserQuestionnaireViewController *destinationController = segue.destinationViewController;
+    destinationController.questionnaire = self.completedQuestionnaires[[self.questionnairesTableView indexPathForSelectedRow].row];
 }
 
 #pragma mark - UITableView

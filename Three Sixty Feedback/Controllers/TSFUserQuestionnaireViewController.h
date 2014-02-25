@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFQUestionnaire.h"
 
 @interface TSFUserQuestionnaireViewController : UITabBarController
-
+@property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @end

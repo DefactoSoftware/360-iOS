@@ -15,33 +15,58 @@ SPEC_BEGIN(TSFUserQuestionnaireInfoViewControllerSpec)
 describe(@"TSFUserQuestionnaireInfoViewController", ^{
     __block UIStoryboard *_storyboard;
     __block TSFUserQuestionnaireViewController *_userQuestionnaireViewController;
+    __block TSFUserQuestionnaireInfoViewController *_userQuestionnaireInfoViewController;
     
     beforeEach(^{
         _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
         _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireViewController"];
+        _userQuestionnaireInfoViewController = [_userQuestionnaireViewController.viewControllers firstObject];
         [[[_userQuestionnaireViewController view] shouldNot] beNil];
+        [[[_userQuestionnaireInfoViewController view] shouldNot] beNil];
     });
     
     context(@"iPhone", ^{
-        it(@"instantiates correctly from the storyboard", ^{
-            [[[_userQuestionnaireViewController.viewControllers firstObject] shouldNot] beNil];
-            [[[_userQuestionnaireViewController.viewControllers firstObject] should] beKindOfClass:[TSFUserQuestionnaireInfoViewController class]];
+        it(@"has an outlet for the title label", ^{
+            [[_userQuestionnaireInfoViewController.titleLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the subject label", ^{
+            [[_userQuestionnaireInfoViewController.subjectLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the description label", ^{
+            [[_userQuestionnaireInfoViewController.descriptionLabel shouldNot] beNil];
         });
     });
     
     context(@"iPad", ^{
         __block UIStoryboard *_storyboard;
         __block TSFUserQuestionnaireViewController *_userQuestionnaireViewController;
+        __block TSFUserQuestionnaireInfoViewController *_userQuestionnaireInfoViewController;
         
         beforeEach(^{
             _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
             _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireViewController"];
+            _userQuestionnaireInfoViewController = [_userQuestionnaireViewController.viewControllers firstObject];
             [[[_userQuestionnaireViewController view] shouldNot] beNil];
+            [[[_userQuestionnaireInfoViewController view] shouldNot] beNil];
         });
         
         it(@"instantiates correctly from the storyboard", ^{
             [[[_userQuestionnaireViewController.viewControllers firstObject] shouldNot] beNil];
             [[[_userQuestionnaireViewController.viewControllers firstObject] should] beKindOfClass:[TSFUserQuestionnaireInfoViewController class]];
+        });
+        
+        it(@"has an outlet for the title label", ^{
+            [[_userQuestionnaireInfoViewController.titleLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the subject label", ^{
+            [[_userQuestionnaireInfoViewController.subjectLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the description label", ^{
+            [[_userQuestionnaireInfoViewController.descriptionLabel shouldNot] beNil];
         });
     });
 });

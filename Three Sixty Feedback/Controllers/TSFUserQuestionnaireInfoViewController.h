@@ -10,4 +10,9 @@
 
 @interface TSFUserQuestionnaireInfoViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @end
