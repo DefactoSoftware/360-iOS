@@ -8,18 +8,18 @@
 
 #import "Kiwi.h"
 #import "TSFUserQuestionnaireInfoViewController.h"
-#import "TSFUserQuestionnaireViewController.h"
+#import "TSFUserQuestionnaireTabBarController.h"
 
 SPEC_BEGIN(TSFUserQuestionnaireInfoViewControllerSpec)
 
 describe(@"TSFUserQuestionnaireInfoViewController", ^{
     __block UIStoryboard *_storyboard;
-    __block TSFUserQuestionnaireViewController *_userQuestionnaireViewController;
+    __block TSFUserQuestionnaireTabBarController *_userQuestionnaireViewController;
     __block TSFUserQuestionnaireInfoViewController *_userQuestionnaireInfoViewController;
     
     beforeEach(^{
         _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireViewController"];
+        _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireTabBarController"];
         _userQuestionnaireInfoViewController = [_userQuestionnaireViewController.viewControllers firstObject];
         [[[_userQuestionnaireViewController view] shouldNot] beNil];
         [[[_userQuestionnaireInfoViewController view] shouldNot] beNil];
@@ -41,12 +41,12 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
     
     context(@"iPad", ^{
         __block UIStoryboard *_storyboard;
-        __block TSFUserQuestionnaireViewController *_userQuestionnaireViewController;
+        __block TSFUserQuestionnaireTabBarController *_userQuestionnaireViewController;
         __block TSFUserQuestionnaireInfoViewController *_userQuestionnaireInfoViewController;
         
         beforeEach(^{
             _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
-            _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireViewController"];
+            _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireTabBarController"];
             _userQuestionnaireInfoViewController = [_userQuestionnaireViewController.viewControllers firstObject];
             [[[_userQuestionnaireViewController view] shouldNot] beNil];
             [[[_userQuestionnaireInfoViewController view] shouldNot] beNil];
@@ -67,6 +67,10 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
         
         it(@"has an outlet for the description label", ^{
             [[_userQuestionnaireInfoViewController.descriptionLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the assessors button", ^{
+            [[_userQuestionnaireInfoViewController.assessorsButton shouldNot] beNil];
         });
     });
 });

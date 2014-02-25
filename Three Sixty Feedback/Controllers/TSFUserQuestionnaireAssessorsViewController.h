@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFQuestionnaire.h"
 
 @interface TSFUserQuestionnaireAssessorsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
 
 @end

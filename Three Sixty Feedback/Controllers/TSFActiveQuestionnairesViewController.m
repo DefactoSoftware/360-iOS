@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Defacto. All rights reserved.
 //
 
-#import "TSFUserQuestionnaireViewController.h"
+#import "TSFUserQuestionnaireTabBarController.h"
 #import "TSFActiveQuestionnairesViewController.h"
 #import "TSFGenerics.h"
 #import "TSFQuestionnaireCell.h"
@@ -70,14 +70,14 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
     if ([questionnaire.subject class] == [NSNull class]) {
         questionnaire.subject = TSFLocalizedString(@"TSFActiveQuestionnairesViewControllerNoSubject", @"No subject");
     }
-    
+
     return questionnaire;
 }
 
 #pragma mark - Prepare for segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    TSFUserQuestionnaireViewController *destinationController = segue.destinationViewController;
+    TSFUserQuestionnaireTabBarController *destinationController = segue.destinationViewController;
     destinationController.questionnaire = self.activeQuestionnaires[[self.questionnairesTableView indexPathForSelectedRow].row];
 }
 

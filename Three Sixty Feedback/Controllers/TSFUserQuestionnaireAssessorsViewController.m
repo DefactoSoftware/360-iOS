@@ -7,43 +7,17 @@
 //
 
 #import "TSFUserQuestionnaireAssessorsViewController.h"
-#import "TSFUserQuestionnaireViewController.h"
+#import "TSFUserQuestionnaireTabBarController.h"
 #import "TSFAssessorCell.h"
 
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 static NSString *const TSFCompletedImageName = @"completed";
 static NSString *const TSFNotCompletedImageName = @"not_completed";
 
-@interface TSFUserQuestionnaireAssessorsViewController()
-@property (nonatomic, strong) TSFUserQuestionnaireViewController *userQuestionnaireViewController;
-@property (nonatomic, strong) TSFQuestionnaire *questionnaire;
-@end
-
 @implementation TSFUserQuestionnaireAssessorsViewController
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self sharedSetup];
-    }
-    return self;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self sharedSetup];
-    }
-    return self;
-}
-
-- (void)sharedSetup {
-    _userQuestionnaireViewController = (TSFUserQuestionnaireViewController *)self.tabBarController;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.questionnaire = self.userQuestionnaireViewController.questionnaire;
     self.assessorsTableView.delegate = self;
     self.assessorsTableView.dataSource = self;
     [self.assessorsTableView reloadData];

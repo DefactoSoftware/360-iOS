@@ -1,5 +1,5 @@
 //
-//  TSFUserQuestionnaireViewController.h
+//  TSFUserQuestionnaireSplitViewController.h
 //  Three Sixty Feedback
 //
 //  Created by Girgis Ghattas on 25-02-14.
@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TSFQUestionnaire.h"
+#import "TSFQuestionnaire.h"
 
-@interface TSFUserQuestionnaireViewController : UITabBarController
+@interface TSFUserQuestionnaireSplitViewController : UISplitViewController
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @end
