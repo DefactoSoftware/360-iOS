@@ -1,5 +1,5 @@
 //
-//  TSFUserQuestionnaireViewControllerSpec.m
+//  TSFUserQuestionnaireInfoViewControllerSpec.m
 //  Three Sixty Feedback
 //
 //  Created by Girgis Ghattas on 25-02-14.
@@ -7,11 +7,12 @@
 //
 
 #import "Kiwi.h"
+#import "TSFUserQuestionnaireInfoViewController.h"
 #import "TSFUserQuestionnaireViewController.h"
 
-SPEC_BEGIN(TSFUserQuestionnaireViewControllerSpec)
+SPEC_BEGIN(TSFUserQuestionnaireInfoViewControllerSpec)
 
-describe(@"TSFCompletedQuestionnairesViewController", ^{
+describe(@"TSFUserQuestionnaireInfoViewController", ^{
     __block UIStoryboard *_storyboard;
     __block TSFUserQuestionnaireViewController *_userQuestionnaireViewController;
     
@@ -23,7 +24,8 @@ describe(@"TSFCompletedQuestionnairesViewController", ^{
     
     context(@"iPhone", ^{
         it(@"instantiates correctly from the storyboard", ^{
-            [[_userQuestionnaireViewController shouldNot] beNil];
+            [[[_userQuestionnaireViewController.viewControllers firstObject] shouldNot] beNil];
+            [[[_userQuestionnaireViewController.viewControllers firstObject] should] beKindOfClass:[TSFUserQuestionnaireInfoViewController class]];
         });
     });
     
@@ -38,7 +40,8 @@ describe(@"TSFCompletedQuestionnairesViewController", ^{
         });
         
         it(@"instantiates correctly from the storyboard", ^{
-            [[_userQuestionnaireViewController shouldNot] beNil];
+            [[[_userQuestionnaireViewController.viewControllers firstObject] shouldNot] beNil];
+            [[[_userQuestionnaireViewController.viewControllers firstObject] should] beKindOfClass:[TSFUserQuestionnaireInfoViewController class]];
         });
     });
 });

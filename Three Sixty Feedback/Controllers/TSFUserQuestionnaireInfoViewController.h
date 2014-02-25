@@ -1,5 +1,5 @@
 //
-//  TSFUserQuestionnaireViewController.h
+//  TSFUserQuestionnaireInfoViewController.h
 //  Three Sixty Feedback
 //
 //  Created by Girgis Ghattas on 25-02-14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TSFUserQuestionnaireViewController : UITabBarController
+@interface TSFUserQuestionnaireInfoViewController : UIViewController
 
 @end

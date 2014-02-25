@@ -762,7 +762,7 @@
                                             <outlet property="assessorsCountLabel" destination="4N6-dQ-omW" id="aBe-RY-ydB"/>
                                             <outlet property="subjectLabel" destination="a1G-Z7-5fe" id="7Rs-1o-VIH"/>
                                             <outlet property="titleLabel" destination="RCk-nK-jXK" id="zCw-HY-1l2"/>
-                                            <segue destination="VLU-92-AXa" kind="push" identifier="TSFUserQuestionnaireSegue" id="jNh-5v-SGQ"/>
+                                            <segue destination="dNf-8O-MhP" kind="push" identifier="TSFUserQuestionnaireSegue" id="h4O-Ny-TY2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -785,34 +785,63 @@
             </objects>
             <point key="canvasLocation" x="1443" y="1078"/>
         </scene>
-        <!--User Questionnaire View Controller-->
-        <scene sceneID="9pG-bn-vZ9">
+        <!--User Questionnaire Info View Controller - Item 1-->
+        <scene sceneID="pws-xz-2lg">
             <objects>
-                <viewController storyboardIdentifier="TSFUserQuestionnaireViewController" id="VLU-92-AXa" customClass="TSFUserQuestionnaireViewController" sceneMemberID="viewController">
+                <viewController id="5Rp-1P-yoc" customClass="TSFUserQuestionnaireInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kFQ-U9-CuP"/>
-                        <viewControllerLayoutGuide type="bottom" id="lZk-L0-F24"/>
+                        <viewControllerLayoutGuide type="top" id="fae-p0-1SP"/>
+                        <viewControllerLayoutGuide type="bottom" id="I44-QU-BZW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hcf-Xs-8Aa">
+                    <view key="view" contentMode="scaleToFill" id="Blp-Sr-10x">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="obw-zV-drG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8My-3U-mUO"/>
-                    <connections>
-                        <outlet property="assessorsTableView" destination="obw-zV-drG" id="SP3-r6-1YV"/>
-                    </connections>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="6X2-UE-tgc"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mur-A4-0d4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lwu-OB-upm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1946" y="1418"/>
+            <point key="canvasLocation" x="2362" y="1078"/>
+        </scene>
+        <!--User Questionnaire View Controller-->
+        <scene sceneID="sSW-PN-3zQ">
+            <objects>
+                <tabBarController storyboardIdentifier="TSFUserQuestionnaireViewController" definesPresentationContext="YES" id="dNf-8O-MhP" customClass="TSFUserQuestionnaireViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QK4-VM-RFK"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="QCB-Ad-wcg">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="5Rp-1P-yoc" kind="relationship" relationship="viewControllers" id="SLx-dT-KAM"/>
+                        <segue destination="gdA-j7-732" kind="relationship" relationship="viewControllers" id="LNq-Nq-nnb"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a1s-RA-BnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1886" y="1456"/>
+        </scene>
+        <!--View Controller - Item 2-->
+        <scene sceneID="Sun-02-Kvq">
+            <objects>
+                <viewController id="gdA-j7-732" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pd0-jL-68d"/>
+                        <viewControllerLayoutGuide type="bottom" id="5GI-dk-9yL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IKy-fp-WN4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="b2s-Dn-hc2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CTr-O5-GlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2362" y="1720"/>
         </scene>
         <!--Completed Questionnaires View Controller - Item-->
         <scene sceneID="Xpz-lw-l5R">
@@ -895,7 +924,7 @@
                                             <outlet property="assessorsCountLabel" destination="iER-4L-huJ" id="xXl-sw-dEf"/>
                                             <outlet property="subjectLabel" destination="nVf-xa-RCl" id="qPN-HE-xDY"/>
                                             <outlet property="titleLabel" destination="5WT-bK-lgN" id="VRM-WI-4cI"/>
-                                            <segue destination="VLU-92-AXa" kind="push" identifier="TSFUserQuestionnaireSegue" id="4kM-3k-79E"/>
+                                            <segue destination="dNf-8O-MhP" kind="push" identifier="TSFUserQuestionnaireSegue" id="aCo-zT-PiY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -969,6 +998,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4kM-3k-79E"/>
+        <segue reference="h4O-Ny-TY2"/>
     </inferredMetricsTieBreakers>
 </document>
