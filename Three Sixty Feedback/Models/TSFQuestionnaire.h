@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TSFQuestionMapper.h"
 #import "TSFCompetenceMapper.h"
+#import "TSFAssessor.h"
 
 @interface TSFQuestionnaire : NSObject
 
@@ -19,5 +20,7 @@
 @property(nonatomic, strong) NSArray *questions;
 @property(nonatomic, strong) NSArray *competences;
 @property(nonatomic, strong) NSArray *assessors;
+
+- (NSInteger)completedAssessors;
 
 @end
