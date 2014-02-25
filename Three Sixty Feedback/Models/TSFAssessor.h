@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, assign) BOOL completed;
+@property (nonatomic, strong) NSDate *lastRemindedAt;
 
 @end

@@ -17,13 +17,15 @@ describe(@"TSFAssessorMapper", ^{
                                                     @"id" : @(arc4random()),
                                                     @"token" : [NSString stringWithFormat:@"%d", arc4random()],
                                                     @"email" : [NSString stringWithFormat:@"%d", arc4random()],
-                                                    @"completed" : @YES
+                                                    @"completed" : @YES,
+                                                    @"last_reminded_at": @"2014-02-25T16:17:37.919Z"
                                                     },
                                                 @{
                                                     @"id" : @(arc4random()),
                                                     @"token" : [NSString stringWithFormat:@"%d", arc4random()],
                                                     @"email" : [NSString stringWithFormat:@"%d", arc4random()],
-                                                    @"completed" : @YES
+                                                    @"completed" : @YES,
+                                                    @"last_reminded_at": @"2014-02-25T16:17:37.919Z"
                                                     },
                                                 ];
     __block TSFAssessorMapper *_assessorMapper;
@@ -41,6 +43,7 @@ describe(@"TSFAssessorMapper", ^{
         [[assessor.token should] equal:assessorDictionary[@"token"]];
         [[assessor.email should] equal:assessorDictionary[@"email"]];
         [[theValue(assessor.completed) should] equal:theValue([assessorDictionary[@"completed"] boolValue])];
+        [[assessor.lastRemindedAt should] beKindOfClass:[NSDate class]];
 	});
     
     it(@"maps an array of assessors correctly", ^{

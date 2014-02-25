@@ -25,5 +25,4 @@ static NSString *const TSFAPIEndPointAssessors = @"assessors";
 - (void)assessorsForQuestionnaireId:(NSNumber *)questionnaireId
                         withSuccess:(TSFNetworkingSuccessBlock)success
                             failure:(TSFNetworkingErrorBlock)failure;
-
 @end
