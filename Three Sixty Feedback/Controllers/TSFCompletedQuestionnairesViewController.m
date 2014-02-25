@@ -1,22 +1,22 @@
 //
-//  TSFActiveQuestionnairesViewController.m
+//  TSFCompletedQuestionnairesViewController.m
 //  Three Sixty Feedback
 //
-//  Created by Girgis Ghattas on 21-02-14.
+//  Created by Girgis Ghattas on 25-02-14.
 //  Copyright (c) 2014 Defacto. All rights reserved.
 //
 
-#import "TSFActiveQuestionnairesViewController.h"
+#import "TSFCompletedQuestionnairesViewController.h"
 #import "TSFGenerics.h"
 #import "TSFQuestionnaireCell.h"
 
 static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 
-@interface TSFActiveQuestionnairesViewController()
-@property (nonatomic, strong) NSMutableArray *activeQuestionnaires;
+@interface TSFCompletedQuestionnairesViewController()
+@property (nonatomic, strong) NSMutableArray *completedQuestionnaires;
 @end
 
-@implementation TSFActiveQuestionnairesViewController
+@implementation TSFCompletedQuestionnairesViewController
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -38,13 +38,14 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 
 - (void)sharedSetup {
     _questionnairesTabBarController = (TSFQuestionnairesTabBarController *)self.tabBarController;
-    _activeQuestionnaires = [[NSMutableArray alloc] init];
+    _completedQuestionnaires = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.questionnairesTableView.dataSource = self;
     self.questionnairesTableView.delegate = self;
+    self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
 }
 
@@ -54,17 +55,17 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 }
 
 - (void)reloadData {
-    [self.activeQuestionnaires removeAllObjects];
+    [self.completedQuestionnaires removeAllObjects];
     for (TSFQuestionnaire *questionnaire in self.questionnairesTabBarController.questionnaires) {
-        if (![questionnaire completed]) {
-            [self.activeQuestionnaires addObject:questionnaire];
+        if ([questionnaire completed]) {
+            [self.completedQuestionnaires addObject:questionnaire];
         }
     }
     [self.questionnairesTableView reloadData];
 }
 
 - (TSFQuestionnaire *)questionnaireForRow:(NSInteger)row {
-    TSFQuestionnaire *questionnaire = self.activeQuestionnaires[row];
+    TSFQuestionnaire *questionnaire = self.completedQuestionnaires[row];
     
     if ([questionnaire.subject class] == [NSNull class]) {
         questionnaire.subject = TSFLocalizedString(@"TSFActiveQuestionnairesViewControllerNoSubject", @"No subject");
@@ -76,7 +77,7 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 #pragma mark - UITableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.activeQuestionnaires count];
+    return [self.completedQuestionnaires count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -132,4 +133,5 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01f;
 }
+
 @end

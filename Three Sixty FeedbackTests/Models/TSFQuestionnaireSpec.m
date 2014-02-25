@@ -33,6 +33,17 @@ describe(@"TSFQuestionnaire", ^{
             ((TSFAssessor *) [_questionnaire.assessors firstObject]).completed = YES;
             [[theValue([_questionnaire completedAssessors]) should] equal:theValue(1)];
         });
+        
+        it(@"returns if it is completed", ^{
+            TSFAssessor *completedAssessor = [[TSFAssessor alloc] init];
+            TSFAssessor *completedAssessorTwo = [[TSFAssessor alloc] init];
+            completedAssessor.completed = YES;
+            completedAssessorTwo.completed = YES;
+            
+            [[theValue([_questionnaire completed]) should] equal:theValue(NO)];
+            _questionnaire.assessors = @[ completedAssessor, completedAssessorTwo ];
+            [[theValue([_questionnaire completed]) should] equal:theValue(YES)];
+        });
     });
     
 });

@@ -22,5 +22,6 @@
 @property(nonatomic, strong) NSArray *assessors;
 
 - (NSInteger)completedAssessors;
+- (BOOL)completed;
 
 @end

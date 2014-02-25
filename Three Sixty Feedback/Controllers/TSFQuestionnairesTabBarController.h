@@ -12,10 +12,11 @@
 #import "TSFBaseViewController.h"
 #import "TSFQuestionnaireService.h"
 #import "TSFActiveQuestionnairesViewController.h"
-#import "TSFFinishedQuestionnairesViewController.h"
+#import "TSFCompletedQuestionnairesViewController.h"
 #import "TSFAssessorService.h"
 
 @class TSFActiveQuestionnairesViewController;
+@class TSFCompletedQuestionnairesViewController;
 
 @interface TSFQuestionnairesTabBarController : UITabBarController
 
@@ -24,7 +25,7 @@
 @property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
 @property (nonatomic, strong) TSFAssessorService *assessorService;
 @property (nonatomic, strong) TSFActiveQuestionnairesViewController *activeQuestionnairesViewController;
-@property (nonatomic, strong) TSFFinishedQuestionnairesViewController *finishedQuestionnairesViewController;
+@property (nonatomic, strong) TSFCompletedQuestionnairesViewController *completedQuestionnairesViewController;
 @property (nonatomic, strong) NSArray *questionnaires;
 
 - (void)loadQuestionnaires;

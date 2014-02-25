@@ -20,4 +20,14 @@
     return countCompletedAssessors;
 }
 
+- (BOOL)completed {
+    BOOL completed = YES;
+    for (TSFAssessor *assessor in self.assessors) {
+        if (completed) {
+            completed = assessor.completed;
+        }
+    }
+    return completed;
+}
+
 @end

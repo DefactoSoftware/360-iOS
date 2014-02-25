@@ -132,9 +132,13 @@ describe(@"TSFQuestionnairesTabBarController", ^{
             }];
             
             id mockActiveQuestionnairesViewController = [KWMock mockForClass:[TSFActiveQuestionnairesViewController class]];
+            id mockCompletedQuestionnairesViewController = [KWMock mockForClass:[TSFCompletedQuestionnairesViewController class]];
+            
             _questionnairesTabBarController.activeQuestionnairesViewController = mockActiveQuestionnairesViewController;
+            _questionnairesTabBarController.completedQuestionnairesViewController = mockCompletedQuestionnairesViewController;
             
             [[mockActiveQuestionnairesViewController should] receive:@selector(reloadData) withCount:2];
+            [[mockCompletedQuestionnairesViewController should] receive:@selector(reloadData) withCount:2];
             
             [_questionnairesTabBarController loadAssessors];
         });
