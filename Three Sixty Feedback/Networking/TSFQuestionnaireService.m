@@ -52,4 +52,21 @@
     }];
 }
 
+- (void)questionnaireWithId:(NSNumber *)questionnaireId
+                    success:(TSFNetworkingSuccessBlock)success
+                    failure:(TSFNetworkingErrorBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@/%@", TSFAPIEndPointQuestionnaires, questionnaireId];
+    
+    __block TSFNetworkingSuccessBlock _success = success;
+    __block TSFNetworkingErrorBlock _failure = failure;
+    __weak typeof (self) _self = self;
+    
+    [self.apiClient GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        TSFQuestionnaire *questionnaire = [_self.questionnaireMapper questionnaireWithDictionary:responseObject];
+        _success(questionnaire);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        _failure(error);
+    }];
+}
+
 @end
