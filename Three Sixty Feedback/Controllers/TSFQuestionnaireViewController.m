@@ -47,7 +47,6 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
 
 #pragma mark - Initializing page controller and child viewcontrollers
 
-
 - (void)initializePageController {
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
