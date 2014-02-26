@@ -10,6 +10,7 @@
 #import "TSFUserQuestionnaireAssessorsViewController.h"
 #import "TSFGenerics.h"
 #import "TSFAssessorCell.h"
+#import "CRToast.h"
 
 static NSString *const TSFQuestionnaireAssessorsSegueIdentifier = @"TSFAssessorsPopoverSegue";
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
@@ -57,6 +58,7 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.assessorsTableView.dataSource = self;
         self.assessorsTableView.delegate = self;
+        [self.assessorsTableView reloadData];
     }
 }
 
@@ -67,11 +69,28 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 - (void)remindAssessors {
     for (TSFAssessor *assessor in self.questionnaire.assessors) {
         if (!assessor.completed) {
+            __weak typeof (self) _self = self;
             [self.assessorService remindAssessorWithId:assessor.assessorId success:^(id response) {
+                [_self reloadAssessors];
             } failure:^(NSError *error) {
+                NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerReminderError", @"Assessor has already been reminded in the last 24 hours."),
+                                          kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                          kCRToastBackgroundColorKey : [UIColor redColor]};
+                [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
+                NSLog(@"Error reminding assessor: %@", error);
             }];
         }
     }
+}
+
+- (void)reloadAssessors {
+    __weak typeof (self) _self = self;
+    [self.assessorService assessorsForQuestionnaireId:self.questionnaire.questionnaireId withSuccess:^(id responseObject) {
+        _self.questionnaire.assessors = (NSArray *)responseObject;
+        [_self setupAssessorsTableView];
+    } failure:^(NSError *error) {
+        NSLog(@"Error getting assessors: %@.", error);
+    }];
 }
 
 #pragma mark - Prepare for segue

@@ -86,6 +86,20 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
         [[_userQuestionnaireInfoViewController.assessorService should] beKindOfClass:[TSFAssessorService class]];
     });
     
+    it(@"can reload the assessors", ^{
+        id mockAssessorService = [KWMock mockForClass:[TSFAssessorService class]];
+        _userQuestionnaireInfoViewController.assessorService = mockAssessorService;
+        
+        TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
+        questionnaire.questionnaireId = @(arc4random());
+        _userQuestionnaireInfoViewController.questionnaire = questionnaire;
+        
+        [[mockAssessorService should] receive:@selector(assessorsForQuestionnaireId:withSuccess:failure:)
+                                withArguments:questionnaire.questionnaireId, [KWAny any], [KWAny any]];
+        
+        [_userQuestionnaireInfoViewController reloadAssessors];
+    });
+    
     context(@"with assessors", ^{
         __block id _mockAssessorService;
         __block TSFQuestionnaire *_questionnaire;

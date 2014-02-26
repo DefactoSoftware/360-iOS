@@ -25,5 +25,6 @@
 
 - (IBAction)remindButtonPressed:(id)sender;
 - (void)remindAssessors;
+- (void)reloadAssessors;
 
 @end
