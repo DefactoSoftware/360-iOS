@@ -69,22 +69,9 @@ describe(@"TSFQuestionnaireService", ^{
     
     it(@"calls the API for a specific questionnaire", ^{
         NSNumber *questionnaireId = @(arc4random());
-        __block NSDictionary *_stubResponse = @{ @"id": questionnaireId };
-        TSFQuestionnaire *stubMappedResponse = [[[TSFQuestionnaireMapper alloc] init]
-                                                questionnaireWithDictionary:_stubResponse];
-        __block NSString *expectedUrl = [NSString stringWithFormat:@"%@/%@", TSFAPIEndPointQuestionnaires, _stubResponse[@"id"]];
-        
-        [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock:^id(NSArray *params) {
-            NSString *URL = params[0];
-            [[URL should] equal:expectedUrl];
-            void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
-            successBlock(nil, _stubResponse);
-            return nil;
-        }];
-        
-        [[_mockQuestionnaireMapper should] receive:@selector(questionnaireWithDictionary:)
-                                         andReturn:stubMappedResponse
-                                     ];
+        NSString *expectedUrl = [NSString stringWithFormat:@"%@/%@", TSFAPIEndPointQuestionnaires, questionnaireId];
+        [[_mockAPIClient should] receive:@selector(GET:parameters:success:failure:)
+                           withArguments:expectedUrl, [KWAny any], [KWAny any], [KWAny any]];
         
         [_questionnaireService questionnaireWithId:questionnaireId success:^(id response) {
         } failure:^(NSError *error) {
@@ -92,15 +79,41 @@ describe(@"TSFQuestionnaireService", ^{
     });
     
     it(@"calls the API for a list of questionnaires for the signed in user", ^{
+        [[_mockAPIClient should] receive:@selector(GET:parameters:success:failure:)
+                           withArguments:TSFAPIEndPointUserQuestionnaires, [KWAny any], [KWAny any], [KWAny any]];
+        
+        [_questionnaireService userQuestionnairesWithSuccess: ^(NSArray *response) {
+        }
+                                                     failure: ^(NSError *error) {}];
+    });
+    
+    it(@"maps the specific questionnaire in the response", ^{
+        NSNumber *questionnaireId = @(arc4random());
+        __block NSDictionary *_stubResponse = @{ @"id": questionnaireId };
+        TSFQuestionnaire *stubMappedResponse = [[[TSFQuestionnaireMapper alloc] init]
+                                                questionnaireWithDictionary:_stubResponse];
+        
+        [[_mockQuestionnaireMapper should] receive:@selector(questionnaireWithDictionary:)
+                                         andReturn:stubMappedResponse];
+        
+        [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock:^id(NSArray *params) {
+            void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
+            successBlock(nil, _stubResponse);
+            return nil;
+        }];
+        
+        [_questionnaireService questionnaireWithId:questionnaireId success:^(id response) {
+        } failure:^(NSError *error) {
+        }];
+    });
+    
+    it(@"maps the list of user's questionnaires", ^{
         __block NSArray *_stubResponse = @[@{ @"id": @(arc4random()) }];
         __block NSArray *_stubMappedResponse = [[[TSFQuestionnaireMapper alloc] init]
                                                 questionnairesWithDictionaryArray:_stubResponse];
-        
+
         [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock:^id(NSArray *params) {
-            NSString *URL = params[0];
             void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
-            
-            [[URL should] equal:TSFAPIEndPointUserQuestionnaires];
             successBlock(nil, _stubResponse);
             return nil;
         }];
@@ -110,10 +123,9 @@ describe(@"TSFQuestionnaireService", ^{
                                      withArguments:_stubResponse];
         
         [_questionnaireService userQuestionnairesWithSuccess: ^(NSArray *response) {
-            [[response should] equal:_stubMappedResponse];
+            [[response shouldEventually] equal:_stubMappedResponse];
         }
                                                      failure: ^(NSError *error) {}];
-        
     });
 });
 

@@ -41,6 +41,7 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
 
 - (void)sharedSetup {
     _assessorService = [TSFAssessorService sharedService];
+    _questionnaireService = [TSFQuestionnaireService sharedService];
     _customCells = 1;
 }
 
@@ -49,6 +50,15 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
     self.assessorsTableView.delegate = self;
     self.assessorsTableView.dataSource = self;
     [self.assessorsTableView reloadData];
+}
+
+- (void)reloadQuestionnaire {
+    __weak typeof (self) _self = self;
+    [self.questionnaireService questionnaireWithId:self.questionnaire.questionnaireId success:^(id responseObject) {
+        [_self viewDidLoad];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 - (IBAction)remindButtonPressed:(id)sender {
