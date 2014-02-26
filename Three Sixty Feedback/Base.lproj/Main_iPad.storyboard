@@ -330,7 +330,7 @@
                                 <rect key="frame" x="20" y="20" width="411" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="xM7-IR-trg"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="xM7-IR-trg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>

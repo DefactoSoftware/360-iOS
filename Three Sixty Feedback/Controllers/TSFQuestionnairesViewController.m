@@ -160,15 +160,49 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
         TSFUserQuestionnaireInfoViewController *questionnaireViewController = [self questionnaireViewControllerForQuestionnaire:questionnaire];
         
         UIView *questionnaireView = questionnaireViewController.view;
-        CGRect questionnaireViewFrame = questionnaireView.frame;
-        questionnaireViewFrame.size = self.detailView.frame.size;
-        questionnaireView.frame = questionnaireViewFrame;
+        questionnaireView.translatesAutoresizingMaskIntoConstraints = NO;
         
         for (UIView *view in self.detailView.subviews) {
             [view removeFromSuperview];
         }
-
         [self.detailView addSubview:questionnaireView];
+        
+        NSLayoutConstraint *width =[NSLayoutConstraint
+                                    constraintWithItem:questionnaireView
+                                    attribute:NSLayoutAttributeWidth
+                                    relatedBy:0
+                                    toItem:self.detailView
+                                    attribute:NSLayoutAttributeWidth
+                                    multiplier:1.0
+                                    constant:0];
+        NSLayoutConstraint *height =[NSLayoutConstraint
+                                     constraintWithItem:questionnaireView
+                                     attribute:NSLayoutAttributeHeight
+                                     relatedBy:0
+                                     toItem:self.detailView
+                                     attribute:NSLayoutAttributeHeight
+                                     multiplier:1.0
+                                     constant:0];
+        NSLayoutConstraint *top = [NSLayoutConstraint
+                                   constraintWithItem:questionnaireView
+                                   attribute:NSLayoutAttributeTop
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:self.detailView
+                                   attribute:NSLayoutAttributeTop
+                                   multiplier:1.0f
+                                   constant:0.f];
+        NSLayoutConstraint *leading = [NSLayoutConstraint
+                                       constraintWithItem:questionnaireView
+                                       attribute:NSLayoutAttributeLeading
+                                       relatedBy:NSLayoutRelationEqual
+                                       toItem:self.detailView
+                                       attribute:NSLayoutAttributeLeading
+                                       multiplier:1.0f
+                                       constant:0.f];
+        [self.detailView addConstraint:width];
+        [self.detailView addConstraint:height];
+        [self.detailView addConstraint:top];
+        [self.detailView addConstraint:leading];
     }
 }
 
