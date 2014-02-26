@@ -16,11 +16,44 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 
 @implementation TSFUserQuestionnaireAssessorsViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (void)sharedSetup {
+    _assessorService = [TSFAssessorService sharedService];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.assessorsTableView.delegate = self;
     self.assessorsTableView.dataSource = self;
     [self.assessorsTableView reloadData];
+}
+
+- (void)remindAssessors {
+    for (TSFAssessor *assessor in self.questionnaire.assessors) {
+        if (!assessor.completed) {
+            [self.assessorService remindAssessorWithId:assessor.assessorId success:^(id response) {
+                
+            } failure:^(NSError *error) {
+                
+            }];
+        }
+    }
 }
 
 #pragma mark - UITableView

@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "TSFQuestionnaire.h"
+#import "TSFAssessorService.h"
 
 @interface TSFUserQuestionnaireAssessorsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
+@property (nonatomic, strong) TSFAssessorService *assessorService;
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
+
+- (void)remindAssessors;
 
 @end
