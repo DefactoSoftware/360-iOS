@@ -12,6 +12,7 @@
 #import "TSFGenerics.h"
 #import "NSDate+StringParsing.h"
 #import "TSFRemindAssessorsCell.h"
+#import "CRToast.h"
 
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCell";
@@ -41,7 +42,6 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
 
 - (void)sharedSetup {
     _assessorService = [TSFAssessorService sharedService];
-    _questionnaireService = [TSFQuestionnaireService sharedService];
     _customCells = 1;
 }
 
@@ -52,12 +52,13 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
     [self.assessorsTableView reloadData];
 }
 
-- (void)reloadQuestionnaire {
+- (void)reloadAssessors {
     __weak typeof (self) _self = self;
-    [self.questionnaireService questionnaireWithId:self.questionnaire.questionnaireId success:^(id responseObject) {
+    [self.assessorService assessorsForQuestionnaireId:self.questionnaire.questionnaireId withSuccess:^(id responseObject) {
+        _self.questionnaire.assessors = (NSArray *)responseObject;
         [_self viewDidLoad];
     } failure:^(NSError *error) {
-        
+        NSLog(@"Error reloading assessors: %@.", error);
     }];
 }
 
@@ -68,10 +69,15 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
 - (void)remindAssessors {
     for (TSFAssessor *assessor in self.questionnaire.assessors) {
         if (!assessor.completed) {
+            __weak typeof (self) _self = self;
             [self.assessorService remindAssessorWithId:assessor.assessorId success:^(id response) {
-                
+                [_self reloadAssessors];
             } failure:^(NSError *error) {
-                
+                NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFUserQuestionnaireAssessorsViewControllerReminderError", @"Assessor has already been reminded in the last 24 hours."),
+                                          kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                          kCRToastBackgroundColorKey : [UIColor redColor]};
+                [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
+                NSLog(@"Error reminding assessor: %@", error);
             }];
         }
     }
