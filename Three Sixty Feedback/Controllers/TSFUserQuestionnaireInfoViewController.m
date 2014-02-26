@@ -51,6 +51,8 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 
 - (void)setupAssessorsTableView {
     self.assessorsLabel.text = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessors", @"Assessors");
+    [self.remindAssessorsButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerRemindButton", @"Send reminder")
+                                forState:UIControlStateNormal];
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.assessorsTableView.dataSource = self;
@@ -58,13 +60,15 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     }
 }
 
+- (IBAction)remindButtonPressed:(id)sender {
+    [self remindAssessors];
+}
+
 - (void)remindAssessors {
     for (TSFAssessor *assessor in self.questionnaire.assessors) {
         if (!assessor.completed) {
             [self.assessorService remindAssessorWithId:assessor.assessorId success:^(id response) {
-                
             } failure:^(NSError *error) {
-                
             }];
         }
     }

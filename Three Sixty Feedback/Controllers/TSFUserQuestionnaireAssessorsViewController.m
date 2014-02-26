@@ -11,8 +11,14 @@
 #import "TSFAssessorCell.h"
 #import "TSFGenerics.h"
 #import "NSDate+StringParsing.h"
+#import "TSFRemindAssessorsCell.h"
 
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
+static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCell";
+
+@interface TSFUserQuestionnaireAssessorsViewController()
+@property (nonatomic, assign) NSInteger customCells;
+@end
 
 @implementation TSFUserQuestionnaireAssessorsViewController
 
@@ -35,6 +41,7 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 
 - (void)sharedSetup {
     _assessorService = [TSFAssessorService sharedService];
+    _customCells = 1;
 }
 
 - (void)viewDidLoad {
@@ -42,6 +49,10 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     self.assessorsTableView.delegate = self;
     self.assessorsTableView.dataSource = self;
     [self.assessorsTableView reloadData];
+}
+
+- (IBAction)remindButtonPressed:(id)sender {
+    [self remindAssessors];
 }
 
 - (void)remindAssessors {
@@ -56,29 +67,50 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     }
 }
 
-#pragma mark - UITableView
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.questionnaire.assessors count];
+- (TSFRemindAssessorsCell *)remindAssessorsCell {
+    TSFRemindAssessorsCell *remindAssessorsCell = [self.assessorsTableView dequeueReusableCellWithIdentifier:TSFRemindAssessorCellIdentifier];
+    if (!remindAssessorsCell) {
+        remindAssessorsCell = [[TSFRemindAssessorsCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                           reuseIdentifier:TSFRemindAssessorCellIdentifier];
+    }
+    
+    return remindAssessorsCell;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (TSFAssessorCell *)assessorCellForAssessor:(NSInteger)assessorNumber {
     TSFAssessorCell *assessorCell = [self.assessorsTableView dequeueReusableCellWithIdentifier:TSFAssessorCellIdentifier];
     if (!assessorCell) {
         assessorCell = [[TSFAssessorCell alloc] initWithStyle:UITableViewCellStyleDefault
                                               reuseIdentifier:TSFAssessorCellIdentifier];
     }
     
-    TSFAssessor *assessor = self.questionnaire.assessors[indexPath.row];
+    TSFAssessor *assessor = self.questionnaire.assessors[assessorNumber];
     [assessorCell displayAssessor:assessor];
-    
     return assessorCell;
 }
 
+#pragma mark - UITableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.questionnaire.assessors count] + self.customCells;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return [self remindAssessorsCell];
+    } else {
+        return [self assessorCellForAssessor:indexPath.row - self.customCells];
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TSFAssessorCell *assessorCell = (TSFAssessorCell *)[self tableView:self.assessorsTableView
+    if (indexPath.row == 0) {
+        return 65.0f;
+    } else {
+        TSFAssessorCell *assessorCell = (TSFAssessorCell *)[self tableView:self.assessorsTableView
                             cellForRowAtIndexPath:indexPath];
-    return [assessorCell calculatedHeight];
+        return [assessorCell calculatedHeight];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

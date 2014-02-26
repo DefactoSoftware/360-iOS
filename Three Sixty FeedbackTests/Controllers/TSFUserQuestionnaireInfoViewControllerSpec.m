@@ -76,6 +76,10 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
         it(@"has an outlet for the assessors tableview", ^{
             [[_userQuestionnaireInfoViewController.assessorsTableView shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the remind assessors button", ^{
+            [[_userQuestionnaireInfoViewController.remindAssessorsButton shouldNot] beNil];
+        });
     });
     
     it(@"has a reference to the assessor service", ^{

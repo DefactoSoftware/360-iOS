@@ -20,7 +20,10 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
 @property (weak, nonatomic) IBOutlet UILabel *assessorsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *remindAssessorsButton;
 
+
+- (IBAction)remindButtonPressed:(id)sender;
 - (void)remindAssessors;
 
 @end
