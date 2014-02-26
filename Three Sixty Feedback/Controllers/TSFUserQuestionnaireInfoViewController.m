@@ -52,7 +52,7 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 
 - (void)setupAssessorsTableView {
     self.assessorsLabel.text = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessors", @"Assessors");
-    [self.remindAssessorsButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerRemindButton", @"Send reminder")
+    [self.remindAssessorsButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerRemindButton", @"Send reminders")
                                 forState:UIControlStateNormal];
 
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

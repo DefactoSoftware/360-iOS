@@ -10,6 +10,7 @@
 #import "TSFBaseViewController.h"
 #import "TSFAssessorService.h"
 #import "TSFQuestionnaireService.h"
+#import "TSFUserQuestionnaireInfoViewController.h"
 
 @interface TSFQuestionnairesViewController : TSFBaseViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -27,5 +28,6 @@
 - (void)loadQuestionnaires;
 - (void)filterQuestionnaires;
 - (IBAction)segmentedControlChanged:(id)sender;
+- (TSFUserQuestionnaireInfoViewController *)questionnaireViewControllerForQuestionnaire:(TSFQuestionnaire *)questionnaire;
 
 @end

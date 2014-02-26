@@ -139,6 +139,13 @@ describe(@"TSFQuestionnairesViewController", ^{
         [[_questionnairesViewController.activeQuestionnaires should] equal:@[ activeQuestionnaire ]];
         [[_questionnairesViewController.completedQuestionnaires should] equal:@[ completedQuestionnaire ]];
     });
+    
+    it(@"creates a new user questionnaire view controller", ^{
+        TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
+        TSFUserQuestionnaireInfoViewController *questionnaireViewController = [_questionnairesViewController questionnaireViewControllerForQuestionnaire:questionnaire];
+        
+        [[questionnaireViewController.questionnaire should] equal:questionnaire];
+    });
 });
 
 SPEC_END
