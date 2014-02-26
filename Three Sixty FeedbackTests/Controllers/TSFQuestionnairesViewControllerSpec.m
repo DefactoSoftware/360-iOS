@@ -56,6 +56,10 @@ describe(@"TSFQuestionnairesViewController", ^{
         it(@"has a active segmented control", ^{
             [[_questionnairesViewController.activeSegmentedControl shouldNot] beNil];
         });
+        
+        it(@"has a detail view", ^{
+            [[_questionnairesViewController.detailView shouldNot] beNil];
+        });
     });
     
     it(@"has a reference to questionnaire service", ^{
@@ -134,7 +138,6 @@ describe(@"TSFQuestionnairesViewController", ^{
         
         [[_questionnairesViewController.activeQuestionnaires should] equal:@[ activeQuestionnaire ]];
         [[_questionnairesViewController.completedQuestionnaires should] equal:@[ completedQuestionnaire ]];
-        
     });
 });
 

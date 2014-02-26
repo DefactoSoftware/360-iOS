@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSArray *activeQuestionnaires;
 @property (nonatomic, strong) NSArray *completedQuestionnaires;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *activeSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIView *detailView;
 
 - (void)reloadData;
 - (void)loadAssessors;
