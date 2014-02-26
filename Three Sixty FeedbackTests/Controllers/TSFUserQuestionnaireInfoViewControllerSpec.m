@@ -69,8 +69,12 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
             [[_userQuestionnaireInfoViewController.descriptionLabel shouldNot] beNil];
         });
         
-        it(@"has an outlet for the assessors button", ^{
-            [[_userQuestionnaireInfoViewController.assessorsButton shouldNot] beNil];
+        it(@"has an outlet for the assessors label", ^{
+            [[_userQuestionnaireInfoViewController.assessorsLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the assessors tableview", ^{
+            [[_userQuestionnaireInfoViewController.assessorsTableView shouldNot] beNil];
         });
     });
 });

@@ -9,20 +9,32 @@
 #import "TSFUserQuestionnaireInfoViewController.h"
 #import "TSFUserQuestionnaireAssessorsViewController.h"
 #import "TSFGenerics.h"
+#import "TSFAssessorCell.h"
 
 static NSString *const TSFQuestionnaireAssessorsSegueIdentifier = @"TSFAssessorsPopoverSegue";
+static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 
 @implementation TSFUserQuestionnaireInfoViewController
 
 - (void)viewDidLoad {
     self.tabBarController.tabBarItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTab", @"My questionnaire");
-    [self.assessorsButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoAssessorsBUtton", @"Assessors") forState:UIControlStateNormal];
     
     NSString *subjectFormat = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerSubjectFormat", @"This questionnaire is about %@.");
     NSString *templateFormat = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTemplateFormat", @"(A %@ questionnaire)");
     self.subjectLabel.text = [NSString stringWithFormat:subjectFormat, self.questionnaire.subject];
     self.titleLabel.text = [NSString stringWithFormat:templateFormat, self.questionnaire.title];
     self.descriptionLabel.text = self.questionnaire.questionnaireDescription;
+    
+    [self setupAssessorsTableView];
+}
+
+- (void)setupAssessorsTableView {
+    self.assessorsLabel.text = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessors", @"Assessors");
+    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.assessorsTableView.dataSource = self;
+        self.assessorsTableView.delegate = self;
+    }
 }
 
 #pragma mark - Prepare for segue
@@ -32,6 +44,36 @@ static NSString *const TSFQuestionnaireAssessorsSegueIdentifier = @"TSFAssessors
         TSFUserQuestionnaireAssessorsViewController *destinationViewController = (TSFUserQuestionnaireAssessorsViewController *)segue.destinationViewController;
         destinationViewController.questionnaire = self.questionnaire;
     }
+}
+
+#pragma mark - UITableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.questionnaire.assessors count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TSFAssessorCell *assessorCell = [self.assessorsTableView dequeueReusableCellWithIdentifier:TSFAssessorCellIdentifier];
+    if (!assessorCell) {
+        assessorCell = [[TSFAssessorCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                              reuseIdentifier:TSFAssessorCellIdentifier];
+    }
+    
+    TSFAssessor *assessor = self.questionnaire.assessors[indexPath.row];
+    [assessorCell displayAssessor:assessor];
+    
+    return assessorCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TSFAssessorCell *assessorCell = (TSFAssessorCell *)[self tableView:self.assessorsTableView
+                              cellForRowAtIndexPath:indexPath];
+    return [assessorCell calculatedHeight];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01f;
 }
 
 @end
