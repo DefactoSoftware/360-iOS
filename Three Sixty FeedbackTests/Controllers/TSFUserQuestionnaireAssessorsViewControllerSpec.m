@@ -25,10 +25,8 @@ describe(@"TSFUserQuestionnaireAssessorsViewController", ^{
         [[[_userQuestionnaireAssessorsViewController view] shouldNot] beNil];
     });
     
-    context(@"iPhone", ^{
-        it(@"has an outlet for the assessors tableview", ^{
-            [[_userQuestionnaireAssessorsViewController.assessorsTableView shouldNot] beNil];
-        });
+    it(@"has an outlet for the assessors tableview", ^{
+        [[_userQuestionnaireAssessorsViewController.assessorsTableView shouldNot] beNil];
     });
     
     it(@"has a reference to the assessor service", ^{

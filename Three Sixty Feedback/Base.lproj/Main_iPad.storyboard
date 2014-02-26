@@ -477,8 +477,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3N-0U-Ljn">
-                                <rect key="frame" x="411" y="20" width="357" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3N-0U-Ljn">
+                                <rect key="frame" x="411" y="20" width="213" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="JlG-9F-kyp"/>
@@ -486,6 +486,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5t-0Q-vFo">
+                                <rect key="frame" x="632" y="16" width="116" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="remindButtonPressed:" destination="ZbZ-tp-1Vc" eventType="touchUpInside" id="Sma-ar-YPS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -506,6 +516,7 @@
                         <outlet property="assessorsLabel" destination="F3N-0U-Ljn" id="9tS-i0-20V"/>
                         <outlet property="assessorsTableView" destination="gcz-HJ-kYi" id="6VQ-IL-hmR"/>
                         <outlet property="descriptionLabel" destination="ZHH-ur-zzA" id="4Xf-e3-bpg"/>
+                        <outlet property="remindAssessorsButton" destination="Y5t-0Q-vFo" id="z8R-Gg-cFd"/>
                         <outlet property="scrollView" destination="Mma-tR-RP5" id="J6c-oN-vk4"/>
                         <outlet property="subjectLabel" destination="pJj-at-F6u" id="bMP-ck-mA1"/>
                         <outlet property="titleLabel" destination="3Xe-NM-xw7" id="BqK-Ba-auE"/>
