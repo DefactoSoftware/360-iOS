@@ -45,7 +45,6 @@ describe(@"TSFQuestionnaireService", ^{
                                                 questionnairesWithDictionaryArray:_stubResponse];
         
         [_mockAPIClient stub:@selector(assessorToken) andReturn:_fakeToken];
-        
         [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock: ^id (NSArray *params) {
             NSString *URL = params[0];
             NSDictionary *parameters = params[1];
@@ -68,6 +67,30 @@ describe(@"TSFQuestionnaireService", ^{
                                                  failure: ^(NSError *error) {}];
 	});
     
+    it(@"calls the API for a specific questionnaire", ^{
+        NSNumber *questionnaireId = @(arc4random());
+        __block NSDictionary *_stubResponse = @{ @"id": questionnaireId };
+        TSFQuestionnaire *stubMappedResponse = [[[TSFQuestionnaireMapper alloc] init]
+                                                questionnaireWithDictionary:_stubResponse];
+        __block NSString *expectedUrl = [NSString stringWithFormat:@"%@/%@", TSFAPIEndPointQuestionnaires, _stubResponse[@"id"]];
+        
+        [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock:^id(NSArray *params) {
+            NSString *URL = params[0];
+            [[URL should] equal:expectedUrl];
+            void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
+            successBlock(nil, _stubResponse);
+            return nil;
+        }];
+        
+        [[_mockQuestionnaireMapper should] receive:@selector(questionnaireWithDictionary:)
+                                         andReturn:stubMappedResponse
+                                     ];
+        
+        [_questionnaireService questionnaireWithId:questionnaireId success:^(id response) {
+        } failure:^(NSError *error) {
+        }];
+    });
+    
     it(@"calls the API for a list of questionnaires for the signed in user", ^{
         __block NSArray *_stubResponse = @[@{ @"id": @(arc4random()) }];
         __block NSArray *_stubMappedResponse = [[[TSFQuestionnaireMapper alloc] init]
@@ -75,7 +98,6 @@ describe(@"TSFQuestionnaireService", ^{
         
         [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock:^id(NSArray *params) {
             NSString *URL = params[0];
-            NSDictionary *parameters = params[1];
             void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
             
             [[URL should] equal:TSFAPIEndPointUserQuestionnaires];

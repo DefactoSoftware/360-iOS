@@ -24,5 +24,8 @@ static NSString *const TSFAPIEndPointUserQuestionnaires = @"users/me/questionnai
                           failure:(TSFNetworkingErrorBlock)failure;
 - (void)userQuestionnairesWithSuccess:(TSFNetworkingSuccessBlock)success
                               failure:(TSFNetworkingErrorBlock)failure;
+- (void)questionnaireWithId:(NSNumber *)questionnaireId
+                    success:(TSFNetworkingSuccessBlock)success
+                    failure:(TSFNetworkingErrorBlock)failure;
 
 @end
