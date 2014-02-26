@@ -8,7 +8,7 @@
 
 #import "TSFMainViewController.h"
 
-static NSString *const TSFMainContentViewControllerIdentifier = @"TSFMainViewControllerNavigation";
+static NSString *const TSFMainContentViewControllerIdentifier = @"TSFQuestionnairesViewControllerNavigation";
 static NSString *const TSFMenuViewControllerIdentifier = @"TSFMenuViewController";
 
 @implementation TSFMainViewController
