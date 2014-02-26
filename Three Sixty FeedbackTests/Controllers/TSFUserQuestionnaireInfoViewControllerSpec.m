@@ -77,6 +77,58 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
             [[_userQuestionnaireInfoViewController.assessorsTableView shouldNot] beNil];
         });
     });
+    
+    it(@"has a reference to the assessor service", ^{
+        [[_userQuestionnaireInfoViewController.assessorService should] beKindOfClass:[TSFAssessorService class]];
+    });
+    
+    context(@"with assessors", ^{
+        __block id _mockAssessorService;
+        __block TSFQuestionnaire *_questionnaire;
+        __block NSArray *_assessors;
+        __block TSFAssessor *_assessor;
+        __block TSFAssessor *_assessorTwo;
+        
+        beforeEach(^{
+            _mockAssessorService = [KWMock mockForClass:[TSFAssessorService class]];
+            _userQuestionnaireInfoViewController.assessorService = _mockAssessorService;
+            
+            _questionnaire = [[TSFQuestionnaire alloc] init];
+            _assessor = [[TSFAssessor alloc] init];
+            _assessor.completed = NO;
+            _assessor.assessorId = @(arc4random());
+            _assessorTwo = [[TSFAssessor alloc] init];
+            _assessorTwo.assessorId = @(arc4random());
+            
+            _assessorTwo.completed = NO;
+            _assessors = @[ _assessor, _assessorTwo ];
+
+            TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
+            questionnaire.assessors = _assessors;
+            
+            _userQuestionnaireInfoViewController.questionnaire = questionnaire;
+        });
+        
+        it(@"calls the assessor service to remind every uncompleted assessor", ^{
+            [[_mockAssessorService should] receive:@selector(remindAssessorWithId:success:failure:)
+                                    withArguments:_assessor.assessorId, [KWAny any], [KWAny any]];
+            [[_mockAssessorService should] receive:@selector(remindAssessorWithId:success:failure:)
+                                     withArguments:_assessorTwo.assessorId, [KWAny any], [KWAny any]];
+            
+            [_userQuestionnaireInfoViewController remindAssessors];
+        });
+        
+        it(@"only reminds the incompleted assessors", ^{
+            _assessorTwo.completed = YES;
+            _questionnaire.assessors = @[ _assessor, _assessorTwo ];
+            _userQuestionnaireInfoViewController.questionnaire = _questionnaire;
+            
+            [[_mockAssessorService should] receive:@selector(remindAssessorWithId:success:failure:)
+                                     withArguments:_assessor.assessorId, [KWAny any], [KWAny any]];
+           
+            [_userQuestionnaireInfoViewController remindAssessors];
+        });
+    });
 });
 
 SPEC_END

@@ -16,6 +16,27 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 
 @implementation TSFUserQuestionnaireInfoViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (void)sharedSetup {
+    _assessorService = [TSFAssessorService sharedService];
+}
+
 - (void)viewDidLoad {
     self.tabBarController.tabBarItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTab", @"My questionnaire");
     
@@ -34,6 +55,18 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.assessorsTableView.dataSource = self;
         self.assessorsTableView.delegate = self;
+    }
+}
+
+- (void)remindAssessors {
+    for (TSFAssessor *assessor in self.questionnaire.assessors) {
+        if (!assessor.completed) {
+            [self.assessorService remindAssessorWithId:assessor.assessorId success:^(id response) {
+                
+            } failure:^(NSError *error) {
+                
+            }];
+        }
     }
 }
 
