@@ -21,8 +21,10 @@
     self.navigationItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTitle", @"My questionnaire");
     
     ((UITabBarItem *)self.tabBar.items[0]).title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerQuestionnaireTab", @"Questionnaire");
-    ((UITabBarItem *)self.tabBar.items[1]).title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessorsTab", @"Assessors");
-    
+    if ([self.tabBar.items count] > 1) {
+        ((UITabBarItem *)self.tabBar.items[1]).title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessorsTab", @"Assessors");
+    }
+
     self.infoViewController = (TSFUserQuestionnaireInfoViewController *)[self.viewControllers firstObject];
     self.assessorsViewController = (TSFUserQuestionnaireAssessorsViewController *)[self.viewControllers lastObject];
 }
