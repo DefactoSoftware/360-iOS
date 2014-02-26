@@ -14,9 +14,11 @@
 
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (nonatomic, strong) TSFAssessorService *assessorService;
+@property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
 
 - (IBAction)remindButtonPressed:(id)sender;
 - (void)remindAssessors;
+- (void)reloadQuestionnaire;
 
 @end
