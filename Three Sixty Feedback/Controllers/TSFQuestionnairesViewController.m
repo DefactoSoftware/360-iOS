@@ -13,9 +13,11 @@
 #import "TSFUserQuestionnaireTabBarController.h"
 
 static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
+static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuestionnaireInfoViewController";
 
 @interface TSFQuestionnairesViewController()
 @property (nonatomic, assign) BOOL showCompletedQuestionnaires;
+@property (nonatomic, strong) TSFUserQuestionnaireInfoViewController *questionnaireInfoViewController;
 @end
 
 @implementation TSFQuestionnairesViewController
@@ -136,6 +138,13 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
     return questionnaire;
 }
 
+- (TSFUserQuestionnaireInfoViewController *)questionnaireViewControllerForQuestionnaire:(TSFQuestionnaire *)questionnaire {
+    TSFUserQuestionnaireInfoViewController *questionnaireViewController = [self.storyboard instantiateViewControllerWithIdentifier:TSFQuestionnaireViewControllerIdentifier];
+    questionnaireViewController.questionnaire = questionnaire;
+    self.questionnaireInfoViewController = questionnaireViewController;
+    return questionnaireViewController;
+}
+
 #pragma mark - Prepare for segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -144,6 +153,24 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 }
 
 #pragma mark - UITableView
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        TSFQuestionnaire *questionnaire = [self questionnaireForRow:indexPath.row];
+        TSFUserQuestionnaireInfoViewController *questionnaireViewController = [self questionnaireViewControllerForQuestionnaire:questionnaire];
+        
+        UIView *questionnaireView = questionnaireViewController.view;
+        CGRect questionnaireViewFrame = questionnaireView.frame;
+        questionnaireViewFrame.size = self.detailView.frame.size;
+        questionnaireView.frame = questionnaireViewFrame;
+        
+        for (UIView *view in self.detailView.subviews) {
+            [view removeFromSuperview];
+        }
+
+        [self.detailView addSubview:questionnaireView];
+    }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.showCompletedQuestionnaires ? [self.completedQuestionnaires count] : [self.activeQuestionnaires count];
@@ -160,7 +187,7 @@ static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
     
     NSInteger assessorsCount = [questionnaire.assessors count];
     NSInteger completedAssessorsCount = [questionnaire completedAssessors];
-    questionnaireCell.assessorsCountLabel.text = [NSString stringWithFormat:@"%lu/%lu", completedAssessorsCount, assessorsCount];
+    questionnaireCell.assessorsCountLabel.text = [NSString stringWithFormat:@"%lu/%lu", (long)completedAssessorsCount, (long)assessorsCount];
     
     questionnaireCell.subjectLabel.text = questionnaire.subject;
     questionnaireCell.titleLabel.text = questionnaire.title;
