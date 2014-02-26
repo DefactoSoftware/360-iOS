@@ -33,22 +33,18 @@ describe(@"TSFUserQuestionnaireAssessorsViewController", ^{
         [[[_userQuestionnaireAssessorsViewController.assessorService class] should] equal:[TSFAssessorService class]];
     });
     
-    it(@"has a reference to the questionnaire service", ^{
-        [[[_userQuestionnaireAssessorsViewController.questionnaireService class] should] equal:[TSFQuestionnaireService class]];
-    });
-    
-    it(@"can reload the questionnaire", ^{
-        id mockQuestionnaireService = [KWMock mockForClass:[TSFQuestionnaireService class]];
-        _userQuestionnaireAssessorsViewController.questionnaireService = mockQuestionnaireService;
+    it(@"can reload the assessors", ^{
+        id mockAssessorService = [KWMock mockForClass:[TSFAssessorService class]];
+        _userQuestionnaireAssessorsViewController.assessorService = mockAssessorService;
         
         TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
         questionnaire.questionnaireId = @(arc4random());
         _userQuestionnaireAssessorsViewController.questionnaire = questionnaire;
         
-        [[mockQuestionnaireService should] receive:@selector(questionnaireWithId:success:failure:)
+        [[mockAssessorService should] receive:@selector(assessorsForQuestionnaireId:withSuccess:failure:)
                                      withArguments:questionnaire.questionnaireId, [KWAny any], [KWAny any]];
        
-        [_userQuestionnaireAssessorsViewController reloadQuestionnaire];
+        [_userQuestionnaireAssessorsViewController reloadAssessors];
     });
     
     context(@"with assessors", ^{
