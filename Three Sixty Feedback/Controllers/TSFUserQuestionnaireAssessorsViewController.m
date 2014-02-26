@@ -89,7 +89,7 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
         remindAssessorsCell = [[TSFRemindAssessorsCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                            reuseIdentifier:TSFRemindAssessorCellIdentifier];
     }
-    
+
     return remindAssessorsCell;
 }
 
@@ -99,7 +99,7 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
         assessorCell = [[TSFAssessorCell alloc] initWithStyle:UITableViewCellStyleDefault
                                               reuseIdentifier:TSFAssessorCellIdentifier];
     }
-    
+
     TSFAssessor *assessor = self.questionnaire.assessors[assessorNumber];
     [assessorCell displayAssessor:assessor];
     return assessorCell;

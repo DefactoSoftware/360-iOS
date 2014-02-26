@@ -40,13 +40,13 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 
 - (void)viewDidLoad {
     self.tabBarController.tabBarItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTab", @"My questionnaire");
-    
+
     NSString *subjectFormat = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerSubjectFormat", @"This questionnaire is about %@.");
     NSString *templateFormat = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTemplateFormat", @"(A %@ questionnaire)");
     self.subjectLabel.text = [NSString stringWithFormat:subjectFormat, self.questionnaire.subject];
     self.titleLabel.text = [NSString stringWithFormat:templateFormat, self.questionnaire.title];
     self.descriptionLabel.text = self.questionnaire.questionnaireDescription;
-    
+
     [self setupAssessorsTableView];
 }
 
@@ -54,7 +54,7 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     self.assessorsLabel.text = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessors", @"Assessors");
     [self.remindAssessorsButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerRemindButton", @"Send reminder")
                                 forState:UIControlStateNormal];
-    
+
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.assessorsTableView.dataSource = self;
         self.assessorsTableView.delegate = self;
@@ -114,10 +114,10 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
         assessorCell = [[TSFAssessorCell alloc] initWithStyle:UITableViewCellStyleDefault
                                               reuseIdentifier:TSFAssessorCellIdentifier];
     }
-    
+
     TSFAssessor *assessor = self.questionnaire.assessors[indexPath.row];
     [assessorCell displayAssessor:assessor];
-    
+
     return assessorCell;
 }
 
