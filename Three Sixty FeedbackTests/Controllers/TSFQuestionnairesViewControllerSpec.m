@@ -71,6 +71,10 @@ describe(@"TSFQuestionnairesViewController", ^{
             
             [[questionnaireViewController.questionnaire should] equal:questionnaire];
         });
+        
+        it(@"has a separator view", ^{
+            [[_questionnairesViewController.separatorView shouldNot] beNil];
+        });
     });
     
     it(@"has a reference to questionnaire service", ^{
