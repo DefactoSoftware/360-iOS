@@ -22,4 +22,12 @@
     return [UIColor colorWithRed:91.0f/255 green:157.0f/255 blue:212.0f/255 alpha:1];
 }
 
++ (UIColor *)TSFBeigeColor {
+    return [UIColor colorWithRed:254.0f/255 green:252.0f/255 blue:250.0f/255 alpha:1];
+}
+
++ (UIColor *)TSFGreenColor {
+    return [UIColor colorWithRed:149.0f/255 green:196.0f/255 blue:67.0f/255 alpha:1];
+}
+
 @end

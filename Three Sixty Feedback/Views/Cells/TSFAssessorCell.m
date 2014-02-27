@@ -9,6 +9,7 @@
 #import "TSFAssessorCell.h"
 #import "TSFGenerics.h"
 #import "NSDate+StringParsing.h"
+#import "UIColor+TSFColor.h"
 
 static NSString *const TSFCompletedImageName = @"completed";
 static NSString *const TSFNotCompletedImageName = @"not_completed";
@@ -21,6 +22,7 @@ static NSString *const TSFNotCompletedImageName = @"not_completed";
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    self.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 

@@ -11,6 +11,7 @@
 #import "CRToast.h"
 #import "TSFQuestionnaireCell.h"
 #import "TSFUserQuestionnaireTabBarController.h"
+#import "UIColor+TSFColor.h"
 
 static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuestionnaireInfoViewController";
@@ -48,6 +49,11 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     self.questionnairesTableView.dataSource = self;
     self.questionnairesTableView.delegate = self;
     
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        self.view.backgroundColor = [UIColor TSFBeigeColor];
+        self.questionnairesTableView.backgroundColor = [UIColor TSFBeigeColor];
+    }
+
     self.navigationItem.title = TSFLocalizedString(@"TSFQuestionnairesViewControllerTitle", @"Questionnaires");
     
     [self.activeSegmentedControl setTitle:TSFLocalizedString(@"TSFQuestionnaireViewControllerActive", @"Active") forSegmentAtIndex:0];
@@ -269,6 +275,11 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01f;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundView.backgroundColor = [UIColor clearColor];
 }
 
 @end

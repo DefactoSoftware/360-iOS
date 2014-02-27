@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TSFQuestionnaire.h"
 #import "TSFAssessorService.h"
+#import "TSFBaseViewController.h"
 
-@interface TSFUserQuestionnaireAssessorsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TSFUserQuestionnaireAssessorsViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (nonatomic, strong) TSFAssessorService *assessorService;

@@ -13,9 +13,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self paint];
+
+    [self addProgressView];
+}
+
+- (void)paint {
     self.navigationController.navigationBar.barTintColor = [UIColor TSFBlueColor];
     self.navigationController.navigationBar.titleTextAttributes =  @{ NSForegroundColorAttributeName : [UIColor whiteColor] };
-    [self addProgressView];
+    [self.view setBackgroundColor:[UIColor TSFBeigeColor]];
 }
 
 - (void)viewDidLayoutSubviews {

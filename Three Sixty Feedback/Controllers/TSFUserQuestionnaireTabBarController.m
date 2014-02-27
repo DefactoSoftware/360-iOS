@@ -8,11 +8,13 @@
 
 #import "TSFUserQuestionnaireTabBarController.h"
 #import "TSFGenerics.h"
+#import "UIColor+TSFColor.h"
 
 @implementation TSFUserQuestionnaireTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor TSFBeigeColor];
     self.infoViewController = [self.viewControllers firstObject];
     self.assessorsViewController = [self.viewControllers lastObject];
     self.infoViewController.questionnaire = self.questionnaire;

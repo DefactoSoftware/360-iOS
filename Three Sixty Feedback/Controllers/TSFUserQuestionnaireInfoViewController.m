@@ -39,6 +39,8 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     self.tabBarController.tabBarItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTab", @"My questionnaire");
 
     NSString *subjectFormat = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerSubjectFormat", @"This questionnaire is about %@.");

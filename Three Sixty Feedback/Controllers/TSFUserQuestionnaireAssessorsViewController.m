@@ -13,6 +13,7 @@
 #import "NSDate+StringParsing.h"
 #import "TSFRemindAssessorsCell.h"
 #import "CRToast.h"
+#import "UIColor+TSFColor.h"
 
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCell";
@@ -49,6 +50,7 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
     [super viewDidLoad];
     self.assessorsTableView.delegate = self;
     self.assessorsTableView.dataSource = self;
+    self.assessorsTableView.backgroundColor = [UIColor TSFBeigeColor];
     [self.assessorsTableView reloadData];
 }
 
@@ -131,6 +133,10 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01f;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor clearColor];
 }
 
 @end

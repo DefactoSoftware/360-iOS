@@ -7,12 +7,14 @@
 //
 
 #import "TSFQuestionnaireCell.h"
+#import "UIColor+TSFColor.h"
 
 @implementation TSFQuestionnaireCell
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundColor = [UIColor clearColor];
 }
 
 @end
