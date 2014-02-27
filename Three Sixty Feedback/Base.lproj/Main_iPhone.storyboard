@@ -1024,6 +1024,7 @@
                     <connections>
                         <outlet property="activeSegmentedControl" destination="SU2-Zx-1LT" id="cex-Vc-sYN"/>
                         <outlet property="questionnairesTableView" destination="Apu-q6-cji" id="Jma-LL-5g0"/>
+                        <outlet property="toolbar" destination="LAf-Yl-AXm" id="cDq-hU-WzC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbO-2R-MEV" userLabel="First Responder" sceneMemberID="firstResponder"/>

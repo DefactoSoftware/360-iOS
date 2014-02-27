@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TSFSessionService.h"
+#import "TSFBaseViewController.h"
 
-@interface TSFPasswordRequestViewController : UIViewController
+@interface TSFPasswordRequestViewController : TSFBaseViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;

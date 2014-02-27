@@ -15,6 +15,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor TSFBeigeColor];
+    self.tabBar.backgroundColor = [UIColor TSFBlueColor];
+    self.tabBar.tintColor = [UIColor TSFBlackColor];
     self.infoViewController = [self.viewControllers firstObject];
     self.assessorsViewController = [self.viewControllers lastObject];
     self.infoViewController.questionnaire = self.questionnaire;

@@ -46,6 +46,9 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.toolbar.backgroundColor = [UIColor TSFBlueColor];
+    self.activeSegmentedControl.tintColor = [UIColor TSFBlackColor];
+    
     self.questionnairesTableView.dataSource = self;
     self.questionnairesTableView.delegate = self;
     

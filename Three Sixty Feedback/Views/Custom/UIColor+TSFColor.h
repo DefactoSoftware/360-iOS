@@ -15,5 +15,6 @@
 + (UIColor *)TSFBlueColor;
 + (UIColor *)TSFBeigeColor;
 + (UIColor *)TSFGreenColor;
++ (UIColor *)TSFBlackColor;
 
 @end
