@@ -11,8 +11,8 @@
 #import "NSDate+StringParsing.h"
 #import "UIColor+TSFColor.h"
 
-static NSString *const TSFCompletedImageName = @"completed";
-static NSString *const TSFNotCompletedImageName = @"not_completed";
+static NSString *const TSFCompletedImageName = @"check";
+static NSString *const TSFNotCompletedImageName = @"cross";
 
 @interface TSFAssessorCell()
 @property (nonatomic, strong) TSFAssessor *assessor;
@@ -24,6 +24,9 @@ static NSString *const TSFNotCompletedImageName = @"not_completed";
     [super layoutSubviews];
     self.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    self.emailLabel.textColor = [UIColor TSFBlackColor];
+    self.remindedAtLabel.textColor = [UIColor TSFLightGreyTextColor];
 }
 
 - (NSString *)remindedAtString:(NSDate *)remindedAt {
@@ -41,6 +44,8 @@ static NSString *const TSFNotCompletedImageName = @"not_completed";
         self.completedImageView.image = [UIImage imageNamed:TSFNotCompletedImageName];
     }
     
+    self.completedImageView.alpha = 0.8f;
+    
     if (assessor.lastRemindedAt) {
         self.remindedAtLabel.text = [self remindedAtString:assessor.lastRemindedAt];
     }
@@ -51,7 +56,7 @@ static NSString *const TSFNotCompletedImageName = @"not_completed";
     CGFloat textWidth;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         textWidth = 728.0f;
-        textFontSize  = 17.0f;
+        textFontSize  = 10.0f;
     } else {
         textWidth = 280.0f;
         textFontSize = 13.0f;

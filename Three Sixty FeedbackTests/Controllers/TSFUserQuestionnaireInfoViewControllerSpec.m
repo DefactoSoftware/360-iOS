@@ -33,6 +33,10 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
         it(@"has an outlet for the description label", ^{
             [[_userQuestionnaireInfoViewController.descriptionLabel shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the subject title label", ^{
+            [[_userQuestionnaireInfoViewController.subjectTitleLabel shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -67,6 +71,10 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
         
         it(@"has an outlet for the remind assessors button", ^{
             [[_userQuestionnaireInfoViewController.remindAssessorsButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the subject title label", ^{
+            [[_userQuestionnaireInfoViewController.subjectTitleLabel shouldNot] beNil];
         });
     });
     

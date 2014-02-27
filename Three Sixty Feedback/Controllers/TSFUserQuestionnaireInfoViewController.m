@@ -51,6 +51,8 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     self.subjectTitleLabel.textColor = [UIColor TSFLightGreyTextColor];
     self.descriptionLabel.textColor = [UIColor TSFLightGreyTextColor];
     self.subjectLabel.textColor = [UIColor TSFLightGreyTextColor];
+    
+    self.assessorsTableView.separatorInset = UIEdgeInsetsMake(0, 20.0f, 0, 20.0f);
 
     [self setupAssessorsTableView];
 }

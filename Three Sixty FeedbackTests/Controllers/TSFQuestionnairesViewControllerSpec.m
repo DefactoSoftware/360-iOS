@@ -71,10 +71,6 @@ describe(@"TSFQuestionnairesViewController", ^{
             
             [[questionnaireViewController.questionnaire should] equal:questionnaire];
         });
-        
-        it(@"has an outlet for the subject title label", ^{
-            [[_questionnairesViewController.subjectTitleLabel shoudNot] beNil];
-        });
     });
     
     it(@"has a reference to questionnaire service", ^{
