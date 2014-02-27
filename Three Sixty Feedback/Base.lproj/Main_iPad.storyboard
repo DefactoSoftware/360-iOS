@@ -496,11 +496,11 @@
                                     <constraint firstAttribute="width" constant="316" id="JsX-Ul-VSa"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TSFQuestionnaireCell" rowHeight="74" id="fLK-0i-zRb" customClass="TSFQuestionnaireCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFQuestionnaireCell" rowHeight="74" id="fLK-0i-zRb" customClass="TSFQuestionnaireCell">
                                         <rect key="frame" x="0.0" y="22" width="316" height="74"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fLK-0i-zRb" id="ont-xd-aaK">
-                                            <rect key="frame" x="0.0" y="0.0" width="283" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="316" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2m-pC-zan">
@@ -528,10 +528,15 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pointer" translatesAutoresizingMaskIntoConstraints="NO" id="J16-eX-6z6">
+                                                    <rect key="frame" x="311" y="29" width="4" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="assessorsCountLabel" destination="6hZ-lj-izD" id="Tk7-XU-JMW"/>
+                                            <outlet property="pointerImageView" destination="J16-eX-6z6" id="vUw-Ds-UzZ"/>
                                             <outlet property="subjectLabel" destination="f2m-pC-zan" id="CTQ-bk-0Qg"/>
                                             <outlet property="titleLabel" destination="UKB-Ah-HzQ" id="Wkp-my-CB3"/>
                                         </connections>
@@ -542,29 +547,29 @@
                                 <rect key="frame" x="315" y="0.0" width="453" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbY-Mw-AmY">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KbY-Mw-AmY">
                                 <rect key="frame" x="315" y="-32" width="2" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="2" id="7qp-yQ-Fgd"/>
+                                    <constraint firstAttribute="width" constant="2" id="seX-IG-q6M"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KbY-Mw-AmY" firstAttribute="bottom" secondItem="how-aa-wXB" secondAttribute="bottom" constant="32" id="1q8-yu-rJe"/>
                             <constraint firstItem="Am2-9q-EJo" firstAttribute="leading" secondItem="how-aa-wXB" secondAttribute="trailing" constant="-1" id="3uV-RF-kIK"/>
+                            <constraint firstItem="KbY-Mw-AmY" firstAttribute="top" secondItem="J9Y-4h-yvw" secondAttribute="top" id="4F8-cq-vmq"/>
                             <constraint firstItem="Am2-9q-EJo" firstAttribute="top" secondItem="J9Y-4h-yvw" secondAttribute="top" id="5y7-eM-zVt"/>
                             <constraint firstItem="how-aa-wXB" firstAttribute="top" secondItem="J9Y-4h-yvw" secondAttribute="top" id="787-kh-Q6U"/>
                             <constraint firstItem="KbY-Mw-AmY" firstAttribute="leading" secondItem="how-aa-wXB" secondAttribute="trailing" constant="-1" id="IXB-Ps-05c"/>
                             <constraint firstItem="Am2-9q-EJo" firstAttribute="bottom" secondItem="how-aa-wXB" secondAttribute="bottom" constant="64" id="KMF-ue-rR2"/>
                             <constraint firstAttribute="bottom" secondItem="Am2-9q-EJo" secondAttribute="bottom" constant="-64" id="QNK-d7-UjI"/>
+                            <constraint firstItem="KbY-Mw-AmY" firstAttribute="centerY" secondItem="how-aa-wXB" secondAttribute="centerY" id="Rwk-Jg-6VL"/>
                             <constraint firstItem="how-aa-wXB" firstAttribute="leading" secondItem="J9Y-4h-yvw" secondAttribute="leading" id="bhv-tW-BIJ"/>
-                            <constraint firstItem="KbY-Mw-AmY" firstAttribute="top" secondItem="how-aa-wXB" secondAttribute="top" constant="-32" id="bn2-eF-1f0"/>
                             <constraint firstAttribute="trailing" secondItem="Am2-9q-EJo" secondAttribute="trailing" id="cgl-h7-x2c"/>
                             <constraint firstItem="how-aa-wXB" firstAttribute="top" secondItem="Am2-9q-EJo" secondAttribute="top" id="gnQ-x1-aZh"/>
-                            <constraint firstItem="KbY-Mw-AmY" firstAttribute="top" secondItem="J9Y-4h-yvw" secondAttribute="top" constant="-32" id="yv2-WH-yy6"/>
+                            <constraint firstItem="3ug-wD-wIf" firstAttribute="top" secondItem="Am2-9q-EJo" secondAttribute="bottom" constant="-1024" id="ify-1H-1t2"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -957,6 +962,7 @@
     </scenes>
     <resources>
         <image name="assessor" width="128" height="128"/>
+        <image name="pointer" width="4" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>

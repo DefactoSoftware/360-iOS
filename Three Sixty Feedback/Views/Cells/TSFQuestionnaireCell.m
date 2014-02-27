@@ -17,4 +17,12 @@
     self.backgroundColor = [UIColor clearColor];
 }
 
+- (void)select {
+    self.pointerImageView.hidden = NO;
+}
+
+- (void)unselect {
+    self.pointerImageView.hidden = YES;
+}
+
 @end

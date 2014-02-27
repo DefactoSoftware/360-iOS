@@ -19,6 +19,7 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
 @interface TSFQuestionnairesViewController()
 @property (nonatomic, assign) BOOL showCompletedQuestionnaires;
 @property (nonatomic, strong) TSFUserQuestionnaireInfoViewController *questionnaireInfoViewController;
+@property (nonatomic, strong) NSIndexPath *selectedQuestionnaireIndexPath;
 @end
 
 @implementation TSFQuestionnairesViewController
@@ -111,6 +112,7 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
 }
 
 - (IBAction)segmentedControlChanged:(id)sender {
+    self.selectedQuestionnaireIndexPath = nil;
     self.showCompletedQuestionnaires = self.activeSegmentedControl.selectedSegmentIndex == 1;
     [self.questionnairesTableView reloadData];
     [self clearDetailView];
@@ -171,6 +173,19 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
 #pragma mark - UITableView
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSMutableArray *reloadIndexPaths = [[NSMutableArray alloc] initWithObjects:indexPath, nil];
+    
+    NSIndexPath *oldSelectedRow = self.selectedQuestionnaireIndexPath;
+    self.selectedQuestionnaireIndexPath = indexPath;
+    
+    if (oldSelectedRow && oldSelectedRow != self.selectedQuestionnaireIndexPath) {
+        [reloadIndexPaths addObject:oldSelectedRow];
+    }
+    [self.questionnairesTableView reloadRowsAtIndexPaths:reloadIndexPaths
+                                        withRowAnimation:UITableViewRowAnimationNone];
+    
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         TSFQuestionnaire *questionnaire = [self questionnaireForRow:indexPath.row];
         TSFUserQuestionnaireInfoViewController *questionnaireViewController = [self questionnaireViewControllerForQuestionnaire:questionnaire];
@@ -226,7 +241,8 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     return self.showCompletedQuestionnaires ? [self.completedQuestionnaires count] : [self.activeQuestionnaires count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TSFQuestionnaireCell *questionnaireCell = [self.questionnairesTableView dequeueReusableCellWithIdentifier:TSFQuestionnaireCellIdentifier];
     if (!questionnaireCell) {
         questionnaireCell = [[TSFQuestionnaireCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -241,6 +257,12 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     
     questionnaireCell.subjectLabel.text = questionnaire.subject;
     questionnaireCell.titleLabel.text = questionnaire.title;
+    
+    if (self.selectedQuestionnaireIndexPath == indexPath) {
+        [questionnaireCell select];
+    } else {
+        [questionnaireCell unselect];
+    }
     
     return questionnaireCell;
 }
