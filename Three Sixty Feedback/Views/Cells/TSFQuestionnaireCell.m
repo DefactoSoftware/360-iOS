@@ -13,16 +13,16 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.backgroundColor = [UIColor clearColor];
 }
 
 - (void)select {
     self.pointerImageView.hidden = NO;
+    self.backgroundColor = [UIColor TSFLightBlueColor];
 }
 
 - (void)unselect {
     self.pointerImageView.hidden = YES;
+    self.backgroundColor = [UIColor clearColor];
 }
 
 @end

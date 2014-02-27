@@ -533,7 +533,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="assessorsCountLabel" destination="6hZ-lj-izD" id="Tk7-XU-JMW"/>
                                             <outlet property="pointerImageView" destination="J16-eX-6z6" id="vUw-Ds-UzZ"/>

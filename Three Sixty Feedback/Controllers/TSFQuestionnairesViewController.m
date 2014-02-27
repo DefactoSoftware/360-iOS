@@ -50,6 +50,8 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     self.toolbar.backgroundColor = [UIColor TSFBlueColor];
     self.activeSegmentedControl.tintColor = [UIColor TSFBlackColor];
     
+    self.questionnairesTableView.separatorInset = UIEdgeInsetsZero;
+    
     self.questionnairesTableView.dataSource = self;
     self.questionnairesTableView.delegate = self;
     
@@ -173,8 +175,7 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
 #pragma mark - UITableView
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSMutableArray *reloadIndexPaths = [[NSMutableArray alloc] initWithObjects:indexPath, nil];
+    NSMutableArray *reloadIndexPaths = [[NSMutableArray alloc] init];
     
     NSIndexPath *oldSelectedRow = self.selectedQuestionnaireIndexPath;
     self.selectedQuestionnaireIndexPath = indexPath;
@@ -182,9 +183,9 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     if (oldSelectedRow && oldSelectedRow != self.selectedQuestionnaireIndexPath) {
         [reloadIndexPaths addObject:oldSelectedRow];
     }
+    [reloadIndexPaths addObject:self.selectedQuestionnaireIndexPath];
     [self.questionnairesTableView reloadRowsAtIndexPaths:reloadIndexPaths
-                                        withRowAnimation:UITableViewRowAnimationNone];
-    
+                                        withRowAnimation:UITableViewRowAnimationFade];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         TSFQuestionnaire *questionnaire = [self questionnaireForRow:indexPath.row];
@@ -264,6 +265,10 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
         [questionnaireCell unselect];
     }
     
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    selectedBackgroundView.backgroundColor = [UIColor TSFLightBlueColor];
+    questionnaireCell.selectedBackgroundView = selectedBackgroundView;
+    
     return questionnaireCell;
 }
 
@@ -300,11 +305,6 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01f;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [UIColor clearColor];
-    cell.backgroundView.backgroundColor = [UIColor clearColor];
 }
 
 @end

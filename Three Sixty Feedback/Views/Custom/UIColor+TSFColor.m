@@ -38,4 +38,8 @@
     return [UIColor colorWithRed:83.0f/255 green:84.0f/255 blue:84.0f/255 alpha:1];
 }
 
++ (UIColor *)TSFLightBlueColor {
+    return [UIColor colorWithRed:237.0f/255 green:244.0f/255 blue:250.0f/255 alpha:1];
+}
+
 @end
