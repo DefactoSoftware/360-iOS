@@ -42,4 +42,12 @@
     return [UIColor colorWithRed:237.0f/255 green:244.0f/255 blue:250.0f/255 alpha:1];
 }
 
++ (UIColor *)TSFLightGreyTextColor {
+    return [UIColor colorWithRed:56.0f/255 green:56.0f/255 blue:56.0f/255 alpha:1];
+}
+
++ (UIColor *)TSFAssessorsTableViewBackgroundColor {
+    return [UIColor colorWithRed:246.0f/255 green:244.0f/255 blue:242.0f/255 alpha:1];
+}
+
 @end

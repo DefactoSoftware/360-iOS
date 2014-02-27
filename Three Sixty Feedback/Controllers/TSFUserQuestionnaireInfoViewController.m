@@ -11,6 +11,7 @@
 #import "TSFGenerics.h"
 #import "TSFAssessorCell.h"
 #import "CRToast.h"
+#import "UIColor+TSFColor.h"
 
 static NSString *const TSFQuestionnaireAssessorsSegueIdentifier = @"TSFAssessorsPopoverSegue";
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
@@ -43,11 +44,13 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     
     self.tabBarController.tabBarItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTab", @"My questionnaire");
 
-    NSString *subjectFormat = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerSubjectFormat", @"This questionnaire is about %@.");
-    NSString *templateFormat = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTemplateFormat", @"(A %@ questionnaire)");
-    self.subjectLabel.text = [NSString stringWithFormat:subjectFormat, self.questionnaire.subject];
-    self.titleLabel.text = [NSString stringWithFormat:templateFormat, self.questionnaire.title];
+    self.subjectTitleLabel.text = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerSubjectFormat", @"This questionnaire is about");
+    self.subjectLabel.text = self.questionnaire.subject;
     self.descriptionLabel.text = self.questionnaire.questionnaireDescription;
+    
+    self.subjectTitleLabel.textColor = [UIColor TSFLightGreyTextColor];
+    self.descriptionLabel.textColor = [UIColor TSFLightGreyTextColor];
+    self.subjectLabel.textColor = [UIColor TSFLightGreyTextColor];
 
     [self setupAssessorsTableView];
 }
@@ -60,6 +63,8 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.assessorsTableView.dataSource = self;
         self.assessorsTableView.delegate = self;
+        self.assessorsTableView.backgroundColor = [UIColor TSFAssessorsTableViewBackgroundColor];
+        self.assessorsTableView.layer.cornerRadius = 5.0f;
         [self.assessorsTableView reloadData];
     }
 }

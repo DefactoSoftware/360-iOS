@@ -18,5 +18,7 @@
 + (UIColor *)TSFBlackColor;
 + (UIColor *)TSFGreyColor;
 + (UIColor *)TSFLightBlueColor;
++ (UIColor *)TSFLightGreyTextColor;
++ (UIColor *)TSFAssessorsTableViewBackgroundColor;
 
 @end

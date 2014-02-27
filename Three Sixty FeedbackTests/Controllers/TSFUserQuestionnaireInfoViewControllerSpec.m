@@ -26,10 +26,6 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
     });
     
     context(@"iPhone", ^{
-        it(@"has an outlet for the title label", ^{
-            [[_userQuestionnaireInfoViewController.titleLabel shouldNot] beNil];
-        });
-        
         it(@"has an outlet for the subject label", ^{
             [[_userQuestionnaireInfoViewController.subjectLabel shouldNot] beNil];
         });
@@ -51,10 +47,6 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
         
         it(@"instantiates correctly from the storyboard", ^{
             [[_userQuestionnaireInfoViewController should] beKindOfClass:[TSFUserQuestionnaireInfoViewController class]];
-        });
-        
-        it(@"has an outlet for the title label", ^{
-            [[_userQuestionnaireInfoViewController.titleLabel shouldNot] beNil];
         });
         
         it(@"has an outlet for the subject label", ^{

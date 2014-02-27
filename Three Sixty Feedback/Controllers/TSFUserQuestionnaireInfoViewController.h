@@ -17,12 +17,11 @@
 @property (nonatomic, strong) TSFAssessorService *assessorService;
 @property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
 @property (weak, nonatomic) IBOutlet UILabel *assessorsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *remindAssessorsButton;
-
+@property (weak, nonatomic) IBOutlet UILabel *subjectTitleLabel;
 
 - (IBAction)remindButtonPressed:(id)sender;
 - (void)remindAssessors;
