@@ -13,6 +13,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    self.subjectLabel.textColor = [UIColor TSFBlackColor];
+    self.titleLabel.textColor = [UIColor TSFGreyColor];
+    self.assessorsCountLabel.textColor = [UIColor TSFGreyColor];
 }
 
 - (void)select {

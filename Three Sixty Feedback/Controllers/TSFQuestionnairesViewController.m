@@ -55,6 +55,8 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     self.questionnairesTableView.dataSource = self;
     self.questionnairesTableView.delegate = self;
     
+    self.questionnairesTableView.backgroundColor = [UIColor TSFAssessorsTableViewBackgroundColor];
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         self.view.backgroundColor = [UIColor TSFBeigeColor];
         self.questionnairesTableView.backgroundColor = [UIColor TSFBeigeColor];
