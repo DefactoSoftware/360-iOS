@@ -95,9 +95,16 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     self.completedQuestionnaires = completedQuestionnaires;
 }
 
+- (void)clearDetailView {
+    for (UIView *view in self.detailView.subviews) {
+        [view removeFromSuperview];
+    }
+}
+
 - (IBAction)segmentedControlChanged:(id)sender {
     self.showCompletedQuestionnaires = self.activeSegmentedControl.selectedSegmentIndex == 1;
     [self.questionnairesTableView reloadData];
+    [self clearDetailView];
 }
 
 - (void)loadAssessors {
