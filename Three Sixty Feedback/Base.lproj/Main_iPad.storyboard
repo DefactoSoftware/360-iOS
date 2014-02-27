@@ -307,7 +307,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="hAb-iY-ovo" kind="relationship" relationship="rootViewController" id="l12-Lt-TO3"/>
+                        <segue destination="hAb-iY-ovo" kind="relationship" relationship="rootViewController" id="nOE-Xs-cff"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZP7-GF-L1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -562,9 +562,9 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="RV9-nF-Nwo">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="nKa-ep-SbX">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="nKa-ep-SbX">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="84L-bf-WpA">
-                                <rect key="frame" x="16" y="7" width="200" height="30"/>
+                                <rect key="frame" x="552" y="7" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title=""/>

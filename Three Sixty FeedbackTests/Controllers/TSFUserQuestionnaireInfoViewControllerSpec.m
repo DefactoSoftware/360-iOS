@@ -41,20 +41,16 @@ describe(@"TSFUserQuestionnaireInfoViewController", ^{
     
     context(@"iPad", ^{
         __block UIStoryboard *_storyboard;
-        __block TSFUserQuestionnaireTabBarController *_userQuestionnaireViewController;
         __block TSFUserQuestionnaireInfoViewController *_userQuestionnaireInfoViewController;
         
         beforeEach(^{
             _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
-            _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireTabBarController"];
-            _userQuestionnaireInfoViewController = [_userQuestionnaireViewController.viewControllers firstObject];
-            [[[_userQuestionnaireViewController view] shouldNot] beNil];
+            _userQuestionnaireInfoViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireInfoViewController"];
             [[[_userQuestionnaireInfoViewController view] shouldNot] beNil];
         });
         
         it(@"instantiates correctly from the storyboard", ^{
-            [[[_userQuestionnaireViewController.viewControllers firstObject] shouldNot] beNil];
-            [[[_userQuestionnaireViewController.viewControllers firstObject] should] beKindOfClass:[TSFUserQuestionnaireInfoViewController class]];
+            [[_userQuestionnaireInfoViewController should] beKindOfClass:[TSFUserQuestionnaireInfoViewController class]];
         });
         
         it(@"has an outlet for the title label", ^{

@@ -20,8 +20,8 @@
     
     self.navigationItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTitle", @"My questionnaire");
     
-    ((UITabBarItem *)self.tabBar.items[0]).title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerQuestionnaireTab", @"Questionnaire");
-    if ([self.tabBar.items count] > 1) {
+    if (!self.tabBar.hidden) {
+        ((UITabBarItem *)self.tabBar.items[0]).title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerQuestionnaireTab", @"Questionnaire");
         ((UITabBarItem *)self.tabBar.items[1]).title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessorsTab", @"Assessors");
     }
 
