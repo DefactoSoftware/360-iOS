@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFButton.h"
 
 @interface TSFRemindAssessorsCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *remindButton;
+@property (weak, nonatomic) IBOutlet TSFButton *remindButton;
 
 @end

@@ -410,10 +410,10 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5t-0Q-vFo" customClass="TSFButton">
-                                <rect key="frame" x="314" y="132" width="117" height="30"/>
+                                <rect key="frame" x="300" y="132" width="131" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="117" id="Iqo-2Q-riB"/>
+                                    <constraint firstAttribute="width" constant="131" id="Iqo-2Q-riB"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -433,12 +433,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccY-ik-kmB" customClass="TSFButton">
-                                <rect key="frame" x="189" y="132" width="117" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccY-ik-kmB" customClass="TSFButton">
+                                <rect key="frame" x="192" y="132" width="100" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="117" id="bpZ-4O-hns"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="30" id="kKa-Lo-KUU"/>
+                                    <constraint firstAttribute="width" constant="100" id="bpZ-4O-hns"/>
+                                    <constraint firstAttribute="height" constant="30" id="kKa-Lo-KUU"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -15,7 +15,8 @@
     [super layoutSubviews];
     [self.remindButton setTitle:TSFLocalizedString(@"TSFRemindAssessorsCellButton", @"Remind assessors")
                        forState:UIControlStateNormal];
-
+    [self.remindButton setIconImage:[UIImage imageNamed:@"time"]];
+    
     self.selectionStyle = UITableViewCellStyleDefault;
 }
 

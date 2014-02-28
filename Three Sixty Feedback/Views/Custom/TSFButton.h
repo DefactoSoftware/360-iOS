@@ -10,4 +10,8 @@
 
 @interface TSFButton : UIButton
 
+@property (nonatomic, strong) UIImageView *iconImageView;
+
+- (void)setIconImage:(UIImage *)iconImage;
+
 @end
