@@ -566,12 +566,26 @@
                                                     <rect key="frame" x="311" y="29" width="4" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0k2-y8-1kp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="3" height="73"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="3" id="TEY-dC-oAW"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="0k2-y8-1kp" firstAttribute="leading" secondItem="ont-xd-aaK" secondAttribute="leading" id="7CI-lu-Y4b"/>
+                                                <constraint firstItem="0k2-y8-1kp" firstAttribute="top" secondItem="ont-xd-aaK" secondAttribute="top" id="KM5-OY-OPc"/>
+                                                <constraint firstAttribute="bottom" secondItem="0k2-y8-1kp" secondAttribute="bottom" id="w6F-li-dgf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="assessorsCountLabel" destination="6hZ-lj-izD" id="Tk7-XU-JMW"/>
+                                            <outlet property="colorView" destination="0k2-y8-1kp" id="i2X-jM-D5I"/>
                                             <outlet property="pointerImageView" destination="J16-eX-6z6" id="vUw-Ds-UzZ"/>
                                             <outlet property="subjectLabel" destination="f2m-pC-zan" id="CTQ-bk-0Qg"/>
                                             <outlet property="titleLabel" destination="UKB-Ah-HzQ" id="Wkp-my-CB3"/>

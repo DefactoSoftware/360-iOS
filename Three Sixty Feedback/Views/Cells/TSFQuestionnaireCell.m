@@ -21,11 +21,14 @@
 - (void)select {
     self.pointerImageView.hidden = NO;
     self.backgroundColor = [UIColor TSFLightBlueColor];
+    self.colorView.backgroundColor = [UIColor TSFBlueColor];
+    self.colorView.alpha = 1;
 }
 
 - (void)unselect {
     self.pointerImageView.hidden = YES;
     self.backgroundColor = [UIColor clearColor];
+    self.colorView.alpha = 0.5;
 }
 
 @end

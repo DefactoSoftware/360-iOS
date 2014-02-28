@@ -12,6 +12,7 @@
 #import "TSFQuestionnaireCell.h"
 #import "TSFUserQuestionnaireTabBarController.h"
 #import "UIColor+TSFColor.h"
+#import "NSString+Hashtel.h"
 
 static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuestionnaireInfoViewController";
@@ -167,6 +168,55 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     return questionnaireViewController;
 }
 
+- (void)displayDetailViewForQuestionnaire:(TSFQuestionnaire *)questionnaire {
+    TSFUserQuestionnaireInfoViewController *questionnaireViewController = [self questionnaireViewControllerForQuestionnaire:questionnaire];
+    
+    UIView *questionnaireView = questionnaireViewController.view;
+    questionnaireView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    for (UIView *view in self.detailView.subviews) {
+        [view removeFromSuperview];
+    }
+    [self.detailView addSubview:questionnaireView];
+    
+    NSLayoutConstraint *width =[NSLayoutConstraint
+                                constraintWithItem:questionnaireView
+                                attribute:NSLayoutAttributeWidth
+                                relatedBy:0
+                                toItem:self.detailView
+                                attribute:NSLayoutAttributeWidth
+                                multiplier:1.0
+                                constant:0];
+    NSLayoutConstraint *height =[NSLayoutConstraint
+                                 constraintWithItem:questionnaireView
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:0
+                                 toItem:self.detailView
+                                 attribute:NSLayoutAttributeHeight
+                                 multiplier:1.0
+                                 constant:0];
+    NSLayoutConstraint *top = [NSLayoutConstraint
+                               constraintWithItem:questionnaireView
+                               attribute:NSLayoutAttributeTop
+                               relatedBy:NSLayoutRelationEqual
+                               toItem:self.detailView
+                               attribute:NSLayoutAttributeTop
+                               multiplier:1.0f
+                               constant:0.f];
+    NSLayoutConstraint *leading = [NSLayoutConstraint
+                                   constraintWithItem:questionnaireView
+                                   attribute:NSLayoutAttributeLeading
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:self.detailView
+                                   attribute:NSLayoutAttributeLeading
+                                   multiplier:1.0f
+                                   constant:0.f];
+    [self.detailView addConstraint:width];
+    [self.detailView addConstraint:height];
+    [self.detailView addConstraint:top];
+    [self.detailView addConstraint:leading];
+}
+
 #pragma mark - Prepare for segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -191,52 +241,7 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         TSFQuestionnaire *questionnaire = [self questionnaireForRow:indexPath.row];
-        TSFUserQuestionnaireInfoViewController *questionnaireViewController = [self questionnaireViewControllerForQuestionnaire:questionnaire];
-        
-        UIView *questionnaireView = questionnaireViewController.view;
-        questionnaireView.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        for (UIView *view in self.detailView.subviews) {
-            [view removeFromSuperview];
-        }
-        [self.detailView addSubview:questionnaireView];
-        
-        NSLayoutConstraint *width =[NSLayoutConstraint
-                                    constraintWithItem:questionnaireView
-                                    attribute:NSLayoutAttributeWidth
-                                    relatedBy:0
-                                    toItem:self.detailView
-                                    attribute:NSLayoutAttributeWidth
-                                    multiplier:1.0
-                                    constant:0];
-        NSLayoutConstraint *height =[NSLayoutConstraint
-                                     constraintWithItem:questionnaireView
-                                     attribute:NSLayoutAttributeHeight
-                                     relatedBy:0
-                                     toItem:self.detailView
-                                     attribute:NSLayoutAttributeHeight
-                                     multiplier:1.0
-                                     constant:0];
-        NSLayoutConstraint *top = [NSLayoutConstraint
-                                   constraintWithItem:questionnaireView
-                                   attribute:NSLayoutAttributeTop
-                                   relatedBy:NSLayoutRelationEqual
-                                   toItem:self.detailView
-                                   attribute:NSLayoutAttributeTop
-                                   multiplier:1.0f
-                                   constant:0.f];
-        NSLayoutConstraint *leading = [NSLayoutConstraint
-                                       constraintWithItem:questionnaireView
-                                       attribute:NSLayoutAttributeLeading
-                                       relatedBy:NSLayoutRelationEqual
-                                       toItem:self.detailView
-                                       attribute:NSLayoutAttributeLeading
-                                       multiplier:1.0f
-                                       constant:0.f];
-        [self.detailView addConstraint:width];
-        [self.detailView addConstraint:height];
-        [self.detailView addConstraint:top];
-        [self.detailView addConstraint:leading];
+        [self displayDetailViewForQuestionnaire:questionnaire];
     }
 }
 
@@ -261,10 +266,12 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     questionnaireCell.subjectLabel.text = questionnaire.subject;
     questionnaireCell.titleLabel.text = questionnaire.title;
     
+    questionnaireCell.colorView.backgroundColor = [questionnaire.subject hashtel];
     if (self.selectedQuestionnaireIndexPath == indexPath) {
         [questionnaireCell select];
     } else {
         [questionnaireCell unselect];
+        questionnaireCell.colorView.backgroundColor = [questionnaire.subject hashtel];
     }
     
     UIView *selectedBackgroundView = [[UIView alloc] init];

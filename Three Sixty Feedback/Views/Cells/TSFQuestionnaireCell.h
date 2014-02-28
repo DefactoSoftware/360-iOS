@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *assessorsCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *pointerImageView;
+@property (weak, nonatomic) IBOutlet UIView *colorView;
 
 - (void)select;
 - (void)unselect;

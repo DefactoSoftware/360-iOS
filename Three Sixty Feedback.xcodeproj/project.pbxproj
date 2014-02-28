@@ -38,6 +38,7 @@
 		52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */; };
 		52ACE46E189EDC040095F650 /* TSFFinishQuestionnaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE46D189EDC040095F650 /* TSFFinishQuestionnaireViewController.m */; };
 		52B5322918BFBBC200A1C204 /* TSFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B5322818BFBBC200A1C204 /* TSFButton.m */; };
+		52BCA9A918C0ACBB00F78038 /* NSString+Hashtel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BCA9A818C0ACBB00F78038 /* NSString+Hashtel.m */; };
 		52BD22C618ABFE1900D14390 /* TSFCommentaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BD22C518ABFE1900D14390 /* TSFCommentaryCell.m */; };
 		52BE6F4C18BCB12B000B2DC7 /* TSFUserQuestionnaireTabBarControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE6F4B18BCB12B000B2DC7 /* TSFUserQuestionnaireTabBarControllerSpec.m */; };
 		52BE6F4F18BCB157000B2DC7 /* TSFUserQuestionnaireTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE6F4E18BCB157000B2DC7 /* TSFUserQuestionnaireTabBarController.m */; };
@@ -157,6 +158,8 @@
 		52ACE46D189EDC040095F650 /* TSFFinishQuestionnaireViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFFinishQuestionnaireViewController.m; path = Controllers/TSFFinishQuestionnaireViewController.m; sourceTree = "<group>"; };
 		52B5322718BFBBC200A1C204 /* TSFButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFButton.h; path = Views/Custom/TSFButton.h; sourceTree = "<group>"; };
 		52B5322818BFBBC200A1C204 /* TSFButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFButton.m; path = Views/Custom/TSFButton.m; sourceTree = "<group>"; };
+		52BCA9A718C0ACBB00F78038 /* NSString+Hashtel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Hashtel.h"; path = "Views/Custom/NSString+Hashtel.h"; sourceTree = "<group>"; };
+		52BCA9A818C0ACBB00F78038 /* NSString+Hashtel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Hashtel.m"; path = "Views/Custom/NSString+Hashtel.m"; sourceTree = "<group>"; };
 		52BD22C418ABFE1900D14390 /* TSFCommentaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCommentaryCell.h; path = Views/Cells/TSFCommentaryCell.h; sourceTree = "<group>"; };
 		52BD22C518ABFE1900D14390 /* TSFCommentaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCommentaryCell.m; path = Views/Cells/TSFCommentaryCell.m; sourceTree = "<group>"; };
 		52BE6F4B18BCB12B000B2DC7 /* TSFUserQuestionnaireTabBarControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFUserQuestionnaireTabBarControllerSpec.m; path = Controllers/TSFUserQuestionnaireTabBarControllerSpec.m; sourceTree = "<group>"; };
@@ -366,6 +369,8 @@
 				527FD0B8189DA634003E1E96 /* UIColor+TSFColor.m */,
 				52B5322718BFBBC200A1C204 /* TSFButton.h */,
 				52B5322818BFBBC200A1C204 /* TSFButton.m */,
+				52BCA9A718C0ACBB00F78038 /* NSString+Hashtel.h */,
+				52BCA9A818C0ACBB00F78038 /* NSString+Hashtel.m */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -777,6 +782,7 @@
 				529F268B18BB9F880088D0D2 /* TSFMenuViewController.m in Sources */,
 				5290DBC718BBB3200074AF78 /* TSFAssessorMapper.m in Sources */,
 				5226DBCE18B748B100CCDAE4 /* TSFPasswordRequestViewController.m in Sources */,
+				52BCA9A918C0ACBB00F78038 /* NSString+Hashtel.m in Sources */,
 				52BE6F4F18BCB157000B2DC7 /* TSFUserQuestionnaireTabBarController.m in Sources */,
 				E455FF8B18990E8200F8C04C /* TSFKeyBehaviour.m in Sources */,
 				527AF15C18B62EE200604A3A /* TSFMainViewController.m in Sources */,
