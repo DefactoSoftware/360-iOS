@@ -344,8 +344,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="158" translatesAutoresizingMaskIntoConstraints="NO" id="F3N-0U-Ljn">
-                                <rect key="frame" x="20" y="136" width="158" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="91" translatesAutoresizingMaskIntoConstraints="NO" id="F3N-0U-Ljn">
+                                <rect key="frame" x="20" y="136" width="91" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -433,32 +433,29 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccY-ik-kmB" customClass="TSFButton">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccY-ik-kmB" customClass="TSFButton">
                                 <rect key="frame" x="189" y="132" width="117" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="117" id="qEZ-J4-jvv"/>
-                                    <constraint firstAttribute="height" constant="30" id="ryv-7Y-Efs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="117" id="bpZ-4O-hns"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="30" id="kKa-Lo-KUU"/>
                                 </constraints>
-                                <state key="normal" title="CanMEDS">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="remindButtonPressed:" destination="ZbZ-tp-1Vc" eventType="touchUpInside" id="Wo3-HX-WkL"/>
-                                </connections>
                             </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="pJj-at-F6u" firstAttribute="centerX" secondItem="gcz-HJ-kYi" secondAttribute="centerX" id="03T-rM-KKA"/>
                             <constraint firstAttribute="trailing" secondItem="ZHH-ur-zzA" secondAttribute="trailing" constant="13" id="0zc-sp-KPq"/>
+                            <constraint firstItem="Y5t-0Q-vFo" firstAttribute="leading" secondItem="ccY-ik-kmB" secondAttribute="trailing" constant="8" id="1Im-Za-uhf"/>
                             <constraint firstItem="b06-cD-cle" firstAttribute="leading" secondItem="eeu-Pj-4N2" secondAttribute="leading" constant="20" symbolic="YES" id="5gt-HG-8hL"/>
                             <constraint firstAttribute="trailing" secondItem="Y5t-0Q-vFo" secondAttribute="trailing" constant="20" id="5mz-jq-rl9"/>
                             <constraint firstAttribute="trailing" secondItem="b06-cD-cle" secondAttribute="trailing" constant="20" symbolic="YES" id="7fp-yq-WPK"/>
                             <constraint firstItem="pJj-at-F6u" firstAttribute="leading" secondItem="F3N-0U-Ljn" secondAttribute="leading" id="8uL-fl-51F"/>
-                            <constraint firstItem="Y5t-0Q-vFo" firstAttribute="leading" secondItem="ccY-ik-kmB" secondAttribute="trailing" constant="8" id="EvU-uC-zS9"/>
+                            <constraint firstItem="ccY-ik-kmB" firstAttribute="centerY" secondItem="Y5t-0Q-vFo" secondAttribute="centerY" id="IN7-UC-Ij2"/>
                             <constraint firstItem="pJj-at-F6u" firstAttribute="leading" secondItem="b06-cD-cle" secondAttribute="leading" id="JXe-cZ-7Mx"/>
-                            <constraint firstItem="ccY-ik-kmB" firstAttribute="top" secondItem="ZHH-ur-zzA" secondAttribute="bottom" constant="27" id="L2G-7L-qPq"/>
                             <constraint firstItem="ZHH-ur-zzA" firstAttribute="leading" secondItem="eeu-Pj-4N2" secondAttribute="leading" constant="20" id="Opo-91-5re"/>
                             <constraint firstItem="gcz-HJ-kYi" firstAttribute="top" secondItem="F3N-0U-Ljn" secondAttribute="bottom" constant="20" id="RMT-HO-D0Z"/>
                             <constraint firstItem="Y5t-0Q-vFo" firstAttribute="trailing" secondItem="pJj-at-F6u" secondAttribute="trailing" id="aVL-w9-Ptp"/>
@@ -469,7 +466,6 @@
                             <constraint firstItem="gcz-HJ-kYi" firstAttribute="leading" secondItem="eeu-Pj-4N2" secondAttribute="leading" constant="20" id="lKF-wD-eeM"/>
                             <constraint firstItem="Y5t-0Q-vFo" firstAttribute="top" secondItem="ZHH-ur-zzA" secondAttribute="bottom" constant="27" id="n6L-fi-TRG"/>
                             <constraint firstItem="gcz-HJ-kYi" firstAttribute="top" secondItem="Y5t-0Q-vFo" secondAttribute="bottom" constant="15" id="njB-rT-sIP"/>
-                            <constraint firstItem="ccY-ik-kmB" firstAttribute="leading" secondItem="F3N-0U-Ljn" secondAttribute="trailing" constant="11" id="p4C-Uk-1Nv"/>
                             <constraint firstItem="ZHH-ur-zzA" firstAttribute="top" secondItem="pJj-at-F6u" secondAttribute="bottom" constant="8" symbolic="YES" id="rEQ-Rw-ERw"/>
                             <constraint firstItem="b06-cD-cle" firstAttribute="trailing" secondItem="pJj-at-F6u" secondAttribute="trailing" id="woe-sg-g0S"/>
                             <constraint firstItem="pJj-at-F6u" firstAttribute="top" secondItem="b06-cD-cle" secondAttribute="bottom" constant="-10" id="zlQ-Yl-TSW"/>
@@ -481,7 +477,8 @@
                         <outlet property="assessorsLabel" destination="F3N-0U-Ljn" id="9tS-i0-20V"/>
                         <outlet property="assessorsTableView" destination="gcz-HJ-kYi" id="6VQ-IL-hmR"/>
                         <outlet property="descriptionLabel" destination="ZHH-ur-zzA" id="4Xf-e3-bpg"/>
-                        <outlet property="remindAssessorsButton" destination="Y5t-0Q-vFo" id="z8R-Gg-cFd"/>
+                        <outlet property="remindAssessorsButton" destination="Y5t-0Q-vFo" id="l0w-Vu-elY"/>
+                        <outlet property="showTemplateButton" destination="ccY-ik-kmB" id="Xw3-MN-bZs"/>
                         <outlet property="subjectLabel" destination="pJj-at-F6u" id="bMP-ck-mA1"/>
                         <outlet property="subjectTitleLabel" destination="b06-cD-cle" id="f7X-7w-RPG"/>
                     </connections>

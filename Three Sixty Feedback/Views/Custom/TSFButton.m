@@ -8,6 +8,7 @@
 
 #import "TSFButton.h"
 #import "UIColor+TSFColor.h"
+#import <Foundation/Foundation.h>
 
 @implementation TSFButton
 

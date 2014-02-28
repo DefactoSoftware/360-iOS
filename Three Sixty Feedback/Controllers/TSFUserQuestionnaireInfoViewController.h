@@ -10,6 +10,7 @@
 #import "TSFQuestionnaire.h"
 #import "TSFAssessorService.h"
 #import "TSFBaseViewController.h"
+#import "TSFButton.h"
 
 @interface TSFUserQuestionnaireInfoViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -20,7 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
 @property (weak, nonatomic) IBOutlet UILabel *assessorsLabel;
-@property (weak, nonatomic) IBOutlet UIButton *remindAssessorsButton;
+@property (weak, nonatomic) IBOutlet TSFButton *remindAssessorsButton;
+@property (weak, nonatomic) IBOutlet TSFButton *showTemplateButton;
 @property (weak, nonatomic) IBOutlet UILabel *subjectTitleLabel;
 
 - (IBAction)remindButtonPressed:(id)sender;
