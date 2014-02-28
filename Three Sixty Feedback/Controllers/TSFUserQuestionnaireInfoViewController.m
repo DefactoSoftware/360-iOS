@@ -84,7 +84,7 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
             } failure:^(NSError *error) {
                 NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerReminderError", @"Assessor has already been reminded in the last 24 hours."),
                                           kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                          kCRToastBackgroundColorKey : [UIColor redColor]};
+                                          kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
                 [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
                 NSLog(@"Error reminding assessor: %@", error);
             }];

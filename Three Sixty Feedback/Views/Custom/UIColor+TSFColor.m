@@ -50,4 +50,8 @@
     return [UIColor colorWithRed:246.0f/255 green:244.0f/255 blue:242.0f/255 alpha:1];
 }
 
++ (UIColor *)TSFErrorColor {
+    return [UIColor colorWithRed:207.0f/255 green:75.0f/255 blue:61.0f/255 alpha:1];
+}
+
 @end

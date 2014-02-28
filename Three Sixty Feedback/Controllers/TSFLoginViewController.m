@@ -9,6 +9,7 @@
 #import "TSFAppDelegate.h"
 #import "TSFLoginViewController.h"
 #import "TSFGenerics.h"
+#import "UIColor+TSFColor.h"
 #import <CRToast/CRToast.h>
 
 static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController";
@@ -54,7 +55,7 @@ static NSString *const TSFRequestPasswordSegue = @"TSFRequestPasswordSegue";
     } failure:^(NSError *error) {
         NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFLoginViewControllerFail", @"Failed logging in"),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                  kCRToastBackgroundColorKey : [UIColor redColor]};
+                                  kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
         [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
         NSLog(@"Error logging in. Message: %@", error.localizedDescription);
     }];

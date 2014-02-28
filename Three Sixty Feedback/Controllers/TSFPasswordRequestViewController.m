@@ -9,6 +9,7 @@
 #import "TSFPasswordRequestViewController.h"
 #import "TSFGenerics.h"
 #import <CRToast/CRToast.h>
+#import "UIColor+TSFColor.h"
 
 @implementation TSFPasswordRequestViewController
 
@@ -46,7 +47,7 @@
     } failure:^(NSError *error) {
         NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFPasswordRequestViewControllerFail", @"Could not find e-mail address"),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                  kCRToastBackgroundColorKey : [UIColor redColor]};
+                                  kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
         [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
         NSLog(@"Error logging in. Message: %@", error.localizedDescription);
     }];

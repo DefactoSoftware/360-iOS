@@ -90,7 +90,7 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     } failure:^(NSError *error) {
         NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFQuestionnairesTabBarControllerError", @"Failed getting questionnaires."),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                  kCRToastBackgroundColorKey : [UIColor redColor]};
+                                  kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
         [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
         NSLog(@"Error getting user questionnaires: %@.", error);
     }];
