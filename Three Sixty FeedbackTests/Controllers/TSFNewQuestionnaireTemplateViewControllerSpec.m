@@ -45,6 +45,15 @@ describe(@"TSFNewQuestionnaireTemplateViewController", ^{
     it(@"has a reference to the template service", ^{
         [[_newQuestionnaireTemplateViewController.templateService should] beKindOfClass:[TSFTemplateService class]];
     });
+    
+    it(@"calls the template service for the users templates", ^{
+        id mockTemplateService = [KWMock mockForClass:[TSFTemplateService class]];
+        _newQuestionnaireTemplateViewController.templateService = mockTemplateService;
+        
+        [[mockTemplateService should] receive:@selector(templatesWithSuccess:failure:)];
+        
+        [_newQuestionnaireTemplateViewController viewDidLoad];
+    });
 });
 
 SPEC_END
