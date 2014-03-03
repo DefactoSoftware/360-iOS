@@ -9,10 +9,11 @@
 #import "TSFBaseViewController.h"
 #import "TSFTemplateService.h"
 
-@interface TSFNewQuestionnaireTemplateViewController : TSFBaseViewController
+@interface TSFNewQuestionnaireTemplateViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSString *subject;
 @property (nonatomic, strong) TSFTemplateService *templateService;
+@property (weak, nonatomic) IBOutlet UITableView *templatesTableView;
 
 - (BOOL)validate;
 

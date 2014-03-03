@@ -15,6 +15,7 @@
 		52297EA018BE314900DD60BE /* TSFQuestionnairesViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52297E9F18BE314900DD60BE /* TSFQuestionnairesViewControllerSpec.m */; };
 		52297EA318BE31B700DD60BE /* TSFQuestionnairesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52297EA218BE31B700DD60BE /* TSFQuestionnairesViewController.m */; };
 		522DB4AB189FB6BA002EE50D /* TSFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522DB4AA189FB6BA002EE50D /* TSFHomeViewController.m */; };
+		526A112418C4F40F00518D1E /* TSFTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 526A112318C4F40F00518D1E /* TSFTemplateCell.m */; };
 		526B425C18B5002100DC1310 /* TSFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B425B18B5002100DC1310 /* TSFLoginViewController.m */; };
 		526B426618B5069000DC1310 /* TSFSessionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B426518B5069000DC1310 /* TSFSessionService.m */; };
 		526B426918B506AC00DC1310 /* TSFSessionServiceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 526B426818B506AC00DC1310 /* TSFSessionServiceSpec.m */; };
@@ -129,6 +130,8 @@
 		52297EA218BE31B700DD60BE /* TSFQuestionnairesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnairesViewController.m; path = Controllers/TSFQuestionnairesViewController.m; sourceTree = "<group>"; };
 		522DB4A9189FB6BA002EE50D /* TSFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFHomeViewController.h; path = Controllers/TSFHomeViewController.h; sourceTree = "<group>"; };
 		522DB4AA189FB6BA002EE50D /* TSFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFHomeViewController.m; path = Controllers/TSFHomeViewController.m; sourceTree = "<group>"; };
+		526A112218C4F40F00518D1E /* TSFTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFTemplateCell.h; path = Views/Cells/TSFTemplateCell.h; sourceTree = "<group>"; };
+		526A112318C4F40F00518D1E /* TSFTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFTemplateCell.m; path = Views/Cells/TSFTemplateCell.m; sourceTree = "<group>"; };
 		526B425A18B5002100DC1310 /* TSFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFLoginViewController.h; path = Controllers/TSFLoginViewController.h; sourceTree = "<group>"; };
 		526B425B18B5002100DC1310 /* TSFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFLoginViewController.m; path = Controllers/TSFLoginViewController.m; sourceTree = "<group>"; };
 		526B426118B504A400DC1310 /* TSFGenerics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
@@ -393,6 +396,8 @@
 				52BE6F5D18BCDB89000B2DC7 /* TSFAssessorCell.m */,
 				52E1398018BDF41F0094F941 /* TSFRemindAssessorsCell.h */,
 				52E1398118BDF41F0094F941 /* TSFRemindAssessorsCell.m */,
+				526A112218C4F40F00518D1E /* TSFTemplateCell.h */,
+				526A112318C4F40F00518D1E /* TSFTemplateCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -417,8 +422,8 @@
 			children = (
 				52E80F4E189BE47D007A8A48 /* Custom */,
 				52E80F47189BE1BE007A8A48 /* Cells */,
-				E4800B321897FD9A00FCE147 /* Main_iPhone.storyboard */,
 				E4800B351897FD9A00FCE147 /* Main_iPad.storyboard */,
+				E4800B321897FD9A00FCE147 /* Main_iPhone.storyboard */,
 				52E80F45189BDCC1007A8A48 /* TSFGenerics.h */,
 				526B426118B504A400DC1310 /* TSFGenerics.h */,
 			);
@@ -815,6 +820,7 @@
 				527AF14D18B6113400604A3A /* TSFUser.m in Sources */,
 				E4800B311897FD9A00FCE147 /* TSFAppDelegate.m in Sources */,
 				527AF15318B611AB00604A3A /* TSFUserMapper.m in Sources */,
+				526A112418C4F40F00518D1E /* TSFTemplateCell.m in Sources */,
 				E4800B2D1897FD9A00FCE147 /* main.m in Sources */,
 				E4C7F922189940A800B0E5F2 /* TSFCompetenceMapper.m in Sources */,
 				E455FF82189905DB00F8C04C /* TSFCompetence.m in Sources */,

@@ -25,6 +25,10 @@ describe(@"TSFNewQuestionnaireTemplateViewController", ^{
         it(@"instantiates correctly from the storyboard", ^{
             [[_newQuestionnaireTemplateViewController shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the templates tableview", ^{
+            [[_newQuestionnaireTemplateViewController.templatesTableView shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -39,6 +43,10 @@ describe(@"TSFNewQuestionnaireTemplateViewController", ^{
         
         it(@"instantiates correctly from the storyboard", ^{
             [[_newQuestionnaireTemplateViewController shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the templates tableview", ^{
+            [[_newQuestionnaireTemplateViewController.templatesTableView shouldNot] beNil];
         });
     });
     
