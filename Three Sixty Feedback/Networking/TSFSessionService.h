@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSFQuestionnaireService.h"
 #import "TSFAPIClient.h"
 #import "TSFUserMapper.h"
 #import "TSFUser.h"

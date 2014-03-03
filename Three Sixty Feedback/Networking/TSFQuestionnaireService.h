@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "TSFAPIClient.h"
 #import "TSFQuestionnaireMapper.h"
+#import "TSFNetworkingBlocks.h"
 
 static NSString *const TSFAPIEndPointQuestionnaires = @"questionnaires";
 static NSString *const TSFAPIEndPointUserQuestionnaires = @"users/me/questionnaires";
+
+@class TSFAPIClient;
 
 @interface TSFQuestionnaireService : NSObject
 
