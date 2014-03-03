@@ -7,6 +7,7 @@
 //
 
 #import "TSFMenuViewController.h"
+#import "TSFAppDelegate.h"
 #import "TSFGenerics.h"
 #import "TSFMenuCell.h"
 
@@ -32,8 +33,10 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
 
 - (void)initializeMenuItems {
     self.items = @[
-                   @[ TSFLocalizedString(@"TSFMenuItemQuestionnaires", @"Questionnaires"), @"TSFQuestionnairesViewController" ]
+                   @[ TSFLocalizedString(@"TSFMenuItemQuestionnaires", @"Questionnaires"), @"TSFQuestionnairesViewControllerNavigation" ],
+                   @[ TSFLocalizedString(@"TSFMenuItemNewQuestionnaire", @"Create new questionnaire"), @"TSFNewQuestionnaireViewControllerNavigation" ]
                    ];
+    
     self.menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.menuTableView reloadData];
 }
@@ -71,6 +74,15 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
     view.backgroundColor = [UIColor clearColor];
     return view;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *item = self.items[indexPath.row];
+    NSString *viewControllerIdentifier = item[1];
+    
+    UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerIdentifier];
+    [self.sideMenuViewController setContentViewController:newViewController];
+    [self.sideMenuViewController hideMenuViewController];
 }
 
 @end

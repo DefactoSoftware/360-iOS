@@ -519,7 +519,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Yns-s7-B7J">
             <objects>
-                <navigationController definesPresentationContext="YES" id="Jnd-fN-0ST" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TSFNewQuestionnaireViewControllerNavigation" definesPresentationContext="YES" id="Jnd-fN-0ST" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cYT-EV-75k">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
