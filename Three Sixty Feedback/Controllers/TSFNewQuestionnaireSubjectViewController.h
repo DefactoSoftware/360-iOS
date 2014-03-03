@@ -7,6 +7,7 @@
 //
 
 #import "TSFBaseViewController.h"
+#import "TSFNewQuestionnaireTemplateViewController.h"
 #import "TSFButton.h"
 
 @interface TSFNewQuestionnaireSubjectViewController : TSFBaseViewController

@@ -40,4 +40,10 @@ static NSString *const TSFNewQuestionnaireTemplateSegue = @"TSFNewQuestionnaireT
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    TSFNewQuestionnaireTemplateViewController *destionationViewController = (TSFNewQuestionnaireTemplateViewController *)segue.destinationViewController;
+    destionationViewController.subject = self.subjectTextField.text;
+}
+
 @end

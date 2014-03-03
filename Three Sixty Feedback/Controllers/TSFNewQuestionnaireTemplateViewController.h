@@ -7,8 +7,12 @@
 //
 
 #import "TSFBaseViewController.h"
+#import "TSFTemplateService.h"
 
 @interface TSFNewQuestionnaireTemplateViewController : TSFBaseViewController
+
+@property (nonatomic, strong) NSString *subject;
+@property (nonatomic, strong) TSFTemplateService *templateService;
 
 - (BOOL)validate;
 

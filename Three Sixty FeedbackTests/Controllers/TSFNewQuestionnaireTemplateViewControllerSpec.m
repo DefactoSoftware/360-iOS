@@ -41,6 +41,10 @@ describe(@"TSFNewQuestionnaireTemplateViewController", ^{
             [[_newQuestionnaireTemplateViewController shouldNot] beNil];
         });
     });
+    
+    it(@"has a reference to the template service", ^{
+        [[_newQuestionnaireTemplateViewController.templateService should] beKindOfClass:[TSFTemplateService class]];
+    });
 });
 
 SPEC_END
