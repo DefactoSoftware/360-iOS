@@ -115,6 +115,10 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     }
 }
 
+- (void)rewindFromModal:(UIStoryboardSegue *)unwindSegue {
+    
+}
+
 #pragma mark - UITableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

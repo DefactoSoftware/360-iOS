@@ -770,6 +770,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwu-OB-upm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jLc-gb-xLJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2362" y="1078"/>
         </scene>
@@ -933,20 +934,36 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0lt-rS-w5Y">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="58" width="320" height="510"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xey-LI-DNo" customClass="TSFButton">
+                                <rect key="frame" x="220" y="20" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Mun-BV-fRS"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="jLc-gb-xLJ" kind="unwind" unwindAction="rewindFromModal:" id="5zd-As-tft"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0lt-rS-w5Y" secondAttribute="trailing" id="btQ-1N-AXa"/>
-                            <constraint firstItem="0lt-rS-w5Y" firstAttribute="leading" secondItem="zpc-SG-VRx" secondAttribute="leading" id="kRa-i6-8tB"/>
-                            <constraint firstAttribute="bottom" secondItem="0lt-rS-w5Y" secondAttribute="bottom" id="ob7-uM-8bd"/>
-                            <constraint firstItem="0lt-rS-w5Y" firstAttribute="top" secondItem="zpc-SG-VRx" secondAttribute="top" id="qPQ-el-7hG"/>
+                            <constraint firstAttribute="bottom" secondItem="0lt-rS-w5Y" secondAttribute="bottom" id="HPW-h8-dgU"/>
+                            <constraint firstItem="xey-LI-DNo" firstAttribute="top" secondItem="zpc-SG-VRx" secondAttribute="top" constant="20" symbolic="YES" id="QBR-uc-7sE"/>
+                            <constraint firstItem="0lt-rS-w5Y" firstAttribute="top" secondItem="xey-LI-DNo" secondAttribute="bottom" constant="8" symbolic="YES" id="YCu-Kz-QEb"/>
+                            <constraint firstItem="0lt-rS-w5Y" firstAttribute="leading" secondItem="zpc-SG-VRx" secondAttribute="leading" id="Zfu-r9-WFu"/>
+                            <constraint firstAttribute="trailing" secondItem="0lt-rS-w5Y" secondAttribute="trailing" id="qNu-gr-mgy"/>
+                            <constraint firstAttribute="trailing" secondItem="xey-LI-DNo" secondAttribute="trailing" constant="20" symbolic="YES" id="tPL-Wi-ffp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="xey-LI-DNo" id="2j0-X9-xq1"/>
                         <outlet property="templateTableView" destination="0lt-rS-w5Y" id="dfs-oO-rjG"/>
                     </connections>
                 </viewController>

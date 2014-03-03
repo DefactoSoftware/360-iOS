@@ -7,7 +7,14 @@
 //
 
 #import "TSFTemplateViewController.h"
+#import "TSFGenerics.h"
 
 @implementation TSFTemplateViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSString *closeButtonTitle = TSFLocalizedString(@"TSFTemplateViewControllerCloseButton", @"Close");
+    [self.closeButton setTitle:closeButtonTitle forState:UIControlStateNormal];
+}
 
 @end

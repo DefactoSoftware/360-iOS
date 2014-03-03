@@ -7,9 +7,11 @@
 //
 
 #import "TSFBaseViewController.h"
+#import "TSFButton.h"
 
 @interface TSFTemplateViewController : TSFBaseViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *templateTableView;
+@property (weak, nonatomic) IBOutlet TSFButton *closeButton;
 
 @end

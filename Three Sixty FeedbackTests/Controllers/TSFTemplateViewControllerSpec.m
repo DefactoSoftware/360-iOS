@@ -29,6 +29,10 @@ describe(@"TSFTemplateViewController", ^{
         it(@"has a questionnaire tableview", ^{
             [[_templateViewController.templateTableView shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the close button", ^{
+            [[_templateViewController.closeButton shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -47,6 +51,10 @@ describe(@"TSFTemplateViewController", ^{
         
         it(@"has a questionnaire tableview", ^{
             [[_templateViewController.templateTableView shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the close button", ^{
+            [[_templateViewController.closeButton shouldNot] beNil];
         });
     });
 });
