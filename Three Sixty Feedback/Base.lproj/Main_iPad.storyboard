@@ -717,6 +717,11 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="RV9-nF-Nwo">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="Coy-sj-W8Q">
+                            <connections>
+                                <action selector="openMenu:" destination="QF5-Jg-tCE" id="MpB-4g-KvH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nKa-ep-SbX">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="84L-bf-WpA">
                                 <rect key="frame" x="552" y="7" width="200" height="30"/>
@@ -1101,6 +1106,7 @@
     </scenes>
     <resources>
         <image name="assessor" width="128" height="128"/>
+        <image name="menu" width="24" height="24"/>
         <image name="pointer" width="4" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

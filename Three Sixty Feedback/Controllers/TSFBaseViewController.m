@@ -20,7 +20,7 @@
 
 - (void)paint {
     self.navigationController.navigationBar.barTintColor = [UIColor TSFBlueColor];
-    self.navigationController.navigationBar.tintColor = [UIColor TSFBlackColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes =  @{ NSForegroundColorAttributeName : [UIColor whiteColor] };
     [self.view setBackgroundColor:[UIColor TSFBeigeColor]];
 }
@@ -55,6 +55,10 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self updateProgressViewFrame];
+}
+
+- (IBAction)openMenu:(id)sender {
+    [self.sideMenuViewController presentMenuViewController];
 }
 
 @end

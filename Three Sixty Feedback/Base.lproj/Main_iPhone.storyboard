@@ -921,18 +921,6 @@
             </objects>
             <point key="canvasLocation" x="907" y="1466"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="w1W-ZQ-KxU">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="T3E-l3-dXg" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Dk-Ga-BTK">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MLk-5q-OFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="118" y="2215"/>
-        </scene>
         <!--Template View Controller-->
         <scene sceneID="eAE-3G-cv1">
             <objects>
@@ -1116,6 +1104,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="rDK-eG-uq9">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="5GX-Hd-1Ik">
+                            <connections>
+                                <action selector="openMenu:" destination="Amp-gz-COa" id="Umn-yu-l9J"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activeSegmentedControl" destination="SU2-Zx-1LT" id="cex-Vc-sYN"/>
@@ -1130,6 +1123,7 @@
     </scenes>
     <resources>
         <image name="assessor" width="128" height="128"/>
+        <image name="menu" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

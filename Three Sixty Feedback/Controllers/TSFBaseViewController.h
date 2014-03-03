@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RESideMenu.h"
 
 @interface TSFBaseViewController : UIViewController
 
 @property (nonatomic, strong) UIProgressView *progressView;
+
+- (IBAction)openMenu:(id)sender;
 
 @end
