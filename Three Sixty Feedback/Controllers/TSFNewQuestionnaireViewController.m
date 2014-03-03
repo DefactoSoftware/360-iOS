@@ -51,6 +51,18 @@ static NSString *const TSFNewQuestionnaireSubjectViewControllerIdentifier = @"TS
     self.viewControllers = @[
                              subjectViewController
                              ];
+    
+
+    [self addChildViewController:self.pageViewController];
+    [self.view addSubview:self.pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
+    
+    [self.pageViewController setViewControllers:@[[self.viewControllers firstObject]]
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:NO
+                                     completion:^(BOOL finished) {
+                                     }];
+
 }
 
 - (void)viewDidLoad {
@@ -73,7 +85,7 @@ static NSString *const TSFNewQuestionnaireSubjectViewControllerIdentifier = @"TS
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController {
-    if ([self.viewControllers count] == self.currentPage) {
+    if ([self.viewControllers count] == self.currentPage + 1) {
         return nil;
     }
     

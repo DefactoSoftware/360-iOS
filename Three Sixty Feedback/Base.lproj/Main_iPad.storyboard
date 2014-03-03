@@ -359,8 +359,38 @@
                     <view key="view" contentMode="scaleToFill" id="jKL-xY-Lfy">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="460" translatesAutoresizingMaskIntoConstraints="NO" id="4EA-k3-wcm">
+                                <rect key="frame" x="154" y="170" width="460" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="kRt-vz-kXO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vl4-gq-TK1">
+                                <rect key="frame" x="154" y="199" width="460" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4EA-k3-wcm" firstAttribute="leading" secondItem="jKL-xY-Lfy" secondAttribute="leading" constant="154" id="Z3d-Mi-YOr"/>
+                            <constraint firstItem="4EA-k3-wcm" firstAttribute="leading" secondItem="Vl4-gq-TK1" secondAttribute="leading" id="Zau-bt-bjF"/>
+                            <constraint firstItem="Vl4-gq-TK1" firstAttribute="top" secondItem="4EA-k3-wcm" secondAttribute="bottom" constant="8" symbolic="YES" id="fxi-9v-E8P"/>
+                            <constraint firstItem="4EA-k3-wcm" firstAttribute="top" secondItem="WGZ-vC-jqK" secondAttribute="bottom" constant="150" id="nVB-ch-ZMW"/>
+                            <constraint firstItem="4EA-k3-wcm" firstAttribute="trailing" secondItem="Vl4-gq-TK1" secondAttribute="trailing" id="v8K-sg-SNv"/>
+                            <constraint firstAttribute="trailing" secondItem="4EA-k3-wcm" secondAttribute="trailing" constant="154" id="xE1-yd-jXi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="subjectLabel" destination="4EA-k3-wcm" id="GuE-Gq-yxV"/>
+                        <outlet property="subjectTextField" destination="Vl4-gq-TK1" id="173-4z-Fpc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Jf-3l-KOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -25,6 +25,14 @@ describe(@"TSFNewQuestionnaireSubjectViewController", ^{
         it(@"instantiates correctly from the storyboard", ^{
             [[_newQuestionnaireSubjectViewController shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the subject label", ^{
+            [[_newQuestionnaireSubjectViewController.subjectLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the subject textfield", ^{
+            [[_newQuestionnaireSubjectViewController.subjectTextField shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -39,6 +47,14 @@ describe(@"TSFNewQuestionnaireSubjectViewController", ^{
         
         it(@"instantiates correctly from the storyboard", ^{
             [[_newQuestionnaireSubjectViewController shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the subject label", ^{
+            [[_newQuestionnaireSubjectViewController.subjectLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the subject textfield", ^{
+            [[_newQuestionnaireSubjectViewController.subjectTextField shouldNot] beNil];
         });
     });
 });

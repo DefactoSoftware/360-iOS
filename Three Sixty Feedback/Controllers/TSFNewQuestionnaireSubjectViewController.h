@@ -10,4 +10,7 @@
 
 @interface TSFNewQuestionnaireSubjectViewController : TSFBaseViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
+@property (weak, nonatomic) IBOutlet UITextField *subjectTextField;
+
 @end

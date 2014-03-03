@@ -561,8 +561,38 @@
                     <view key="view" contentMode="scaleToFill" id="nOQ-cT-zZ2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="dFY-IM-ooc">
+                                <rect key="frame" x="20" y="75" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="lxs-ue-aer"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bXM-6t-N36">
+                                <rect key="frame" x="20" y="104" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bXM-6t-N36" firstAttribute="top" secondItem="dFY-IM-ooc" secondAttribute="bottom" constant="8" symbolic="YES" id="7SM-RN-2me"/>
+                            <constraint firstAttribute="trailing" secondItem="dFY-IM-ooc" secondAttribute="trailing" constant="20" symbolic="YES" id="C43-12-uy2"/>
+                            <constraint firstItem="bXM-6t-N36" firstAttribute="trailing" secondItem="dFY-IM-ooc" secondAttribute="trailing" id="G6N-Fq-56Y"/>
+                            <constraint firstItem="bXM-6t-N36" firstAttribute="leading" secondItem="dFY-IM-ooc" secondAttribute="leading" id="Qet-6F-vqw"/>
+                            <constraint firstItem="dFY-IM-ooc" firstAttribute="leading" secondItem="nOQ-cT-zZ2" secondAttribute="leading" constant="20" symbolic="YES" id="kHD-t5-eUC"/>
+                            <constraint firstItem="dFY-IM-ooc" firstAttribute="top" secondItem="e9m-g2-PnB" secondAttribute="bottom" constant="55" id="zo9-fQ-hgL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="subjectLabel" destination="dFY-IM-ooc" id="ZvK-vZ-yTl"/>
+                        <outlet property="subjectTextField" destination="bXM-6t-N36" id="6Lq-Hw-kbw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9D7-pc-n18" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
