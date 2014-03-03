@@ -36,6 +36,9 @@
 		529702DF18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702DE18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m */; };
 		529702E218C4C35600B6BA8A /* TSFNewQuestionnaireTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702E118C4C35600B6BA8A /* TSFNewQuestionnaireTemplateViewController.m */; };
 		529702E518C4C37000B6BA8A /* TSFNewQuestionnaireTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702E418C4C37000B6BA8A /* TSFNewQuestionnaireTemplateViewController.m */; };
+		529702E818C4DE6600B6BA8A /* TSFTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702E718C4DE6600B6BA8A /* TSFTemplate.m */; };
+		529702EB18C4DEB400B6BA8A /* TSFTemplateMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702EA18C4DEB400B6BA8A /* TSFTemplateMapperSpec.m */; };
+		529702EE18C4DEC400B6BA8A /* TSFTemplateMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702ED18C4DEC400B6BA8A /* TSFTemplateMapper.m */; };
 		529B507F18BB55050089CC4A /* TSFPasswordRequestViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B507E18BB55050089CC4A /* TSFPasswordRequestViewControllerSpec.m */; };
 		529B508118BB55350089CC4A /* TSFMainViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B508018BB55350089CC4A /* TSFMainViewControllerSpec.m */; };
 		529F268818BB9F450088D0D2 /* TSFMenuViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F268718BB9F450088D0D2 /* TSFMenuViewControllerSpec.m */; };
@@ -160,6 +163,11 @@
 		529702E118C4C35600B6BA8A /* TSFNewQuestionnaireTemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireTemplateViewController.m; path = Controllers/TSFNewQuestionnaireTemplateViewController.m; sourceTree = "<group>"; };
 		529702E318C4C37000B6BA8A /* TSFNewQuestionnaireTemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFNewQuestionnaireTemplateViewController.h; path = Controllers/TSFNewQuestionnaireTemplateViewController.h; sourceTree = "<group>"; };
 		529702E418C4C37000B6BA8A /* TSFNewQuestionnaireTemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireTemplateViewController.m; path = Controllers/TSFNewQuestionnaireTemplateViewController.m; sourceTree = "<group>"; };
+		529702E618C4DE6600B6BA8A /* TSFTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFTemplate.h; path = Models/TSFTemplate.h; sourceTree = "<group>"; };
+		529702E718C4DE6600B6BA8A /* TSFTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFTemplate.m; path = Models/TSFTemplate.m; sourceTree = "<group>"; };
+		529702EA18C4DEB400B6BA8A /* TSFTemplateMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFTemplateMapperSpec.m; path = Models/Mappers/TSFTemplateMapperSpec.m; sourceTree = "<group>"; };
+		529702EC18C4DEC400B6BA8A /* TSFTemplateMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFTemplateMapper.h; path = Models/Mappers/TSFTemplateMapper.h; sourceTree = "<group>"; };
+		529702ED18C4DEC400B6BA8A /* TSFTemplateMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFTemplateMapper.m; path = Models/Mappers/TSFTemplateMapper.m; sourceTree = "<group>"; };
 		529B507E18BB55050089CC4A /* TSFPasswordRequestViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFPasswordRequestViewControllerSpec.m; path = Controllers/TSFPasswordRequestViewControllerSpec.m; sourceTree = "<group>"; };
 		529B508018BB55350089CC4A /* TSFMainViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFMainViewControllerSpec.m; path = Controllers/TSFMainViewControllerSpec.m; sourceTree = "<group>"; };
 		529F268718BB9F450088D0D2 /* TSFMenuViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFMenuViewControllerSpec.m; path = Controllers/TSFMenuViewControllerSpec.m; sourceTree = "<group>"; };
@@ -476,6 +484,8 @@
 				527AF14C18B6113400604A3A /* TSFUser.m */,
 				5290DBC218BBB3070074AF78 /* TSFAssessor.h */,
 				5290DBC318BBB3070074AF78 /* TSFAssessor.m */,
+				529702E618C4DE6600B6BA8A /* TSFTemplate.h */,
+				529702E718C4DE6600B6BA8A /* TSFTemplate.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -591,6 +601,8 @@
 				5290DBC618BBB3200074AF78 /* TSFAssessorMapper.m */,
 				5295BC4118BCFD590081A158 /* NSDate+StringParsing.h */,
 				5295BC4218BCFD590081A158 /* NSDate+StringParsing.m */,
+				529702EC18C4DEC400B6BA8A /* TSFTemplateMapper.h */,
+				529702ED18C4DEC400B6BA8A /* TSFTemplateMapper.m */,
 			);
 			name = Mappers;
 			sourceTree = "<group>";
@@ -604,6 +616,7 @@
 				E4C7F923189940B400B0E5F2 /* TSFCompetenceMapperSpec.m */,
 				E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */,
 				527AF15518B611C100604A3A /* TSFUserMapperSpec.m */,
+				529702EA18C4DEB400B6BA8A /* TSFTemplateMapperSpec.m */,
 			);
 			name = Mappers;
 			sourceTree = "<group>";
@@ -787,6 +800,7 @@
 				5290DBBE18BBA8EE0074AF78 /* TSFQuestionnaireCell.m in Sources */,
 				E455FF7C1899018A00F8C04C /* TSFQuestionnaire.m in Sources */,
 				529702E518C4C37000B6BA8A /* TSFNewQuestionnaireTemplateViewController.m in Sources */,
+				529702E818C4DE6600B6BA8A /* TSFTemplate.m in Sources */,
 				529F268E18BBA0310088D0D2 /* TSFMenuCell.m in Sources */,
 				52E80F51189BE494007A8A48 /* TSFKeyBehaviourRatingView.m in Sources */,
 				527AF14D18B6113400604A3A /* TSFUser.m in Sources */,
@@ -818,6 +832,7 @@
 				52BE6F5818BCD9F1000B2DC7 /* TSFUserQuestionnaireAssessorsViewController.m in Sources */,
 				52297EA318BE31B700DD60BE /* TSFQuestionnairesViewController.m in Sources */,
 				52ECB6EB189FF403007C7636 /* TSFBaseViewController.m in Sources */,
+				529702EE18C4DEC400B6BA8A /* TSFTemplateMapper.m in Sources */,
 				52ECB6F718A0E511007C7636 /* TSFQuestionnaireViewController.m in Sources */,
 				E4405874189A83BC001AEE13 /* TSFCompetenceViewController.m in Sources */,
 				E4C7F9171899376100B0E5F2 /* TSFKeyBehaviourMapper.m in Sources */,
@@ -843,6 +858,7 @@
 				529F268818BB9F450088D0D2 /* TSFMenuViewControllerSpec.m in Sources */,
 				5295BC4018BCFCAF0081A158 /* TSFAssessorMapperSpec.m in Sources */,
 				529B508118BB55350089CC4A /* TSFMainViewControllerSpec.m in Sources */,
+				529702EB18C4DEB400B6BA8A /* TSFTemplateMapperSpec.m in Sources */,
 				529702D318C47ACB00B6BA8A /* TSFTemplateViewControllerSpec.m in Sources */,
 				E455FF7F189904A200F8C04C /* TSFCompetenceSpec.m in Sources */,
 				526B426918B506AC00DC1310 /* TSFSessionServiceSpec.m in Sources */,
