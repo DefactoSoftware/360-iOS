@@ -10,4 +10,6 @@
 
 @interface TSFNewQuestionnaireTemplateViewController : TSFBaseViewController
 
+- (BOOL)validate;
+
 @end

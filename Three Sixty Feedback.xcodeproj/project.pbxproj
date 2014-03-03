@@ -32,8 +32,6 @@
 		5295BC4318BCFD590081A158 /* NSDate+StringParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295BC4218BCFD590081A158 /* NSDate+StringParsing.m */; };
 		529702D018C47AAD00B6BA8A /* TSFTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702CF18C47AAD00B6BA8A /* TSFTemplateViewController.m */; };
 		529702D318C47ACB00B6BA8A /* TSFTemplateViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702D218C47ACB00B6BA8A /* TSFTemplateViewControllerSpec.m */; };
-		529702D618C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702D518C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.m */; };
-		529702D918C4A38000B6BA8A /* TSFNewQuestionnaireViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702D818C4A38000B6BA8A /* TSFNewQuestionnaireViewControllerSpec.m */; };
 		529702DC18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702DB18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m */; };
 		529702DF18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702DE18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m */; };
 		529702E218C4C35600B6BA8A /* TSFNewQuestionnaireTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702E118C4C35600B6BA8A /* TSFNewQuestionnaireTemplateViewController.m */; };
@@ -156,9 +154,6 @@
 		529702CE18C47AAD00B6BA8A /* TSFTemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFTemplateViewController.h; path = Controllers/TSFTemplateViewController.h; sourceTree = "<group>"; };
 		529702CF18C47AAD00B6BA8A /* TSFTemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFTemplateViewController.m; path = Controllers/TSFTemplateViewController.m; sourceTree = "<group>"; };
 		529702D218C47ACB00B6BA8A /* TSFTemplateViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFTemplateViewControllerSpec.m; path = Controllers/TSFTemplateViewControllerSpec.m; sourceTree = "<group>"; };
-		529702D418C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFNewQuestionnaireViewController.h; path = Controllers/TSFNewQuestionnaireViewController.h; sourceTree = "<group>"; };
-		529702D518C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireViewController.m; path = Controllers/TSFNewQuestionnaireViewController.m; sourceTree = "<group>"; };
-		529702D818C4A38000B6BA8A /* TSFNewQuestionnaireViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireViewControllerSpec.m; path = Controllers/TSFNewQuestionnaireViewControllerSpec.m; sourceTree = "<group>"; };
 		529702DA18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFNewQuestionnaireSubjectViewController.h; path = Controllers/TSFNewQuestionnaireSubjectViewController.h; sourceTree = "<group>"; };
 		529702DB18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireSubjectViewController.m; path = Controllers/TSFNewQuestionnaireSubjectViewController.m; sourceTree = "<group>"; };
 		529702DE18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireSubjectViewControllerSpec.m; path = Controllers/TSFNewQuestionnaireSubjectViewControllerSpec.m; sourceTree = "<group>"; };
@@ -332,8 +327,6 @@
 				52297EA218BE31B700DD60BE /* TSFQuestionnairesViewController.m */,
 				529702CE18C47AAD00B6BA8A /* TSFTemplateViewController.h */,
 				529702CF18C47AAD00B6BA8A /* TSFTemplateViewController.m */,
-				529702D418C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.h */,
-				529702D518C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.m */,
 				529702DA18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.h */,
 				529702DB18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m */,
 				529702E318C4C37000B6BA8A /* TSFNewQuestionnaireTemplateViewController.h */,
@@ -353,7 +346,6 @@
 				52BE6F5A18BCDA00000B2DC7 /* TSFUserQuestionnaireAssessorsViewControllerSpec.m */,
 				52297E9F18BE314900DD60BE /* TSFQuestionnairesViewControllerSpec.m */,
 				529702D218C47ACB00B6BA8A /* TSFTemplateViewControllerSpec.m */,
-				529702D818C4A38000B6BA8A /* TSFNewQuestionnaireViewControllerSpec.m */,
 				529702DE18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m */,
 				529702E118C4C35600B6BA8A /* TSFNewQuestionnaireTemplateViewController.m */,
 			);
@@ -832,7 +824,6 @@
 				E4C7F91F18993E5400B0E5F2 /* TSFQuestionMapper.m in Sources */,
 				E429DD4E189807B300BAFEC4 /* TSFAPIClient.m in Sources */,
 				522DB4AB189FB6BA002EE50D /* TSFHomeViewController.m in Sources */,
-				529702D618C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.m in Sources */,
 				52B5322918BFBBC200A1C204 /* TSFButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,7 +840,6 @@
 				0765E140189968D800D64B2B /* TSFAppDelegateSpec.m in Sources */,
 				E4C7F91C18993E1300B0E5F2 /* TSFQuestionMapperSpec.m in Sources */,
 				E417281718994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m in Sources */,
-				529702D918C4A38000B6BA8A /* TSFNewQuestionnaireViewControllerSpec.m in Sources */,
 				529F268818BB9F450088D0D2 /* TSFMenuViewControllerSpec.m in Sources */,
 				5295BC4018BCFCAF0081A158 /* TSFAssessorMapperSpec.m in Sources */,
 				529B508118BB55350089CC4A /* TSFMainViewControllerSpec.m in Sources */,

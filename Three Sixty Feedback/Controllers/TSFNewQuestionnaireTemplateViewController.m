@@ -10,4 +10,8 @@
 
 @implementation TSFNewQuestionnaireTemplateViewController
 
+- (BOOL)validate {
+    return YES;
+}
+
 @end

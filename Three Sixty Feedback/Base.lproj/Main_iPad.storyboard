@@ -322,31 +322,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ub6-i3-tnE" kind="relationship" relationship="rootViewController" id="aD4-oQ-zvB"/>
+                        <segue destination="gwC-b3-XIQ" kind="relationship" relationship="rootViewController" id="UR3-3P-txm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbi-Lk-Lhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="155" y="4735"/>
-        </scene>
-        <!--New Questionnaire View Controller-->
-        <scene sceneID="Gvk-LX-zZF">
-            <objects>
-                <viewController storyboardIdentifier="TSFNewQuestionnaireViewController" id="ub6-i3-tnE" customClass="TSFNewQuestionnaireViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Xf9-vp-cQ2"/>
-                        <viewControllerLayoutGuide type="bottom" id="cqK-cs-3lx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EFd-um-rtX">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="wyE-DS-NUD"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RIw-dk-jvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1189" y="4735"/>
         </scene>
         <!--New Questionnaire Subject View Controller-->
         <scene sceneID="kJX-eC-4oh">
@@ -382,11 +363,12 @@
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="leading" secondItem="jKL-xY-Lfy" secondAttribute="leading" constant="154" id="Z3d-Mi-YOr"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="leading" secondItem="Vl4-gq-TK1" secondAttribute="leading" id="Zau-bt-bjF"/>
                             <constraint firstItem="Vl4-gq-TK1" firstAttribute="top" secondItem="4EA-k3-wcm" secondAttribute="bottom" constant="8" symbolic="YES" id="fxi-9v-E8P"/>
-                            <constraint firstItem="4EA-k3-wcm" firstAttribute="top" secondItem="WGZ-vC-jqK" secondAttribute="bottom" constant="150" id="nVB-ch-ZMW"/>
+                            <constraint firstItem="4EA-k3-wcm" firstAttribute="top" secondItem="WGZ-vC-jqK" secondAttribute="bottom" constant="106" id="nVB-ch-ZMW"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="trailing" secondItem="Vl4-gq-TK1" secondAttribute="trailing" id="v8K-sg-SNv"/>
                             <constraint firstAttribute="trailing" secondItem="4EA-k3-wcm" secondAttribute="trailing" constant="154" id="xE1-yd-jXi"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="4PW-E6-xC2"/>
                     <connections>
                         <outlet property="subjectLabel" destination="4EA-k3-wcm" id="GuE-Gq-yxV"/>
                         <outlet property="subjectTextField" destination="Vl4-gq-TK1" id="173-4z-Fpc"/>
@@ -394,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Jf-3l-KOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2165" y="4735"/>
+            <point key="canvasLocation" x="1194" y="4735"/>
         </scene>
         <!--New Questionnaire Template View Controller-->
         <scene sceneID="uGN-zx-fMj">
@@ -412,7 +394,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSs-gD-Gfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3127" y="4735"/>
+            <point key="canvasLocation" x="2215" y="4735"/>
         </scene>
         <!--User Questionnaire Info View Controller - Item 1-->
         <scene sceneID="ch9-r2-jjJ">

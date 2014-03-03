@@ -14,8 +14,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.subjectLabel.text = TSFLocalizedString(@"TSFNewQuestionnaireSubjectViewControllerTitle", @"What is the subject of this feedback evaluation?");
+    self.navigationItem.title = TSFLocalizedString(@"TSFNewQuestionnaireSubjectViewControllerTitle", @"Create a new questionnaire");
+    self.subjectLabel.text = TSFLocalizedString(@"TSFNewQuestionnaireSubjectViewControllerLabel", @"What is the subject of this feedback evaluation?");
     self.subjectLabel.textColor = [UIColor TSFLightGreyTextColor];
+}
+
+- (BOOL)validate {
+    return ![self.subjectTextField.text isEqualToString:@""];
 }
 
 @end

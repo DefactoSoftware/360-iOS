@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet UITextField *subjectTextField;
 
+- (BOOL)validate;
+
 @end
