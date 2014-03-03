@@ -516,6 +516,40 @@
             </objects>
             <point key="canvasLocation" x="43" y="2156"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yns-s7-B7J">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Jnd-fN-0ST" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cYT-EV-75k">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JYb-n3-hFR" kind="relationship" relationship="rootViewController" id="LpC-Qo-oWO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WTz-Ub-uZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="2904"/>
+        </scene>
+        <!--New Questionnaire View Controller-->
+        <scene sceneID="QjY-vk-sDH">
+            <objects>
+                <viewController storyboardIdentifier="TSFNewQuestionnaireViewController" id="JYb-n3-hFR" customClass="TSFNewQuestionnaireViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UDz-kB-NNN"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Mf-3C-Hk5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2MV-0d-ASk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1Ls-AS-6Ly"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acS-Pf-Ev5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="492" y="2905"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="0Zg-gL-cbe">
             <objects>
@@ -996,7 +1030,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Nl-JK-Byi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="918" y="2219"/>
+            <point key="canvasLocation" x="2774" y="1078"/>
         </scene>
         <!--Questionnaires View Controller-->
         <scene sceneID="4eg-0g-BfC">

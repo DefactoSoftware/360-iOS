@@ -314,6 +314,40 @@
             </objects>
             <point key="canvasLocation" x="155" y="3539"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oc2-KV-9cq">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="uNt-m5-yOs" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="16B-xg-Bif">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ub6-i3-tnE" kind="relationship" relationship="rootViewController" id="aD4-oQ-zvB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fbi-Lk-Lhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="155" y="4735"/>
+        </scene>
+        <!--New Questionnaire View Controller-->
+        <scene sceneID="Gvk-LX-zZF">
+            <objects>
+                <viewController storyboardIdentifier="TSFNewQuestionnaireViewController" id="ub6-i3-tnE" customClass="TSFNewQuestionnaireViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xf9-vp-cQ2"/>
+                        <viewControllerLayoutGuide type="bottom" id="cqK-cs-3lx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EFd-um-rtX">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wyE-DS-NUD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RIw-dk-jvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1189" y="4735"/>
+        </scene>
         <!--User Questionnaire Info View Controller - Item 1-->
         <scene sceneID="ch9-r2-jjJ">
             <objects>
@@ -577,7 +611,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3F-J8-5gB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="4744"/>
+            <point key="canvasLocation" x="2854" y="3539"/>
         </scene>
         <!--User Questionnaire Tab Bar Controller-->
         <scene sceneID="Ef1-d9-Icg">
@@ -1065,7 +1099,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Xv-Dq-G7a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Xv-Dq-G7a">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1080,7 +1114,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TW-JU-mtR">
                                                     <rect key="frame" x="20" y="11" width="728" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1094,6 +1128,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Xv-Dq-G7a" firstAttribute="leading" secondItem="gnP-EM-NYD" secondAttribute="leading" id="5k6-Ha-oQJ"/>
+                            <constraint firstItem="8Xv-Dq-G7a" firstAttribute="top" secondItem="gnP-EM-NYD" secondAttribute="top" id="JHz-Bm-sxh"/>
+                            <constraint firstAttribute="trailing" secondItem="8Xv-Dq-G7a" secondAttribute="trailing" id="Q3M-aq-tN7"/>
+                            <constraint firstAttribute="bottom" secondItem="8Xv-Dq-G7a" secondAttribute="bottom" id="a9Q-mo-A3U"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="menuTableView" destination="8Xv-Dq-G7a" id="oAm-1H-6VZ"/>
