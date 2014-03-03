@@ -7,7 +7,11 @@
 //
 
 #import "TSFBaseViewController.h"
+#import "TSFNewQuestionnaireSubjectViewController.h"
 
-@interface TSFNewQuestionnaireViewController : TSFBaseViewController
+@interface TSFNewQuestionnaireViewController : TSFBaseViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+
+@property (nonatomic, strong) NSArray *viewControllers;
+@property (nonatomic, strong) UIPageViewController *pageViewController;
 
 @end

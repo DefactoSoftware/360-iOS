@@ -41,6 +41,18 @@ describe(@"TSFNewQuestionnaireViewController", ^{
             [[_newQuestionnaireViewController shouldNot] beNil];
         });
     });
+    
+    it(@"has a pageviewcontroller", ^{
+        [[_newQuestionnaireViewController.pageViewController shouldNot] beNil];
+    });
+
+    it(@"instantiates an array of viewcontroller", ^{
+        [[_newQuestionnaireViewController.viewControllers shouldNot] beNil];
+    });
+    
+    it(@"instantiates the subject viewcontroller first", ^{
+        [[[_newQuestionnaireViewController.viewControllers firstObject] should] beKindOfClass:[TSFNewQuestionnaireSubjectViewController class]];
+    });
 });
 
 SPEC_END

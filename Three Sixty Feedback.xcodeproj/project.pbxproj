@@ -34,6 +34,8 @@
 		529702D318C47ACB00B6BA8A /* TSFTemplateViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702D218C47ACB00B6BA8A /* TSFTemplateViewControllerSpec.m */; };
 		529702D618C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702D518C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.m */; };
 		529702D918C4A38000B6BA8A /* TSFNewQuestionnaireViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702D818C4A38000B6BA8A /* TSFNewQuestionnaireViewControllerSpec.m */; };
+		529702DC18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702DB18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m */; };
+		529702DF18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529702DE18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m */; };
 		529B507F18BB55050089CC4A /* TSFPasswordRequestViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B507E18BB55050089CC4A /* TSFPasswordRequestViewControllerSpec.m */; };
 		529B508118BB55350089CC4A /* TSFMainViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B508018BB55350089CC4A /* TSFMainViewControllerSpec.m */; };
 		529F268818BB9F450088D0D2 /* TSFMenuViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F268718BB9F450088D0D2 /* TSFMenuViewControllerSpec.m */; };
@@ -155,6 +157,9 @@
 		529702D418C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFNewQuestionnaireViewController.h; path = Controllers/TSFNewQuestionnaireViewController.h; sourceTree = "<group>"; };
 		529702D518C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireViewController.m; path = Controllers/TSFNewQuestionnaireViewController.m; sourceTree = "<group>"; };
 		529702D818C4A38000B6BA8A /* TSFNewQuestionnaireViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireViewControllerSpec.m; path = Controllers/TSFNewQuestionnaireViewControllerSpec.m; sourceTree = "<group>"; };
+		529702DA18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFNewQuestionnaireSubjectViewController.h; path = Controllers/TSFNewQuestionnaireSubjectViewController.h; sourceTree = "<group>"; };
+		529702DB18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireSubjectViewController.m; path = Controllers/TSFNewQuestionnaireSubjectViewController.m; sourceTree = "<group>"; };
+		529702DE18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFNewQuestionnaireSubjectViewControllerSpec.m; path = Controllers/TSFNewQuestionnaireSubjectViewControllerSpec.m; sourceTree = "<group>"; };
 		529B507E18BB55050089CC4A /* TSFPasswordRequestViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFPasswordRequestViewControllerSpec.m; path = Controllers/TSFPasswordRequestViewControllerSpec.m; sourceTree = "<group>"; };
 		529B508018BB55350089CC4A /* TSFMainViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFMainViewControllerSpec.m; path = Controllers/TSFMainViewControllerSpec.m; sourceTree = "<group>"; };
 		529F268718BB9F450088D0D2 /* TSFMenuViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFMenuViewControllerSpec.m; path = Controllers/TSFMenuViewControllerSpec.m; sourceTree = "<group>"; };
@@ -324,6 +329,8 @@
 				529702CF18C47AAD00B6BA8A /* TSFTemplateViewController.m */,
 				529702D418C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.h */,
 				529702D518C4A36E00B6BA8A /* TSFNewQuestionnaireViewController.m */,
+				529702DA18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.h */,
+				529702DB18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -340,6 +347,7 @@
 				52297E9F18BE314900DD60BE /* TSFQuestionnairesViewControllerSpec.m */,
 				529702D218C47ACB00B6BA8A /* TSFTemplateViewControllerSpec.m */,
 				529702D818C4A38000B6BA8A /* TSFNewQuestionnaireViewControllerSpec.m */,
+				529702DE18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -771,6 +779,7 @@
 			files = (
 				E4405871189A6EA1001AEE13 /* TSFCompetenceService.m in Sources */,
 				E453D6F51899557400052854 /* TSFQuestionnaireService.m in Sources */,
+				529702DC18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m in Sources */,
 				52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */,
 				52BE6F5218BCCA90000B2DC7 /* TSFUserQuestionnaireInfoViewController.m in Sources */,
 				529702D018C47AAD00B6BA8A /* TSFTemplateViewController.m in Sources */,
@@ -848,6 +857,7 @@
 				E429DD51189809A400BAFEC4 /* TSFAPIClientSpec.m in Sources */,
 				E440586E189A6E30001AEE13 /* TSFCompetenceServiceSpec.m in Sources */,
 				52BE6F5518BCCAA2000B2DC7 /* TSFUserQuestionnaireInfoViewControllerSpec.m in Sources */,
+				529702DF18C4B67100B6BA8A /* TSFNewQuestionnaireSubjectViewControllerSpec.m in Sources */,
 				E4A7D79D18997A3A00276FC0 /* TSFAssessorServiceSpec.m in Sources */,
 				529B507F18BB55050089CC4A /* TSFPasswordRequestViewControllerSpec.m in Sources */,
 				E4C7F91A1899380900B0E5F2 /* TSFKeyBehaviourMapperSpec.m in Sources */,

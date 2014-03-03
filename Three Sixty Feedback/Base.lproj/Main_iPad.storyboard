@@ -348,6 +348,24 @@
             </objects>
             <point key="canvasLocation" x="1189" y="4735"/>
         </scene>
+        <!--New Questionnaire Subject View Controller-->
+        <scene sceneID="kJX-eC-4oh">
+            <objects>
+                <viewController storyboardIdentifier="TSFNewQuestionnaireSubjectViewController" id="gwC-b3-XIQ" customClass="TSFNewQuestionnaireSubjectViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WGZ-vC-jqK"/>
+                        <viewControllerLayoutGuide type="bottom" id="z8v-7c-Sfc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jKL-xY-Lfy">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Jf-3l-KOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2165" y="4735"/>
+        </scene>
         <!--User Questionnaire Info View Controller - Item 1-->
         <scene sceneID="ch9-r2-jjJ">
             <objects>
