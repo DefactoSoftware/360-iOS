@@ -445,7 +445,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="31w-hE-xae" kind="modal" id="QlE-sr-h2V"/>
+                                    <segue destination="31w-hE-xae" kind="modal" identifier="TSFTemplateModalSegue" id="QlE-sr-h2V"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -503,37 +503,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eoe-ZR-uWc">
-                                <rect key="frame" x="0.0" y="58" width="768" height="966"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TSFTemplateCompetenceCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eoe-ZR-uWc">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="wpI-uv-PnR">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="80"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoI-Ce-Eqo">
+                                            <rect key="frame" x="20" y="29" width="620" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gw-qo-h6C" customClass="TSFButton">
+                                            <rect key="frame" x="648" y="25" width="100" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="xKz-qu-3Vk"/>
+                                            </constraints>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="P4v-fX-jiE" kind="unwind" unwindAction="rewindFromModal:" id="W0q-qb-Xqt"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="5gw-qo-h6C" firstAttribute="centerY" secondItem="wpI-uv-PnR" secondAttribute="centerY" id="2Qz-yq-O3g"/>
+                                        <constraint firstAttribute="trailing" secondItem="5gw-qo-h6C" secondAttribute="trailing" constant="20" symbolic="YES" id="UcV-lf-Kc3"/>
+                                        <constraint firstAttribute="bottom" secondItem="IoI-Ce-Eqo" secondAttribute="bottom" constant="30" id="Zdn-d6-YbP"/>
+                                        <constraint firstItem="IoI-Ce-Eqo" firstAttribute="top" secondItem="wpI-uv-PnR" secondAttribute="top" constant="29" id="bPK-ey-rMf"/>
+                                        <constraint firstItem="IoI-Ce-Eqo" firstAttribute="leading" secondItem="wpI-uv-PnR" secondAttribute="leading" constant="20" symbolic="YES" id="ke0-QF-uRl"/>
+                                        <constraint firstItem="5gw-qo-h6C" firstAttribute="leading" secondItem="IoI-Ce-Eqo" secondAttribute="trailing" constant="8" id="wrK-XZ-l5d"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="59" id="6Dr-Ys-1Hp">
+                                        <rect key="frame" x="0.0" y="102" width="768" height="59"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Dr-Ys-1Hp" id="Z8u-DE-8XV">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gw-qo-h6C" customClass="TSFButton">
-                                <rect key="frame" x="648" y="20" width="100" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="AOR-4a-Oul"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="P4v-fX-jiE" kind="unwind" unwindAction="rewindFromModal:" id="W0q-qb-Xqt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="5gw-qo-h6C" secondAttribute="trailing" constant="20" symbolic="YES" id="3WK-mn-lqP"/>
-                            <constraint firstItem="5gw-qo-h6C" firstAttribute="top" secondItem="UHy-pr-zV3" secondAttribute="top" constant="20" symbolic="YES" id="FFQ-2U-q5D"/>
-                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="top" secondItem="5gw-qo-h6C" secondAttribute="bottom" constant="8" symbolic="YES" id="g4h-bK-zRk"/>
-                            <constraint firstAttribute="trailing" secondItem="eoe-ZR-uWc" secondAttribute="trailing" id="leC-zY-I4k"/>
-                            <constraint firstAttribute="bottom" secondItem="eoe-ZR-uWc" secondAttribute="bottom" id="t5w-0s-Z5T"/>
-                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="leading" secondItem="UHy-pr-zV3" secondAttribute="leading" id="wPX-Xs-AsA"/>
+                            <constraint firstAttribute="trailing" secondItem="eoe-ZR-uWc" secondAttribute="trailing" id="7wt-yQ-eGR"/>
+                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="top" secondItem="UHy-pr-zV3" secondAttribute="top" id="lU5-62-r93"/>
+                            <constraint firstAttribute="bottom" secondItem="eoe-ZR-uWc" secondAttribute="bottom" id="mRQ-b1-oX6"/>
+                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="leading" secondItem="UHy-pr-zV3" secondAttribute="leading" id="v9F-NU-ta9"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="5gw-qo-h6C" id="C2J-1Y-e8M"/>
+                        <outlet property="headerLabel" destination="IoI-Ce-Eqo" id="QB9-KY-EYz"/>
                         <outlet property="templateTableView" destination="eoe-ZR-uWc" id="CGA-dX-6zW"/>
                     </connections>
                 </viewController>

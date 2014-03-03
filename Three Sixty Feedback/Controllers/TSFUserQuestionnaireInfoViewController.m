@@ -8,12 +8,14 @@
 
 #import "TSFUserQuestionnaireInfoViewController.h"
 #import "TSFUserQuestionnaireAssessorsViewController.h"
+#import "TSFTemplateViewController.h"
 #import "TSFGenerics.h"
 #import "TSFAssessorCell.h"
 #import "CRToast.h"
 #import "UIColor+TSFColor.h"
 
 static NSString *const TSFQuestionnaireAssessorsSegueIdentifier = @"TSFAssessorsPopoverSegue";
+static NSString *const TSFTemplateModalSegueIdentifier = @"TSFTemplateModalSegue";
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
 
 @implementation TSFUserQuestionnaireInfoViewController
@@ -112,11 +114,13 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     if ([segue.identifier isEqualToString:TSFQuestionnaireAssessorsSegueIdentifier]) {
         TSFUserQuestionnaireAssessorsViewController *destinationViewController = (TSFUserQuestionnaireAssessorsViewController *)segue.destinationViewController;
         destinationViewController.questionnaire = self.questionnaire;
+    } else if ([segue.identifier isEqualToString:TSFTemplateModalSegueIdentifier]) {
+        TSFTemplateViewController *destinationViewController = (TSFTemplateViewController *)segue.destinationViewController;
+        destinationViewController.questionnaire = self.questionnaire;
     }
 }
 
 - (void)rewindFromModal:(UIStoryboardSegue *)unwindSegue {
-    
 }
 
 #pragma mark - UITableView

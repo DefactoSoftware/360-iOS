@@ -33,6 +33,10 @@ describe(@"TSFTemplateViewController", ^{
         it(@"has an outlet for the close button", ^{
             [[_templateViewController.closeButton shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the header label", ^{
+            [[_templateViewController.headerLabel shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -55,6 +59,10 @@ describe(@"TSFTemplateViewController", ^{
         
         it(@"has an outlet for the close button", ^{
             [[_templateViewController.closeButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the header label", ^{
+            [[_templateViewController.headerLabel shouldNot] beNil];
         });
     });
 });
