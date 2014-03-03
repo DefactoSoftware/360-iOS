@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Iv7-vB-A2A">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Iv7-vB-A2A">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -444,6 +444,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="31w-hE-xae" kind="modal" id="QlE-sr-h2V"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -486,6 +489,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCz-IW-714" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2227" y="3539"/>
+        </scene>
+        <!--Template View Controller-->
+        <scene sceneID="EJx-eV-nx2">
+            <objects>
+                <viewController storyboardIdentifier="TSFTemplateViewController" id="31w-hE-xae" customClass="TSFTemplateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Yz-z6-ghJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="H0s-ra-uXg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UHy-pr-zV3">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eoe-ZR-uWc">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="eoe-ZR-uWc" secondAttribute="bottom" id="SG5-tY-qdl"/>
+                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="leading" secondItem="UHy-pr-zV3" secondAttribute="leading" id="sgE-bf-2dt"/>
+                            <constraint firstAttribute="trailing" secondItem="eoe-ZR-uWc" secondAttribute="trailing" id="tXB-Jv-w6i"/>
+                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="top" secondItem="UHy-pr-zV3" secondAttribute="top" id="xaj-a9-hqG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="templateTableView" destination="eoe-ZR-uWc" id="CGA-dX-6zW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o3F-J8-5gB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="155" y="4723"/>
         </scene>
         <!--User Questionnaire Tab Bar Controller-->
         <scene sceneID="Ef1-d9-Icg">

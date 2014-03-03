@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CcH-s5-Yhy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CcH-s5-Yhy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -732,6 +732,9 @@
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="AuX-Ea-ga7" kind="modal" id="IBq-0L-qXo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -739,7 +742,6 @@
                                     <constraint firstItem="KhV-Cv-9ve" firstAttribute="leading" secondItem="M9G-d6-0O0" secondAttribute="leading" constant="20" symbolic="YES" id="CKV-fJ-ize"/>
                                     <constraint firstAttribute="trailing" secondItem="5mq-j7-kdp" secondAttribute="trailing" constant="20" id="D2D-Fk-8wE"/>
                                     <constraint firstAttribute="trailing" secondItem="zDg-ao-CcJ" secondAttribute="trailing" constant="20" id="KHR-yk-STh"/>
-                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="zDg-ao-CcJ" secondAttribute="bottom" constant="469" id="Nha-ZY-mSX"/>
                                     <constraint firstItem="zDg-ao-CcJ" firstAttribute="top" secondItem="KhV-Cv-9ve" secondAttribute="bottom" constant="8" id="Qoe-wb-bdr"/>
                                     <constraint firstItem="5mq-j7-kdp" firstAttribute="leading" secondItem="M9G-d6-0O0" secondAttribute="leading" constant="20" id="Tiy-wz-nNg"/>
                                     <constraint firstItem="zDg-ao-CcJ" firstAttribute="leading" secondItem="M9G-d6-0O0" secondAttribute="leading" constant="20" id="dpm-Dd-GfF"/>
@@ -917,6 +919,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="euU-j4-2wV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="907" y="1466"/>
+        </scene>
+        <!--Template View Controller-->
+        <scene sceneID="eAE-3G-cv1">
+            <objects>
+                <viewController storyboardIdentifier="TSFTemplateViewController" id="AuX-Ea-ga7" customClass="TSFTemplateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rTX-Td-UWI"/>
+                        <viewControllerLayoutGuide type="bottom" id="B6N-2e-aIv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zpc-SG-VRx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0lt-rS-w5Y">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0lt-rS-w5Y" secondAttribute="trailing" id="btQ-1N-AXa"/>
+                            <constraint firstItem="0lt-rS-w5Y" firstAttribute="leading" secondItem="zpc-SG-VRx" secondAttribute="leading" id="kRa-i6-8tB"/>
+                            <constraint firstAttribute="bottom" secondItem="0lt-rS-w5Y" secondAttribute="bottom" id="ob7-uM-8bd"/>
+                            <constraint firstItem="0lt-rS-w5Y" firstAttribute="top" secondItem="zpc-SG-VRx" secondAttribute="top" id="qPQ-el-7hG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="templateTableView" destination="0lt-rS-w5Y" id="dfs-oO-rjG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Nl-JK-Byi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="907" y="2216"/>
         </scene>
         <!--Questionnaires View Controller-->
         <scene sceneID="4eg-0g-BfC">
