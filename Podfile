@@ -6,6 +6,7 @@ target :"Three Sixty Feedback" do
   pod 'CRToast'
   pod 'TPKeyboardAvoiding'
   pod 'RESideMenu'
+  pod 'UITextField+Shake'
 end
 
 target :"Three Sixty FeedbackTests", :exclusive => true do

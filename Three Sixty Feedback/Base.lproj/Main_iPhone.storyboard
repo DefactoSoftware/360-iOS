@@ -607,27 +607,42 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hr1-hA-NG4" customClass="TSFButton">
+                                <rect key="frame" x="200" y="148" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="L2g-MN-BTr" eventType="touchUpInside" id="D5R-Z3-ipi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hr1-hA-NG4" secondAttribute="trailing" constant="20" id="62X-j4-Qsa"/>
                             <constraint firstItem="dFY-IM-ooc" firstAttribute="leading" secondItem="nOQ-cT-zZ2" secondAttribute="leading" constant="20" symbolic="YES" id="IKY-lg-0X9"/>
+                            <constraint firstItem="hr1-hA-NG4" firstAttribute="top" secondItem="bXM-6t-N36" secondAttribute="bottom" constant="8" id="InF-EM-pe4"/>
                             <constraint firstItem="bXM-6t-N36" firstAttribute="leading" secondItem="dFY-IM-ooc" secondAttribute="leading" id="UHV-RX-0Sl"/>
                             <constraint firstAttribute="trailing" secondItem="dFY-IM-ooc" secondAttribute="trailing" constant="20" symbolic="YES" id="hNQ-bK-yHM"/>
                             <constraint firstItem="bXM-6t-N36" firstAttribute="trailing" secondItem="dFY-IM-ooc" secondAttribute="trailing" id="hjc-wh-c1e"/>
                             <constraint firstItem="dFY-IM-ooc" firstAttribute="top" secondItem="e9m-g2-PnB" secondAttribute="bottom" constant="17" id="lWq-Lu-D0d"/>
                             <constraint firstItem="bXM-6t-N36" firstAttribute="top" secondItem="dFY-IM-ooc" secondAttribute="bottom" constant="8" symbolic="YES" id="qXG-5M-1tZ"/>
+                            <constraint firstItem="hr1-hA-NG4" firstAttribute="leading" secondItem="nOQ-cT-zZ2" secondAttribute="leading" constant="200" id="tV3-Ov-2jr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qDl-6M-q7W"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="nextButton" destination="hr1-hA-NG4" id="019-Zd-iPZ"/>
                         <outlet property="subjectLabel" destination="dFY-IM-ooc" id="ZvK-vZ-yTl"/>
                         <outlet property="subjectTextField" destination="bXM-6t-N36" id="6Lq-Hw-kbw"/>
+                        <segue destination="D6H-1n-do1" kind="push" identifier="TSFNewQuestionnaireTemplateSegue" id="bAx-Gr-ZyP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9D7-pc-n18" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="2904"/>
+            <point key="canvasLocation" x="927" y="2905"/>
         </scene>
         <!--New Questionnaire Template View Controller-->
         <scene sceneID="19n-Qc-9kx">
@@ -640,8 +655,9 @@
                     <view key="view" contentMode="scaleToFill" id="x6Y-4o-gJO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9bo-SL-Dz4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcD-Xs-v6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

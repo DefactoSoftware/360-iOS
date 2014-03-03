@@ -33,6 +33,10 @@ describe(@"TSFNewQuestionnaireSubjectViewController", ^{
         it(@"has an outlet for the subject textfield", ^{
             [[_newQuestionnaireSubjectViewController.subjectTextField shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the next button", ^{
+            [[_newQuestionnaireSubjectViewController.nextButton shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -55,6 +59,21 @@ describe(@"TSFNewQuestionnaireSubjectViewController", ^{
         
         it(@"has an outlet for the subject textfield", ^{
             [[_newQuestionnaireSubjectViewController.subjectTextField shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the next button", ^{
+            [[_newQuestionnaireSubjectViewController.nextButton shouldNot] beNil];
+        });
+    });
+    
+    context(@"validating the input", ^{
+        it(@"is valid with a subject", ^{
+            _newQuestionnaireSubjectViewController.subjectTextField.text = [NSString stringWithFormat:@"%d", arc4random()];
+            [[theValue([_newQuestionnaireSubjectViewController validate]) should] equal:theValue(YES)];
+        });
+        
+        it(@"is not valid without a subject", ^{
+            [[theValue([_newQuestionnaireSubjectViewController validate]) should] equal:theValue(NO)];
         });
     });
 });

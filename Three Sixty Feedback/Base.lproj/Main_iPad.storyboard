@@ -357,6 +357,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-JX-moV" customClass="TSFButton">
+                                <rect key="frame" x="505" y="237" width="109" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="gwC-b3-XIQ" eventType="touchUpInside" id="rLQ-P8-FRS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -370,8 +380,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="4PW-E6-xC2"/>
                     <connections>
+                        <outlet property="nextButton" destination="rhu-JX-moV" id="gUn-FB-YPr"/>
                         <outlet property="subjectLabel" destination="4EA-k3-wcm" id="GuE-Gq-yxV"/>
                         <outlet property="subjectTextField" destination="Vl4-gq-TK1" id="173-4z-Fpc"/>
+                        <segue destination="4In-93-j3T" kind="push" identifier="TSFNewQuestionnaireTemplateSegue" id="5AD-NM-JKh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Jf-3l-KOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -391,6 +403,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fQH-6t-HCr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSs-gD-Gfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
