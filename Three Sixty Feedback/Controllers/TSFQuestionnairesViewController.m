@@ -78,6 +78,8 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.tabBarController.navigationItem.title = TSFLocalizedString(@"TSFActiveQuestionnairesViewControllerTitle", @"Active questionnaires");
+    self.selectedQuestionnaireIndexPath = nil;
+    [self.questionnairesTableView reloadData];
 }
 
 - (void)loadQuestionnaires {
