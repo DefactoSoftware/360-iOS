@@ -25,6 +25,22 @@ describe(@"TSFNewQuestionnaireConfirmViewController", ^{
         it(@"instantiates correctly from the storyboard", ^{
             [[_newQuestionnaireConfirmViewController shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the subject title label", ^{
+            [[_newQuestionnaireConfirmViewController.subjectLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the subject label", ^{
+            [[_newQuestionnaireConfirmViewController.templateLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the assessors label", ^{
+            [[_newQuestionnaireConfirmViewController.assessorsLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the create button", ^{
+            [[_newQuestionnaireConfirmViewController.createButton shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -39,6 +55,22 @@ describe(@"TSFNewQuestionnaireConfirmViewController", ^{
         
         it(@"instantiates correctly from the storyboard", ^{
             [[_newQuestionnaireConfirmViewController shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the subject title label", ^{
+            [[_newQuestionnaireConfirmViewController.subjectLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the subject label", ^{
+            [[_newQuestionnaireConfirmViewController.templateLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the assessors label", ^{
+            [[_newQuestionnaireConfirmViewController.assessorsLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the create button", ^{
+            [[_newQuestionnaireConfirmViewController.createButton shouldNot] beNil];
         });
     });
     
