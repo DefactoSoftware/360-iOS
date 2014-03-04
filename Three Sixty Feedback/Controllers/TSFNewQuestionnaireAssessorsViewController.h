@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "TSFBaseViewController.h"
+#import "TSFTemplate.h"
 
 @interface TSFNewQuestionnaireAssessorsViewController : TSFBaseViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
+@property (nonatomic, strong) NSString *subject;
+@property (nonatomic, strong) TSFTemplate *questionnaireTemplate;
 
 @end

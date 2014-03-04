@@ -7,6 +7,7 @@
 //
 
 #import "TSFNewQuestionnaireTemplateViewController.h"
+#import "TSFNewQuestionnaireAssessorsViewController.h"
 #import "TSFTemplateViewController.h"
 #import "CRToast.h"
 #import "UIColor+TSFColor.h"
@@ -15,10 +16,12 @@
 
 static NSString *const TSFTemplateCellIdentifier = @"TSFTemplateCell";
 static NSString *const TSFNewTemplateModalSegue = @"TSFNewTemplateModalSegue";
+static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaireAssessorsSegue";
 
 @interface TSFNewQuestionnaireTemplateViewController()
 @property (nonatomic, strong) NSArray *templates;
 @property (nonatomic, assign) TSFTemplate *previewTemplate;
+@property (nonatomic, strong) TSFTemplate *selectedTemplate;
 @end
 
 @implementation TSFNewQuestionnaireTemplateViewController
@@ -87,6 +90,10 @@ static NSString *const TSFNewTemplateModalSegue = @"TSFNewTemplateModalSegue";
     if ([segue.identifier isEqualToString:TSFNewTemplateModalSegue]) {
         TSFTemplateViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.questionnaireTemplate = self.previewTemplate;
+    } else if ([segue.identifier isEqualToString:TSFNewQuestionnaireAssessorsSegue]) {
+        TSFNewQuestionnaireAssessorsViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.subject = self.subject;
+        destinationViewController.questionnaireTemplate = self.selectedTemplate;
     }
 }
 
@@ -145,6 +152,16 @@ static NSString *const TSFNewTemplateModalSegue = @"TSFNewTemplateModalSegue";
                                                                         context:nil].size;
 
     return titleSize.height + descriptionSize.height + buttonHeight + margin;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedTemplate = self.templates[indexPath.row];
+    [self performSegueWithIdentifier:TSFNewQuestionnaireAssessorsSegue
+                              sender:self];
 }
 
 @end
