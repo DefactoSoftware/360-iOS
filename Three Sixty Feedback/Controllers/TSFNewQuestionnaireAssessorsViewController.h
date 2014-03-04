@@ -22,5 +22,6 @@
 @property (weak, nonatomic) IBOutlet TSFButton *addButton;
 
 - (IBAction)addButtonPressed:(id)sender;
+- (IBAction)removeButtonPressed:(id)sender;
 
 @end

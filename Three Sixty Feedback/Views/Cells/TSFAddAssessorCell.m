@@ -14,8 +14,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self.removeButton setTitle:TSFLocalizedString(@"TSFAddAssessorCellRemoveButton", @"Remove")
-                       forState:UIControlStateNormal];
+    [self.removeButton setIconImage:[UIImage imageNamed:@"cross-1"]];
     self.emailLabel.textColor = [UIColor TSFLightGreyTextColor];
 }
 

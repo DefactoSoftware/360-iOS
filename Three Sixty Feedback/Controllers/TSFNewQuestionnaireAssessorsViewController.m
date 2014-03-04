@@ -52,6 +52,7 @@ static NSString *const TSFNewAssessorCellIdentifier = @"TSFAddAssessorCell";
     NSString *addTitle = TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerAddButton", @"Add assessor");
     [self.addButton setTitle:addTitle
                     forState:UIControlStateNormal];
+    [self.addButton setIconImage:[UIImage imageNamed:@"add"]];
     self.addAssessorTitleLabel.textColor = [UIColor TSFLightGreyTextColor];
     
     [self updateHeaderViewHeight];
@@ -77,12 +78,17 @@ static NSString *const TSFNewAssessorCellIdentifier = @"TSFAddAssessorCell";
     }
 }
 
+- (IBAction)removeButtonPressed:(TSFButton *)sender {
+    [self.assessors removeObjectAtIndex:sender.tag];
+    [self.assessorsTableView reloadData] ;
+}
+
 - (void)updateHeaderViewHeight {
     CGFloat textFontSize;
     CGFloat textWidth;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         textWidth = 728.0f;
-        textFontSize  = 10.0f;
+        textFontSize  = 14.0f;
     } else {
         textWidth = 280.0f;
         textFontSize = 13.0f;
@@ -109,7 +115,7 @@ static NSString *const TSFNewAssessorCellIdentifier = @"TSFAddAssessorCell";
 
 #pragma mark - UITableView
 
-- (NSInteger)tableView:(gUITableView *)tableView
+- (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     return [self.assessors count];
 }
@@ -125,6 +131,9 @@ static NSString *const TSFNewAssessorCellIdentifier = @"TSFAddAssessorCell";
     }
     cell.emailLabel.text = self.assessors[indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
+    cell.removeButton.tag = indexPath.row;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 
