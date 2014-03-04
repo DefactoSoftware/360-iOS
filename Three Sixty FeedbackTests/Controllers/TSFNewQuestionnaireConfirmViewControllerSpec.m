@@ -74,6 +74,13 @@ describe(@"TSFNewQuestionnaireConfirmViewController", ^{
         });
     });
     
+    it(@"has a reference to the questionnaireservice", ^{
+        [[_newQuestionnaireConfirmViewController.questionnaireService should] beKindOfClass:[TSFQuestionnaireService class]];
+    });
+    
+    it(@"has a reference to the assessorsservice", ^{
+        [[_newQuestionnaireConfirmViewController.assessorService should] beKindOfClass:[TSFAssessorService class]];
+    });
 });
 
 SPEC_END

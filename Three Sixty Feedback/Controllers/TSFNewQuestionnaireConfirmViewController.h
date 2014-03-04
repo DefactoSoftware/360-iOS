@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFQuestionnaireService.h"
+#import "TSFAssessorService.h"
 #import "TSFTemplate.h"
 #import "TSFBaseViewController.h"
 #import "TSFButton.h"
@@ -19,4 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *templateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *assessorsLabel;
 @property (weak, nonatomic) IBOutlet TSFButton *createButton;
+@property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
+@property (nonatomic, strong) TSFAssessorService *assessorService;
 @end

@@ -11,6 +11,29 @@
 
 @implementation TSFNewQuestionnaireConfirmViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil
+                           bundle:nibBundleOrNil];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (void)sharedSetup {
+    _questionnaireService = [TSFQuestionnaireService sharedService];
+    _assessorService = [TSFAssessorService sharedService];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *subjectLabelFormat = TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerSubjectFormat", @"The subject of the matter will be %@.");
