@@ -26,18 +26,18 @@ static NSString *const TSFTemplateCompetenceCellIdentifier = @"TSFTemplateCompet
     [self.closeButton setTitle:closeButtonTitle forState:UIControlStateNormal];
     
     NSString *headerFormat = TSFLocalizedString(@"TSFTemplateViewControllerHeaderFormat", @"%@ questions");
-    self.headerLabel.text = [NSString stringWithFormat:headerFormat, self.questionnaire.title];
+    self.headerLabel.text = [NSString stringWithFormat:headerFormat, self.questionnaireTemplate.title];
     self.headerLabel.textColor = [UIColor TSFLightGreyTextColor];
 }
 
 #pragma mark - UITableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.questionnaire.competences count];
+    return [self.questionnaireTemplate.competences count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    TSFCompetence *competence = self.questionnaire.competences[section];
+    TSFCompetence *competence = self.questionnaireTemplate.competences[section];
     return competence.title;
 }
 
@@ -48,7 +48,7 @@ static NSString *const TSFTemplateCompetenceCellIdentifier = @"TSFTemplateCompet
         cell = [[UITableViewCell alloc] init];
     }
     
-    TSFCompetence *competence = self.questionnaire.competences[indexPath.section];
+    TSFCompetence *competence = self.questionnaireTemplate.competences[indexPath.section];
     TSFKeyBehaviour *keyBehaviour = competence.keyBehaviours[indexPath.row];
     
     cell.textLabel.text = keyBehaviour.keyBehaviourDescription;
@@ -65,7 +65,7 @@ static NSString *const TSFTemplateCompetenceCellIdentifier = @"TSFTemplateCompet
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    TSFCompetence *competence = self.questionnaire.competences[section];
+    TSFCompetence *competence = self.questionnaireTemplate.competences[section];
     return [competence.keyBehaviours count];
 }
 
@@ -87,8 +87,7 @@ static NSString *const TSFTemplateCompetenceCellIdentifier = @"TSFTemplateCompet
     CGSize constraint = CGSizeMake(textWidth, 20000.0f);
     CGSize titleSize = CGSizeMake(0, 0);
     
-    
-    TSFKeyBehaviour *keyBehaviour = ((TSFCompetence *)self.questionnaire.competences[indexPath.section]).keyBehaviours[indexPath.row];
+    TSFKeyBehaviour *keyBehaviour = ((TSFCompetence *)self.questionnaireTemplate.competences[indexPath.section]).keyBehaviours[indexPath.row];
     titleSize = [keyBehaviour.keyBehaviourDescription boundingRectWithSize:constraint
                                                                    options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
                                                                 attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:textFontSize]}

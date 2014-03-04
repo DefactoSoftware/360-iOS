@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "TSFKeyBehaviourMapper.h"
-#import "TSFQuestionnaire.h"
 
 @interface TSFCompetence : NSObject
 

@@ -443,6 +443,9 @@
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="showTemplateButtonPressed:" destination="4In-93-j3T" eventType="touchUpInside" id="0il-oU-0Ih"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -473,6 +476,7 @@
                     <navigationItem key="navigationItem" id="fQH-6t-HCr"/>
                     <connections>
                         <outlet property="templatesTableView" destination="P9Y-an-cs6" id="YL3-Ha-OUi"/>
+                        <segue destination="31w-hE-xae" kind="modal" identifier="TSFNewTemplateModalSegue" id="pdj-Wl-mez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSs-gD-Gfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -689,7 +693,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="P4v-fX-jiE" kind="unwind" unwindAction="rewindFromModal:" id="W0q-qb-Xqt"/>
+                                            <segue destination="P4v-fX-jiE" kind="unwind" unwindAction="rewindFromModal:" id="qYl-0g-Cl7"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1285,4 +1289,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="pdj-Wl-mez"/>
+    </inferredMetricsTieBreakers>
 </document>

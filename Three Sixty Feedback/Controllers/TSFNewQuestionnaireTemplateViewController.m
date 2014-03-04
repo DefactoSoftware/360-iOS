@@ -7,15 +7,18 @@
 //
 
 #import "TSFNewQuestionnaireTemplateViewController.h"
+#import "TSFTemplateViewController.h"
 #import "CRToast.h"
 #import "UIColor+TSFColor.h"
 #import "TSFGenerics.h"
 #import "TSFTemplateCell.h"
 
 static NSString *const TSFTemplateCellIdentifier = @"TSFTemplateCell";
+static NSString *const TSFNewTemplateModalSegue = @"TSFNewTemplateModalSegue";
 
 @interface TSFNewQuestionnaireTemplateViewController()
 @property (nonatomic, strong) NSArray *templates;
+@property (nonatomic, assign) TSFTemplate *previewTemplate;
 @end
 
 @implementation TSFNewQuestionnaireTemplateViewController
@@ -49,7 +52,7 @@ static NSString *const TSFTemplateCellIdentifier = @"TSFTemplateCell";
     self.templatesTableView.dataSource = self;
     self.templatesTableView.delegate = self;
     
-    self.templatesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.templatesTableView.separatorInset = UIEdgeInsetsMake(0, 15.0f, 0, 15.0f);
 }
 
 - (void)fetchTemplates {
@@ -69,6 +72,24 @@ static NSString *const TSFTemplateCellIdentifier = @"TSFTemplateCell";
     return YES;
 }
 
+- (void)showTemplateButtonPressed:(TSFButton *)sender {
+    NSInteger rowNumber = sender.tag;
+    TSFTemplate *template = self.templates[rowNumber];
+    self.previewTemplate = template;
+    [self performSegueWithIdentifier:TSFNewTemplateModalSegue
+                              sender:self];
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    if ([segue.identifier isEqualToString:TSFNewTemplateModalSegue]) {
+        TSFTemplateViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.questionnaireTemplate = self.previewTemplate;
+    }
+}
+
 #pragma mark - UITableVIew
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -86,6 +107,8 @@ static NSString *const TSFTemplateCellIdentifier = @"TSFTemplateCell";
     templateCell.titleLabel.text = template.title;
     templateCell.descriptionLabel.text = template.templateDescription;
     templateCell.backgroundColor = [UIColor TSFBeigeColor];
+    templateCell.showTemplateButton.tag = indexPath.row;
+    templateCell.selectionStyle = UITableViewCellSelectionStyleNone;
     return templateCell;
 }
 
@@ -118,7 +141,7 @@ static NSString *const TSFTemplateCellIdentifier = @"TSFTemplateCell";
     
     CGSize descriptionSize = [template.templateDescription boundingRectWithSize:constraint
                                                                         options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
-                                                                     attributes:@{NSFontAttributeName: [UIFont     systemFontOfSize:descriptionFontSize]}
+                                                                     attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:descriptionFontSize]}
                                                                         context:nil].size;
 
     return titleSize.height + descriptionSize.height + buttonHeight + margin;

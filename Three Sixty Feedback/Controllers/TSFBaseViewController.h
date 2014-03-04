@@ -14,5 +14,6 @@
 @property (nonatomic, strong) UIProgressView *progressView;
 
 - (IBAction)openMenu:(id)sender;
+- (IBAction)rewindFromModal:(UIStoryboardSegue *)unwindSegue;
 
 @end

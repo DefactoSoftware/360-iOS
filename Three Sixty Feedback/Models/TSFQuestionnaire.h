@@ -10,15 +10,13 @@
 #import "TSFQuestionMapper.h"
 #import "TSFCompetenceMapper.h"
 #import "TSFAssessor.h"
+#import "TSFTemplate.h"
 
-@interface TSFQuestionnaire : NSObject
+@interface TSFQuestionnaire : TSFTemplate
 
 @property(nonatomic, strong) NSNumber *questionnaireId;
-@property(nonatomic, strong) NSString *title;
 @property(nonatomic, strong) NSString *questionnaireDescription;
 @property(nonatomic, strong) NSString *subject;
-@property(nonatomic, strong) NSArray *questions;
-@property(nonatomic, strong) NSArray *competences;
 @property(nonatomic, strong) NSArray *assessors;
 
 - (NSInteger)completedAssessors;

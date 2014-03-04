@@ -699,6 +699,9 @@
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="showTemplateButtonPressed:" destination="D6H-1n-do1" eventType="touchUpInside" id="yLp-vr-VdU"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -729,6 +732,7 @@
                     <navigationItem key="navigationItem" id="9bo-SL-Dz4"/>
                     <connections>
                         <outlet property="templatesTableView" destination="89J-jb-upN" id="vwi-tK-wiq"/>
+                        <segue destination="AuX-Ea-ga7" kind="modal" identifier="TSFNewTemplateModalSegue" id="qrG-i3-shu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcD-Xs-v6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1167,7 +1171,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="jLc-gb-xLJ" kind="unwind" unwindAction="rewindFromModal:" id="5zd-As-tft"/>
+                                            <segue destination="jLc-gb-xLJ" kind="unwind" unwindAction="rewindFromModal:" id="nUb-G7-8xz"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="192" translatesAutoresizingMaskIntoConstraints="NO" id="eyG-DO-da4">
@@ -1349,4 +1353,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="qrG-i3-shu"/>
+    </inferredMetricsTieBreakers>
 </document>

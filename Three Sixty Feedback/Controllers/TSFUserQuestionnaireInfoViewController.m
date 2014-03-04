@@ -116,11 +116,8 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
         destinationViewController.questionnaire = self.questionnaire;
     } else if ([segue.identifier isEqualToString:TSFTemplateModalSegueIdentifier]) {
         TSFTemplateViewController *destinationViewController = (TSFTemplateViewController *)segue.destinationViewController;
-        destinationViewController.questionnaire = self.questionnaire;
+        destinationViewController.questionnaireTemplate = self.questionnaire;
     }
-}
-
-- (void)rewindFromModal:(UIStoryboardSegue *)unwindSegue {
 }
 
 #pragma mark - UITableView

@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSFCompetence.h"
+#import "TSFKeyBehaviour.h"
 
 @interface TSFTemplate : NSObject
 

@@ -61,4 +61,8 @@
     [self.sideMenuViewController presentMenuViewController];
 }
 
+- (void)rewindFromModal:(UIStoryboardSegue *)unwindSegue {
+    
+}
+
 @end

@@ -8,6 +8,7 @@
 
 #import "TSFBaseViewController.h"
 #import "TSFTemplateService.h"
+#import "TSFButton.h"
 
 @interface TSFNewQuestionnaireTemplateViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -16,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *templatesTableView;
 
 - (BOOL)validate;
+- (IBAction)showTemplateButtonPressed:(TSFButton *)sender;
 
 @end

@@ -28,6 +28,5 @@
 - (IBAction)remindButtonPressed:(id)sender;
 - (void)remindAssessors;
 - (void)reloadAssessors;
-- (IBAction)rewindFromModal:(UIStoryboardSegue *)unwindSegue;
 
 @end
