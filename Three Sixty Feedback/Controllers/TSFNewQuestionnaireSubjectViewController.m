@@ -23,6 +23,8 @@ static NSString *const TSFNewQuestionnaireTemplateSegue = @"TSFNewQuestionnaireT
     
     NSString *nextButtonTitle = TSFLocalizedString(@"TSFNewQuestionnaireSubjectViewControllerNext", @"Go to step 2");
     [self.nextButton setTitle:nextButtonTitle forState:UIControlStateNormal];
+    
+    [self addResignGestureRecognizer];
 }
 
 - (BOOL)validate {

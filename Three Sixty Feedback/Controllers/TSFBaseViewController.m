@@ -9,6 +9,10 @@
 #import "TSFBaseViewController.h"
 #import "UIColor+TSFColor.h"
 
+@interface TSFBaseViewController()
+@property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer;
+@end
+
 @implementation TSFBaseViewController
 
 - (void)viewDidLoad {
@@ -27,6 +31,17 @@
 
 - (void)viewDidLayoutSubviews {
     self.progressView.frame = [self progressViewFrame];
+}
+
+- (void)addResignGestureRecognizer {
+    self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                    action:@selector(dismissKeyboard:)];
+    [self.tapRecognizer setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:self.tapRecognizer];
+}
+
+- (void)dismissKeyboard:(id)sender {
+    [self.view endEditing:YES];
 }
 
 - (void)addProgressView {

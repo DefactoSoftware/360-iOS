@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) UIProgressView *progressView;
 
+- (void)addResignGestureRecognizer;
 - (IBAction)openMenu:(id)sender;
 - (IBAction)rewindFromModal:(UIStoryboardSegue *)unwindSegue;
 

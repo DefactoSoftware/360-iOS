@@ -13,6 +13,7 @@
 #import "TSFAddAssessorCell.h"
 
 static NSString *const TSFNewAssessorCellIdentifier = @"TSFAddAssessorCell";
+static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
 
 @interface TSFNewQuestionnaireAssessorsViewController()
 @property (nonatomic, strong) NSMutableArray *assessors;
@@ -55,6 +56,9 @@ static NSString *const TSFNewAssessorCellIdentifier = @"TSFAddAssessorCell";
     [self.addButton setIconImage:[UIImage imageNamed:@"add"]];
     self.addAssessorTitleLabel.textColor = [UIColor TSFLightGreyTextColor];
     
+    self.assessorsTableView.separatorInset = UIEdgeInsetsMake(0.0f, TSFNewAssessorsTableViewHorizontalInset, 0.0f, TSFNewAssessorsTableViewHorizontalInset);
+    
+    [self addResignGestureRecognizer];
     [self updateHeaderViewHeight];
 }
 

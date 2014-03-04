@@ -43,6 +43,7 @@ static NSString *const TSFRequestPasswordSegue = @"TSFRequestPasswordSegue";
     self.passwordLabel.text = TSFLocalizedString(@"TSFLoginViewControllerPassword", @"Password");
     [self.loginButton setTitle:TSFLocalizedString(@"TSFLoginViewControllerButton", @"Login") forState:UIControlStateNormal];
     [self.requestPasswordButton setTitle:TSFLocalizedString(@"TSFLoginViewControllerRequestPasswordButton", @"Forgot password?") forState:UIControlStateNormal];
+    [self addResignGestureRecognizer];
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
