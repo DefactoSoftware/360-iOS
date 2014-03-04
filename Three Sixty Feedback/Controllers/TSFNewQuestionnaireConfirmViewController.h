@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSFTemplate.h"
 
 @interface TSFNewQuestionnaireConfirmViewController : UIViewController
-
+@property (nonatomic, strong) NSString *subject;
+@property (nonatomic, strong) TSFTemplate *questionnaireTemplate;
+@property (nonatomic, strong) NSArray *assessors;
 @end

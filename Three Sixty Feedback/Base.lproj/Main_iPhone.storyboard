@@ -848,18 +848,25 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sGO-tR-y2y"/>
+                    <navigationItem key="navigationItem" id="sGO-tR-y2y">
+                        <barButtonItem key="rightBarButtonItem" image="forward" id="Jj0-1d-9GV">
+                            <connections>
+                                <action selector="nextButtonPressed:" destination="N0V-j6-I1R" id="04Y-t7-HxH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addAssessorTextField" destination="17T-FI-Cei" id="Fst-2k-7T6"/>
                         <outlet property="addAssessorTitleLabel" destination="2B1-jt-O0k" id="9I7-t0-Em6"/>
                         <outlet property="addButton" destination="EVn-l1-tmf" id="nU0-Zo-cjg"/>
                         <outlet property="assessorsTableView" destination="av5-AE-O05" id="AcV-kI-IbB"/>
                         <outlet property="headerView" destination="ygn-0M-z0K" id="wUj-7O-fas"/>
+                        <segue destination="2XP-G6-zGZ" kind="push" identifier="TSFNewQuestionnaireConfirmSegue" id="nIv-sB-dzw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ch1-DB-24Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="2904"/>
+            <point key="canvasLocation" x="1915" y="2905"/>
         </scene>
         <!--New Questionnaire Confirm View Controller-->
         <scene sceneID="X0W-f0-rGd">
@@ -874,6 +881,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7mN-cG-Xex"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kOr-ZL-6A2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -23,5 +23,6 @@
 
 - (IBAction)addButtonPressed:(id)sender;
 - (IBAction)removeButtonPressed:(id)sender;
+- (IBAction)nextButtonPressed:(id)sender;
 
 @end

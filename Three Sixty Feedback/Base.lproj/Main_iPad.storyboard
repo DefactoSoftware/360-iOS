@@ -613,13 +613,20 @@
                             <constraint firstAttribute="bottom" secondItem="OW4-NN-V3h" secondAttribute="bottom" id="pOO-YI-2ZI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="EqY-X2-emV"/>
+                    <navigationItem key="navigationItem" id="EqY-X2-emV">
+                        <barButtonItem key="rightBarButtonItem" image="forward" id="asX-OM-aGY">
+                            <connections>
+                                <action selector="nextButtonPressed:" destination="Ibe-ze-VSu" id="FH6-ub-zwW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addAssessorTextField" destination="Bi2-yM-5Qu" id="nll-j8-C4G"/>
                         <outlet property="addAssessorTitleLabel" destination="eyV-D2-oqr" id="kM3-fP-3ch"/>
                         <outlet property="addButton" destination="gFT-I5-Fbx" id="qcG-QR-fbA"/>
                         <outlet property="assessorsTableView" destination="OW4-NN-V3h" id="jge-Qr-AsS"/>
                         <outlet property="headerView" destination="F5t-o8-DAb" id="cVF-ln-ept"/>
+                        <segue destination="rk2-MW-QY9" kind="push" identifier="TSFNewQuestionnaireConfirmSegue" id="OP3-t9-QKT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJU-kD-m26" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -639,6 +646,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="MJu-47-XXK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Sq-lL-YVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

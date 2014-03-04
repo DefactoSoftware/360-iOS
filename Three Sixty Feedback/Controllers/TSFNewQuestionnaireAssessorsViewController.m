@@ -7,12 +7,14 @@
 //
 
 #import "TSFNewQuestionnaireAssessorsViewController.h"
+#import "TSFNewQuestionnaireConfirmViewController.h"
 #import "TSFGenerics.h"
 #import "UIColor+TSFColor.h"
 #import "UITextField+Shake.h"
 #import "TSFAddAssessorCell.h"
 
 static NSString *const TSFNewAssessorCellIdentifier = @"TSFAddAssessorCell";
+static NSString *const TSFNewQuestionnaireConfirmSegue = @"TSFNewQuestionnaireConfirmSegue";
 static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
 
 @interface TSFNewQuestionnaireAssessorsViewController()
@@ -88,6 +90,17 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     [self.assessorsTableView reloadData] ;
 }
 
+- (IBAction)nextButtonPressed:(id)sender {
+    if (![self.assessors count]) {
+        [self.addAssessorTextField shake:5
+                               withDelta:10.0f
+                                andSpeed:0.05];
+    } else {
+        [self performSegueWithIdentifier:TSFNewQuestionnaireConfirmSegue
+                                  sender:self];
+    }
+}
+
 - (void)updateHeaderViewHeight {
     CGFloat textFontSize;
     CGFloat textWidth;
@@ -116,6 +129,16 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     CGRect headerViewFrame = self.headerView.frame;
     headerViewFrame.size.height = headerViewHeight;
     self.headerView.frame = headerViewFrame;
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    TSFNewQuestionnaireConfirmViewController *destinationViewController = segue.destinationViewController;
+    destinationViewController.subject = self.subject;
+    destinationViewController.questionnaireTemplate = self.questionnaireTemplate;
+    destinationViewController.assessors = self.assessors;
 }
 
 #pragma mark - UITableView
