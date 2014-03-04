@@ -74,7 +74,8 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
 - (IBAction)addButtonPressed:(id)sender {
     NSString *newAssessor = self.addAssessorTextField.text;
     if ([self stringIsEmail:newAssessor]) {
-        [self.assessors addObject:newAssessor];
+        [self.assessors insertObject:newAssessor
+                             atIndex:0];
         [self.assessorsTableView reloadData];
     } else {
         [self.addAssessorTextField shake:5

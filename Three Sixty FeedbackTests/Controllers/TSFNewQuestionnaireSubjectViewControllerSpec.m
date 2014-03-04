@@ -33,10 +33,6 @@ describe(@"TSFNewQuestionnaireSubjectViewController", ^{
         it(@"has an outlet for the subject textfield", ^{
             [[_newQuestionnaireSubjectViewController.subjectTextField shouldNot] beNil];
         });
-        
-        it(@"has an outlet for the next button", ^{
-            [[_newQuestionnaireSubjectViewController.nextButton shouldNot] beNil];
-        });
     });
     
     context(@"iPad", ^{
@@ -59,10 +55,6 @@ describe(@"TSFNewQuestionnaireSubjectViewController", ^{
         
         it(@"has an outlet for the subject textfield", ^{
             [[_newQuestionnaireSubjectViewController.subjectTextField shouldNot] beNil];
-        });
-        
-        it(@"has an outlet for the next button", ^{
-            [[_newQuestionnaireSubjectViewController.nextButton shouldNot] beNil];
         });
     });
     

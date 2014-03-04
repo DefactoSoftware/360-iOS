@@ -357,35 +357,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-JX-moV" customClass="TSFButton">
-                                <rect key="frame" x="505" y="237" width="109" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="109" id="RuZ-qm-4p1"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextButtonPressed:" destination="gwC-b3-XIQ" eventType="touchUpInside" id="rLQ-P8-FRS"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rhu-JX-moV" firstAttribute="top" secondItem="Vl4-gq-TK1" secondAttribute="bottom" constant="8" id="REl-Qm-vO7"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="leading" secondItem="jKL-xY-Lfy" secondAttribute="leading" constant="154" id="Z3d-Mi-YOr"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="leading" secondItem="Vl4-gq-TK1" secondAttribute="leading" id="Zau-bt-bjF"/>
-                            <constraint firstItem="rhu-JX-moV" firstAttribute="trailing" secondItem="Vl4-gq-TK1" secondAttribute="trailing" id="b3G-4K-1Pw"/>
                             <constraint firstItem="Vl4-gq-TK1" firstAttribute="top" secondItem="4EA-k3-wcm" secondAttribute="bottom" constant="8" symbolic="YES" id="fxi-9v-E8P"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="top" secondItem="WGZ-vC-jqK" secondAttribute="bottom" constant="106" id="nVB-ch-ZMW"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="trailing" secondItem="Vl4-gq-TK1" secondAttribute="trailing" id="v8K-sg-SNv"/>
                             <constraint firstAttribute="trailing" secondItem="4EA-k3-wcm" secondAttribute="trailing" constant="154" id="xE1-yd-jXi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4PW-E6-xC2"/>
+                    <navigationItem key="navigationItem" id="4PW-E6-xC2">
+                        <barButtonItem key="rightBarButtonItem" image="forward" id="JBb-t4-oHb">
+                            <connections>
+                                <action selector="nextButtonPressed:" destination="gwC-b3-XIQ" id="RTc-ns-Fzj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="nextButton" destination="rhu-JX-moV" id="gUn-FB-YPr"/>
                         <outlet property="subjectLabel" destination="4EA-k3-wcm" id="GuE-Gq-yxV"/>
                         <outlet property="subjectTextField" destination="Vl4-gq-TK1" id="173-4z-Fpc"/>
                         <segue destination="4In-93-j3T" kind="push" identifier="TSFNewQuestionnaireTemplateSegue" id="5AD-NM-JKh"/>
@@ -417,14 +407,14 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFTemplateCell" rowHeight="120" id="DQa-aM-PDP" customClass="TSFTemplateCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TSFTemplateCell" rowHeight="120" id="DQa-aM-PDP" customClass="TSFTemplateCell">
                                         <rect key="frame" x="0.0" y="192" width="768" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DQa-aM-PDP" id="acB-Jq-29C">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="735" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="567" translatesAutoresizingMaskIntoConstraints="NO" id="YPK-hR-0k7">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="567" translatesAutoresizingMaskIntoConstraints="NO" id="YPK-hR-0k7">
                                                     <rect key="frame" x="20" y="20" width="567" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -434,7 +424,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="567" translatesAutoresizingMaskIntoConstraints="NO" id="Au8-Jk-oyk">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="567" translatesAutoresizingMaskIntoConstraints="NO" id="Au8-Jk-oyk">
                                                     <rect key="frame" x="20" y="53" width="567" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -443,7 +433,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXU-CC-Eio" customClass="TSFButton">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXU-CC-Eio" customClass="TSFButton">
                                                     <rect key="frame" x="609" y="45" width="139" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -1434,6 +1424,7 @@
     </scenes>
     <resources>
         <image name="assessor" width="128" height="128"/>
+        <image name="forward" width="32" height="32"/>
         <image name="menu" width="24" height="24"/>
         <image name="pointer" width="4" height="15"/>
     </resources>

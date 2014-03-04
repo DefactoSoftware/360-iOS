@@ -21,9 +21,6 @@ static NSString *const TSFNewQuestionnaireTemplateSegue = @"TSFNewQuestionnaireT
     self.subjectLabel.text = TSFLocalizedString(@"TSFNewQuestionnaireSubjectViewControllerLabel", @"What is the subject of this feedback evaluation?");
     self.subjectLabel.textColor = [UIColor TSFLightGreyTextColor];
     
-    NSString *nextButtonTitle = TSFLocalizedString(@"TSFNewQuestionnaireSubjectViewControllerNext", @"Go to step 2");
-    [self.nextButton setTitle:nextButtonTitle forState:UIControlStateNormal];
-    
     [self addResignGestureRecognizer];
 }
 

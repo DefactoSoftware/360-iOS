@@ -134,7 +134,7 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
         textWidth = 275.0f;
         titleFontSize = 13.0f;
         descriptionFontSize = 11.0f;
-        buttonHeight = 30.0f;
+        buttonHeight = 40.0f;
     }
     
     CGFloat margin = 60.0f;
