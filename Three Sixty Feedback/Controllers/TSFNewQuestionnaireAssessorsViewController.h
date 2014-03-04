@@ -15,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
 @property (nonatomic, strong) NSString *subject;
 @property (nonatomic, strong) TSFTemplate *questionnaireTemplate;
+@property (weak, nonatomic) IBOutlet UILabel *addAssessorTitleLabel;
+@property (weak, nonatomic) IBOutlet UITextField *addAssessorTextField;
 
 @end

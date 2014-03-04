@@ -7,7 +7,13 @@
 //
 
 #import "TSFNewQuestionnaireAssessorsViewController.h"
+#import "TSFGenerics.h"
 
 @implementation TSFNewQuestionnaireAssessorsViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.addAssessorTitleLabel.text = TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerTitle", @"Insert the assessors email");
+}
 
 @end

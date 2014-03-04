@@ -29,6 +29,14 @@ describe(@"TSFNewQuestionnaireAssessorsViewController", ^{
         it(@"has an outlet for the templates tableview", ^{
             [[_newQuestionnaireAssessorsViewController.assessorsTableView shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the new assessors title label", ^{
+            [[_newQuestionnaireAssessorsViewController.addAssessorTitleLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the new assessors textfield", ^{
+            [[_newQuestionnaireAssessorsViewController.addAssessorTextField shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -47,6 +55,14 @@ describe(@"TSFNewQuestionnaireAssessorsViewController", ^{
         
         it(@"has an outlet for the templates tableview", ^{
             [[_newQuestionnaireAssessorsViewController.assessorsTableView shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the new assessors title label", ^{
+            [[_newQuestionnaireAssessorsViewController.addAssessorTitleLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the new assessors textfield", ^{
+            [[_newQuestionnaireAssessorsViewController.addAssessorTextField shouldNot] beNil];
         });
     });
 });
