@@ -61,6 +61,7 @@
 		52BE6F5818BCD9F1000B2DC7 /* TSFUserQuestionnaireAssessorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE6F5718BCD9F1000B2DC7 /* TSFUserQuestionnaireAssessorsViewController.m */; };
 		52BE6F5B18BCDA00000B2DC7 /* TSFUserQuestionnaireAssessorsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE6F5A18BCDA00000B2DC7 /* TSFUserQuestionnaireAssessorsViewControllerSpec.m */; };
 		52BE6F5E18BCDB89000B2DC7 /* TSFAssessorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE6F5D18BCDB89000B2DC7 /* TSFAssessorCell.m */; };
+		52BE899F18C5EB5800F6AE04 /* TSFAddAssessorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE899E18C5EB5800F6AE04 /* TSFAddAssessorCell.m */; };
 		52E1398218BDF41F0094F941 /* TSFRemindAssessorsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E1398118BDF41F0094F941 /* TSFRemindAssessorsCell.m */; };
 		52E80F4A189BE1D4007A8A48 /* TSFCompetenceTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F49189BE1D4007A8A48 /* TSFCompetenceTitleCell.m */; };
 		52E80F4D189BE313007A8A48 /* TSFKeyBehaviourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E80F4C189BE313007A8A48 /* TSFKeyBehaviourCell.m */; };
@@ -209,6 +210,8 @@
 		52BE6F5A18BCDA00000B2DC7 /* TSFUserQuestionnaireAssessorsViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFUserQuestionnaireAssessorsViewControllerSpec.m; path = Controllers/TSFUserQuestionnaireAssessorsViewControllerSpec.m; sourceTree = "<group>"; };
 		52BE6F5C18BCDB89000B2DC7 /* TSFAssessorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFAssessorCell.h; path = Views/Cells/TSFAssessorCell.h; sourceTree = "<group>"; };
 		52BE6F5D18BCDB89000B2DC7 /* TSFAssessorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFAssessorCell.m; path = Views/Cells/TSFAssessorCell.m; sourceTree = "<group>"; };
+		52BE899D18C5EB5800F6AE04 /* TSFAddAssessorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFAddAssessorCell.h; path = Views/Cells/TSFAddAssessorCell.h; sourceTree = "<group>"; };
+		52BE899E18C5EB5800F6AE04 /* TSFAddAssessorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFAddAssessorCell.m; path = Views/Cells/TSFAddAssessorCell.m; sourceTree = "<group>"; };
 		52E1398018BDF41F0094F941 /* TSFRemindAssessorsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFRemindAssessorsCell.h; path = Views/Cells/TSFRemindAssessorsCell.h; sourceTree = "<group>"; };
 		52E1398118BDF41F0094F941 /* TSFRemindAssessorsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFRemindAssessorsCell.m; path = Views/Cells/TSFRemindAssessorsCell.m; sourceTree = "<group>"; };
 		52E80F45189BDCC1007A8A48 /* TSFGenerics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSFGenerics.h; path = Views/TSFGenerics.h; sourceTree = "<group>"; };
@@ -406,6 +409,8 @@
 				52E1398118BDF41F0094F941 /* TSFRemindAssessorsCell.m */,
 				526A112218C4F40F00518D1E /* TSFTemplateCell.h */,
 				526A112318C4F40F00518D1E /* TSFTemplateCell.m */,
+				52BE899D18C5EB5800F6AE04 /* TSFAddAssessorCell.h */,
+				52BE899E18C5EB5800F6AE04 /* TSFAddAssessorCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -813,6 +818,7 @@
 			files = (
 				E4405871189A6EA1001AEE13 /* TSFCompetenceService.m in Sources */,
 				E453D6F51899557400052854 /* TSFQuestionnaireService.m in Sources */,
+				52BE899F18C5EB5800F6AE04 /* TSFAddAssessorCell.m in Sources */,
 				529702DC18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m in Sources */,
 				52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */,
 				52BE6F5218BCCA90000B2DC7 /* TSFUserQuestionnaireInfoViewController.m in Sources */,

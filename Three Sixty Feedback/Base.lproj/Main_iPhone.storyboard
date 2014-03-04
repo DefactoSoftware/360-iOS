@@ -752,31 +752,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="av5-AE-O05">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="av5-AE-O05">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="ygn-0M-z0K">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="91"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="ygn-0M-z0K">
+                                    <rect key="frame" x="0.0" y="64" width="320" height="137"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B1-jt-O0k">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="2B1-jt-O0k">
                                             <rect key="frame" x="20" y="20" width="280" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="DUR-Bq-Pwq"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17T-FI-Cei">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17T-FI-Cei">
                                             <rect key="frame" x="20" y="49" width="280" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="0xf-6K-PgH"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVn-l1-tmf" customClass="TSFButton">
+                                            <rect key="frame" x="95" y="87" width="130" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="ZVC-te-ROR"/>
+                                                <constraint firstAttribute="width" constant="130" id="k82-rU-81Y"/>
+                                            </constraints>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addButtonPressed:" destination="N0V-j6-I1R" eventType="touchUpInside" id="Iec-kc-1JG"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="EVn-l1-tmf" secondAttribute="trailing" constant="95" id="GS4-4q-4AE"/>
+                                        <constraint firstItem="17T-FI-Cei" firstAttribute="leading" secondItem="ygn-0M-z0K" secondAttribute="leading" constant="20" id="NBX-pp-Xfo"/>
+                                        <constraint firstItem="17T-FI-Cei" firstAttribute="top" secondItem="2B1-jt-O0k" secondAttribute="bottom" constant="8" id="OG2-4j-c8U"/>
+                                        <constraint firstAttribute="trailing" secondItem="2B1-jt-O0k" secondAttribute="trailing" constant="20" id="RbF-8U-zLr"/>
+                                        <constraint firstItem="2B1-jt-O0k" firstAttribute="leading" secondItem="ygn-0M-z0K" secondAttribute="leading" constant="20" id="Ysx-5d-lBT"/>
+                                        <constraint firstItem="EVn-l1-tmf" firstAttribute="top" secondItem="17T-FI-Cei" secondAttribute="bottom" constant="8" id="hNv-JU-1fk"/>
+                                        <constraint firstAttribute="trailing" secondItem="17T-FI-Cei" secondAttribute="trailing" constant="20" id="r0k-fV-Tpo"/>
+                                        <constraint firstItem="2B1-jt-O0k" firstAttribute="top" secondItem="ygn-0M-z0K" secondAttribute="top" constant="20" id="vX2-sX-bcZ"/>
+                                    </constraints>
                                 </view>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFAddAssessorCell" rowHeight="55" id="qT8-uy-wSR" customClass="TSFAddAssessorCell">
+                                        <rect key="frame" x="0.0" y="223" width="320" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qT8-uy-wSR" id="vj3-wt-8wh">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8Z-gy-zN1">
+                                                    <rect key="frame" x="20" y="16" width="207" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1I-3P-vIw" customClass="TSFButton">
+                                                    <rect key="frame" x="235" y="12" width="65" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="emailLabel" destination="d8Z-gy-zN1" id="Mob-7B-LPU"/>
+                                            <outlet property="removeButton" destination="e1I-3P-vIw" id="hNp-eg-8Gt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -785,7 +845,9 @@
                     <connections>
                         <outlet property="addAssessorTextField" destination="17T-FI-Cei" id="Fst-2k-7T6"/>
                         <outlet property="addAssessorTitleLabel" destination="2B1-jt-O0k" id="9I7-t0-Em6"/>
+                        <outlet property="addButton" destination="EVn-l1-tmf" id="nU0-Zo-cjg"/>
                         <outlet property="assessorsTableView" destination="av5-AE-O05" id="AcV-kI-IbB"/>
+                        <outlet property="headerView" destination="ygn-0M-z0K" id="wUj-7O-fas"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ch1-DB-24Z" userLabel="First Responder" sceneMemberID="firstResponder"/>

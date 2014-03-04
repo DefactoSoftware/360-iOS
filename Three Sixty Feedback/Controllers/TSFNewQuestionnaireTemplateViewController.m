@@ -45,7 +45,7 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
 }
 
 - (void)sharedSetup {
-    self.templateService = [TSFTemplateService sharedService];
+    _templateService = [TSFTemplateService sharedService];
 }
 
 - (void)viewDidLoad {
@@ -99,7 +99,8 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
 
 #pragma mark - UITableVIew
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
     return [self.templates count];
 }
 

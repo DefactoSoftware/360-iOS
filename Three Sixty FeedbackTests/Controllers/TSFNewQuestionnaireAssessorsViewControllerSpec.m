@@ -37,6 +37,14 @@ describe(@"TSFNewQuestionnaireAssessorsViewController", ^{
         it(@"has an outlet for the new assessors textfield", ^{
             [[_newQuestionnaireAssessorsViewController.addAssessorTextField shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the add button", ^{
+            [[_newQuestionnaireAssessorsViewController.addButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the header view", ^{
+            [[_newQuestionnaireAssessorsViewController.headerView shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -63,6 +71,14 @@ describe(@"TSFNewQuestionnaireAssessorsViewController", ^{
         
         it(@"has an outlet for the new assessors textfield", ^{
             [[_newQuestionnaireAssessorsViewController.addAssessorTextField shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the add button", ^{
+            [[_newQuestionnaireAssessorsViewController.addButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the header view", ^{
+            [[_newQuestionnaireAssessorsViewController.headerView shouldNot] beNil];
         });
     });
 });

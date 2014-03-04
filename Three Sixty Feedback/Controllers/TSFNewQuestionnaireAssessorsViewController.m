@@ -8,12 +8,128 @@
 
 #import "TSFNewQuestionnaireAssessorsViewController.h"
 #import "TSFGenerics.h"
+#import "UIColor+TSFColor.h"
+#import "UITextField+Shake.h"
+#import "TSFAddAssessorCell.h"
+
+static NSString *const TSFNewAssessorCellIdentifier = @"TSFAddAssessorCell";
+
+@interface TSFNewQuestionnaireAssessorsViewController()
+@property (nonatomic, strong) NSMutableArray *assessors;
+@end
 
 @implementation TSFNewQuestionnaireAssessorsViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil
+                           bundle:nibBundleOrNil];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (void)sharedSetup {
+    _assessors = [[NSMutableArray alloc] init];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.addAssessorTitleLabel.text = TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerTitle", @"Insert the assessors email");
+    self.addAssessorTitleLabel.text = TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerTitle", @"Add the email addresses of assessors you would like to invite to this feedback evaluation.");
+    
+    self.assessorsTableView.delegate = self;
+    self.assessorsTableView.dataSource = self;
+    
+    NSString *addTitle = TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerAddButton", @"Add assessor");
+    [self.addButton setTitle:addTitle
+                    forState:UIControlStateNormal];
+    self.addAssessorTitleLabel.textColor = [UIColor TSFLightGreyTextColor];
+    
+    [self updateHeaderViewHeight];
+}
+
+- (BOOL) stringIsEmail:(NSString *)string {
+    BOOL stricterFilter = YES;
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:string];
+}
+
+- (IBAction)addButtonPressed:(id)sender {
+    NSString *newAssessor = self.addAssessorTextField.text;
+    if ([self stringIsEmail:newAssessor]) {
+        [self.assessors addObject:newAssessor];
+        [self.assessorsTableView reloadData];
+    } else {
+        [self.addAssessorTextField shake:5
+                               withDelta:10];
+    }
+}
+
+- (void)updateHeaderViewHeight {
+    CGFloat textFontSize;
+    CGFloat textWidth;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        textWidth = 728.0f;
+        textFontSize  = 10.0f;
+    } else {
+        textWidth = 280.0f;
+        textFontSize = 13.0f;
+    }
+    
+    CGFloat buttonHeight = 40.0f;
+    CGFloat textFieldHeight = 40.0f;
+    CGFloat margin = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 212.0f : 60.0f;
+    
+    CGSize constraint = CGSizeMake(textWidth, 20000.0f);
+    CGSize titleSize = CGSizeMake(0, 0);
+    
+    titleSize = [self.addAssessorTextField.text boundingRectWithSize:constraint
+                                                             options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                                                          attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:textFontSize]}
+                                                             context:nil].size;
+    
+    CGFloat headerViewHeight = titleSize.height + buttonHeight + textFieldHeight + margin;
+    
+    CGRect headerViewFrame = self.headerView.frame;
+    headerViewFrame.size.height = headerViewHeight;
+    self.headerView.frame = headerViewFrame;
+}
+
+#pragma mark - UITableView
+
+- (NSInteger)tableView:(gUITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return [self.assessors count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TSFAddAssessorCell *cell = [self.assessorsTableView dequeueReusableCellWithIdentifier:TSFNewAssessorCellIdentifier
+                                                                             forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[TSFAddAssessorCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                         reuseIdentifier:TSFNewAssessorCellIdentifier];
+        
+    }
+    cell.emailLabel.text = self.assessors[indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01f;
 }
 
 @end
