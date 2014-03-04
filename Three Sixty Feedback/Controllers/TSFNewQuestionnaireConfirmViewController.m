@@ -18,12 +18,53 @@
     NSString *assessorsLabelFormat = TSFLocalizedString(@"TSFNewQuestionnaireViewControllerAssessorsLabelFormat", @"The invitations will be sent to: %@.");
     NSString *assessorsList = [self.assessors componentsJoinedByString:@", "];
     
-    self.subjectLabel.text = [NSString stringWithFormat:subjectLabelFormat, self.subject];
-    self.templateLabel.text = [NSString stringWithFormat:templateLabelFormat, self.questionnaireTemplate.title];
-    self.assessorsLabel.text = [NSString stringWithFormat:assessorsLabelFormat, assessorsList];
+    NSString *subject = [NSString stringWithFormat:subjectLabelFormat, self.subject];
+    NSString *template = [NSString stringWithFormat:templateLabelFormat, self.questionnaireTemplate.title];
+    NSString *assessors = [NSString stringWithFormat:assessorsLabelFormat, assessorsList];
     
     [self.createButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerCreate", @"Create feedback evaluation")
                        forState:UIControlStateNormal];
+    
+    NSMutableAttributedString *subjectAttributed = [[NSMutableAttributedString alloc] initWithString:subject];
+    NSMutableAttributedString *templateAttributed = [[NSMutableAttributedString alloc] initWithString:template];
+    NSMutableAttributedString *assessorsAttributed = [[NSMutableAttributedString alloc]  initWithString:assessors];
+    
+    [subjectAttributed beginEditing];
+    [self boldMatchedString:self.subject
+  inMutableAttributedString:subjectAttributed];
+    [subjectAttributed endEditing];
+    
+    [templateAttributed beginEditing];
+    [self boldMatchedString:self.questionnaireTemplate.title
+  inMutableAttributedString:templateAttributed];
+    [templateAttributed endEditing];
+    
+    [assessorsAttributed beginEditing];
+    [self boldMatchedString:assessorsList
+  inMutableAttributedString:assessorsAttributed];
+    [assessorsAttributed endEditing];
+    
+    [self.subjectLabel setAttributedText:subjectAttributed];
+    [self.templateLabel setAttributedText:templateAttributed];
+    [self.assessorsLabel setAttributedText:assessorsAttributed];
+}
+
+- (void)boldMatchedString:(NSString *)matchedString inMutableAttributedString:(NSMutableAttributedString *)attributedString {
+    CGFloat fontSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 14.0f : 13.0f;
+    NSString *fontName = @"Helvetica-Bold";
+    
+    NSError *error = nil;
+    if (matchedString) {
+        NSRegularExpression *scaleRegex = [NSRegularExpression regularExpressionWithPattern:matchedString
+                                                                                    options:NSRegularExpressionCaseInsensitive
+                                                                                      error:&error];
+        NSTextCheckingResult *scaleResult = [scaleRegex firstMatchInString:(NSString *)attributedString.string
+                                                                   options:0
+                                                                     range:NSMakeRange(0, [attributedString length])];
+        [attributedString addAttribute:NSFontAttributeName
+                                 value:[UIFont fontWithName:fontName size:fontSize]
+                                 range:NSMakeRange(scaleResult.range.location, scaleResult.range.length)];
+    }
 }
 
 @end
