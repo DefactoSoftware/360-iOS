@@ -733,11 +733,41 @@
                     <connections>
                         <outlet property="templatesTableView" destination="89J-jb-upN" id="vwi-tK-wiq"/>
                         <segue destination="AuX-Ea-ga7" kind="modal" identifier="TSFNewTemplateModalSegue" id="qrG-i3-shu"/>
+                        <segue destination="N0V-j6-I1R" kind="push" identifier="TSFNewQuestionnaireAssessorsSegue" id="dco-AI-Sw7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcD-Xs-v6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1386" y="2904"/>
+        </scene>
+        <!--New Questionnaire Assessors View Controller-->
+        <scene sceneID="mtc-pM-FRx">
+            <objects>
+                <viewController storyboardIdentifier="TSFNewQuestionnaireAssessorsViewController" id="N0V-j6-I1R" customClass="TSFNewQuestionnaireAssessorsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nXE-OC-8m8"/>
+                        <viewControllerLayoutGuide type="bottom" id="E3F-J3-3YQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cgf-W2-af8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="av5-AE-O05">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sGO-tR-y2y"/>
+                    <connections>
+                        <outlet property="assessorsTableView" destination="av5-AE-O05" id="AcV-kI-IbB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ch1-DB-24Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1884" y="2904"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0Zg-gL-cbe">
