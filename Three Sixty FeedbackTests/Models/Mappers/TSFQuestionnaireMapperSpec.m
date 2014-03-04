@@ -19,7 +19,8 @@ describe(@"TSFQuestionnaireMapper", ^{
                                                     @"description" : [NSString stringWithFormat:@"%d", arc4random()],
                                                     @"subject" : [NSString stringWithFormat:@"%d", arc4random()],
                                                     @"questions" : @[@{ @"id" : @(arc4random()) }],
-                                                    @"competences" : @[@{ @"id" : @(arc4random()) }]
+                                                    @"competences" : @[@{ @"id" : @(arc4random()) }],
+                                                    @"template_id" : @(arc4random())
                                                     },
                                                 @{
                                                     @"id" : @(arc4random()),
@@ -27,7 +28,8 @@ describe(@"TSFQuestionnaireMapper", ^{
                                                     @"description" : [NSString stringWithFormat:@"%d", arc4random()],
                                                     @"subject" : [NSString stringWithFormat:@"%d", arc4random()],
                                                     @"questions" : @[@{ @"id" : @(arc4random()) }],
-                                                    @"competences" : @[@{ @"id" : @(arc4random()) }]
+                                                    @"competences" : @[@{ @"id" : @(arc4random()) }],
+                                                    @"template_id" : @(arc4random())
                                                     }
                                                 ];
     __block TSFQuestionnaireMapper *_questionnaireMapper;
@@ -67,6 +69,7 @@ describe(@"TSFQuestionnaireMapper", ^{
         [[questionnaire.title should] equal:questionnaireDictionary[@"title"]];
         [[questionnaire.questionnaireDescription should] equal:questionnaireDictionary[@"description"]];
         [[questionnaire.subject should] equal:questionnaireDictionary[@"subject"]];
+        [[questionnaire.templateId should] equal:questionnaireDictionary[@"template_id"]];
         
         [[[questionnaire.questions should] have:[questionnaireDictionary[@"questions"] count]] questions];
         [[[questionnaire.competences should] have:[questionnaireDictionary[@"competences"] count]] competences];

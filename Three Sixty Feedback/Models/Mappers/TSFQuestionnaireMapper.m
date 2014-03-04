@@ -29,6 +29,7 @@
 	questionnaire.subject = dictionary[@"subject"];
 	questionnaire.questions = [self.questionMapper questionsWithDictionaryArray:dictionary[@"questions"]];
 	questionnaire.competences = [self.competenceMapper competencesWithDictionaryArray:dictionary[@"competences"]];
+    questionnaire.templateId = dictionary[@"template_id"];
     
 	return questionnaire;
 }

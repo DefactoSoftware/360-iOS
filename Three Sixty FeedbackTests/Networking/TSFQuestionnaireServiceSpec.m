@@ -47,8 +47,37 @@ describe(@"TSFQuestionnaireService", ^{
         [[_mockAPIClient should] receive:@selector(POST:parameters:success:failure:)
                            withArguments:TSFAPIEndPointQuestionnaires, parameters, [KWAny any], [KWAny any]];
         
-        [_questionnaireService createQuestionnaireWithSubject:stubSubject templateId:stubTemplateId success:^(NSDictionary *dictionary) {
+        [_questionnaireService createQuestionnaireWithSubject:stubSubject
+                                                   templateId:stubTemplateId
+                                                      success:^(NSDictionary *dictionary) {
         } failure:^(NSError *error) {
+        }];
+	});
+    
+    it(@"calls the questionnairemapper to return the newly created questionnaire", ^{
+        NSNumber *stubTemplateId = @(arc4random());
+        NSString *stubSubject = [NSString stringWithFormat:@"%d", arc4random()];
+        
+        __block NSDictionary *_stubResult = @{};
+        __block TSFQuestionnaire *_stubMappedResult = [[TSFQuestionnaire alloc] init];
+        
+        [_mockAPIClient stub:@selector(POST:parameters:success:failure:)
+                   withBlock:^id(NSArray *params) {
+                       void (^successBlock)(AFHTTPRequestOperation *operaton, id responseObject) = params[2];
+                       successBlock(nil, _stubResult);
+                       return nil;
+        }];
+
+        [[_mockQuestionnaireMapper should] receive:@selector(questionnaireWithDictionary:)
+                                         andReturn:_stubMappedResult
+                                     withArguments:_stubResult];
+        
+        [_questionnaireService createQuestionnaireWithSubject:stubSubject
+                                                   templateId:stubTemplateId
+                                                      success:^(TSFQuestionnaire *questionnaire) {
+                                                          [[questionnaire should] equal:_stubMappedResult];
+        }
+                                                      failure:^(NSError *error) {
         }];
 	});
     

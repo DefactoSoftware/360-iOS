@@ -78,11 +78,13 @@
     
     __block TSFNetworkingSuccessBlock _successBlock = success;
     __block TSFNetworkingErrorBlock _failureBlock = failure;
+    __weak typeof (self) _self = self;
     
     [self.apiClient POST:TSFAPIEndPointQuestionnaires
               parameters:parameters
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                     _successBlock(responseObject);
+                     TSFQuestionnaire *questionnaire = [_self.questionnaireMapper questionnaireWithDictionary:(NSDictionary *)responseObject];
+                     _successBlock(questionnaire    );
     }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      _failureBlock(error);
