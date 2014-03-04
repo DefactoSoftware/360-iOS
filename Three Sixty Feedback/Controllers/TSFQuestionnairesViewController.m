@@ -7,6 +7,7 @@
 //
 
 #import "TSFQuestionnairesViewController.h"
+#import "TSFQuestionnairesNavigationController.h"
 #import "TSFGenerics.h"
 #import "CRToast.h"
 #import "TSFQuestionnaireCell.h"
@@ -50,7 +51,6 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     [super viewDidLoad];
     self.toolbar.backgroundColor = [UIColor TSFBlueColor];
     self.activeSegmentedControl.tintColor = [UIColor TSFBlackColor];
-    
     self.questionnairesTableView.separatorInset = UIEdgeInsetsZero;
     
     self.questionnairesTableView.dataSource = self;
@@ -72,6 +72,7 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
                                     action:@selector(segmentedControlChanged:)
                forControlEvents:UIControlEventValueChanged];
     
+    [self checkToDisplayAddNotification];
     [self loadQuestionnaires];
 }
 
@@ -80,6 +81,18 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     self.tabBarController.navigationItem.title = TSFLocalizedString(@"TSFActiveQuestionnairesViewControllerTitle", @"Active questionnaires");
     self.selectedQuestionnaireIndexPath = nil;
     [self.questionnairesTableView reloadData];
+}
+
+- (void)checkToDisplayAddNotification {
+    TSFQuestionnairesNavigationController *navigationController = (TSFQuestionnairesNavigationController *)self.navigationController;
+    if (navigationController.showAddedNotification) {
+        NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFQuestionnairesViewControllerAddedNotification", @"Questionnaire was successfully created"),
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                  kCRToastBackgroundColorKey : [UIColor TSFGreenColor]};
+        [CRToastManager showNotificationWithOptions:options
+                                    completionBlock:^{ }];
+        navigationController.showAddedNotification = NO;
+    }
 }
 
 - (void)loadQuestionnaires {

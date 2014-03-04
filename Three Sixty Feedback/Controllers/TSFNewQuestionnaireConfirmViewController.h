@@ -23,4 +23,8 @@
 @property (weak, nonatomic) IBOutlet TSFButton *createButton;
 @property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
 @property (nonatomic, strong) TSFAssessorService *assessorService;
+
+- (void)createQuestionnaire;
+- (IBAction)confirmButtonPressed:(id)sender;
+
 @end

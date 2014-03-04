@@ -38,7 +38,7 @@ describe(@"TSFAssessorService", ^{
         [[_mockAPIClient should] receive:@selector(POST:parameters:success:failure:)
                            withArguments:TSFAPIEndPointAssessors, parameters, [KWAny any], [KWAny any]];
         
-        [_assessorService createNewAssessorWithEmail:email
+        [_assessorService createAssessorWithEmail:email
                                   forQuestionnaireId:questionnaireId
                                          withSuccess:^(id response) {
         } failure:^(NSError *error) {

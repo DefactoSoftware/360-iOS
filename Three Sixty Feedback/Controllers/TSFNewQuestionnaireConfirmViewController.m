@@ -7,7 +7,18 @@
 //
 
 #import "TSFNewQuestionnaireConfirmViewController.h"
+#import "TSFQuestionnairesViewController.h"
+#import "TSFQuestionnairesNavigationController.h"
+#import "TSFAppDelegate.h"
+#import "CRToast.h"
+#import "UIColor+TSFColor.h"
 #import "TSFGenerics.h"
+
+static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQuestionnairesViewControllerNavigation";
+
+@interface TSFNewQuestionnaireConfirmViewController()
+@property (nonatomic, assign) NSInteger invitedAssessorsCount;
+@end
 
 @implementation TSFNewQuestionnaireConfirmViewController
 
@@ -32,6 +43,54 @@
 - (void)sharedSetup {
     _questionnaireService = [TSFQuestionnaireService sharedService];
     _assessorService = [TSFAssessorService sharedService];
+    _invitedAssessorsCount = 0;
+}
+
+- (void)checkInvitationCompleted {
+    if (self.invitedAssessorsCount == [self.assessors count]) {
+        TSFAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        TSFQuestionnairesNavigationController *questionnairesNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:TSFQuestionnairesNavigationControllerIdentifier];
+        questionnairesNavigationController.showAddedNotification = YES;
+        delegate.window.rootViewController = questionnairesNavigationController;
+    }
+}
+
+- (void)inviteAssessorsForQuestionnaire:(TSFQuestionnaire *)questionnaire {
+    __weak typeof(self) _self = self;
+    
+    for (NSString *assessorEmail in self.assessors) {
+        [self.assessorService createAssessorWithEmail:assessorEmail
+                                   forQuestionnaireId:questionnaire.questionnaireId
+                                          withSuccess:^(id responseObject) {
+                                              _self.invitedAssessorsCount++;
+                                              [_self checkInvitationCompleted];
+                                          }
+                                              failure:^(NSError *error) {
+                                                  NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerInviteError", @"Could not invite assessor."),
+                                                                            kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                                                            kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
+                                                  [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
+                                              }];
+    }
+}
+
+- (void)createQuestionnaire {
+    __weak typeof (self) _self = self;
+    [self.questionnaireService createQuestionnaireWithSubject:self.subject
+                                                   templateId:self.questionnaireTemplate.templateId
+                                                      success:^(TSFQuestionnaire *questionnaire) {
+                                                          [_self inviteAssessorsForQuestionnaire:questionnaire];
+    }
+                                                      failure:^(NSError *error) {
+                                                          NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerCreateError", @"Could not create questionnaire."),
+                                                                                    kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                                                                    kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
+                                                          [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
+    }];
+}
+
+- (IBAction)confirmButtonPressed:(id)sender {
+    [self createQuestionnaire];
 }
 
 - (void)viewDidLoad {

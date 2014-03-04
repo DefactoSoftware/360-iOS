@@ -11,6 +11,7 @@
 #import "TSFAssessorService.h"
 #import "TSFQuestionnaireService.h"
 #import "TSFUserQuestionnaireInfoViewController.h"
+#import "CRToast.h"
 
 @interface TSFQuestionnairesViewController : TSFBaseViewController <UITableViewDelegate, UITableViewDataSource>
 

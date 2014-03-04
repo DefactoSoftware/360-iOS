@@ -22,7 +22,7 @@
 	return _sharedService;
 }
 
-- (void)createNewAssessorWithEmail:(NSString *)email
+- (void)createAssessorWithEmail:(NSString *)email
                 forQuestionnaireId:(NSNumber *)questionnaireId
                        withSuccess:(TSFNetworkingSuccessBlock)success
                            failure:(TSFNetworkingErrorBlock)failure {

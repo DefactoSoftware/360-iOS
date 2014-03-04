@@ -81,6 +81,62 @@ describe(@"TSFNewQuestionnaireConfirmViewController", ^{
     it(@"has a reference to the assessorsservice", ^{
         [[_newQuestionnaireConfirmViewController.assessorService should] beKindOfClass:[TSFAssessorService class]];
     });
+    
+    context(@"creating the questionnaire", ^{
+        __block id _mockQuestionnaireService;
+        __block id _mockAssessorService;
+        __block NSString *_subject;
+        __block TSFTemplate *_questionnaireTemplate;
+        __block NSArray *_assessors;
+        __block TSFQuestionnaire *_newQuestionnaire;
+        
+        beforeEach(^{
+            _mockQuestionnaireService = [KWMock mockForClass:[TSFQuestionnaireService class]];
+            _mockAssessorService = [KWMock mockForClass:[TSFAssessorService class]];
+            
+            _newQuestionnaireConfirmViewController.questionnaireService = _mockQuestionnaireService;
+            _newQuestionnaireConfirmViewController.assessorService = _mockAssessorService;
+            
+            _subject = [NSString stringWithFormat:@"%d", arc4random()];
+            _questionnaireTemplate = [[TSFTemplate alloc] init];
+            _questionnaireTemplate.templateId = @(arc4random());
+            
+            _newQuestionnaireConfirmViewController.subject = _subject;
+            _newQuestionnaireConfirmViewController.questionnaireTemplate = _questionnaireTemplate;
+            
+            _assessors = @[
+                           [NSString stringWithFormat:@"%d", arc4random()],
+                           [NSString stringWithFormat:@"%d", arc4random()]
+                           ];
+            
+            _newQuestionnaire = [[TSFQuestionnaire alloc] init];
+            _newQuestionnaire.questionnaireId = @(arc4random());
+            _newQuestionnaireConfirmViewController.assessors = _assessors;
+        });
+        
+        it(@"calls the questionnaireservice to create a new questionnaire", ^{
+            [[_mockQuestionnaireService should] receive:@selector(createQuestionnaireWithSubject:templateId:success:failure:)
+                                          withArguments:_subject, _questionnaireTemplate.templateId, [KWAny any], [KWAny any]];
+            
+            [_newQuestionnaireConfirmViewController createQuestionnaire];
+        });
+        
+        it(@"calls the assessor service to create new assessors", ^{
+            [[_mockAssessorService should] receive:@selector(createAssessorWithEmail:forQuestionnaireId:withSuccess:failure:)
+                         withArguments:_assessors[0], _newQuestionnaire.questionnaireId, [KWAny any], [KWAny any]];
+            [[_mockAssessorService should] receive:@selector(createAssessorWithEmail:forQuestionnaireId:withSuccess:failure:)
+                         withArguments:_assessors[1], _newQuestionnaire.questionnaireId, [KWAny any], [KWAny any]];
+            
+            [_mockQuestionnaireService stub:@selector(createQuestionnaireWithSubject:templateId:success:failure:)
+                                  withBlock:^id(NSArray *params) {
+                                      void (^successBlock)(id responseObject) = params[2];
+                                      successBlock(_newQuestionnaire);
+                                      return nil;
+            }];
+            
+            [_newQuestionnaireConfirmViewController createQuestionnaire];
+        });
+    });
 });
 
 SPEC_END

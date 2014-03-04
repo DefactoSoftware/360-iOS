@@ -79,6 +79,7 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
         [self.assessors insertObject:newAssessor
                              atIndex:0];
         [self.assessorsTableView reloadData];
+        [self.addAssessorTextField setText:@""];
     } else {
         [self.addAssessorTextField shake:5
                                withDelta:10];

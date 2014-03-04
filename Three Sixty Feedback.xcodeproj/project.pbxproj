@@ -71,6 +71,7 @@
 		52ECB6EB189FF403007C7636 /* TSFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ECB6EA189FF403007C7636 /* TSFBaseViewController.m */; };
 		52ECB6F418A0E481007C7636 /* TSFQuestionnaireViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ECB6F318A0E481007C7636 /* TSFQuestionnaireViewControllerSpec.m */; };
 		52ECB6F718A0E511007C7636 /* TSFQuestionnaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ECB6F618A0E511007C7636 /* TSFQuestionnaireViewController.m */; };
+		52F32A0518C65C8A0010D579 /* TSFQuestionnairesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F32A0418C65C8A0010D579 /* TSFQuestionnairesNavigationController.m */; };
 		E417281718994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */; };
 		E417281A18994C8000DD77B5 /* TSFQuestionnaireMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281918994C8000DD77B5 /* TSFQuestionnaireMapper.m */; };
 		E429DD4E189807B300BAFEC4 /* TSFAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E429DD4D189807B300BAFEC4 /* TSFAPIClient.m */; };
@@ -231,6 +232,8 @@
 		52ECB6F318A0E481007C7636 /* TSFQuestionnaireViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireViewControllerSpec.m; path = Controllers/TSFQuestionnaireViewControllerSpec.m; sourceTree = "<group>"; };
 		52ECB6F518A0E511007C7636 /* TSFQuestionnaireViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnaireViewController.h; path = Controllers/TSFQuestionnaireViewController.h; sourceTree = "<group>"; };
 		52ECB6F618A0E511007C7636 /* TSFQuestionnaireViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireViewController.m; path = Controllers/TSFQuestionnaireViewController.m; sourceTree = "<group>"; };
+		52F32A0318C65C8A0010D579 /* TSFQuestionnairesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnairesNavigationController.h; path = Controllers/TSFQuestionnairesNavigationController.h; sourceTree = "<group>"; };
+		52F32A0418C65C8A0010D579 /* TSFQuestionnairesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnairesNavigationController.m; path = Controllers/TSFQuestionnairesNavigationController.m; sourceTree = "<group>"; };
 		62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty Feedback.xcconfig"; path = "Pods/Pods-Three Sixty Feedback.xcconfig"; sourceTree = "<group>"; };
 		C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty FeedbackTests.xcconfig"; path = "Pods/Pods-Three Sixty FeedbackTests.xcconfig"; sourceTree = "<group>"; };
 		E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireMapperSpec.m; path = Models/Mappers/TSFQuestionnaireMapperSpec.m; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 				526A112618C5CDB100518D1E /* TSFNewQuestionnaireAssessorsViewController.m */,
 				52BE89A318C6117700F6AE04 /* TSFNewQuestionnaireConfirmViewController.h */,
 				52BE89A418C6117700F6AE04 /* TSFNewQuestionnaireConfirmViewController.m */,
+				52F32A0318C65C8A0010D579 /* TSFQuestionnairesNavigationController.h */,
+				52F32A0418C65C8A0010D579 /* TSFQuestionnairesNavigationController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -845,6 +850,7 @@
 				527AF15318B611AB00604A3A /* TSFUserMapper.m in Sources */,
 				526A112418C4F40F00518D1E /* TSFTemplateCell.m in Sources */,
 				E4800B2D1897FD9A00FCE147 /* main.m in Sources */,
+				52F32A0518C65C8A0010D579 /* TSFQuestionnairesNavigationController.m in Sources */,
 				E4C7F922189940A800B0E5F2 /* TSFCompetenceMapper.m in Sources */,
 				E455FF82189905DB00F8C04C /* TSFCompetence.m in Sources */,
 				52E1398218BDF41F0094F941 /* TSFRemindAssessorsCell.m in Sources */,

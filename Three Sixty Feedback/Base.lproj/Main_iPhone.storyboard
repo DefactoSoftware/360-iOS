@@ -916,6 +916,9 @@
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmButtonPressed:" destination="2XP-G6-zGZ" eventType="touchUpInside" id="nw4-Uv-AYq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1336,10 +1339,10 @@
             </objects>
             <point key="canvasLocation" x="2443" y="1821"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Questionnaires Navigation Controller-->
         <scene sceneID="jb5-63-m7P">
             <objects>
-                <navigationController storyboardIdentifier="TSFQuestionnairesViewControllerNavigation" definesPresentationContext="YES" id="oSV-Ig-Tt3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TSFQuestionnairesViewControllerNavigation" definesPresentationContext="YES" id="oSV-Ig-Tt3" customClass="TSFQuestionnairesNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x8N-oa-sr3">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
