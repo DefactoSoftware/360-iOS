@@ -626,6 +626,24 @@
             </objects>
             <point key="canvasLocation" x="3241" y="4735"/>
         </scene>
+        <!--New Questionnaire Confirm View Controller-->
+        <scene sceneID="fUw-jc-QOg">
+            <objects>
+                <viewController storyboardIdentifier="TSFNewQuestionnaireConfirmViewController" id="rk2-MW-QY9" customClass="TSFNewQuestionnaireConfirmViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="58n-ho-XtM"/>
+                        <viewControllerLayoutGuide type="bottom" id="4wW-qe-cOz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qAY-qy-q6k">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Sq-lL-YVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4243" y="4735"/>
+        </scene>
         <!--User Questionnaire Info View Controller - Item 1-->
         <scene sceneID="ch9-r2-jjJ">
             <objects>
