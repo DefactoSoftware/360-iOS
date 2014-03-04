@@ -22,6 +22,26 @@
 	return _sharedService;
 }
 
+- (void)createNewAssessorWithEmail:(NSString *)email
+                forQuestionnaireId:(NSNumber *)questionnaireId
+                       withSuccess:(TSFNetworkingSuccessBlock)success
+                           failure:(TSFNetworkingErrorBlock)failure {
+    NSDictionary *parameters = @{ @"email": email,
+                                  @"questionnaire_id": questionnaireId };
+    
+    __block TSFNetworkingSuccessBlock _success = success;
+    __block TSFNetworkingErrorBlock _failure = failure;
+    
+    [self.apiClient POST:TSFAPIEndPointAssessors
+              parameters:parameters
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     _success(responseObject);
+    }
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    _failure(error);
+    }];
+}
+
 - (void)completeCurrentAssessmentWithSuccess:(TSFNetworkingSuccessBlock)success
                                      failure:(TSFNetworkingErrorBlock)failure {
 	__block TSFNetworkingSuccessBlock _successBlock = success;

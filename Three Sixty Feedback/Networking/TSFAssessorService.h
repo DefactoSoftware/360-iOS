@@ -29,5 +29,9 @@ static NSString *const TSFAPIEndPointReminders = @"reminders";
 - (void)remindAssessorWithId:(NSNumber *)assessorId
                      success:(TSFNetworkingSuccessBlock)success
                      failure:(TSFNetworkingErrorBlock)failure;
+- (void)createNewAssessorWithEmail:(NSString *)email
+                forQuestionnaireId:(NSNumber *)questionnaireId
+                       withSuccess:(TSFNetworkingSuccessBlock)success
+                           failure:(TSFNetworkingErrorBlock)failure;
 
 @end

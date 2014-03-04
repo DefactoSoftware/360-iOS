@@ -29,6 +29,22 @@ describe(@"TSFAssessorService", ^{
         [[_assessorService.apiClient should] beKindOfClass:[TSFAPIClient class]];
 	});
     
+    it(@"calls the API to create a new assessor", ^{
+        NSString *email = [NSString stringWithFormat:@"%d", arc4random()];
+        NSNumber *questionnaireId = @(arc4random());
+        NSDictionary *parameters = @{ @"email": email,
+                                      @"questionnaire_id": questionnaireId };
+    
+        [[_mockAPIClient should] receive:@selector(POST:parameters:success:failure:)
+                           withArguments:TSFAPIEndPointAssessors, parameters, [KWAny any], [KWAny any]];
+        
+        [_assessorService createNewAssessorWithEmail:email
+                                  forQuestionnaireId:questionnaireId
+                                         withSuccess:^(id response) {
+        } failure:^(NSError *error) {
+        }];
+    });
+    
     it(@"calls the API to complete the assessment", ^{
         __block NSString *_fakeToken = [NSString stringWithFormat:@"%d", arc4random()];
         __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@?token=%@",
