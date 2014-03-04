@@ -69,4 +69,24 @@
     }];
 }
 
+- (void)createQuestionnaireWithSubject:(NSString *)subject
+                            templateId:(NSNumber *)templateId
+                               success:(TSFNetworkingSuccessBlock)success
+                               failure:(TSFNetworkingErrorBlock)failure {
+    NSDictionary *parameters = @{ @"subject": subject,
+                                  @"template_id": templateId };
+    
+    __block TSFNetworkingSuccessBlock _successBlock = success;
+    __block TSFNetworkingErrorBlock _failureBlock = failure;
+    
+    [self.apiClient POST:TSFAPIEndPointQuestionnaires
+              parameters:parameters
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     _successBlock(responseObject);
+    }
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     _failureBlock(error);
+    }];
+}
+
 @end

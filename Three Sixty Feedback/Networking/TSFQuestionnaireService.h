@@ -30,5 +30,9 @@ static NSString *const TSFAPIEndPointUserQuestionnaires = @"users/me/questionnai
 - (void)questionnaireWithId:(NSNumber *)questionnaireId
                     success:(TSFNetworkingSuccessBlock)success
                     failure:(TSFNetworkingErrorBlock)failure;
+- (void)createQuestionnaireWithSubject:(NSString *)subject
+                            templateId:(NSNumber *)templateId
+                               success:(TSFNetworkingSuccessBlock)success
+                               failure:(TSFNetworkingErrorBlock)failure;
 
 @end

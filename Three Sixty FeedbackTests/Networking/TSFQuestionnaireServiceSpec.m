@@ -37,6 +37,21 @@ describe(@"TSFQuestionnaireService", ^{
         [[_questionnaireService.questionnaireMapper should] beKindOfClass:[TSFQuestionnaireMapper class]];
 	});
     
+    it(@"calls the API to create a new questionnaire", ^{
+        NSNumber *stubTemplateId = @(arc4random());
+        NSString *stubSubject = [NSString stringWithFormat:@"%d", arc4random()];
+        
+        NSDictionary *parameters = @{ @"template_id": stubTemplateId,
+                                      @"subject": stubSubject };
+        
+        [[_mockAPIClient should] receive:@selector(POST:parameters:success:failure:)
+                           withArguments:TSFAPIEndPointQuestionnaires, parameters, [KWAny any], [KWAny any]];
+        
+        [_questionnaireService createQuestionnaireWithSubject:stubSubject templateId:stubTemplateId success:^(NSDictionary *dictionary) {
+        } failure:^(NSError *error) {
+        }];
+	});
+    
     it(@"calls the API for a list of questionnaires with a token", ^{
         __block NSString *_fakeToken = [NSString stringWithFormat:@"%d", arc4random()];
         __block NSString *_expectedRequestURL = [NSString stringWithFormat:@"%@%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires];
