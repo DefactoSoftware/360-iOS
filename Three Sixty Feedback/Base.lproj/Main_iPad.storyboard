@@ -596,16 +596,16 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="WUj-8r-cYQ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvM-to-zV0" customClass="TSFSecondaryButton">
-                                                    <rect key="frame" x="106" y="17" width="31" height="31"/>
+                                                    <rect key="frame" x="108" y="19" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="31" id="cce-ji-LEl"/>
-                                                        <constraint firstAttribute="width" constant="31" id="jMa-wX-lgt"/>
+                                                        <constraint firstAttribute="height" constant="27" id="cce-ji-LEl"/>
+                                                        <constraint firstAttribute="width" constant="27" id="jMa-wX-lgt"/>
                                                     </constraints>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -618,10 +618,10 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="2Yx-YA-5Gv" secondAttribute="centerY" constant="0.5" id="F47-6a-uVU"/>
-                                                <constraint firstAttribute="centerY" secondItem="tvM-to-zV0" secondAttribute="centerY" id="KcA-48-Fly"/>
-                                                <constraint firstItem="tvM-to-zV0" firstAttribute="leading" secondItem="Ct0-uR-Njq" secondAttribute="leading" constant="106" id="gOC-hh-Y29"/>
+                                                <constraint firstAttribute="centerY" secondItem="tvM-to-zV0" secondAttribute="centerY" constant="-1" id="KcA-48-Fly"/>
+                                                <constraint firstItem="tvM-to-zV0" firstAttribute="leading" secondItem="Ct0-uR-Njq" secondAttribute="leading" constant="108" id="gOC-hh-Y29"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Yx-YA-5Gv" secondAttribute="trailing" constant="106" id="pD8-fe-sTa"/>
-                                                <constraint firstItem="2Yx-YA-5Gv" firstAttribute="leading" secondItem="tvM-to-zV0" secondAttribute="trailing" constant="52" id="s1j-WN-yuf"/>
+                                                <constraint firstItem="2Yx-YA-5Gv" firstAttribute="leading" secondItem="tvM-to-zV0" secondAttribute="trailing" constant="54" id="s1j-WN-yuf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

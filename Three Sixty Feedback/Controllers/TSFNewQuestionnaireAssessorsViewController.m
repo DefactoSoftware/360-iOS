@@ -232,7 +232,6 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     cell.backgroundColor = [UIColor clearColor];
     cell.removeButton.stringTag = assessor;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.removeButton.iconX = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 9.0f : 7.0f;
     
     return cell;
 }
