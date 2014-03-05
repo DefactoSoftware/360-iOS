@@ -9,10 +9,10 @@
 #import "TSFNewQuestionnaireConfirmViewController.h"
 #import "TSFQuestionnairesViewController.h"
 #import "TSFQuestionnairesNavigationController.h"
-#import "TSFAppDelegate.h"
 #import "CRToast.h"
 #import "UIColor+TSFColor.h"
 #import "TSFGenerics.h"
+#import "RESideMenu.h"
 
 static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQuestionnairesViewControllerNavigation";
 
@@ -48,10 +48,9 @@ static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQu
 
 - (void)checkInvitationCompleted {
     if (self.invitedAssessorsCount == [self.assessors count]) {
-        TSFAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         TSFQuestionnairesNavigationController *questionnairesNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:TSFQuestionnairesNavigationControllerIdentifier];
         questionnairesNavigationController.showAddedNotification = YES;
-        delegate.window.rootViewController = questionnairesNavigationController;
+        [self.sideMenuViewController setContentViewController:questionnairesNavigationController];
     }
 }
 
