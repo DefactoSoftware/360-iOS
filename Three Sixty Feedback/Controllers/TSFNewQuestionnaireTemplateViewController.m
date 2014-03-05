@@ -56,6 +56,8 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
     self.templatesTableView.delegate = self;
     
     self.templatesTableView.separatorInset = UIEdgeInsetsMake(0, 15.0f, 0, 15.0f);
+    
+    self.navigationItem.title = TSFLocalizedString(@"TSFNewQuestionnaireTemplateViewControllerTitle", @"Choose questions");
 }
 
 - (void)fetchTemplates {

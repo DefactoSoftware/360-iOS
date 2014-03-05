@@ -47,6 +47,7 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     self.navigationItem.title = TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerTitle", @"Invite assessors");
     self.addAssessorTitleLabel.text = TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerTitle", @"Add the email addresses of assessors you would like to invite to this feedback evaluation.");
     
     self.assessorsTableView.delegate = self;

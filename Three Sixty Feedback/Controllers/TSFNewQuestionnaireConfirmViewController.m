@@ -95,6 +95,9 @@ static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQu
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerTitle", @"Create feedback evaluation");
+    
     NSString *subjectLabelFormat = TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerSubjectFormat", @"The subject of the matter will be %@.");
     NSString *templateLabelFormat = TSFLocalizedString(@"TSFNewQuestionnaireViewControllerTemplateFormat", @"You have chosen the questionnaire %@ for this evaluation");
     NSString *assessorsLabelFormat = TSFLocalizedString(@"TSFNewQuestionnaireViewControllerAssessorsLabelFormat", @"The invitations will be sent to: %@.");

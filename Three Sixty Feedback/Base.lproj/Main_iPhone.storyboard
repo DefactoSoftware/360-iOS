@@ -755,7 +755,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="av5-AE-O05">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="av5-AE-O05">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -855,6 +855,9 @@
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="removeButtonPressed:" destination="N0V-j6-I1R" eventType="touchUpInside" id="BSk-4M-rOo"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -874,6 +877,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="av5-AE-O05" secondAttribute="trailing" id="FjQ-Ck-CSb"/>
+                            <constraint firstAttribute="bottom" secondItem="av5-AE-O05" secondAttribute="bottom" id="nep-4x-Wrd"/>
+                            <constraint firstItem="av5-AE-O05" firstAttribute="leading" secondItem="cgf-W2-af8" secondAttribute="leading" id="onf-QW-J88"/>
+                            <constraint firstItem="av5-AE-O05" firstAttribute="top" secondItem="cgf-W2-af8" secondAttribute="top" id="uje-E5-s2K"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sGO-tR-y2y"/>
                     <connections>
