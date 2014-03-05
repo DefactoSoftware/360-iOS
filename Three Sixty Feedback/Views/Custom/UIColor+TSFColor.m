@@ -54,4 +54,8 @@
     return [UIColor colorWithRed:207.0f/255 green:75.0f/255 blue:61.0f/255 alpha:1];
 }
 
++ (UIColor *)TSFSecondaryButtonColor {
+    return [UIColor colorWithRed:74.0f/255 green:74.0f/255 blue:74.0f/255 alpha:1];
+}
+
 @end

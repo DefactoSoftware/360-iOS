@@ -15,8 +15,10 @@
 @property (nonatomic, strong) NSString *subject;
 @property (nonatomic, strong) TSFTemplateService *templateService;
 @property (weak, nonatomic) IBOutlet UITableView *templatesTableView;
+@property (weak, nonatomic) IBOutlet TSFButton *nextButton;
 
 - (BOOL)validate;
 - (IBAction)showTemplateButtonPressed:(TSFButton *)sender;
+- (IBAction)goToNextStep:(id)sender;
 
 @end

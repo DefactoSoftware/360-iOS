@@ -65,6 +65,7 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     
     [self.importButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerImport", @"Import")
                        forState:UIControlStateNormal];
+    [self.importButton setIconImage:[UIImage imageNamed:@"contacts"]];
     
     [self addResignGestureRecognizer];
     [self updateHeaderViewHeight];
@@ -119,6 +120,9 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
 
 - (IBAction)showAddressPicker:(id)sender {
     ABPeoplePickerNavigationController *peoplePickerController = [[ABPeoplePickerNavigationController alloc] init];
+    peoplePickerController.navigationBar.barTintColor = [UIColor TSFBlueColor];
+    peoplePickerController.navigationBar.tintColor = [UIColor whiteColor];
+    peoplePickerController.navigationBar.titleTextAttributes =  @{ NSForegroundColorAttributeName : [UIColor whiteColor] };
     peoplePickerController.peoplePickerDelegate = self;
     peoplePickerController.displayedProperties = @[@(kABPersonEmailProperty)];
     [self presentViewController:peoplePickerController

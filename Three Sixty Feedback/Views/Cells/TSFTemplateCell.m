@@ -8,6 +8,7 @@
 
 #import "TSFTemplateCell.h"
 #import "TSFGenerics.h"
+#import "UIColor+TSFColor.h"
 
 @implementation TSFTemplateCell
 
@@ -15,7 +16,9 @@
     [super layoutSubviews];
     NSString *templateTitle = TSFLocalizedString(@"TSFTemplateCellShowTemplate", @"Preview questions");
     [self.showTemplateButton setTitle:templateTitle forState:UIControlStateNormal];
-    [self.showTemplateButton setIconImage:[UIImage imageNamed:@"questionnaire"]];
+    [self.showTemplateButton setIconImage:[UIImage imageNamed:@"clipboard"]];
+    
+    self.backgroundColor = [UIColor TSFBeigeColor];
 }
 
 @end

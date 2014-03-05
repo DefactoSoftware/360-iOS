@@ -51,6 +51,7 @@
 		529F268E18BBA0310088D0D2 /* TSFMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F268D18BBA0310088D0D2 /* TSFMenuCell.m */; };
 		52ABC61718C730AE0025408E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52ABC61618C730AE0025408E /* AddressBook.framework */; };
 		52ABC61918C730B40025408E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52ABC61818C730B40025408E /* AddressBookUI.framework */; };
+		52ABC61C18C75C0C0025408E /* TSFSecondaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABC61B18C75C0C0025408E /* TSFSecondaryButton.m */; };
 		52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */; };
 		52ACE46E189EDC040095F650 /* TSFFinishQuestionnaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE46D189EDC040095F650 /* TSFFinishQuestionnaireViewController.m */; };
 		52B5322918BFBBC200A1C204 /* TSFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B5322818BFBBC200A1C204 /* TSFButton.m */; };
@@ -196,6 +197,8 @@
 		529F268D18BBA0310088D0D2 /* TSFMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFMenuCell.m; path = Views/Cells/TSFMenuCell.m; sourceTree = "<group>"; };
 		52ABC61618C730AE0025408E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		52ABC61818C730B40025408E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		52ABC61A18C75C0C0025408E /* TSFSecondaryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFSecondaryButton.h; path = Views/Custom/TSFSecondaryButton.h; sourceTree = "<group>"; };
+		52ABC61B18C75C0C0025408E /* TSFSecondaryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFSecondaryButton.m; path = Views/Custom/TSFSecondaryButton.m; sourceTree = "<group>"; };
 		52ACE466189EC07C0095F650 /* TSFQuestionnaireIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnaireIntroViewController.h; path = Controllers/TSFQuestionnaireIntroViewController.h; sourceTree = "<group>"; };
 		52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireIntroViewController.m; path = Controllers/TSFQuestionnaireIntroViewController.m; sourceTree = "<group>"; };
 		52ACE46C189EDC040095F650 /* TSFFinishQuestionnaireViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFFinishQuestionnaireViewController.h; path = Controllers/TSFFinishQuestionnaireViewController.h; sourceTree = "<group>"; };
@@ -445,6 +448,8 @@
 				52B5322818BFBBC200A1C204 /* TSFButton.m */,
 				52BCA9A718C0ACBB00F78038 /* NSString+Hashtel.h */,
 				52BCA9A818C0ACBB00F78038 /* NSString+Hashtel.m */,
+				52ABC61A18C75C0C0025408E /* TSFSecondaryButton.h */,
+				52ABC61B18C75C0C0025408E /* TSFSecondaryButton.m */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -887,6 +892,7 @@
 				52ECB6EB189FF403007C7636 /* TSFBaseViewController.m in Sources */,
 				529702EE18C4DEC400B6BA8A /* TSFTemplateMapper.m in Sources */,
 				52ECB6F718A0E511007C7636 /* TSFQuestionnaireViewController.m in Sources */,
+				52ABC61C18C75C0C0025408E /* TSFSecondaryButton.m in Sources */,
 				E4405874189A83BC001AEE13 /* TSFCompetenceViewController.m in Sources */,
 				E4C7F9171899376100B0E5F2 /* TSFKeyBehaviourMapper.m in Sources */,
 				E4C7F91F18993E5400B0E5F2 /* TSFQuestionMapper.m in Sources */,

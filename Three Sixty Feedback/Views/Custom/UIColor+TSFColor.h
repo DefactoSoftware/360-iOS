@@ -21,5 +21,6 @@
 + (UIColor *)TSFLightGreyTextColor;
 + (UIColor *)TSFAssessorsTableViewBackgroundColor;
 + (UIColor *)TSFErrorColor;
++ (UIColor *)TSFSecondaryButtonColor;
 
 @end

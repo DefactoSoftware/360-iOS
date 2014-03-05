@@ -29,6 +29,10 @@ describe(@"TSFNewQuestionnaireTemplateViewController", ^{
         it(@"has an outlet for the templates tableview", ^{
             [[_newQuestionnaireTemplateViewController.templatesTableView shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the next button", ^{
+            [[_newQuestionnaireTemplateViewController.nextButton shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -47,6 +51,10 @@ describe(@"TSFNewQuestionnaireTemplateViewController", ^{
         
         it(@"has an outlet for the templates tableview", ^{
             [[_newQuestionnaireTemplateViewController.templatesTableView shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the next button", ^{
+            [[_newQuestionnaireTemplateViewController.nextButton shouldNot] beNil];
         });
     });
     

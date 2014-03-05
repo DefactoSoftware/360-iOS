@@ -21,7 +21,6 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
 @interface TSFNewQuestionnaireTemplateViewController()
 @property (nonatomic, strong) NSArray *templates;
 @property (nonatomic, assign) TSFTemplate *previewTemplate;
-@property (nonatomic, strong) TSFTemplate *selectedTemplate;
 @end
 
 @implementation TSFNewQuestionnaireTemplateViewController
@@ -58,6 +57,10 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
     self.templatesTableView.separatorInset = UIEdgeInsetsMake(0, 15.0f, 0, 15.0f);
     
     self.navigationItem.title = TSFLocalizedString(@"TSFNewQuestionnaireTemplateViewControllerTitle", @"Choose questions");
+    
+    [self.nextButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireTeplateViewControllerNext", @"Invite assessors")
+                     forState:UIControlStateNormal];
+    [self.nextButton setIconImage:[UIImage imageNamed:@"forward"]];
 }
 
 - (void)fetchTemplates {
@@ -85,6 +88,19 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
                               sender:self];
 }
 
+- (IBAction)goToNextStep:(id)sender {
+    if ([self.templatesTableView indexPathForSelectedRow]) {
+        [self performSegueWithIdentifier:TSFNewQuestionnaireAssessorsSegue
+                                  sender:self];
+    } else {
+        NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFNewQuestionnaireTemplateViewControllerNoSelectedError", @"Please choose a question template"),
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                  kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
+        [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
+
+    }
+}
+
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
@@ -95,7 +111,8 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
     } else if ([segue.identifier isEqualToString:TSFNewQuestionnaireAssessorsSegue]) {
         TSFNewQuestionnaireAssessorsViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.subject = self.subject;
-        destinationViewController.questionnaireTemplate = self.selectedTemplate;
+        NSIndexPath *selectedIndexPath = [self.templatesTableView indexPathForSelectedRow];
+        destinationViewController.questionnaireTemplate = self.templates[selectedIndexPath.row];
     }
 }
 
@@ -116,9 +133,12 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
     TSFTemplate *template = self.templates[indexPath.row];
     templateCell.titleLabel.text = template.title;
     templateCell.descriptionLabel.text = template.templateDescription;
-    templateCell.backgroundColor = [UIColor TSFBeigeColor];
     templateCell.showTemplateButton.tag = indexPath.row;
-    templateCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIView *selectedView = [[UIView alloc] initWithFrame:templateCell.frame];
+    selectedView.backgroundColor = [UIColor TSFLightBlueColor];
+    templateCell.selectedBackgroundView = selectedView;
+    
     return templateCell;
 }
 
@@ -159,12 +179,6 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01f;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedTemplate = self.templates[indexPath.row];
-    [self performSegueWithIdentifier:TSFNewQuestionnaireAssessorsSegue
-                              sender:self];
 }
 
 @end

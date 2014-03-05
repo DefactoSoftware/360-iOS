@@ -12,6 +12,9 @@
 
 @implementation TSFButton
 
+static CGFloat const TSFButtonIconSize = 13.0f;
+static CGFloat const TSFButtonIconX = 10.0f;
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -29,7 +32,10 @@
 }
 
 - (void)sharedSetup {
-    self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.0f, 8.5f, 13.0f, 13.0f)];
+    self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(TSFButtonIconX,
+                                                                       (self.frame.size.height - TSFButtonIconSize) / 2,
+                                                                       TSFButtonIconSize,
+                                                                       TSFButtonIconSize)];
     [self addSubview:self.iconImageView];
 }
 
@@ -44,8 +50,6 @@
     self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.font = [UIFont systemFontOfSize:11.0f];
     self.titleEdgeInsets = UIEdgeInsetsMake(0.0f, 15.0f, 0.0f, 15.0f);
-    
-    
 }
 
 @end
