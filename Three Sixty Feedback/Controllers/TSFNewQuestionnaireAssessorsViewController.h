@@ -11,7 +11,7 @@
 #import "TSFTemplate.h"
 #import "TSFButton.h"
 
-@interface TSFNewQuestionnaireAssessorsViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TSFNewQuestionnaireAssessorsViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
 @property (nonatomic, strong) NSString *subject;

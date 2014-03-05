@@ -781,7 +781,7 @@
                                                 <constraint firstAttribute="height" constant="30" id="0xf-6K-PgH"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVn-l1-tmf" customClass="TSFButton">
                                             <rect key="frame" x="20" y="87" width="118" height="30"/>

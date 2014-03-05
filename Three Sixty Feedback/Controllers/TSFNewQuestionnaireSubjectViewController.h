@@ -10,7 +10,7 @@
 #import "TSFNewQuestionnaireTemplateViewController.h"
 #import "TSFButton.h"
 
-@interface TSFNewQuestionnaireSubjectViewController : TSFBaseViewController
+@interface TSFNewQuestionnaireSubjectViewController : TSFBaseViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet UITextField *subjectTextField;

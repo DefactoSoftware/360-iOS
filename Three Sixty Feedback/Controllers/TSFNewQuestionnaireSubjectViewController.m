@@ -21,6 +21,8 @@ static NSString *const TSFNewQuestionnaireTemplateSegue = @"TSFNewQuestionnaireT
     self.subjectLabel.text = TSFLocalizedString(@"TSFNewQuestionnaireSubjectViewControllerLabel", @"What is the subject of this feedback evaluation?");
     self.subjectLabel.textColor = [UIColor TSFLightGreyTextColor];
     
+    self.subjectTextField.delegate = self;
+    
     [self.nextButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireTemplateViewControllerNext", @"Choose questions")
                      forState:UIControlStateNormal];
     [self.nextButton setIconImage:[UIImage imageNamed:@"forward"]];
@@ -48,6 +50,14 @@ static NSString *const TSFNewQuestionnaireTemplateSegue = @"TSFNewQuestionnaireT
                  sender:(id)sender {
     TSFNewQuestionnaireTemplateViewController *destionationViewController = (TSFNewQuestionnaireTemplateViewController *)segue.destinationViewController;
     destionationViewController.subject = self.subjectTextField.text;
+}
+
+#pragma mark - UITextField
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [self nextButtonPressed:nil];
+    return YES;
 }
 
 @end

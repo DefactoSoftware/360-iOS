@@ -52,6 +52,7 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     
     self.assessorsTableView.delegate = self;
     self.assessorsTableView.dataSource = self;
+    self.addAssessorTextField.delegate = self;
     
     NSString *addTitle = TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerAddButton", @"Add assessor");
     [self.addButton setTitle:addTitle
@@ -135,6 +136,14 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     CGRect headerViewFrame = self.headerView.frame;
     headerViewFrame.size.height = headerViewHeight;
     self.headerView.frame = headerViewFrame;
+}
+
+#pragma mark - UITextField
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [self addButtonPressed:nil];
+    return YES;
 }
 
 #pragma mark - Segue
