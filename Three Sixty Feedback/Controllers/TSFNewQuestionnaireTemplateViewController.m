@@ -135,7 +135,17 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
     templateCell.descriptionLabel.text = template.templateDescription;
     templateCell.showTemplateButton.tag = indexPath.row;
     
+    CGFloat tableRowHeight = [self tableView:tableView
+                     heightForRowAtIndexPath:indexPath];
     UIView *selectedView = [[UIView alloc] initWithFrame:templateCell.frame];
+    
+    CGRect padRect = CGRectMake(20.0f, (tableRowHeight / 2) - 10.0f, 20.0f, 20.0f);
+    CGRect phoneRect = CGRectMake(self.view.frame.size.width - 40.0f, 20.0f, 20.0f, 20.0f);
+    CGRect rect = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? padRect : phoneRect;
+    
+    UIImageView *checkMarkImage = [[UIImageView alloc] initWithFrame:rect];
+    checkMarkImage.image = [UIImage imageNamed:@"checkmark-dark"];
+    [selectedView addSubview:checkMarkImage];
     selectedView.backgroundColor = [UIColor TSFLightBlueColor];
     templateCell.selectedBackgroundView = selectedView;
     
@@ -148,7 +158,7 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
     CGFloat buttonHeight;
     CGFloat textWidth;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        textWidth = 567.0f;
+        textWidth = 515.0f;
         titleFontSize  = 17.0f;
         descriptionFontSize = 14.0f;
         buttonHeight = 0.0f;
