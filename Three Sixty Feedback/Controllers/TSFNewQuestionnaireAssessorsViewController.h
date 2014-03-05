@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *addAssessorTextField;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet TSFButton *addButton;
+@property (weak, nonatomic) IBOutlet TSFButton *nextButton;
 
 - (IBAction)addButtonPressed:(id)sender;
 - (IBAction)removeButtonPressed:(id)sender;

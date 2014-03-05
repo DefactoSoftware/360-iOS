@@ -106,6 +106,7 @@ static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQu
     
     [self.createButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerCreate", @"Create feedback evaluation")
                        forState:UIControlStateNormal];
+    [self.createButton setIconImage:[UIImage imageNamed:@"checkmark"]];
     
     NSMutableAttributedString *subjectAttributed = [[NSMutableAttributedString alloc] initWithString:subject];
     NSMutableAttributedString *templateAttributed = [[NSMutableAttributedString alloc] initWithString:template];

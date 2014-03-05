@@ -56,7 +56,7 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     [self.showTemplateButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerShowTemplate", @"Questions")
                              forState:UIControlStateNormal];
     [self.remindAssessorsButton setIconImage:[UIImage imageNamed:@"time"]];
-    [self.showTemplateButton setIconImage:[UIImage imageNamed:@"clipboard"]];
+    [self.showTemplateButton setIconImage:[UIImage imageNamed:@"questionnaire"]];
     
     self.assessorsTableView.separatorInset = UIEdgeInsetsMake(0, 20.0f, 0, 20.0f);
 

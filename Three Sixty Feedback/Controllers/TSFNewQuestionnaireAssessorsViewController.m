@@ -60,6 +60,10 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     
     self.assessorsTableView.separatorInset = UIEdgeInsetsMake(0.0f, TSFNewAssessorsTableViewHorizontalInset, 0.0f, TSFNewAssessorsTableViewHorizontalInset);
     
+    [self.nextButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerNext", @"Check information")
+                     forState:UIControlStateNormal];
+    [self.nextButton setIconImage:[UIImage imageNamed:@"forward"]];
+    
     [self addResignGestureRecognizer];
     [self updateHeaderViewHeight];
 }

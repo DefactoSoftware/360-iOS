@@ -45,6 +45,10 @@ describe(@"TSFNewQuestionnaireAssessorsViewController", ^{
         it(@"has an outlet for the header view", ^{
             [[_newQuestionnaireAssessorsViewController.headerView shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the next button", ^{
+            [[_newQuestionnaireAssessorsViewController.nextButton shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -79,6 +83,10 @@ describe(@"TSFNewQuestionnaireAssessorsViewController", ^{
         
         it(@"has an outlet for the header view", ^{
             [[_newQuestionnaireAssessorsViewController.headerView shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the next button", ^{
+            [[_newQuestionnaireAssessorsViewController.nextButton shouldNot] beNil];
         });
     });
 });

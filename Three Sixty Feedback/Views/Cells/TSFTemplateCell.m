@@ -15,7 +15,7 @@
     [super layoutSubviews];
     NSString *templateTitle = TSFLocalizedString(@"TSFTemplateCellShowTemplate", @"Preview questions");
     [self.showTemplateButton setTitle:templateTitle forState:UIControlStateNormal];
-    [self.showTemplateButton setIconImage:[UIImage imageNamed:@"clipboard"]];
+    [self.showTemplateButton setIconImage:[UIImage imageNamed:@"questionnaire"]];
 }
 
 @end

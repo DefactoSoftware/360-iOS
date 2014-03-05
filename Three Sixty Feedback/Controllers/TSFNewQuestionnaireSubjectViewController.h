@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet UITextField *subjectTextField;
+@property (weak, nonatomic) IBOutlet TSFButton *nextButton;
 
 - (BOOL)validate;
 - (IBAction)nextButtonPressed:(id)sender;

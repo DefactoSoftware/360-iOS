@@ -29,7 +29,7 @@
 }
 
 - (void)sharedSetup {
-    self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.0f, 7.0f, 15.0f, 15.0f)];
+    self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.0f, 8.5f, 13.0f, 13.0f)];
     [self addSubview:self.iconImageView];
 }
 

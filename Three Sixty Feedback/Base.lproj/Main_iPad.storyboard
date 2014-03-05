@@ -357,25 +357,36 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i88-K0-kCA" customClass="TSFButton">
+                                <rect key="frame" x="475" y="237" width="139" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QLC-YU-HEg"/>
+                                    <constraint firstAttribute="width" constant="139" id="U2q-qR-tH3"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="gwC-b3-XIQ" eventType="touchUpInside" id="Seb-VN-fys"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="i88-K0-kCA" firstAttribute="trailing" secondItem="Vl4-gq-TK1" secondAttribute="trailing" id="H7I-U0-R2h"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="leading" secondItem="jKL-xY-Lfy" secondAttribute="leading" constant="154" id="Z3d-Mi-YOr"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="leading" secondItem="Vl4-gq-TK1" secondAttribute="leading" id="Zau-bt-bjF"/>
                             <constraint firstItem="Vl4-gq-TK1" firstAttribute="top" secondItem="4EA-k3-wcm" secondAttribute="bottom" constant="8" symbolic="YES" id="fxi-9v-E8P"/>
+                            <constraint firstItem="i88-K0-kCA" firstAttribute="top" secondItem="Vl4-gq-TK1" secondAttribute="bottom" constant="8" id="k1R-hE-9Cf"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="top" secondItem="WGZ-vC-jqK" secondAttribute="bottom" constant="106" id="nVB-ch-ZMW"/>
                             <constraint firstItem="4EA-k3-wcm" firstAttribute="trailing" secondItem="Vl4-gq-TK1" secondAttribute="trailing" id="v8K-sg-SNv"/>
                             <constraint firstAttribute="trailing" secondItem="4EA-k3-wcm" secondAttribute="trailing" constant="154" id="xE1-yd-jXi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4PW-E6-xC2">
-                        <barButtonItem key="rightBarButtonItem" image="forward" id="JBb-t4-oHb">
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="gwC-b3-XIQ" id="RTc-ns-Fzj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="4PW-E6-xC2"/>
                     <connections>
+                        <outlet property="nextButton" destination="i88-K0-kCA" id="YLl-qH-iWC"/>
                         <outlet property="subjectLabel" destination="4EA-k3-wcm" id="GuE-Gq-yxV"/>
                         <outlet property="subjectTextField" destination="Vl4-gq-TK1" id="173-4z-Fpc"/>
                         <segue destination="4In-93-j3T" kind="push" identifier="TSFNewQuestionnaireTemplateSegue" id="5AD-NM-JKh"/>
@@ -402,13 +413,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="8pD-tk-pjr">
-                                    <rect key="frame" x="0.0" y="64" width="768" height="106"/>
+                                    <rect key="frame" x="0.0" y="64" width="768" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TSFTemplateCell" rowHeight="120" id="DQa-aM-PDP" customClass="TSFTemplateCell">
-                                        <rect key="frame" x="0.0" y="192" width="768" height="120"/>
+                                        <rect key="frame" x="0.0" y="116" width="768" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DQa-aM-PDP" id="acB-Jq-29C">
                                             <rect key="frame" x="0.0" y="0.0" width="735" height="119"/>
@@ -540,13 +551,29 @@
                                                 <action selector="addButtonPressed:" destination="Ibe-ze-VSu" eventType="touchUpInside" id="ip0-90-xk5"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgc-C0-NeY" customClass="TSFButton">
+                                            <rect key="frame" x="315" y="173" width="138" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="138" id="jwX-TR-UEH"/>
+                                                <constraint firstAttribute="height" constant="30" id="l2Q-xt-gvy"/>
+                                            </constraints>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="nextButtonPressed:" destination="Ibe-ze-VSu" eventType="touchUpInside" id="vyA-Fa-vi3"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="Bi2-yM-5Qu" firstAttribute="centerX" secondItem="F5t-o8-DAb" secondAttribute="centerX" constant="-68" id="0Bv-Km-ULG"/>
+                                        <constraint firstAttribute="centerX" secondItem="lgc-C0-NeY" secondAttribute="centerX" id="1Mt-cM-5cr"/>
                                         <constraint firstItem="eyV-D2-oqr" firstAttribute="width" secondItem="Bi2-yM-5Qu" secondAttribute="width" constant="136" id="26e-c9-7ky"/>
                                         <constraint firstItem="gFT-I5-Fbx" firstAttribute="top" secondItem="eyV-D2-oqr" secondAttribute="bottom" constant="8" id="Fiw-iQ-33K"/>
                                         <constraint firstItem="Bi2-yM-5Qu" firstAttribute="top" secondItem="eyV-D2-oqr" secondAttribute="bottom" constant="8" symbolic="YES" id="HQL-Be-cxr"/>
+                                        <constraint firstItem="lgc-C0-NeY" firstAttribute="top" secondItem="gFT-I5-Fbx" secondAttribute="bottom" constant="8" id="Icl-gq-Aam"/>
                                         <constraint firstAttribute="trailing" secondItem="eyV-D2-oqr" secondAttribute="trailing" constant="106" id="Kux-ee-jop"/>
                                         <constraint firstItem="eyV-D2-oqr" firstAttribute="leading" secondItem="F5t-o8-DAb" secondAttribute="leading" constant="106" id="Mrh-gZ-xjK"/>
                                         <constraint firstItem="gFT-I5-Fbx" firstAttribute="leading" secondItem="Bi2-yM-5Qu" secondAttribute="trailing" constant="8" id="szi-X8-uKq"/>
@@ -613,19 +640,14 @@
                             <constraint firstAttribute="bottom" secondItem="OW4-NN-V3h" secondAttribute="bottom" id="pOO-YI-2ZI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="EqY-X2-emV">
-                        <barButtonItem key="rightBarButtonItem" image="forward" id="asX-OM-aGY">
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="Ibe-ze-VSu" id="FH6-ub-zwW"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="EqY-X2-emV"/>
                     <connections>
                         <outlet property="addAssessorTextField" destination="Bi2-yM-5Qu" id="nll-j8-C4G"/>
                         <outlet property="addAssessorTitleLabel" destination="eyV-D2-oqr" id="kM3-fP-3ch"/>
                         <outlet property="addButton" destination="gFT-I5-Fbx" id="qcG-QR-fbA"/>
                         <outlet property="assessorsTableView" destination="OW4-NN-V3h" id="jge-Qr-AsS"/>
                         <outlet property="headerView" destination="F5t-o8-DAb" id="cVF-ln-ept"/>
+                        <outlet property="nextButton" destination="lgc-C0-NeY" id="zbZ-hm-lec"/>
                         <segue destination="rk2-MW-QY9" kind="push" identifier="TSFNewQuestionnaireConfirmSegue" id="OP3-t9-QKT"/>
                     </connections>
                 </viewController>
@@ -672,11 +694,12 @@
                                 <attributedString key="attributedText"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEk-ue-zS6" customClass="TSFButton">
-                                <rect key="frame" x="294" y="274" width="181" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEk-ue-zS6" customClass="TSFButton">
+                                <rect key="frame" x="293" y="274" width="183" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="181" id="X8H-ua-hjw"/>
+                                    <constraint firstAttribute="height" constant="30" id="GgL-YT-Vpw"/>
+                                    <constraint firstAttribute="width" constant="183" id="X8H-ua-hjw"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -686,7 +709,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bWm-5F-X4C" secondAttribute="trailing" constant="105" id="6gZ-aj-Q0M"/>
                             <constraint firstAttribute="centerX" secondItem="dEk-ue-zS6" secondAttribute="centerX" constant="-0.5" id="8vK-TG-S46"/>
@@ -1511,7 +1534,6 @@
     </scenes>
     <resources>
         <image name="assessor" width="128" height="128"/>
-        <image name="forward" width="32" height="32"/>
         <image name="menu" width="24" height="24"/>
         <image name="pointer" width="4" height="15"/>
     </resources>
