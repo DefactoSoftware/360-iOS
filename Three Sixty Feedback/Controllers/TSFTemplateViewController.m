@@ -7,6 +7,7 @@
 //
 
 #import "TSFTemplateViewController.h"
+#import "TSFTemplateNavigationController.h"
 #import "TSFGenerics.h"
 #import "UIColor+TSFColor.h"
 
@@ -22,12 +23,14 @@ static NSString *const TSFTemplateCompetenceCellIdentifier = @"TSFTemplateCompet
     self.templateTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.templateTableView.backgroundColor = [UIColor TSFBeigeColor];
     
-    NSString *closeButtonTitle = TSFLocalizedString(@"TSFTemplateViewControllerCloseButton", @"Close");
-    [self.closeButton setTitle:closeButtonTitle forState:UIControlStateNormal];
+    self.questionnaireTemplate = ((TSFTemplateNavigationController *)self.navigationController).questionnaireTemplate;
     
-    NSString *headerFormat = TSFLocalizedString(@"TSFTemplateViewControllerHeaderFormat", @"%@ questions");
-    self.headerLabel.text = [NSString stringWithFormat:headerFormat, self.questionnaireTemplate.title];
-    self.headerLabel.textColor = [UIColor TSFLightGreyTextColor];
+    self.navigationItem.title = self.questionnaireTemplate.title;
+    
+    NSString *closeButtonTitle = TSFLocalizedString(@"TSFTemplateViewControllerCloseButton", @"Close");
+    self.closeButton.title = closeButtonTitle;
+    
+    self.navigationItem.title = self.questionnaireTemplate.title;
 }
 
 #pragma mark - UITableView

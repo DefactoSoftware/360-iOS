@@ -12,10 +12,8 @@
 
 @interface TSFTemplateViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet TSFButton *closeButton;
-@property (nonatomic, strong) TSFTemplate *questionnaireTemplate;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
 @property (weak, nonatomic) IBOutlet UITableView *templateTableView;
-@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
-@property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
+@property (nonatomic, strong) TSFTemplate *questionnaireTemplate;
 
 @end

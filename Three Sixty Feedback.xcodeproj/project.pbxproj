@@ -52,6 +52,7 @@
 		52ABC61718C730AE0025408E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52ABC61618C730AE0025408E /* AddressBook.framework */; };
 		52ABC61918C730B40025408E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52ABC61818C730B40025408E /* AddressBookUI.framework */; };
 		52ABC61C18C75C0C0025408E /* TSFSecondaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABC61B18C75C0C0025408E /* TSFSecondaryButton.m */; };
+		52ABC61F18C7967A0025408E /* TSFTemplateNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABC61E18C7967A0025408E /* TSFTemplateNavigationController.m */; };
 		52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */; };
 		52ACE46E189EDC040095F650 /* TSFFinishQuestionnaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ACE46D189EDC040095F650 /* TSFFinishQuestionnaireViewController.m */; };
 		52B5322918BFBBC200A1C204 /* TSFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B5322818BFBBC200A1C204 /* TSFButton.m */; };
@@ -199,6 +200,8 @@
 		52ABC61818C730B40025408E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		52ABC61A18C75C0C0025408E /* TSFSecondaryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFSecondaryButton.h; path = Views/Custom/TSFSecondaryButton.h; sourceTree = "<group>"; };
 		52ABC61B18C75C0C0025408E /* TSFSecondaryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFSecondaryButton.m; path = Views/Custom/TSFSecondaryButton.m; sourceTree = "<group>"; };
+		52ABC61D18C7967A0025408E /* TSFTemplateNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFTemplateNavigationController.h; path = Controllers/TSFTemplateNavigationController.h; sourceTree = "<group>"; };
+		52ABC61E18C7967A0025408E /* TSFTemplateNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFTemplateNavigationController.m; path = Controllers/TSFTemplateNavigationController.m; sourceTree = "<group>"; };
 		52ACE466189EC07C0095F650 /* TSFQuestionnaireIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnaireIntroViewController.h; path = Controllers/TSFQuestionnaireIntroViewController.h; sourceTree = "<group>"; };
 		52ACE467189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireIntroViewController.m; path = Controllers/TSFQuestionnaireIntroViewController.m; sourceTree = "<group>"; };
 		52ACE46C189EDC040095F650 /* TSFFinishQuestionnaireViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFFinishQuestionnaireViewController.h; path = Controllers/TSFFinishQuestionnaireViewController.h; sourceTree = "<group>"; };
@@ -378,6 +381,8 @@
 				52BE89A418C6117700F6AE04 /* TSFNewQuestionnaireConfirmViewController.m */,
 				52F32A0318C65C8A0010D579 /* TSFQuestionnairesNavigationController.h */,
 				52F32A0418C65C8A0010D579 /* TSFQuestionnairesNavigationController.m */,
+				52ABC61D18C7967A0025408E /* TSFTemplateNavigationController.h */,
+				52ABC61E18C7967A0025408E /* TSFTemplateNavigationController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -897,6 +902,7 @@
 				E4C7F9171899376100B0E5F2 /* TSFKeyBehaviourMapper.m in Sources */,
 				E4C7F91F18993E5400B0E5F2 /* TSFQuestionMapper.m in Sources */,
 				E429DD4E189807B300BAFEC4 /* TSFAPIClient.m in Sources */,
+				52ABC61F18C7967A0025408E /* TSFTemplateNavigationController.m in Sources */,
 				522DB4AB189FB6BA002EE50D /* TSFHomeViewController.m in Sources */,
 				52B5322918BFBBC200A1C204 /* TSFButton.m in Sources */,
 			);

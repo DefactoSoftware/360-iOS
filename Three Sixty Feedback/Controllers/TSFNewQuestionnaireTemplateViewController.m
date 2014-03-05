@@ -8,7 +8,7 @@
 
 #import "TSFNewQuestionnaireTemplateViewController.h"
 #import "TSFNewQuestionnaireAssessorsViewController.h"
-#import "TSFTemplateViewController.h"
+#import "TSFTemplateNavigationController.h"
 #import "CRToast.h"
 #import "UIColor+TSFColor.h"
 #import "TSFGenerics.h"
@@ -106,7 +106,7 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:TSFNewTemplateModalSegue]) {
-        TSFTemplateViewController *destinationViewController = segue.destinationViewController;
+        TSFTemplateNavigationController *destinationViewController = segue.destinationViewController;
         destinationViewController.questionnaireTemplate = self.previewTemplate;
     } else if ([segue.identifier isEqualToString:TSFNewQuestionnaireAssessorsSegue]) {
         TSFNewQuestionnaireAssessorsViewController *destinationViewController = segue.destinationViewController;

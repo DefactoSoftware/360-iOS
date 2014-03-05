@@ -505,13 +505,29 @@
                     <connections>
                         <outlet property="nextButton" destination="O7o-RV-Gcg" id="Tal-a6-Ye1"/>
                         <outlet property="templatesTableView" destination="P9Y-an-cs6" id="YL3-Ha-OUi"/>
-                        <segue destination="31w-hE-xae" kind="modal" identifier="TSFNewTemplateModalSegue" id="pdj-Wl-mez"/>
                         <segue destination="Ibe-ze-VSu" kind="push" identifier="TSFNewQuestionnaireAssessorsSegue" id="rTq-BL-aeO"/>
+                        <segue destination="mBA-SY-0pI" kind="modal" identifier="TSFNewTemplateModalSegue" id="eEK-mC-NeN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSs-gD-Gfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2215" y="4735"/>
+        </scene>
+        <!--Template Navigation Controller-->
+        <scene sceneID="ZOu-5q-ARp">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="mBA-SY-0pI" customClass="TSFTemplateNavigationController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Za8-fz-Mro">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="31w-hE-xae" kind="relationship" relationship="rootViewController" id="m8J-9J-M01"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="shh-ia-bYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2945" y="3423"/>
         </scene>
         <!--New Questionnaire Assessors View Controller-->
         <scene sceneID="bhR-an-DMN">
@@ -885,7 +901,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="31w-hE-xae" kind="modal" identifier="TSFTemplateModalSegue" id="QlE-sr-h2V"/>
+                                    <segue destination="mBA-SY-0pI" kind="modal" identifier="TSFTemplateModalSegue" id="2h0-PH-eNa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -927,7 +943,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCz-IW-714" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="P4v-fX-jiE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2227" y="3539"/>
         </scene>
@@ -943,50 +958,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpI-uv-PnR">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoI-Ce-Eqo">
-                                        <rect key="frame" x="20" y="29" width="620" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gw-qo-h6C" customClass="TSFButton">
-                                        <rect key="frame" x="648" y="25" width="100" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Scm-71-ghO"/>
-                                        </constraints>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="P4v-fX-jiE" kind="unwind" unwindAction="rewindFromModal:" id="qYl-0g-Cl7"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="5gw-qo-h6C" secondAttribute="trailing" constant="20" symbolic="YES" id="6Mz-HE-Tk5"/>
-                                    <constraint firstItem="5gw-qo-h6C" firstAttribute="leading" secondItem="IoI-Ce-Eqo" secondAttribute="trailing" constant="8" symbolic="YES" id="NWr-Br-dyg"/>
-                                    <constraint firstItem="5gw-qo-h6C" firstAttribute="centerY" secondItem="wpI-uv-PnR" secondAttribute="centerY" id="Og7-ES-x4Z"/>
-                                    <constraint firstItem="5gw-qo-h6C" firstAttribute="top" secondItem="wpI-uv-PnR" secondAttribute="top" constant="25" id="PbF-VW-iGF"/>
-                                    <constraint firstItem="IoI-Ce-Eqo" firstAttribute="leading" secondItem="wpI-uv-PnR" secondAttribute="leading" constant="20" symbolic="YES" id="fk1-ok-Wve"/>
-                                    <constraint firstAttribute="bottom" secondItem="IoI-Ce-Eqo" secondAttribute="bottom" constant="30" id="hZE-0f-k9Z"/>
-                                    <constraint firstItem="IoI-Ce-Eqo" firstAttribute="top" secondItem="wpI-uv-PnR" secondAttribute="top" constant="29" id="wsp-jY-fr6"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TSFTemplateCompetenceCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eoe-ZR-uWc">
-                                <rect key="frame" x="0.0" y="80" width="768" height="944"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="59" id="6Dr-Ys-1Hp">
-                                        <rect key="frame" x="0.0" y="22" width="768" height="59"/>
+                                        <rect key="frame" x="0.0" y="86" width="768" height="59"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Dr-Ys-1Hp" id="Z8u-DE-8XV">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="58"/>
@@ -999,25 +978,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="wpI-uv-PnR" secondAttribute="trailing" id="DmW-yM-i64"/>
-                            <constraint firstItem="wpI-uv-PnR" firstAttribute="top" secondItem="UHy-pr-zV3" secondAttribute="top" id="FnT-8E-wNB"/>
-                            <constraint firstAttribute="bottom" secondItem="eoe-ZR-uWc" secondAttribute="bottom" id="GU4-7H-xmh"/>
-                            <constraint firstItem="wpI-uv-PnR" firstAttribute="leading" secondItem="eoe-ZR-uWc" secondAttribute="leading" id="Vx5-xG-nI8"/>
-                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="leading" secondItem="UHy-pr-zV3" secondAttribute="leading" id="aqB-3O-ufn"/>
-                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="trailing" secondItem="wpI-uv-PnR" secondAttribute="trailing" id="pAc-io-bKi"/>
-                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="top" secondItem="wpI-uv-PnR" secondAttribute="bottom" id="ryj-BQ-STA"/>
+                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="leading" secondItem="UHy-pr-zV3" secondAttribute="leading" id="B4o-i1-dU1"/>
+                            <constraint firstItem="eoe-ZR-uWc" firstAttribute="top" secondItem="UHy-pr-zV3" secondAttribute="top" id="gC5-Rq-t3A"/>
+                            <constraint firstAttribute="bottom" secondItem="eoe-ZR-uWc" secondAttribute="bottom" id="lxh-i0-YMI"/>
+                            <constraint firstAttribute="trailing" secondItem="eoe-ZR-uWc" secondAttribute="trailing" id="vIC-mC-Neq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="2Bo-H2-TIm">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="Iwq-1i-NJc">
+                            <connections>
+                                <segue destination="T85-D0-eEH" kind="unwind" unwindAction="rewindFromModal:" id="WeI-U6-Fet"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="closeButton" destination="5gw-qo-h6C" id="C2J-1Y-e8M"/>
-                        <outlet property="headerLabel" destination="IoI-Ce-Eqo" id="QB9-KY-EYz"/>
-                        <outlet property="tableHeaderView" destination="wpI-uv-PnR" id="aiQ-ak-mNt"/>
+                        <outlet property="closeButton" destination="Iwq-1i-NJc" id="V7L-5s-afZ"/>
                         <outlet property="templateTableView" destination="eoe-ZR-uWc" id="CGA-dX-6zW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3F-J8-5gB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="T85-D0-eEH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2854" y="3539"/>
+            <point key="canvasLocation" x="3802" y="3423"/>
         </scene>
         <!--User Questionnaire Tab Bar Controller-->
         <scene sceneID="Ef1-d9-Icg">
@@ -1562,6 +1544,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pdj-Wl-mez"/>
+        <segue reference="2h0-PH-eNa"/>
     </inferredMetricsTieBreakers>
 </document>
