@@ -149,8 +149,8 @@ static NSString *const TSFNewQuestionnaireAssessorsSegue = @"TSFNewQuestionnaire
     CGFloat textWidth;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         textWidth = 567.0f;
-        titleFontSize  = 14.0f;
-        descriptionFontSize = 12.0f;
+        titleFontSize  = 17.0f;
+        descriptionFontSize = 14.0f;
         buttonHeight = 0.0f;
     } else {
         textWidth = 275.0f;

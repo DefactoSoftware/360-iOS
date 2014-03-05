@@ -12,9 +12,6 @@
 
 @implementation TSFButton
 
-static CGFloat const TSFButtonIconSize = 13.0f;
-static CGFloat const TSFButtonIconX = 10.0f;
-
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -32,10 +29,10 @@ static CGFloat const TSFButtonIconX = 10.0f;
 }
 
 - (void)sharedSetup {
-    self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(TSFButtonIconX,
-                                                                       (self.frame.size.height - TSFButtonIconSize) / 2,
-                                                                       TSFButtonIconSize,
-                                                                       TSFButtonIconSize)];
+    _iconSize = 13.0f;
+    _iconX = 10.0f;
+    _fontSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 15.0f : 13.0f;
+    self.iconImageView = [[UIImageView alloc] init];
     [self addSubview:self.iconImageView];
 }
 
@@ -48,8 +45,13 @@ static CGFloat const TSFButtonIconX = 10.0f;
     self.layer.cornerRadius = 5.0f;
     self.backgroundColor = [UIColor TSFGreenColor];
     self.titleLabel.textColor = [UIColor whiteColor];
-    self.titleLabel.font = [UIFont systemFontOfSize:11.0f];
+    self.titleLabel.font = [UIFont systemFontOfSize:self.fontSize];
     self.titleEdgeInsets = UIEdgeInsetsMake(0.0f, 15.0f, 0.0f, 15.0f);
+    
+    self.iconImageView.frame = CGRectMake(self.iconX,
+                                          (self.frame.size.height - self.iconSize) / 2,
+                                          self.iconSize,
+                                          self.iconSize);
 }
 
 @end

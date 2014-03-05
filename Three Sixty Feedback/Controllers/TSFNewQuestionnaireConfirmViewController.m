@@ -14,7 +14,7 @@
 #import "TSFGenerics.h"
 #import "RESideMenu.h"
 
-static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQuestionnairesViewControllerNavigation";
+static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQuestionnairesViewController";
 
 @interface TSFNewQuestionnaireConfirmViewController()
 @property (nonatomic, assign) NSInteger invitedAssessorsCount;
@@ -95,10 +95,10 @@ static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQu
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerTitle", @"Create feedback evaluation");
+    self.navigationItem.title = TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerTitle", @"Create evaluation");
     
     NSString *subjectLabelFormat = TSFLocalizedString(@"TSFNewQuestionnaireConfirmViewControllerSubjectFormat", @"The subject of the matter will be %@.");
-    NSString *templateLabelFormat = TSFLocalizedString(@"TSFNewQuestionnaireViewControllerTemplateFormat", @"You have chosen the questionnaire %@ for this evaluation");
+    NSString *templateLabelFormat = TSFLocalizedString(@"TSFNewQuestionnaireViewControllerTemplateFormat", @"You have chosen the questionnaire %@ for this evaluation.");
     NSString *assessorsLabelFormat = TSFLocalizedString(@"TSFNewQuestionnaireViewControllerAssessorsLabelFormat", @"The invitations will be sent to: %@.");
     NSString *assessorsList = [self.assessors componentsJoinedByString:@", "];
     
@@ -110,32 +110,16 @@ static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQu
                        forState:UIControlStateNormal];
     [self.createButton setIconImage:[UIImage imageNamed:@"checkmark"]];
     
-    NSMutableAttributedString *subjectAttributed = [[NSMutableAttributedString alloc] initWithString:subject];
-    NSMutableAttributedString *templateAttributed = [[NSMutableAttributedString alloc] initWithString:template];
-    NSMutableAttributedString *assessorsAttributed = [[NSMutableAttributedString alloc]  initWithString:assessors];
-    
-    [subjectAttributed beginEditing];
-    [self boldMatchedString:self.subject
-  inMutableAttributedString:subjectAttributed];
-    [subjectAttributed endEditing];
-    
-    [templateAttributed beginEditing];
-    [self boldMatchedString:self.questionnaireTemplate.title
-  inMutableAttributedString:templateAttributed];
-    [templateAttributed endEditing];
-    
-    [assessorsAttributed beginEditing];
-    [self boldMatchedString:assessorsList
-  inMutableAttributedString:assessorsAttributed];
-    [assessorsAttributed endEditing];
-    
-    [self.subjectLabel setAttributedText:subjectAttributed];
-    [self.templateLabel setAttributedText:templateAttributed];
-    [self.assessorsLabel setAttributedText:assessorsAttributed];
+    [self.subjectLabel setAttributedText:[self boldMatchedString:self.subject withString:subject]];
+    [self.templateLabel setAttributedText:[self boldMatchedString:self.questionnaireTemplate.title withString:template]];
+    [self.assessorsLabel setAttributedText:[self boldMatchedString:assessorsList withString:assessors]];
 }
 
-- (void)boldMatchedString:(NSString *)matchedString inMutableAttributedString:(NSMutableAttributedString *)attributedString {
-    CGFloat fontSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 14.0f : 13.0f;
+- (NSAttributedString *)boldMatchedString:(NSString *)matchedString withString:(NSString *)string {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];
+    [attributedString beginEditing];
+
+    CGFloat fontSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 19.0f : 15.0f;
     NSString *fontName = @"Helvetica-Bold";
     
     NSError *error = nil;
@@ -150,6 +134,9 @@ static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQu
                                  value:[UIFont fontWithName:fontName size:fontSize]
                                  range:NSMakeRange(scaleResult.range.location, scaleResult.range.length)];
     }
+    [attributedString endEditing];
+    
+    return attributedString;
 }
 
 @end

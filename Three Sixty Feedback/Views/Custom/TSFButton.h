@@ -12,7 +12,11 @@
 
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, copy) NSString *stringTag;
+@property (nonatomic, assign) CGFloat iconSize;
+@property (nonatomic, assign) CGFloat iconX;
+@property (nonatomic, assign) CGFloat fontSize;
 
+- (void)sharedSetup;
 - (void)setIconImage:(UIImage *)iconImage;
 
 @end

@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "cross-64.png"
+      "filename" : "plus-64.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "cross-128.png"
+      "filename" : "plus-128.png"
     }
   ],
   "info" : {

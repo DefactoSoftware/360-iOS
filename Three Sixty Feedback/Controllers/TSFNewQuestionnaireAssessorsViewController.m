@@ -54,7 +54,8 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     self.assessorsTableView.dataSource = self;
     self.addAssessorTextField.delegate = self;
     
-    [self.addButton setIconImage:[UIImage imageNamed:@"add"]];
+    [self.addButton setIconImage:[UIImage imageNamed:@"plus"]];
+    self.addButton.iconX = 9.0f;
     self.addAssessorTitleLabel.textColor = [UIColor TSFLightGreyTextColor];
     
     self.assessorsTableView.separatorInset = UIEdgeInsetsMake(0.0f, TSFNewAssessorsTableViewHorizontalInset, 0.0f, TSFNewAssessorsTableViewHorizontalInset);
@@ -62,10 +63,6 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     [self.nextButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerNext", @"Check information")
                      forState:UIControlStateNormal];
     [self.nextButton setIconImage:[UIImage imageNamed:@"forward"]];
-    
-    [self.importButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerImport", @"Import")
-                       forState:UIControlStateNormal];
-    [self.importButton setIconImage:[UIImage imageNamed:@"contacts"]];
     
     [self addResignGestureRecognizer];
     [self updateHeaderViewHeight];
@@ -138,7 +135,7 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
         textFontSize  = 14.0f;
     } else {
         textWidth = 280.0f;
-        textFontSize = 13.0f;
+        textFontSize = 14.0f;
     }
     
     CGFloat buttonHeight = 40.0f;
@@ -235,6 +232,7 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     cell.backgroundColor = [UIColor clearColor];
     cell.removeButton.stringTag = assessor;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.removeButton.iconX = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 9.0f : 7.0f;
     
     return cell;
 }

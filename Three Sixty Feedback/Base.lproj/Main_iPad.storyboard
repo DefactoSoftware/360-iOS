@@ -347,7 +347,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="kRt-vz-kXO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -358,11 +358,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i88-K0-kCA" customClass="TSFButton">
-                                <rect key="frame" x="475" y="237" width="139" height="30"/>
+                                <rect key="frame" x="440" y="237" width="174" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="QLC-YU-HEg"/>
-                                    <constraint firstAttribute="width" constant="139" id="U2q-qR-tH3"/>
+                                    <constraint firstAttribute="height" constant="35" id="QLC-YU-HEg"/>
+                                    <constraint firstAttribute="width" constant="174" id="U2q-qR-tH3"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -409,17 +409,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="P9Y-an-cs6">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="966"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="961"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="8pD-tk-pjr">
-                                    <rect key="frame" x="0.0" y="64" width="768" height="30"/>
+                                    <rect key="frame" x="0.0" y="64" width="768" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFTemplateCell" rowHeight="120" id="DQa-aM-PDP" customClass="TSFTemplateCell">
-                                        <rect key="frame" x="0.0" y="116" width="768" height="120"/>
+                                        <rect key="frame" x="0.0" y="146" width="768" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DQa-aM-PDP" id="acB-Jq-29C">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="119"/>
@@ -431,7 +431,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="2nW-zm-E9q"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -441,7 +441,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Yb1-Xa-1mR"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXU-CC-Eio" customClass="TSFSecondaryButton">
@@ -482,11 +482,11 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7o-RV-Gcg" customClass="TSFButton">
-                                <rect key="frame" x="603" y="974" width="145" height="30"/>
+                                <rect key="frame" x="593" y="969" width="155" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="6pH-w7-Ael"/>
-                                    <constraint firstAttribute="width" constant="145" id="DQM-PF-UXM"/>
+                                    <constraint firstAttribute="height" constant="35" id="6pH-w7-Ael"/>
+                                    <constraint firstAttribute="width" constant="155" id="DQM-PF-UXM"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -531,7 +531,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OW4-NN-V3h">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="966"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="961"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -546,20 +546,20 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="t4k-ty-efA"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bi2-yM-5Qu">
-                                            <rect key="frame" x="106" y="135" width="400" height="30"/>
+                                            <rect key="frame" x="106" y="135" width="518" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFT-I5-Fbx" customClass="TSFButton">
-                                            <rect key="frame" x="514" y="135" width="40" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFT-I5-Fbx" customClass="TSFSecondaryButton">
+                                            <rect key="frame" x="632" y="135" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="N7d-ex-yPc"/>
+                                                <constraint firstAttribute="width" constant="30" id="N7d-ex-yPc"/>
                                             </constraints>
                                             <state key="normal">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -568,31 +568,15 @@
                                                 <action selector="addButtonPressed:" destination="Ibe-ze-VSu" eventType="touchUpInside" id="ip0-90-xk5"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwV-nH-ryW" customClass="TSFButton">
-                                            <rect key="frame" x="562" y="135" width="100" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="k0F-9k-SkW"/>
-                                            </constraints>
-                                            <state key="normal">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="showAddressPicker:" destination="Ibe-ze-VSu" eventType="touchUpInside" id="Y2f-IH-bMF"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="Bi2-yM-5Qu" firstAttribute="centerX" secondItem="F5t-o8-DAb" secondAttribute="centerX" constant="-78" id="0Bv-Km-ULG"/>
-                                        <constraint firstItem="eyV-D2-oqr" firstAttribute="width" secondItem="Bi2-yM-5Qu" secondAttribute="width" constant="156" id="26e-c9-7ky"/>
-                                        <constraint firstItem="gFT-I5-Fbx" firstAttribute="centerY" secondItem="IwV-nH-ryW" secondAttribute="centerY" id="2tK-9q-FDK"/>
+                                        <constraint firstItem="Bi2-yM-5Qu" firstAttribute="centerX" secondItem="F5t-o8-DAb" secondAttribute="centerX" constant="-19" id="0Bv-Km-ULG"/>
+                                        <constraint firstItem="eyV-D2-oqr" firstAttribute="width" secondItem="Bi2-yM-5Qu" secondAttribute="width" constant="38" id="26e-c9-7ky"/>
                                         <constraint firstItem="gFT-I5-Fbx" firstAttribute="top" secondItem="eyV-D2-oqr" secondAttribute="bottom" constant="8" id="Fiw-iQ-33K"/>
                                         <constraint firstItem="Bi2-yM-5Qu" firstAttribute="top" secondItem="eyV-D2-oqr" secondAttribute="bottom" constant="8" symbolic="YES" id="HQL-Be-cxr"/>
                                         <constraint firstAttribute="trailing" secondItem="eyV-D2-oqr" secondAttribute="trailing" constant="106" id="Kux-ee-jop"/>
                                         <constraint firstItem="eyV-D2-oqr" firstAttribute="leading" secondItem="F5t-o8-DAb" secondAttribute="leading" constant="106" id="Mrh-gZ-xjK"/>
-                                        <constraint firstItem="eyV-D2-oqr" firstAttribute="trailing" secondItem="IwV-nH-ryW" secondAttribute="trailing" id="PXF-gq-GvF"/>
-                                        <constraint firstItem="IwV-nH-ryW" firstAttribute="leading" secondItem="gFT-I5-Fbx" secondAttribute="trailing" constant="8" id="ln0-rb-oCq"/>
                                         <constraint firstItem="gFT-I5-Fbx" firstAttribute="leading" secondItem="Bi2-yM-5Qu" secondAttribute="trailing" constant="8" id="szi-X8-uKq"/>
                                         <constraint firstItem="eyV-D2-oqr" firstAttribute="top" secondItem="F5t-o8-DAb" secondAttribute="top" constant="106" id="tvp-LW-MQd"/>
                                         <constraint firstItem="Bi2-yM-5Qu" firstAttribute="height" secondItem="gFT-I5-Fbx" secondAttribute="height" id="w0J-JR-PnI"/>
@@ -612,16 +596,16 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="WUj-8r-cYQ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvM-to-zV0" customClass="TSFButton">
-                                                    <rect key="frame" x="106" y="17" width="35" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvM-to-zV0" customClass="TSFSecondaryButton">
+                                                    <rect key="frame" x="106" y="17" width="31" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="cce-ji-LEl"/>
-                                                        <constraint firstAttribute="width" constant="35" id="jMa-wX-lgt"/>
+                                                        <constraint firstAttribute="height" constant="31" id="cce-ji-LEl"/>
+                                                        <constraint firstAttribute="width" constant="31" id="jMa-wX-lgt"/>
                                                     </constraints>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -637,7 +621,7 @@
                                                 <constraint firstAttribute="centerY" secondItem="tvM-to-zV0" secondAttribute="centerY" id="KcA-48-Fly"/>
                                                 <constraint firstItem="tvM-to-zV0" firstAttribute="leading" secondItem="Ct0-uR-Njq" secondAttribute="leading" constant="106" id="gOC-hh-Y29"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Yx-YA-5Gv" secondAttribute="trailing" constant="106" id="pD8-fe-sTa"/>
-                                                <constraint firstItem="2Yx-YA-5Gv" firstAttribute="leading" secondItem="tvM-to-zV0" secondAttribute="trailing" constant="48" id="s1j-WN-yuf"/>
+                                                <constraint firstItem="2Yx-YA-5Gv" firstAttribute="leading" secondItem="tvM-to-zV0" secondAttribute="trailing" constant="52" id="s1j-WN-yuf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -649,11 +633,11 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgc-C0-NeY" customClass="TSFButton">
-                                <rect key="frame" x="610" y="974" width="138" height="30"/>
+                                <rect key="frame" x="568" y="969" width="180" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="138" id="jwX-TR-UEH"/>
-                                    <constraint firstAttribute="height" constant="30" id="l2Q-xt-gvy"/>
+                                    <constraint firstAttribute="width" constant="180" id="jwX-TR-UEH"/>
+                                    <constraint firstAttribute="height" constant="35" id="l2Q-xt-gvy"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -673,14 +657,19 @@
                             <constraint firstItem="OW4-NN-V3h" firstAttribute="top" secondItem="6tO-YQ-AKz" secondAttribute="top" id="zzO-KW-NC4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="EqY-X2-emV"/>
+                    <navigationItem key="navigationItem" id="EqY-X2-emV">
+                        <barButtonItem key="rightBarButtonItem" image="person-add" id="Zx2-3z-p9v">
+                            <connections>
+                                <action selector="showAddressPicker:" destination="Ibe-ze-VSu" id="cfd-Qm-F3h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addAssessorTextField" destination="Bi2-yM-5Qu" id="nll-j8-C4G"/>
                         <outlet property="addAssessorTitleLabel" destination="eyV-D2-oqr" id="kM3-fP-3ch"/>
                         <outlet property="addButton" destination="gFT-I5-Fbx" id="qcG-QR-fbA"/>
                         <outlet property="assessorsTableView" destination="OW4-NN-V3h" id="jge-Qr-AsS"/>
                         <outlet property="headerView" destination="F5t-o8-DAb" id="cVF-ln-ept"/>
-                        <outlet property="importButton" destination="IwV-nH-ryW" id="wI2-rK-XIk"/>
                         <outlet property="nextButton" destination="lgc-C0-NeY" id="eqz-1y-MAY"/>
                         <segue destination="rk2-MW-QY9" kind="push" identifier="TSFNewQuestionnaireConfirmSegue" id="OP3-t9-QKT"/>
                     </connections>
@@ -729,11 +718,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEk-ue-zS6" customClass="TSFButton">
-                                <rect key="frame" x="293" y="274" width="183" height="30"/>
+                                <rect key="frame" x="267" y="274" width="235" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="GgL-YT-Vpw"/>
-                                    <constraint firstAttribute="width" constant="183" id="X8H-ua-hjw"/>
+                                    <constraint firstAttribute="height" constant="35" id="GgL-YT-Vpw"/>
+                                    <constraint firstAttribute="width" constant="235" id="X8H-ua-hjw"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1569,6 +1558,7 @@
     <resources>
         <image name="assessor" width="128" height="128"/>
         <image name="menu" width="24" height="24"/>
+        <image name="person-add" width="32" height="32"/>
         <image name="pointer" width="4" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
