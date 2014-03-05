@@ -12,14 +12,11 @@
 #import "UIColor+TSFColor.h"
 #import "UITextField+Shake.h"
 #import "TSFAddAssessorCell.h"
+#import "CRToast.h"
 
 static NSString *const TSFNewAssessorCellIdentifier = @"TSFAddAssessorCell";
 static NSString *const TSFNewQuestionnaireConfirmSegue = @"TSFNewQuestionnaireConfirmSegue";
 static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
-
-@interface TSFNewQuestionnaireAssessorsViewController()
-@property (nonatomic, strong) NSMutableArray *assessors;
-@end
 
 @implementation TSFNewQuestionnaireAssessorsViewController
 
@@ -78,12 +75,19 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
 }
 
 - (void)insertAssessor:(NSString *)assessor {
-    [self.assessors insertObject:assessor
-                         atIndex:0];
-    NSArray *indexArray = @[ [NSIndexPath indexPathForItem:0 inSection:0] ];
-    [self.assessorsTableView insertRowsAtIndexPaths:indexArray
-                                   withRowAnimation:UITableViewRowAnimationTop];
-    [self.addAssessorTextField setText:@""];
+    if ([self.assessors containsObject:assessor]) {
+        NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerDuplicateAssessor", @"This email address was already added"),
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                  kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
+        [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
+    } else {
+        [self.assessors insertObject:assessor
+                             atIndex:0];
+        NSArray *indexArray = @[ [NSIndexPath indexPathForItem:0 inSection:0] ];
+        [self.assessorsTableView insertRowsAtIndexPaths:indexArray
+                                       withRowAnimation:UITableViewRowAnimationTop];
+        [self.addAssessorTextField setText:@""];
+    }
 }
 
 - (IBAction)addButtonPressed:(id)sender {

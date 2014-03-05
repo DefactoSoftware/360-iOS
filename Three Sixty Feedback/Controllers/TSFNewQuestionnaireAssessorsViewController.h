@@ -22,7 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet TSFButton *addButton;
 @property (weak, nonatomic) IBOutlet TSFButton *nextButton;
+@property (nonatomic, strong) NSMutableArray *assessors;
 
+- (void)insertAssessor:(NSString *)assessor;
 - (IBAction)addButtonPressed:(id)sender;
 - (IBAction)removeButtonPressed:(id)sender;
 - (IBAction)nextButtonPressed:(id)sender;

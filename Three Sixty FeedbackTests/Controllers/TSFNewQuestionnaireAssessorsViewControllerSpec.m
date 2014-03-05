@@ -89,6 +89,22 @@ describe(@"TSFNewQuestionnaireAssessorsViewController", ^{
             [[_newQuestionnaireAssessorsViewController.nextButton shouldNot] beNil];
         });
     });
+    
+    context(@"inserting assessors", ^{
+        it(@"inserts a new assessor email", ^{
+            NSString *randomAssessor = [NSString stringWithFormat:@"%u", arc4random()];
+            [_newQuestionnaireAssessorsViewController insertAssessor:randomAssessor];
+            [[theValue([_newQuestionnaireAssessorsViewController.assessors containsObject:randomAssessor]) should] equal:theValue(YES)];
+        });
+        
+        it(@"does not insert the new assessor email when it already exists", ^{
+            NSString *randomAssessor = [NSString stringWithFormat:@"%u", arc4random()];
+            [_newQuestionnaireAssessorsViewController.assessors addObject:randomAssessor];
+            [_newQuestionnaireAssessorsViewController insertAssessor:randomAssessor];
+            
+            [[theValue([_newQuestionnaireAssessorsViewController.assessors count]) should] equal:theValue(1)];
+        });
+    });
 });
 
 SPEC_END
