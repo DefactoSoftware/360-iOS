@@ -11,6 +11,7 @@
 @interface TSFButton : UIButton
 
 @property (nonatomic, strong) UIImageView *iconImageView;
+@property (nonatomic, copy) NSString *stringTag;
 
 - (void)setIconImage:(UIImage *)iconImage;
 

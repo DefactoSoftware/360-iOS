@@ -54,9 +54,6 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     self.assessorsTableView.dataSource = self;
     self.addAssessorTextField.delegate = self;
     
-    NSString *addTitle = TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerAddButton", @"Add assessor");
-    [self.addButton setTitle:addTitle
-                    forState:UIControlStateNormal];
     [self.addButton setIconImage:[UIImage imageNamed:@"add"]];
     self.addAssessorTitleLabel.textColor = [UIColor TSFLightGreyTextColor];
     
@@ -65,6 +62,9 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     [self.nextButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerNext", @"Check information")
                      forState:UIControlStateNormal];
     [self.nextButton setIconImage:[UIImage imageNamed:@"forward"]];
+    
+    [self.importButton setTitle:TSFLocalizedString(@"TSFNewQuestionnaireAssessorsViewControllerImport", @"Import")
+                       forState:UIControlStateNormal];
     
     [self addResignGestureRecognizer];
     [self updateHeaderViewHeight];
@@ -79,13 +79,19 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     return [emailTest evaluateWithObject:string];
 }
 
+- (void)insertAssessor:(NSString *)assessor {
+    [self.assessors insertObject:assessor
+                         atIndex:0];
+    NSArray *indexArray = @[ [NSIndexPath indexPathForItem:0 inSection:0] ];
+    [self.assessorsTableView insertRowsAtIndexPaths:indexArray
+                                   withRowAnimation:UITableViewRowAnimationTop];
+    [self.addAssessorTextField setText:@""];
+}
+
 - (IBAction)addButtonPressed:(id)sender {
     NSString *newAssessor = self.addAssessorTextField.text;
     if ([self stringIsEmail:newAssessor]) {
-        [self.assessors insertObject:newAssessor
-                             atIndex:0];
-        [self.assessorsTableView reloadData];
-        [self.addAssessorTextField setText:@""];
+        [self insertAssessor:newAssessor];
     } else {
         [self.addAssessorTextField shake:5
                                withDelta:10];
@@ -93,8 +99,11 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
 }
 
 - (IBAction)removeButtonPressed:(TSFButton *)sender {
-    [self.assessors removeObjectAtIndex:sender.tag];
-    [self.assessorsTableView reloadData] ;
+    NSInteger index = [self.assessors indexOfObject:sender.stringTag];
+    [self.assessors removeObjectAtIndex:index];
+        NSArray *indexPaths = @[ [NSIndexPath indexPathForRow:index inSection:0] ];
+    [self.assessorsTableView deleteRowsAtIndexPaths:indexPaths
+                                   withRowAnimation:UITableViewRowAnimationRight];
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
@@ -106,6 +115,15 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
         [self performSegueWithIdentifier:TSFNewQuestionnaireConfirmSegue
                                   sender:self];
     }
+}
+
+- (IBAction)showAddressPicker:(id)sender {
+    ABPeoplePickerNavigationController *peoplePickerController = [[ABPeoplePickerNavigationController alloc] init];
+    peoplePickerController.peoplePickerDelegate = self;
+    peoplePickerController.displayedProperties = @[@(kABPersonEmailProperty)];
+    [self presentViewController:peoplePickerController
+                       animated:YES
+                     completion:nil];
 }
 
 - (void)updateHeaderViewHeight {
@@ -137,6 +155,41 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
     headerViewFrame.size.height = headerViewHeight;
     self.headerView.frame = headerViewFrame;
 }
+
+#pragma mark - ABPeoplePickerNavigationController
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person {
+    ABMultiValueRef emailReference = ABRecordCopyValue(person, kABPersonEmailProperty);
+    CFIndex emailCount = ABMultiValueGetCount(emailReference);
+    if (emailCount < 2) {
+        CFStringRef emailString = ABMultiValueCopyValueAtIndex(emailReference, 0);
+        [self insertAssessor:(__bridge NSString *)emailString];
+        [self dismissViewControllerAnimated:YES
+                                 completion:nil];
+    }
+    
+    return YES;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person
+                                property:(ABPropertyID)property
+                              identifier:(ABMultiValueIdentifier)identifier {
+    ABMultiValueRef emailReference = ABRecordCopyValue(person, kABPersonEmailProperty);
+    CFStringRef emailString = ABMultiValueCopyValueAtIndex(emailReference, identifier);
+    [self insertAssessor:(__bridge NSString *)emailString];
+    
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+    return YES;
+}
+
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+}
+
 
 #pragma mark - UITextField
 
@@ -172,9 +225,11 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
                                          reuseIdentifier:TSFNewAssessorCellIdentifier];
         
     }
-    cell.emailLabel.text = self.assessors[indexPath.row];
+    
+    NSString *assessor = self.assessors[indexPath.row];
+    cell.emailLabel.text = assessor;
     cell.backgroundColor = [UIColor clearColor];
-    cell.removeButton.tag = indexPath.row;
+    cell.removeButton.stringTag = assessor;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;

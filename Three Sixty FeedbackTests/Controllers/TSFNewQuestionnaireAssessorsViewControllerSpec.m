@@ -49,6 +49,14 @@ describe(@"TSFNewQuestionnaireAssessorsViewController", ^{
         it(@"has an outlet for the next button", ^{
             [[_newQuestionnaireAssessorsViewController.nextButton shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the import button", ^{
+            [[_newQuestionnaireAssessorsViewController.importButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the import button", ^{
+            [[_newQuestionnaireAssessorsViewController.importButton shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -87,6 +95,14 @@ describe(@"TSFNewQuestionnaireAssessorsViewController", ^{
         
         it(@"has an outlet for the next button", ^{
             [[_newQuestionnaireAssessorsViewController.nextButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the import button", ^{
+            [[_newQuestionnaireAssessorsViewController.importButton shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the import button", ^{
+            [[_newQuestionnaireAssessorsViewController.importButton shouldNot] beNil];
         });
     });
 });

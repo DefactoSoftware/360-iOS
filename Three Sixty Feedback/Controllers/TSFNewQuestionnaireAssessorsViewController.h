@@ -10,8 +10,9 @@
 #import "TSFBaseViewController.h"
 #import "TSFTemplate.h"
 #import "TSFButton.h"
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface TSFNewQuestionnaireAssessorsViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface TSFNewQuestionnaireAssessorsViewController : TSFBaseViewController <ABPeoplePickerNavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
 @property (nonatomic, strong) NSString *subject;
@@ -21,9 +22,11 @@
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet TSFButton *addButton;
 @property (weak, nonatomic) IBOutlet TSFButton *nextButton;
+@property (weak, nonatomic) IBOutlet TSFButton *importButton;
 
 - (IBAction)addButtonPressed:(id)sender;
 - (IBAction)removeButtonPressed:(id)sender;
 - (IBAction)nextButtonPressed:(id)sender;
+- (IBAction)showAddressPicker:(id)sender;
 
 @end
