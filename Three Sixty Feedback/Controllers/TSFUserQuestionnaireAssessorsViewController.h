@@ -10,12 +10,14 @@
 #import "TSFQuestionnaire.h"
 #import "TSFAssessorService.h"
 #import "TSFBaseViewController.h"
+#import "TSFButton.h"
 
 @interface TSFUserQuestionnaireAssessorsViewController : TSFBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 @property (nonatomic, strong) TSFAssessorService *assessorService;
 @property (weak, nonatomic) IBOutlet UITableView *assessorsTableView;
+@property (weak, nonatomic) IBOutlet TSFButton *remindButton;
 
 - (IBAction)remindButtonPressed:(id)sender;
 - (void)remindAssessors;

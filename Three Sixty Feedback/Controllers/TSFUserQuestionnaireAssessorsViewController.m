@@ -11,16 +11,10 @@
 #import "TSFAssessorCell.h"
 #import "TSFGenerics.h"
 #import "NSDate+StringParsing.h"
-#import "TSFRemindAssessorsCell.h"
 #import "CRToast.h"
 #import "UIColor+TSFColor.h"
 
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
-static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCell";
-
-@interface TSFUserQuestionnaireAssessorsViewController()
-@property (nonatomic, assign) NSInteger customCells;
-@end
 
 @implementation TSFUserQuestionnaireAssessorsViewController
 
@@ -43,15 +37,19 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
 
 - (void)sharedSetup {
     _assessorService = [TSFAssessorService sharedService];
-    _customCells = 1;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.assessorsTableView.delegate = self;
     self.assessorsTableView.dataSource = self;
-    self.assessorsTableView.backgroundColor = [UIColor TSFBeigeColor];
+    self.assessorsTableView.backgroundColor = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? [UIColor TSFAssessorsTableViewBackgroundColor] : [UIColor TSFBeigeColor];
+    self.assessorsTableView.layer.cornerRadius = 5.0f;
+    self.assessorsTableView.separatorInset = UIEdgeInsetsMake(0, 15.0f, 0, 15.0f);
     [self.assessorsTableView reloadData];
+    [self.remindButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireAssessorsViewControllerRemind", @"Send reminders")
+                       forState:UIControlStateNormal];
+    [self.remindButton setIconImage:[UIImage imageNamed:@"time"]];
 }
 
 - (void)reloadAssessors {
@@ -85,16 +83,6 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
     }
 }
 
-- (TSFRemindAssessorsCell *)remindAssessorsCell {
-    TSFRemindAssessorsCell *remindAssessorsCell = [self.assessorsTableView dequeueReusableCellWithIdentifier:TSFRemindAssessorCellIdentifier];
-    if (!remindAssessorsCell) {
-        remindAssessorsCell = [[TSFRemindAssessorsCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                           reuseIdentifier:TSFRemindAssessorCellIdentifier];
-    }
-
-    return remindAssessorsCell;
-}
-
 - (TSFAssessorCell *)assessorCellForAssessor:(NSInteger)assessorNumber {
     TSFAssessorCell *assessorCell = [self.assessorsTableView dequeueReusableCellWithIdentifier:TSFAssessorCellIdentifier];
     if (!assessorCell) {
@@ -110,15 +98,11 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
 #pragma mark - UITableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.questionnaire.assessors count] + self.customCells;
+    return [self.questionnaire.assessors count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return [self remindAssessorsCell];
-    } else {
-        return [self assessorCellForAssessor:indexPath.row - self.customCells];
-    }
+    return [self assessorCellForAssessor:indexPath.row];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

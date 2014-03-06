@@ -17,16 +17,34 @@ describe(@"TSFUserQuestionnaireAssessorsViewController", ^{
     __block TSFUserQuestionnaireTabBarController *_userQuestionnaireViewController;
     __block TSFUserQuestionnaireAssessorsViewController *_userQuestionnaireAssessorsViewController;
     
-    beforeEach(^{
-        _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireTabBarController"];
-        _userQuestionnaireAssessorsViewController = [_userQuestionnaireViewController.viewControllers lastObject];
-        [[[_userQuestionnaireViewController view] shouldNot] beNil];
-        [[[_userQuestionnaireAssessorsViewController view] shouldNot] beNil];
+    context(@"iPhone", ^{
+        beforeEach(^{
+            _storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            _userQuestionnaireViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireTabBarController"];
+            _userQuestionnaireAssessorsViewController = [_userQuestionnaireViewController.viewControllers lastObject];
+            [[[_userQuestionnaireViewController view] shouldNot] beNil];
+            [[[_userQuestionnaireAssessorsViewController view] shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the assessors tableview", ^{
+            [[_userQuestionnaireAssessorsViewController.assessorsTableView shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the remind button", ^{
+            [[_userQuestionnaireAssessorsViewController.remindButton shouldNot] beNil];
+        });
     });
     
-    it(@"has an outlet for the assessors tableview", ^{
-        [[_userQuestionnaireAssessorsViewController.assessorsTableView shouldNot] beNil];
+    context(@"iPad", ^{
+        beforeEach(^{
+            _storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
+            _userQuestionnaireAssessorsViewController = [_storyboard instantiateViewControllerWithIdentifier:@"TSFUserQuestionnaireAssessorsViewController"];
+            [[[_userQuestionnaireAssessorsViewController view] shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the assessors tableview", ^{
+            [[_userQuestionnaireAssessorsViewController.assessorsTableView shouldNot] beNil];
+        });
     });
     
     it(@"has a reference to the assessor service", ^{

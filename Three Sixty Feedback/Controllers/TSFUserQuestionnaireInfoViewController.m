@@ -14,6 +14,7 @@
 #import "CRToast.h"
 #import "UIColor+TSFColor.h"
 
+static NSString *const TSFUserQuestionnaireAssessorsViewControllerIdentifier = @"TSFUserQuestionnaireAssessorsViewController";
 static NSString *const TSFQuestionnaireAssessorsSegueIdentifier = @"TSFAssessorsPopoverSegue";
 static NSString *const TSFTemplateModalSegueIdentifier = @"TSFTemplateModalSegue";
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
@@ -58,54 +59,68 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     [self.remindAssessorsButton setIconImage:[UIImage imageNamed:@"time"]];
     [self.showTemplateButton setIconImage:[UIImage imageNamed:@"questionnaire"]];
     
-    self.assessorsTableView.separatorInset = UIEdgeInsetsMake(0, 20.0f, 0, 20.0f);
-
-    [self setupAssessorsTableView];
-}
-
-- (void)setupAssessorsTableView {
     self.assessorsLabel.text = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessors", @"Assessors");
     [self.remindAssessorsButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerRemindButton", @"Send reminders")
                                 forState:UIControlStateNormal];
-
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.assessorsTableView.dataSource = self;
-        self.assessorsTableView.delegate = self;
-        self.assessorsTableView.backgroundColor = [UIColor TSFAssessorsTableViewBackgroundColor];
-        self.assessorsTableView.layer.cornerRadius = 5.0f;
-        [self.assessorsTableView reloadData];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self displayAssessorsViewController];
     }
+}
+
+- (void)displayAssessorsViewController {
+    self.assessorsViewController = [self.storyboard instantiateViewControllerWithIdentifier:TSFUserQuestionnaireAssessorsViewControllerIdentifier];
+    self.assessorsViewController.questionnaire = self.questionnaire;
+    
+    for (UIView *view in self.assessorsView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    UIView *assessorsControllerView = self.assessorsViewController.view;
+    assessorsControllerView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.assessorsView addSubview:assessorsControllerView];
+    
+    NSLayoutConstraint *width = [NSLayoutConstraint
+                                constraintWithItem:assessorsControllerView
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:0
+                                 toItem:self.assessorsView
+                                 attribute:NSLayoutAttributeWidth
+                                 multiplier:1.0
+                                 constant:0];
+    NSLayoutConstraint *height = [NSLayoutConstraint
+                                 constraintWithItem:assessorsControllerView
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:0
+                                 toItem:self.assessorsView
+                                 attribute:NSLayoutAttributeHeight
+                                 multiplier:1.0
+                                 constant:0];
+    NSLayoutConstraint *top = [NSLayoutConstraint
+                               constraintWithItem:assessorsControllerView
+                               attribute:NSLayoutAttributeTop
+                               relatedBy:NSLayoutRelationEqual
+                               toItem:self.assessorsView
+                               attribute:NSLayoutAttributeTop
+                               multiplier:1.0f
+                               constant:0];
+    NSLayoutConstraint *leading = [NSLayoutConstraint
+                                   constraintWithItem:assessorsControllerView
+                                   attribute:NSLayoutAttributeLeading
+                                   relatedBy:NSLayoutRelationEqual
+                                   toItem:self.assessorsView
+                                   attribute:NSLayoutAttributeLeading
+                                   multiplier:1.0
+                                   constant:0];
+    [self.assessorsView addConstraint:width];
+    [self.assessorsView addConstraint:height];
+    [self.assessorsView addConstraint:top];
+    [self.assessorsView addConstraint:leading];
 }
 
 - (IBAction)remindButtonPressed:(id)sender {
-    [self remindAssessors];
-}
-
-- (void)remindAssessors {
-    for (TSFAssessor *assessor in self.questionnaire.assessors) {
-        if (!assessor.completed) {
-            __weak typeof (self) _self = self;
-            [self.assessorService remindAssessorWithId:assessor.assessorId success:^(id response) {
-                [_self reloadAssessors];
-            } failure:^(NSError *error) {
-                NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerReminderError", @"Assessor has already been reminded in the last 24 hours."),
-                                          kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                          kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
-                [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
-                NSLog(@"Error reminding assessor: %@", error);
-            }];
-        }
-    }
-}
-
-- (void)reloadAssessors {
-    __weak typeof (self) _self = self;
-    [self.assessorService assessorsForQuestionnaireId:self.questionnaire.questionnaireId withSuccess:^(id responseObject) {
-        _self.questionnaire.assessors = (NSArray *)responseObject;
-        [_self setupAssessorsTableView];
-    } failure:^(NSError *error) {
-        NSLog(@"Error getting assessors: %@.", error);
-    }];
+    [self.assessorsViewController remindAssessors];
 }
 
 #pragma mark - Prepare for segue
@@ -118,36 +133,6 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
         TSFTemplateViewController *destinationViewController = (TSFTemplateViewController *)segue.destinationViewController;
         destinationViewController.questionnaireTemplate = self.questionnaire;
     }
-}
-
-#pragma mark - UITableView
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.questionnaire.assessors count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TSFAssessorCell *assessorCell = [self.assessorsTableView dequeueReusableCellWithIdentifier:TSFAssessorCellIdentifier];
-    if (!assessorCell) {
-        assessorCell = [[TSFAssessorCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                              reuseIdentifier:TSFAssessorCellIdentifier];
-    }
-
-    TSFAssessor *assessor = self.questionnaire.assessors[indexPath.row];
-    [assessorCell displayAssessor:assessor];
-
-    return assessorCell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TSFAssessorCell *assessorCell = (TSFAssessorCell *)[self tableView:self.assessorsTableView
-                              cellForRowAtIndexPath:indexPath];
-    return [assessorCell calculatedHeight];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.01f;
 }
 
 @end
