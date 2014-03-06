@@ -8,7 +8,7 @@
 
 #import "TSFPasswordRequestViewController.h"
 #import "TSFGenerics.h"
-#import <CRToast/CRToast.h>
+#import "CRToastManager+TSFToast.h"
 
 @implementation TSFPasswordRequestViewController
 
@@ -44,11 +44,9 @@
         _self.successLabel.text = TSFLocalizedString(@"TSFPasswordRequestViewControllerSuccess", @"An email has been sent to the given address. Please follow the instructions in the mail to reset your password.");
         _self.requestButton.enabled =  NO;
     } failure:^(NSError *error) {
-        NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFPasswordRequestViewControllerFail", @"Could not find e-mail address"),
-                                  kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                  kCRToastBackgroundColorKey : [UIColor redColor]};
-        [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
-        NSLog(@"Error logging in. Message: %@", error.localizedDescription);
+        [CRToastManager showErrorNotificationWithMessage:TSFLocalizedString(@"TSFPasswordRequestViewControllerFail", @"Could not find e-mail address")
+                                                   error:error
+                                         completionBlock:^{}];
     }];
 }
 

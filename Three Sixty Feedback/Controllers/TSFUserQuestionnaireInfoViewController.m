@@ -10,7 +10,7 @@
 #import "TSFUserQuestionnaireAssessorsViewController.h"
 #import "TSFGenerics.h"
 #import "TSFAssessorCell.h"
-#import "CRToast.h"
+#import "CRToastManager+TSFToast.h"
 
 static NSString *const TSFQuestionnaireAssessorsSegueIdentifier = @"TSFAssessorsPopoverSegue";
 static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
@@ -73,11 +73,9 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
             [self.assessorService remindAssessorWithId:assessor.assessorId success:^(id response) {
                 [_self reloadAssessors];
             } failure:^(NSError *error) {
-                NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerReminderError", @"Assessor has already been reminded in the last 24 hours."),
-                                          kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                          kCRToastBackgroundColorKey : [UIColor redColor]};
-                [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
-                NSLog(@"Error reminding assessor: %@", error);
+                [CRToastManager showErrorNotificationWithMessage:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerReminderError", @"Assessor has already been reminded in the last 24 hours.")
+                                                           error:error
+                                                 completionBlock:^{}];
             }];
         }
     }
@@ -89,7 +87,8 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
         _self.questionnaire.assessors = (NSArray *)responseObject;
         [_self setupAssessorsTableView];
     } failure:^(NSError *error) {
-        NSLog(@"Error getting assessors: %@.", error);
+        [CRToastManager showErrorNotificationWithMessage:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerReloadError", @"Could not reload assessors.")
+                                         completionBlock:^{}];
     }];
 }
 

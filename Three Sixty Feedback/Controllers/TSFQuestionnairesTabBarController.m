@@ -8,7 +8,7 @@
 
 #import "TSFQuestionnairesTabBarController.h"
 #import "TSFGenerics.h"
-#import <CRToast/CRToast.h>
+#import "CRToastManager+TSFToast.h"
 
 @implementation TSFQuestionnairesTabBarController
 
@@ -52,11 +52,9 @@
         [_self.completedQuestionnairesViewController reloadData];
         [_self loadAssessors];
     } failure:^(NSError *error) {
-        NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFQuestionnairesTabBarControllerError", @"Failed getting questionnaires."),
-                                  kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                  kCRToastBackgroundColorKey : [UIColor redColor]};
-        [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
-        NSLog(@"Error getting user questionnaires: %@.", error);
+        [CRToastManager showErrorNotificationWithMessage:TSFLocalizedString(@"TSFQuestionnairesTabBarControllerError", @"Failed getting questionnaires.")
+                                                   error:error
+                                         completionBlock:^{}];
     }];
 }
 
@@ -71,7 +69,9 @@
             [_self.activeQuestionnairesViewController reloadData];
             [_self.completedQuestionnairesViewController reloadData];
         } failure:^(NSError *error) {
-            NSLog(@"Error getting user's questionnaire's assessors: %@.", error);
+            [CRToastManager showErrorNotificationWithMessage:TSFLocalizedString(@"TSFQuestionnairesTabBarControllerLoadAssessorsError", @"Could not get assessors.")
+                                                       error:error
+                                             completionBlock:^{}];
         }];
     }
 }
