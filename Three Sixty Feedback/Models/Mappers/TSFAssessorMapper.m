@@ -11,6 +11,14 @@
 
 @implementation TSFAssessorMapper
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+    }
+    return self;
+}
+
 - (TSFAssessor *)assessorWithDictionary:(NSDictionary *)dictionary {
     TSFAssessor *assessor = [[TSFAssessor alloc] init];
     assessor.assessorId = dictionary[@"id"];
@@ -19,7 +27,8 @@
     assessor.completed = [dictionary[@"completed"] boolValue];
     
     if ([dictionary[@"last_reminded_at"] class] != [NSNull class]) {
-        assessor.lastRemindedAt = [NSDate dateWithISO8601String:dictionary[@"last_reminded_at"]];   
+        assessor.lastRemindedAt = [NSDate dateWithISO8601String:dictionary[@"last_reminded_at"]
+                                                      formatter:self.dateFormatter];
     }
     
     return assessor;

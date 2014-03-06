@@ -11,6 +11,8 @@
 
 @interface TSFAssessorMapper : NSObject
 
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+
 - (TSFAssessor *)assessorWithDictionary:(NSDictionary *)dictionary;
 - (NSArray *)assessorsWithDictionaryArray:(NSArray *)dictionaryArray;
 

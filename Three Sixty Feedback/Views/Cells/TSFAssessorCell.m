@@ -26,7 +26,7 @@ static NSString *const TSFNotCompletedImageName = @"not_completed";
 
 - (NSString *)remindedAtString:(NSDate *)remindedAt {
     NSString *remindedAtFormat = TSFLocalizedString(@"TSFUserQuestionnaireAssessorsViewControllerRemindedAt", @"Last reminded at %@");
-    return [NSString stringWithFormat:remindedAtFormat, [NSDate stringFromDate:remindedAt]];
+    return [NSString stringWithFormat:remindedAtFormat, [remindedAt localizedString]];
 }
 
 - (void)displayAssessor:(TSFAssessor *)assessor {

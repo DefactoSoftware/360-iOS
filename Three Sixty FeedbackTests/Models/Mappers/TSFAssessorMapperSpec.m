@@ -52,6 +52,10 @@ describe(@"TSFAssessorMapper", ^{
         [[[assessors should] have:[_sampleDictionaryArray count]] items];
         [[[assessors firstObject] should] beKindOfClass:[TSFAssessor class]];
 	});
+    
+    it(@"has a dateformatter", ^{
+        [[_assessorMapper.dateFormatter should] beKindOfClass:[NSDateFormatter class]];
+    });
 });
 
 SPEC_END
