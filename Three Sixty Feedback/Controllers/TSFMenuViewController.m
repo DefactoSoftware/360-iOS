@@ -24,10 +24,7 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
     [super viewDidLoad];
     self.menuTableView.dataSource = self;
     self.menuTableView.delegate = self;
-    
-    UIColor *patternColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"gray_jean"]];
-    self.view.backgroundColor = patternColor;
-    self.menuTableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+    self.menuTableView.backgroundColor = [UIColor clearColor];
     
     [self.closeButton setIconImage:[UIImage imageNamed:@"cross-1"]];
     [self.closeButton setIconX:8.0f];
@@ -85,7 +82,7 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
     NSString *viewControllerIdentifier = item[1];
     
     UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerIdentifier];
-    [self.contentViewControlller.sideMenuViewController setContentViewController:newViewController];
+    [self.contentViewControlller.rootViewController setNewContentViewController:newViewController];
     [self dismissViewControllerAnimated:YES
                              completion:^{}];
 }

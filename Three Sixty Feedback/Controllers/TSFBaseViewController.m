@@ -35,7 +35,7 @@
 
 - (void)addResignGestureRecognizer {
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                    action:@selector(dismissKeyboard:)];
+                                                                 action:@selector(dismissKeyboard:)];
     [self.tapRecognizer setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:self.tapRecognizer];
 }
@@ -72,8 +72,24 @@
     [self updateProgressViewFrame];
 }
 
+- (void)setNewContentViewController:(UIViewController *)contentViewController {
+    if (!_contentViewController) {
+        _contentViewController = contentViewController;
+        return;
+    }
+    CGRect frame = _contentViewController.view.frame;
+    CGAffineTransform transform = _contentViewController.view.transform;
+    [self hideViewController:_contentViewController];
+    _contentViewController = contentViewController;
+    [self displayViewController:contentViewController
+                      withFrame:self.view.bounds];
+    contentViewController.view.transform = transform;
+    contentViewController.view.frame = frame;
+    
+}
+
 - (IBAction)openMenu:(id)sender {
-    [self.sideMenuViewController presentMenuViewController];
+//    [self.sideMenuViewController presentMenuViewController];
 }
 
 - (void)rewindFromModal:(UIStoryboardSegue *)unwindSegue {

@@ -16,7 +16,28 @@ static NSString *const TSFMenuViewControllerIdentifier = @"TSFMenuViewController
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:TSFMainContentViewControllerIdentifier];
-    self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:TSFMenuViewControllerIdentifier];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self displayViewController:self.contentViewController
+                      withFrame:self.view.bounds];
+}
+
+- (void)setNewContentViewController:(UIViewController *)contentViewController {
+    if (!self.contentViewController) {
+        self.contentViewController = contentViewController;
+        return;
+    }
+    CGRect frame = self.contentViewController.view.frame;
+    CGAffineTransform transform = self.contentViewController.view.transform;
+    [self hideViewController:self.contentViewController];
+    self.contentViewController = contentViewController;
+    [self displayViewController:contentViewController
+                      withFrame:self.view.bounds];
+    contentViewController.view.transform = transform;
+    contentViewController.view.frame = frame;
+    
 }
 
 @end

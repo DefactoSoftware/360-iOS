@@ -15,6 +15,7 @@
 		52297EA018BE314900DD60BE /* TSFQuestionnairesViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52297E9F18BE314900DD60BE /* TSFQuestionnairesViewControllerSpec.m */; };
 		52297EA318BE31B700DD60BE /* TSFQuestionnairesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52297EA218BE31B700DD60BE /* TSFQuestionnairesViewController.m */; };
 		522DB4AB189FB6BA002EE50D /* TSFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 522DB4AA189FB6BA002EE50D /* TSFHomeViewController.m */; };
+		5263C95918C9D5A900E4C42A /* UIViewController+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5263C95818C9D5A900E4C42A /* UIViewController+Menu.m */; };
 		526A112418C4F40F00518D1E /* TSFTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 526A112318C4F40F00518D1E /* TSFTemplateCell.m */; };
 		526A112718C5CDB100518D1E /* TSFNewQuestionnaireAssessorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526A112618C5CDB100518D1E /* TSFNewQuestionnaireAssessorsViewController.m */; };
 		526A112A18C5CDC800518D1E /* TSFNewQuestionnaireAssessorsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 526A112918C5CDC800518D1E /* TSFNewQuestionnaireAssessorsViewControllerSpec.m */; };
@@ -141,6 +142,8 @@
 		52297EA218BE31B700DD60BE /* TSFQuestionnairesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnairesViewController.m; path = Controllers/TSFQuestionnairesViewController.m; sourceTree = "<group>"; };
 		522DB4A9189FB6BA002EE50D /* TSFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFHomeViewController.h; path = Controllers/TSFHomeViewController.h; sourceTree = "<group>"; };
 		522DB4AA189FB6BA002EE50D /* TSFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFHomeViewController.m; path = Controllers/TSFHomeViewController.m; sourceTree = "<group>"; };
+		5263C95718C9D5A900E4C42A /* UIViewController+Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Menu.h"; path = "Controllers/UIViewController+Menu.h"; sourceTree = "<group>"; };
+		5263C95818C9D5A900E4C42A /* UIViewController+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Menu.m"; path = "Controllers/UIViewController+Menu.m"; sourceTree = "<group>"; };
 		526A112218C4F40F00518D1E /* TSFTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFTemplateCell.h; path = Views/Cells/TSFTemplateCell.h; sourceTree = "<group>"; };
 		526A112318C4F40F00518D1E /* TSFTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFTemplateCell.m; path = Views/Cells/TSFTemplateCell.m; sourceTree = "<group>"; };
 		526A112518C5CDB100518D1E /* TSFNewQuestionnaireAssessorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFNewQuestionnaireAssessorsViewController.h; path = Controllers/TSFNewQuestionnaireAssessorsViewController.h; sourceTree = "<group>"; };
@@ -482,6 +485,8 @@
 			children = (
 				52297E9218BE1F8000DD60BE /* Assessor */,
 				52297E9318BE1FA200DD60BE /* User */,
+				5263C95718C9D5A900E4C42A /* UIViewController+Menu.h */,
+				5263C95818C9D5A900E4C42A /* UIViewController+Menu.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -858,6 +863,7 @@
 				529702DC18C4B66200B6BA8A /* TSFNewQuestionnaireSubjectViewController.m in Sources */,
 				52ACE468189EC07C0095F650 /* TSFQuestionnaireIntroViewController.m in Sources */,
 				52BE6F5218BCCA90000B2DC7 /* TSFUserQuestionnaireInfoViewController.m in Sources */,
+				5263C95918C9D5A900E4C42A /* UIViewController+Menu.m in Sources */,
 				529702D018C47AAD00B6BA8A /* TSFTemplateViewController.m in Sources */,
 				5295BC4318BCFD590081A158 /* NSDate+StringParsing.m in Sources */,
 				5290DBBE18BBA8EE0074AF78 /* TSFQuestionnaireCell.m in Sources */,

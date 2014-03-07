@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RESideMenu.h"
+#import "UIViewController+Menu.h"
 
-@interface TSFMainViewController : RESideMenu
+@interface TSFMainViewController : UIViewController
+
+@property (nonatomic, strong) UIViewController *contentViewController;
+
+- (void)setNewContentViewController:(UIViewController *)contentViewController;
 
 @end

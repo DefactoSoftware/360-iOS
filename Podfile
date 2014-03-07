@@ -5,7 +5,6 @@ target :"Three Sixty Feedback" do
   pod 'NZAlertView'
   pod 'CRToast'
   pod 'TPKeyboardAvoiding'
-  pod 'RESideMenu'
   pod 'UITextField+Shake'
   pod 'BlurryModalSegue'
 end

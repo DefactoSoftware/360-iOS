@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RESideMenu.h"
+#import "TSFMainViewController.h"
 #import "TSFSecondaryButton.h"
 #import "TSFBaseViewController.h"
 
@@ -15,6 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
 @property (weak, nonatomic) IBOutlet TSFSecondaryButton *closeButton;
-@property (nonatomic, strong) TSFBaseViewController *contentViewControlller;
+@property (nonatomic, strong) TSFMainViewController *contentViewControlller;
 
 @end

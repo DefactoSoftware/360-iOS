@@ -12,6 +12,7 @@
 #import "TSFTemplate.h"
 #import "TSFBaseViewController.h"
 #import "TSFButton.h"
+#import "TSFMainViewController.h"
 
 @interface TSFNewQuestionnaireConfirmViewController : TSFBaseViewController
 @property (nonatomic, strong) NSString *subject;

@@ -12,9 +12,8 @@
 #import "CRToast.h"
 #import "UIColor+TSFColor.h"
 #import "TSFGenerics.h"
-#import "RESideMenu.h"
 
-static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQuestionnairesViewController";
+static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQuestionnairesViewControllerNavigation";
 
 @interface TSFNewQuestionnaireConfirmViewController()
 @property (nonatomic, assign) NSInteger invitedAssessorsCount;
@@ -50,7 +49,7 @@ static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQu
     if (self.invitedAssessorsCount == [self.assessors count]) {
         TSFQuestionnairesNavigationController *questionnairesNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:TSFQuestionnairesNavigationControllerIdentifier];
         questionnairesNavigationController.showAddedNotification = YES;
-        [self.sideMenuViewController setContentViewController:questionnairesNavigationController];
+        [self.rootViewController setNewContentViewController:questionnairesNavigationController];
     }
 }
 
