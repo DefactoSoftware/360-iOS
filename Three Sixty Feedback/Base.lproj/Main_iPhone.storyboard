@@ -478,7 +478,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="TSFMenuCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="11G-I5-vnP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TSFMenuCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="11G-I5-vnP">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -490,7 +490,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aag-Kq-NYH">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aag-Kq-NYH">
                                                     <rect key="frame" x="20" y="11" width="280" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -498,6 +498,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Aag-Kq-NYH" firstAttribute="top" secondItem="4Gf-05-td0" secondAttribute="top" constant="11" id="EuA-PI-SXh"/>
+                                                <constraint firstItem="Aag-Kq-NYH" firstAttribute="leading" secondItem="4Gf-05-td0" secondAttribute="leading" constant="20" symbolic="YES" id="H1B-ZL-XOE"/>
+                                                <constraint firstAttribute="trailing" secondItem="Aag-Kq-NYH" secondAttribute="trailing" constant="20" symbolic="YES" id="SE8-9r-rPd"/>
+                                                <constraint firstItem="Aag-Kq-NYH" firstAttribute="centerY" secondItem="4Gf-05-td0" secondAttribute="centerY" id="bnJ-XB-GMr"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="titleLabel" destination="Aag-Kq-NYH" id="tXp-9N-S1d"/>
@@ -505,14 +511,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ik-Vv-mMS" customClass="TSFSecondaryButton">
+                                <rect key="frame" x="272" y="40" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="cf3-Hv-Qlv"/>
+                                    <constraint firstAttribute="height" constant="28" id="g3x-kJ-EQG"/>
+                                </constraints>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="AFL-mL-vIc" kind="unwind" unwindAction="rewindFromModal:" id="8wp-FI-iSA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0ik-Vv-mMS" firstAttribute="top" secondItem="c5E-fP-De0" secondAttribute="bottom" constant="20" id="5E0-k4-cTV"/>
+                            <constraint firstAttribute="bottom" secondItem="11G-I5-vnP" secondAttribute="bottom" id="6zC-BS-ash"/>
+                            <constraint firstAttribute="trailing" secondItem="0ik-Vv-mMS" secondAttribute="trailing" constant="20" id="MIq-JM-he4"/>
+                            <constraint firstItem="11G-I5-vnP" firstAttribute="top" secondItem="8LB-QR-mjn" secondAttribute="top" id="OkV-lX-2Su"/>
+                            <constraint firstAttribute="trailing" secondItem="11G-I5-vnP" secondAttribute="trailing" id="c5i-uD-jmG"/>
+                            <constraint firstItem="11G-I5-vnP" firstAttribute="leading" secondItem="8LB-QR-mjn" secondAttribute="leading" id="tr6-VF-e8B"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="0ik-Vv-mMS" id="CNX-Uv-WLG"/>
                         <outlet property="menuTableView" destination="11G-I5-vnP" id="pxK-EH-fzw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMq-iw-E0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="AFL-mL-vIc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="43" y="2156"/>
         </scene>
@@ -577,7 +607,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acS-Pf-Ev5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="492" y="2905"/>
+            <point key="canvasLocation" x="516" y="2849"/>
         </scene>
         <!--New Questionnaire Subject View Controller-->
         <scene sceneID="2bk-t6-gCn">
@@ -634,7 +664,13 @@
                             <constraint firstItem="bXM-6t-N36" firstAttribute="top" secondItem="dFY-IM-ooc" secondAttribute="bottom" constant="8" symbolic="YES" id="qXG-5M-1tZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qDl-6M-q7W"/>
+                    <navigationItem key="navigationItem" id="qDl-6M-q7W">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="Mvr-qd-Tt2">
+                            <connections>
+                                <segue destination="SJN-ws-gLD" kind="custom" identifier="TSFMenuViewControllerSegue" customClass="TSFMenuSegue" id="aHs-xk-yMu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="nextButton" destination="3Kb-1A-HRj" id="Dc5-t6-4To"/>
@@ -926,7 +962,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ch1-DB-24Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2443" y="2906"/>
+            <point key="canvasLocation" x="2362" y="2904"/>
         </scene>
         <!--New Questionnaire Confirm View Controller-->
         <scene sceneID="X0W-f0-rGd">
@@ -1007,7 +1043,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kOr-ZL-6A2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2876" y="2905"/>
+            <point key="canvasLocation" x="2795" y="2903"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0Zg-gL-cbe">
@@ -1401,7 +1437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTr-O5-GlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2443" y="1821"/>
+            <point key="canvasLocation" x="2362" y="1815"/>
         </scene>
         <!--Questionnaires Navigation Controller-->
         <scene sceneID="jb5-63-m7P">
@@ -1558,7 +1594,7 @@
                                             <outlet property="assessorsCountLabel" destination="Kco-YG-96f" id="C7d-I4-6LX"/>
                                             <outlet property="subjectLabel" destination="XhP-bA-vck" id="kLz-pE-Tkj"/>
                                             <outlet property="titleLabel" destination="dVM-hT-4XK" id="MMw-4s-B9C"/>
-                                            <segue destination="dNf-8O-MhP" kind="push" id="D8v-PQ-snj"/>
+                                            <segue destination="dNf-8O-MhP" kind="push" identifier="TSFUserQuestionnaireViewControllerSegue" id="D8v-PQ-snj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1588,6 +1624,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="5GX-Hd-1Ik">
                             <connections>
                                 <action selector="openMenu:" destination="Amp-gz-COa" id="Umn-yu-l9J"/>
+                                <segue destination="SJN-ws-gLD" kind="custom" identifier="TSFMenuViewControllerSegue" customClass="TSFMenuSegue" id="fKB-25-hFn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1613,6 +1650,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="aHs-xk-yMu"/>
         <segue reference="gcp-rR-yc3"/>
     </inferredMetricsTieBreakers>
 </document>

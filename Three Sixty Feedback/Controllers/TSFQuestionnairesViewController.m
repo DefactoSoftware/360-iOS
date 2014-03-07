@@ -14,9 +14,11 @@
 #import "TSFUserQuestionnaireTabBarController.h"
 #import "UIColor+TSFColor.h"
 #import "NSString+Hashtel.h"
+#import "TSFMenuViewController.h"
 
 static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuestionnaireInfoViewController";
+static NSString *const TSFUserQUestionnaireInfoViewControllerSegue = @"TSFUserQuestionnaireViewControllerSegue";
 
 @interface TSFQuestionnairesViewController()
 @property (nonatomic, assign) BOOL showCompletedQuestionnaires;
@@ -235,8 +237,10 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
 #pragma mark - Prepare for segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    TSFUserQuestionnaireTabBarController *destinationController = segue.destinationViewController;
-    destinationController.questionnaire = self.activeQuestionnaires[[self.questionnairesTableView indexPathForSelectedRow].row];
+    if ([segue.identifier isEqualToString:TSFUserQUestionnaireInfoViewControllerSegue]) {
+        TSFUserQuestionnaireTabBarController *destinationController = segue.destinationViewController;
+        destinationController.questionnaire = self.activeQuestionnaires[[self.questionnairesTableView indexPathForSelectedRow].row];
+    }
 }
 
 #pragma mark - UITableView

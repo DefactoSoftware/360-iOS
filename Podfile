@@ -7,6 +7,7 @@ target :"Three Sixty Feedback" do
   pod 'TPKeyboardAvoiding'
   pod 'RESideMenu'
   pod 'UITextField+Shake'
+  pod 'BlurryModalSegue'
 end
 
 target :"Three Sixty FeedbackTests", :exclusive => true do

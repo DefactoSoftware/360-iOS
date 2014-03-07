@@ -28,6 +28,9 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
     UIColor *patternColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"gray_jean"]];
     self.view.backgroundColor = patternColor;
     self.menuTableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+    
+    [self.closeButton setIconImage:[UIImage imageNamed:@"cross-1"]];
+    [self.closeButton setIconX:8.0f];
     [self initializeMenuItems];
 }
 
@@ -47,7 +50,8 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
     return [self.items count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TSFMenuCell *menuCell = [self.menuTableView dequeueReusableCellWithIdentifier:TSFMenuCellIdentifier];
     if (!menuCell) {
         menuCell= [[TSFMenuCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -81,8 +85,9 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
     NSString *viewControllerIdentifier = item[1];
     
     UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerIdentifier];
-    [self.sideMenuViewController setContentViewController:newViewController];
-    [self.sideMenuViewController hideMenuViewController];
+    [self.contentViewControlller.sideMenuViewController setContentViewController:newViewController];
+    [self dismissViewControllerAnimated:YES
+                             completion:^{}];
 }
 
 @end

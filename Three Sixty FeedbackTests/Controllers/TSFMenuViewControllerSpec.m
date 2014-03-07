@@ -29,6 +29,10 @@ describe(@"TSFMenuViewController", ^{
         it(@"has a menu tableview", ^{
             [[_menuViewController.menuTableView shouldNot] beNil];
         });
+        
+        it(@"has an outlet for the close button", ^{
+            [[_menuViewController.closeButton shouldNot] beNil];
+        });
     });
     
     context(@"iPad", ^{
@@ -47,6 +51,10 @@ describe(@"TSFMenuViewController", ^{
         
         it(@"has a menu tableview", ^{
             [[_menuViewController.menuTableView shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the close button", ^{
+            [[_menuViewController.closeButton shouldNot] beNil];
         });
     });
 });

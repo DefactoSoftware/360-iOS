@@ -7,6 +7,7 @@
 //
 
 #import "TSFMenuCell.h"
+#import "UIColor+TSFColor.h"
 
 @implementation TSFMenuCell
 
@@ -14,6 +15,7 @@
     [super layoutSubviews];
     self.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.titleLabel.textColor = [UIColor TSFSecondaryButtonColor];
 }
 
 @end

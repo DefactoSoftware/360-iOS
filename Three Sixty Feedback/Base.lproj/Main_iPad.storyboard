@@ -384,7 +384,13 @@
                             <constraint firstAttribute="trailing" secondItem="4EA-k3-wcm" secondAttribute="trailing" constant="154" id="xE1-yd-jXi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4PW-E6-xC2"/>
+                    <navigationItem key="navigationItem" id="4PW-E6-xC2">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="NSV-mW-gTb">
+                            <connections>
+                                <segue destination="WlM-DS-6KL" kind="custom" customClass="TSFMenuSegue" id="fh5-e0-eQr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nextButton" destination="i88-K0-kCA" id="YLl-qH-iWC"/>
                         <outlet property="subjectLabel" destination="4EA-k3-wcm" id="GuE-Gq-yxV"/>
@@ -1141,7 +1147,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="menu" id="Coy-sj-W8Q">
                             <connections>
-                                <action selector="openMenu:" destination="QF5-Jg-tCE" id="MpB-4g-KvH"/>
+                                <segue destination="WlM-DS-6KL" kind="custom" customClass="TSFMenuSegue" id="3Ro-Ay-Byc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nKa-ep-SbX">
@@ -1499,10 +1505,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TW-JU-mtR">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TW-JU-mtR">
                                                     <rect key="frame" x="20" y="11" width="728" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1514,20 +1520,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwT-pB-hE1" customClass="TSFSecondaryButton">
+                                <rect key="frame" x="720" y="40" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Vnf-Qb-bg7"/>
+                                    <constraint firstAttribute="width" constant="28" id="qqW-Dk-Ys4"/>
+                                </constraints>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8Ia-je-MNf" kind="unwind" unwindAction="rewindFromModal:" id="MJj-zf-sXD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8Xv-Dq-G7a" firstAttribute="leading" secondItem="gnP-EM-NYD" secondAttribute="leading" id="5k6-Ha-oQJ"/>
+                            <constraint firstAttribute="trailing" secondItem="rwT-pB-hE1" secondAttribute="trailing" constant="20" id="IP0-gS-P3C"/>
                             <constraint firstItem="8Xv-Dq-G7a" firstAttribute="top" secondItem="gnP-EM-NYD" secondAttribute="top" id="JHz-Bm-sxh"/>
+                            <constraint firstItem="rwT-pB-hE1" firstAttribute="top" secondItem="HrK-pj-DLk" secondAttribute="bottom" constant="20" id="P9D-gO-luq"/>
                             <constraint firstAttribute="trailing" secondItem="8Xv-Dq-G7a" secondAttribute="trailing" id="Q3M-aq-tN7"/>
                             <constraint firstAttribute="bottom" secondItem="8Xv-Dq-G7a" secondAttribute="bottom" id="a9Q-mo-A3U"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="rwT-pB-hE1" id="haF-Ib-PiB"/>
                         <outlet property="menuTableView" destination="8Xv-Dq-G7a" id="oAm-1H-6VZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbx-uJ-FHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8Ia-je-MNf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="162" y="2331"/>
         </scene>
@@ -1545,5 +1569,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="2h0-PH-eNa"/>
+        <segue reference="fh5-e0-eQr"/>
     </inferredMetricsTieBreakers>
 </document>
