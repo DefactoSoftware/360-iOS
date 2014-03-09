@@ -88,19 +88,6 @@ describe(@"TSFSessionService", ^{
             }];
         });
     });
-    
-    context(@"requesting a new password", ^{
-        it(@"calls the APIClient to POST the email address", ^{
-            NSString *randomEmail = [NSString stringWithFormat:@"%d", arc4random()];
-            NSDictionary *expectedParameters = @{ @"email": randomEmail };
-            [[_mockAPIClient should] receive:@selector(POST:parameters:success:failure:)
-                               withArguments:TSFAPIEndPointPassword, expectedParameters, [KWAny any], [KWAny any]];
-            
-            [_sessionService createNewPasswordRequestForEmail:randomEmail
-                                                  withSuccess:^(id response) {}
-                                                      failure:^(NSError *error) {}];
-        });
-    });
 });
 
 SPEC_END

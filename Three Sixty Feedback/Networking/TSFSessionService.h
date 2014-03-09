@@ -32,8 +32,5 @@ static NSString *const TSFAPIEndPointPassword = @"users/password";
                           failure:(TSFNetworkingErrorBlock)failure;
 - (void)deleteCurrentSessionWithSuccess:(TSFNetworkingSuccessBlock)success
                                 failure:(TSFNetworkingErrorBlock)failure;
-- (void)createNewPasswordRequestForEmail:(NSString *)email
-                             withSuccess:(TSFNetworkingSuccessBlock)success
-                                 failure:(TSFNetworkingErrorBlock)failure;
 
 @end
