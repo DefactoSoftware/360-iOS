@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "TSFSessionService.h"
 #import "TSFBaseViewController.h"
+#import "TSFButton.h"
 
 @interface TSFLoginViewController : TSFBaseViewController
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet TSFButton *loginButton;
 @property (nonatomic, strong) TSFSessionService *sessionService;
 
 - (IBAction)loginButtonPressed:(id)sender;
