@@ -384,7 +384,13 @@
                             <constraint firstAttribute="trailing" secondItem="4EA-k3-wcm" secondAttribute="trailing" constant="154" id="xE1-yd-jXi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4PW-E6-xC2"/>
+                    <navigationItem key="navigationItem" id="4PW-E6-xC2">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="Lwm-j4-jz9">
+                            <connections>
+                                <action selector="openMenu:" destination="gwC-b3-XIQ" id="nuP-p0-0WQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nextButton" destination="i88-K0-kCA" id="YLl-qH-iWC"/>
                         <outlet property="subjectLabel" destination="4EA-k3-wcm" id="GuE-Gq-yxV"/>
@@ -866,10 +872,10 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5t-0Q-vFo" customClass="TSFButton">
-                                <rect key="frame" x="300" y="132" width="131" height="30"/>
+                                <rect key="frame" x="282" y="132" width="149" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="131" id="Iqo-2Q-riB"/>
+                                    <constraint firstAttribute="width" constant="149" id="Iqo-2Q-riB"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -890,10 +896,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccY-ik-kmB" customClass="TSFButton">
-                                <rect key="frame" x="192" y="132" width="100" height="30"/>
+                                <rect key="frame" x="157" y="132" width="117" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="bpZ-4O-hns"/>
+                                    <constraint firstAttribute="width" constant="117" id="bpZ-4O-hns"/>
                                     <constraint firstAttribute="height" constant="30" id="kKa-Lo-KUU"/>
                                 </constraints>
                                 <state key="normal">
@@ -1367,7 +1373,7 @@
         <!--Navigation Controller-->
         <scene sceneID="PmL-pX-06d">
             <objects>
-                <navigationController definesPresentationContext="YES" id="Iv7-vB-A2A" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TSFLoginViewControllerNavigation" definesPresentationContext="YES" id="Iv7-vB-A2A" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="As8-hP-lkX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1490,7 +1496,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Xv-Dq-G7a">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TSFMenuCell" id="vkG-QR-cIt" customClass="TSFMenuCell">
                                         <rect key="frame" x="0.0" y="22" width="768" height="44"/>
@@ -1499,15 +1505,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TW-JU-mtR">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TW-JU-mtR">
                                                     <rect key="frame" x="20" y="11" width="728" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="3TW-JU-mtR" firstAttribute="top" secondItem="R0w-cj-h9S" secondAttribute="top" constant="11" id="0Hr-iW-QEk"/>
+                                                <constraint firstAttribute="trailing" secondItem="3TW-JU-mtR" secondAttribute="trailing" constant="20" symbolic="YES" id="9pJ-rN-Jl1"/>
+                                                <constraint firstItem="3TW-JU-mtR" firstAttribute="centerY" secondItem="R0w-cj-h9S" secondAttribute="centerY" id="Bze-hC-317"/>
+                                                <constraint firstItem="3TW-JU-mtR" firstAttribute="leading" secondItem="R0w-cj-h9S" secondAttribute="leading" constant="20" symbolic="YES" id="mHT-1k-psa"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="titleLabel" destination="3TW-JU-mtR" id="fmb-Kr-mu1"/>
                                         </connections>
@@ -1515,7 +1530,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8Xv-Dq-G7a" firstAttribute="leading" secondItem="gnP-EM-NYD" secondAttribute="leading" id="5k6-Ha-oQJ"/>
                             <constraint firstItem="8Xv-Dq-G7a" firstAttribute="top" secondItem="gnP-EM-NYD" secondAttribute="top" id="JHz-Bm-sxh"/>

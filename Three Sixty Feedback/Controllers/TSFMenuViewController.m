@@ -25,16 +25,17 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
     self.menuTableView.dataSource = self;
     self.menuTableView.delegate = self;
     
-    UIColor *patternColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"gray_jean"]];
-    self.view.backgroundColor = patternColor;
     self.menuTableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
     [self initializeMenuItems];
 }
 
 - (void)initializeMenuItems {
     self.items = @[
-                   @[ TSFLocalizedString(@"TSFMenuItemQuestionnaires", @"Questionnaires"), @"TSFQuestionnairesViewControllerNavigation" ],
-                   @[ TSFLocalizedString(@"TSFMenuItemNewQuestionnaire", @"Create new questionnaire"), @"TSFNewQuestionnaireViewControllerNavigation" ]
+                   @[ TSFLocalizedString(@"TSFMenuItemQuestionnaires", @"Questionnaires"),
+                      @"TSFQuestionnairesViewControllerNavigation" ],
+                   @[ TSFLocalizedString(@"TSFMenuItemNewQuestionnaire", @"Create a new questionnaire"), @"TSFNewQuestionnaireViewControllerNavigation" ],
+                   @[ TSFLocalizedString(@"TSFMenuItemLogout", @"Logout"),
+                      @"TSFLoginViewControllerNavigation" ]
                    ];
     
     self.menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -54,11 +55,12 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
                                      reuseIdentifier:TSFMenuCellIdentifier];
     }
     menuCell.titleLabel.text = self.items[indexPath.row][0];
+    menuCell.titleLabel.textColor = [UIColor whiteColor];
     return menuCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.0f;
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 80.f : 50.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
