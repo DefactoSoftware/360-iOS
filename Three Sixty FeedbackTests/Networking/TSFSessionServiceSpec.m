@@ -102,9 +102,8 @@ describe(@"TSFSessionService", ^{
             
             [_sessionService createNewSessionWithEmail:_sampleEmail
                                               password:_samplePassword
-                                               success:^(TSFUser *user) {
-                [[_sessionService.signedInUser should] equal:_stubUser];
-            } failure:^(NSError *error) {}];
+                                               success:^(TSFUser *user) {}
+                                               failure:^(NSError *error) {}];
         });
         
         it(@"stores the email address and authorization token in the credentialstore", ^{
@@ -123,8 +122,7 @@ describe(@"TSFSessionService", ^{
             
             [_sessionService createNewSessionWithEmail:_sampleEmail
                                               password:_samplePassword
-                                               success:^(id response) {
-            }
+                                               success:^(id response) {}
                                                failure:^(NSError *error) {}];
         });
     });
@@ -149,10 +147,8 @@ describe(@"TSFSessionService", ^{
             [[_mockCredentialStore should] receive:@selector(removeStoredEmail)];
             [[_mockCredentialStore should] receive:@selector(removeStoredToken)];
             
-            [_sessionService deleteCurrentSessionWithSuccess:^(id response) {
-            }
-                                                     failure:^(NSError *error) {
-            }];
+            [_sessionService deleteCurrentSessionWithSuccess:^(id response) {}
+                                                     failure:^(NSError *error) {}];
         });
     });
 });

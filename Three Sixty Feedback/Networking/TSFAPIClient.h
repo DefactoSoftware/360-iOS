@@ -7,8 +7,8 @@
 //
 
 #import "AFHTTPRequestOperationManager.h"
-#import "TSFSessionService.h"
 #import "TSFNetworkingBlocks.h"
+#import "TSFCredentialStore.h"
 
 static NSString *const TSFAPIBaseURL = @"https://backend360staging.herokuapp.com/api/v1/";
 static NSString *const TSFAPIHeaderFieldFrom = @"From";
@@ -19,7 +19,7 @@ static NSString *const TSFAPIHeaderFieldAuthorization = @"Authorization";
 @interface TSFAPIClient : AFHTTPRequestOperationManager
 
 @property (nonatomic, strong) NSString *assessorToken;
-@property (nonatomic, strong) TSFSessionService *sessionService;
+@property (nonatomic, strong) TSFCredentialStore *credentialStore;
 
 + (TSFAPIClient *)sharedClient;
 

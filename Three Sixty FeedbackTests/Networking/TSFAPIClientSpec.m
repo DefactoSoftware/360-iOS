@@ -26,6 +26,10 @@ describe(@"TSFAPIClient", ^{
         [[[APIClient.baseURL absoluteString] should] equal:TSFAPIBaseURL];
 	});
     
+    it(@"has an instance of the credentialstore", ^{
+        [[APIClient.credentialStore should] beKindOfClass:[TSFCredentialStore class]];
+    });
+    
     context(@"#setAssessorTokenWithURL", ^{
         it(@"sets the token correctly", ^{
             NSURL *url = [NSURL URLWithString:@"feedback://assessor?token=12345&something_else=foo"];
@@ -35,22 +39,22 @@ describe(@"TSFAPIClient", ^{
 	});
     
     context(@"when signed in", ^{
-        __block id _mockSessionService;
-        __block TSFUser *_stubUser;
+        __block id _mockCredentialStore;
         __block NSString *_stubEmail;
         __block NSString *_stubAuthToken;
         
         beforeEach(^{
-            _mockSessionService = [KWMock mockForClass:[TSFSessionService class]];
+            _mockCredentialStore = [KWMock mockForClass:[TSFCredentialStore class]];
             _stubEmail = [NSString stringWithFormat:@"%d", arc4random()];
             _stubAuthToken = [NSString stringWithFormat:@"%d", arc4random()];
-            _stubUser = [[TSFUser alloc] init];
-            _stubUser.email = _stubEmail;
-            _stubUser.authToken = _stubAuthToken;
             
-            APIClient.sessionService = _mockSessionService;
-            [[_mockSessionService should] receive:@selector(signedInUser)
-                                        andReturn:_stubUser];
+            APIClient.credentialStore = _mockCredentialStore;
+            [[_mockCredentialStore should] receive:@selector(hasStoredCredentials)
+                                         andReturn:theValue(YES)];
+            [_mockCredentialStore stub:@selector(storedEmail)
+                             andReturn:_stubEmail];
+            [_mockCredentialStore stub:@selector(storedToken)
+                             andReturn:_stubAuthToken];
         });
         
         it(@"adds the corresponding headers to the request", ^{

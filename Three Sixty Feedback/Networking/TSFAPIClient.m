@@ -17,6 +17,7 @@
 	    _sharedClient =
         [[self alloc] initWithBaseURL:[NSURL URLWithString:TSFAPIBaseURL]];
         _sharedClient.assessorToken = @"KooSLx35F1ca3Q3F6G8pgw";
+        _sharedClient.credentialStore = [[TSFCredentialStore alloc] init];
 	});
     
 	return _sharedClient;
@@ -39,23 +40,16 @@
                          }];
 }
 
-- (void)instantiateSessionService {
-    if (!self.sessionService) {
-        self.sessionService = [TSFSessionService sharedService];
-    }
-}
-
 - (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)request
                                                     success:(void (^)(AFHTTPRequestOperation *, id))success
-                                                    failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
-    [self instantiateSessionService];
-    
+                                                    failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {    
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     
-    TSFUser *signedInUser = self.sessionService.signedInUser;
-    if (signedInUser) {
-        [mutableRequest addValue:signedInUser.email forHTTPHeaderField:TSFAPIHeaderFieldFrom];
-        [mutableRequest addValue:signedInUser.authToken forHTTPHeaderField:TSFAPIHeaderFieldAuthorization];
+    if ([self.credentialStore hasStoredCredentials]) {
+        [mutableRequest addValue:[self.credentialStore storedEmail]
+              forHTTPHeaderField:TSFAPIHeaderFieldFrom];
+        [mutableRequest addValue:[self.credentialStore storedToken]
+              forHTTPHeaderField:TSFAPIHeaderFieldAuthorization];
     }
     
     return [super HTTPRequestOperationWithRequest:mutableRequest
