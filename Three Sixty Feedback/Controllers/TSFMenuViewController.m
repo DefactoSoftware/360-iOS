@@ -10,14 +10,40 @@
 #import "TSFAppDelegate.h"
 #import "TSFGenerics.h"
 #import "TSFMenuCell.h"
+#import "CRToast.h"
+#import "UIColor+TSFColor.h"
 
 static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
+static NSString *const TSFMenuLogoutIdentifier = @"TSFLoginViewControllerNavigation";
+static NSInteger const TSFMenuLogoutCellIndex = 2;
 
 @interface TSFMenuViewController()
 @property (nonatomic, strong) NSArray *items;
 @end
 
 @implementation TSFMenuViewController
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil
+                           bundle:nibBundleOrNil];
+    if (self) {
+        [self sharedSetup];
+    }
+    return self;
+}
+
+- (void)sharedSetup {
+    self.sessionService = [TSFSessionService sharedService];
+}
 
 - (void)viewDidLoad
 {
@@ -40,6 +66,22 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
     
     self.menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.menuTableView reloadData];
+}
+
+- (void)logout {
+    __weak typeof (self) _self = self;
+    [self.sessionService deleteCurrentSessionWithSuccess:^(id response) {
+        UIViewController *loginViewController = [_self.storyboard instantiateViewControllerWithIdentifier:TSFMenuLogoutIdentifier];
+        [_self.sideMenuViewController setContentViewController:loginViewController];
+        [_self.sideMenuViewController hideMenuViewController];
+        _self.sideMenuViewController.panGestureEnabled = NO;
+    } failure:^(NSError *error) {
+        NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFMenuViewControllerLogoutError", @"Failed logging out."),
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                  kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
+        [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
+        NSLog(@"Error deleting current session: %@.", error);
+    }];
 }
 
 #pragma mark - UITableView
@@ -79,10 +121,16 @@ static NSString *const TSFMenuCellIdentifier = @"TSFMenuCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == TSFMenuLogoutCellIndex) {
+        [self logout];
+        return;
+    }
+    
     NSArray *item = self.items[indexPath.row];
     NSString *viewControllerIdentifier = item[1];
     
     UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerIdentifier];
+    self.sideMenuViewController.panGestureEnabled = YES;
     [self.sideMenuViewController setContentViewController:newViewController];
     [self.sideMenuViewController hideMenuViewController];
 }

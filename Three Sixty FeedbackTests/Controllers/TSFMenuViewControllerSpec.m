@@ -49,6 +49,18 @@ describe(@"TSFMenuViewController", ^{
             [[_menuViewController.menuTableView shouldNot] beNil];
         });
     });
+    
+    it(@"has a reference to the session service", ^{
+        [[_menuViewController.sessionService should] beKindOfClass:[TSFSessionService class]];
+    });
+    
+    it(@"logs out the user", ^{
+        id mockSessionService = [KWMock mockForClass:[TSFSessionService class]];
+        _menuViewController.sessionService = mockSessionService;
+        [[mockSessionService should] receive:@selector(deleteCurrentSessionWithSuccess:failure:)];
+        
+        [_menuViewController logout];
+    });
 });
 
 SPEC_END

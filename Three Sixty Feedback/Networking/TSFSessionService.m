@@ -36,8 +36,8 @@
                           failure:(TSFNetworkingErrorBlock)failure {
     NSDictionary *parameters = @{ @"email": email, @"password": password };
     __weak typeof (self) _self = self;
-    __weak TSFNetworkingSuccessBlock _success = success;
-    __weak TSFNetworkingErrorBlock _failure = failure;
+    __block TSFNetworkingSuccessBlock _success = success;
+    __block TSFNetworkingErrorBlock _failure = failure;
     
     [self.apiClient POST:TSFAPIEndPointSessions parameters:parameters
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -47,7 +47,8 @@
         [_self.credentialStore storeToken:user.authToken];
         _self.signedInUser = user;
         _success(user);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         _failure(error);
     }];
 
@@ -55,8 +56,8 @@
 
 - (void)deleteCurrentSessionWithSuccess:(TSFNetworkingSuccessBlock)success
                                 failure:(TSFNetworkingErrorBlock)failure {    
-    __weak TSFNetworkingSuccessBlock _success = success;
-    __weak TSFNetworkingErrorBlock _failure = failure;
+    __block TSFNetworkingSuccessBlock _success = success;
+    __block TSFNetworkingErrorBlock _failure = failure;
     __weak typeof (self) _self = self;
     [self.apiClient DELETE:TSFAPIEndPointSessionDelete
                 parameters:nil
