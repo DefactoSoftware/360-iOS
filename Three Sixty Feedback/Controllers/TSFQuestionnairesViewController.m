@@ -247,7 +247,9 @@ static NSString *const TSFNewQuestionnaireViewControllerIdentifier = @"TSFNewQue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     TSFUserQuestionnaireTabBarController *destinationController = segue.destinationViewController;
-    destinationController.questionnaire = self.activeQuestionnaires[[self.questionnairesTableView indexPathForSelectedRow].row];
+    NSInteger selectedQuestionnaireIndex = [self.questionnairesTableView indexPathForSelectedRow].row;
+    TSFQuestionnaire *selectedQuestionnaire = (self.showCompletedQuestionnaires) ? self.completedQuestionnaires[selectedQuestionnaireIndex] : self.activeQuestionnaires[selectedQuestionnaireIndex];
+    destinationController.questionnaire = selectedQuestionnaire;
 }
 
 #pragma mark - UITableView

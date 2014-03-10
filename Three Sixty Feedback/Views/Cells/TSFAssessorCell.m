@@ -11,8 +11,8 @@
 #import "NSDate+StringParsing.h"
 #import "UIColor+TSFColor.h"
 
-static NSString *const TSFCompletedImageName = @"check";
-static NSString *const TSFNotCompletedImageName = @"cross";
+static NSString *const TSFCompletedImageName = @"checkmark";
+static NSString *const TSFNotCompletedImageName = @"cancel";
 
 @interface TSFAssessorCell()
 @property (nonatomic, strong) TSFAssessor *assessor;

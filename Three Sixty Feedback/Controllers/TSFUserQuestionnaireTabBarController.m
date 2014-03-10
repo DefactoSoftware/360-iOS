@@ -25,8 +25,12 @@
     self.navigationItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerTitle", @"My questionnaire");
     
     if (!self.tabBar.hidden) {
-        ((UITabBarItem *)self.tabBar.items[0]).title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerQuestionnaireTab", @"Questionnaire");
-        ((UITabBarItem *)self.tabBar.items[1]).title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessorsTab", @"Assessors");
+        UITabBarItem *questionnaireItem = self.tabBar.items[0];
+        UITabBarItem *assessorsItem = self.tabBar.items[1];
+        questionnaireItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerQuestionnaireTab", @"Questionnaire");
+        questionnaireItem.image = [UIImage imageNamed:@"questionnaire"];
+        assessorsItem.title = TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerAssessorsTab", @"Assessors");
+        assessorsItem.image = [UIImage imageNamed:@"assessor"];
     }
 
     self.infoViewController = (TSFUserQuestionnaireInfoViewController *)[self.viewControllers firstObject];
