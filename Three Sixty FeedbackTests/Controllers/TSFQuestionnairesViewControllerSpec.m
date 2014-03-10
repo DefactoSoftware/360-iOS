@@ -33,10 +33,6 @@ describe(@"TSFQuestionnairesViewController", ^{
         it(@"has a active segmentedcontrol", ^{
             [[_questionnairesViewController.activeSegmentedControl shouldNot] beNil];
         });
-        
-        it(@"has an outlet for the toolbar", ^{
-            [[_questionnairesViewController.toolbar shouldNot] beNil];
-        });
     });
     
     context(@"iPad", ^{

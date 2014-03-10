@@ -53,10 +53,10 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     self.subjectTitleLabel.textColor = [UIColor TSFLightGreyTextColor];
     self.descriptionLabel.textColor = [UIColor TSFLightGreyTextColor];
     self.subjectLabel.textColor = [UIColor TSFLightGreyTextColor];
-    [self.showTemplateButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerShowTemplate", @"Questions")
+    [self.showTemplateButton setTitle:TSFLocalizedString(@"TSFUserQuestionnaireInfoViewControllerShowTemplate", @"Show questions")
                              forState:UIControlStateNormal];
     [self.remindAssessorsButton setIconImage:[UIImage imageNamed:@"time"]];
-    [self.showTemplateButton setIconImage:[UIImage imageNamed:@"questionnaire"]];
+    [self.showTemplateButton setIconImage:[UIImage imageNamed:@"clipboard"]];
     
     self.assessorsTableView.separatorInset = UIEdgeInsetsMake(0, 20.0f, 0, 20.0f);
 
