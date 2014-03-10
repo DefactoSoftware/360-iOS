@@ -10,6 +10,14 @@
 
 @implementation TSFSessionService
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        _credentialStore = [[TSFCredentialStore alloc] init];
+    }
+    return self;
+}
+
 + (instancetype)sharedService {
     static TSFSessionService *_sharedService = nil;
 	static dispatch_once_t onceToken;
@@ -31,9 +39,12 @@
     __block TSFNetworkingSuccessBlock _success = success;
     __block TSFNetworkingErrorBlock _failure = failure;
     
-    [self.apiClient POST:TSFAPIEndPointSessions parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.apiClient POST:TSFAPIEndPointSessions parameters:parameters
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *responseUser = (NSDictionary *)responseObject;
         TSFUser *user = [_self.userMapper userWithDictionary:responseUser];
+        [_self.credentialStore storeEmail:user.email];
+        [_self.credentialStore storeToken:user.authToken];
         _self.signedInUser = user;
         _success(user);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

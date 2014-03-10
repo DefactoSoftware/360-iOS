@@ -12,6 +12,7 @@
 #import "TSFUserMapper.h"
 #import "TSFUser.h"
 #import "TSFNetworkingBlocks.h"
+#import "TSFCredentialStore.h"
 
 static NSString *const TSFAPIEndPointSessions = @"users/sign_in";
 static NSString *const TSFAPIEndPointSessionDelete = @"users/sign_out";
@@ -24,6 +25,7 @@ static NSString *const TSFAPIEndPointPassword = @"users/password";
 @property (nonatomic, strong) TSFAPIClient *apiClient;
 @property (nonatomic, strong) TSFUserMapper *userMapper;
 @property (nonatomic, strong) TSFUser *signedInUser;
+@property (nonatomic, strong) TSFCredentialStore *credentialStore;
 
 + (TSFSessionService *)sharedService;
 - (void)createNewSessionWithEmail:(NSString *)email
