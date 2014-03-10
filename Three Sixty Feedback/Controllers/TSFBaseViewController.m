@@ -35,7 +35,7 @@
 
 - (void)addResignGestureRecognizer {
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                    action:@selector(dismissKeyboard:)];
+                                                                 action:@selector(dismissKeyboard:)];
     [self.tapRecognizer setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:self.tapRecognizer];
 }

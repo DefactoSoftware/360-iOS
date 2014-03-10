@@ -33,6 +33,7 @@ static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController
 
 - (void)sharedSetup {
     _sessionService = [TSFSessionService sharedService];
+    _credentialStore = _sessionService.credentialStore;
 }
 
 - (void)viewDidLoad {
@@ -42,6 +43,14 @@ static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController
     self.passwordLabel.text = TSFLocalizedString(@"TSFLoginViewControllerPassword", @"Password");
     [self.loginButton setTitle:TSFLocalizedString(@"TSFLoginViewControllerButton", @"Login") forState:UIControlStateNormal];
     [self addResignGestureRecognizer];
+    
+    [self checkSession];
+}
+
+- (void)checkSession {
+    if ([self.credentialStore hasStoredCredentials]) {
+        [self pushToMainViewController];
+    }
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
@@ -49,8 +58,7 @@ static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController
     [self.sessionService createNewSessionWithEmail:self.emailTextField.text
                                           password:self.passwordTextField.text
                                            success:^(TSFUser *user) {
-       TSFAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-       delegate.window.rootViewController = [_self.storyboard instantiateViewControllerWithIdentifier:TSFMainViewControllerIdentifier];
+       [_self pushToMainViewController];
     } failure:^(NSError *error) {
         NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFLoginViewControllerFail", @"Failed logging in"),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
@@ -58,6 +66,11 @@ static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController
         [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
         NSLog(@"Error logging in. Message: %@", error.localizedDescription);
     }];
+}
+
+- (void)pushToMainViewController {
+    TSFAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:TSFMainViewControllerIdentifier];
 }
 
 @end
