@@ -21,5 +21,6 @@ static NSString *const TSFKeychainTokenKey = @"token";
 - (NSString *)storedToken;
 - (BOOL)removeStoredEmail;
 - (BOOL)removeStoredToken;
+- (BOOL)hasStoredCredentials;
 
 @end

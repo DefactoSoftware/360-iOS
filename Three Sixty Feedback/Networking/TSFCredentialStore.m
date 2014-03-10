@@ -42,4 +42,8 @@
                                         account:TSFKeychainTokenKey];
 }
 
+- (BOOL)hasStoredCredentials {
+    return [self storedEmail] && [self storedToken];
+}
+
 @end

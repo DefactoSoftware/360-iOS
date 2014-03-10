@@ -61,6 +61,29 @@ describe(@"TSFCredentialStore", ^{
                        withArguments:TSFKeychainServiceName, TSFKeychainTokenKey];
         [_credentialStore removeStoredToken];
     });
+
+    it(@"declares when it has stored credentials", ^{
+        NSString *randomCredentials = [NSString stringWithFormat:@"%d", arc4random()];
+        [SSKeychain stub:@selector(passwordForService:account:)
+                andReturn:randomCredentials
+            withArguments:TSFKeychainServiceName, TSFKeychainEmailKey];
+        [SSKeychain stub:@selector(passwordForService:account:)
+               andReturn:randomCredentials
+           withArguments:TSFKeychainServiceName, TSFKeychainTokenKey];
+        
+        [[theValue([_credentialStore hasStoredCredentials]) should] equal:theValue(YES)];
+    });
+    
+    it(@"declares when it has no stored credentials", ^{
+        [SSKeychain stub:@selector(passwordForService:account:)
+               andReturn:nil
+           withArguments:TSFKeychainServiceName, TSFKeychainEmailKey];
+        [SSKeychain stub:@selector(passwordForService:account:)
+               andReturn:nil
+           withArguments:TSFKeychainServiceName, TSFKeychainTokenKey];
+        
+        [[theValue([_credentialStore hasStoredCredentials]) should] equal:theValue(NO)];
+    });
 });
 
 SPEC_END
