@@ -49,6 +49,18 @@ describe(@"TSFCredentialStore", ^{
             withArguments:TSFKeychainServiceName, TSFKeychainTokenKey];
         [[[_credentialStore storedToken] should] equal:randomAuthToken];
     });
+    
+    it(@"removes the stored email address", ^{
+        [[SSKeychain should] receive:@selector(deletePasswordForService:account:)
+                       withArguments:TSFKeychainServiceName, TSFKeychainEmailKey];
+        [_credentialStore removeStoredEmail];
+    });
+    
+    it(@"removes the stored authorization token", ^{
+        [[SSKeychain should] receive:@selector(deletePasswordForService:account:)
+                       withArguments:TSFKeychainServiceName, TSFKeychainTokenKey];
+        [_credentialStore removeStoredToken];
+    });
 });
 
 SPEC_END

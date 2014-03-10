@@ -32,4 +32,14 @@
                                   account:TSFKeychainTokenKey];
 }
 
+- (BOOL)removeStoredEmail {
+    return [SSKeychain deletePasswordForService:TSFKeychainServiceName
+                                        account:TSFKeychainEmailKey];
+}
+
+- (BOOL)removeStoredToken {
+    return [SSKeychain deletePasswordForService:TSFKeychainServiceName
+                                        account:TSFKeychainTokenKey];
+}
+
 @end

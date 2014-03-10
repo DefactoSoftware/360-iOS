@@ -116,9 +116,9 @@ describe(@"TSFSessionService", ^{
                            successBlock(nil, _sampleResponse);
                            return nil;
                        }];
-            [[_mockCredentialStore shouldEventually] receive:@selector(storeEmail:)
+            [[_mockCredentialStore should] receive:@selector(storeEmail:)
                                      ];
-            [[_mockCredentialStore shouldEventually] receive:@selector(storeToken:)
+            [[_mockCredentialStore should] receive:@selector(storeToken:)
                                      withArguments:_sampleToken];
             
             [_sessionService createNewSessionWithEmail:_sampleEmail
@@ -133,8 +133,25 @@ describe(@"TSFSessionService", ^{
         it(@"calls the APIClient to DELETE the session", ^{
             [[_mockAPIClient should] receive:@selector(DELETE:parameters:success:failure:)
                                withArguments:TSFAPIEndPointSessionDelete, [KWAny any], [KWAny any], [KWAny any]];
+            
             [_sessionService deleteCurrentSessionWithSuccess:^(id response) {
             } failure:^(NSError *error) {
+            }];
+        });
+        
+        it(@"calls the credentiualstore to remove the stored credentials", ^{
+            [_mockAPIClient stub:@selector(DELETE:parameters:success:failure:)
+                       withBlock:^id(NSArray *params) {
+                       void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
+                       successBlock(nil, nil);
+                       return nil;
+                   }];
+            [[_mockCredentialStore should] receive:@selector(removeStoredEmail)];
+            [[_mockCredentialStore should] receive:@selector(removeStoredToken)];
+            
+            [_sessionService deleteCurrentSessionWithSuccess:^(id response) {
+            }
+                                                     failure:^(NSError *error) {
             }];
         });
     });
