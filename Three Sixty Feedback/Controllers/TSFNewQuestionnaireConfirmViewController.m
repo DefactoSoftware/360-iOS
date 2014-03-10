@@ -14,7 +14,7 @@
 #import "TSFGenerics.h"
 #import "RESideMenu.h"
 
-static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQuestionnairesViewController";
+static NSString *const TSFQuestionnairesNavigationControllerIdentifier = @"TSFQuestionnairesViewControllerNavigation";
 
 @interface TSFNewQuestionnaireConfirmViewController()
 @property (nonatomic, assign) NSInteger invitedAssessorsCount;
