@@ -74,6 +74,8 @@
 		52ECB6F418A0E481007C7636 /* TSFQuestionnaireViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ECB6F318A0E481007C7636 /* TSFQuestionnaireViewControllerSpec.m */; };
 		52ECB6F718A0E511007C7636 /* TSFQuestionnaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ECB6F618A0E511007C7636 /* TSFQuestionnaireViewController.m */; };
 		52F32A0518C65C8A0010D579 /* TSFQuestionnairesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F32A0418C65C8A0010D579 /* TSFQuestionnairesNavigationController.m */; };
+		52FE914F18CD131000396574 /* TSFCredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FE914E18CD131000396574 /* TSFCredentialStore.m */; };
+		52FE915218CD133100396574 /* TSFCredentialStoreSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FE915118CD133100396574 /* TSFCredentialStoreSpec.m */; };
 		E417281718994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */; };
 		E417281A18994C8000DD77B5 /* TSFQuestionnaireMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E417281918994C8000DD77B5 /* TSFQuestionnaireMapper.m */; };
 		E429DD4E189807B300BAFEC4 /* TSFAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E429DD4D189807B300BAFEC4 /* TSFAPIClient.m */; };
@@ -239,6 +241,9 @@
 		52ECB6F618A0E511007C7636 /* TSFQuestionnaireViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireViewController.m; path = Controllers/TSFQuestionnaireViewController.m; sourceTree = "<group>"; };
 		52F32A0318C65C8A0010D579 /* TSFQuestionnairesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFQuestionnairesNavigationController.h; path = Controllers/TSFQuestionnairesNavigationController.h; sourceTree = "<group>"; };
 		52F32A0418C65C8A0010D579 /* TSFQuestionnairesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnairesNavigationController.m; path = Controllers/TSFQuestionnairesNavigationController.m; sourceTree = "<group>"; };
+		52FE914D18CD131000396574 /* TSFCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSFCredentialStore.h; path = Networking/TSFCredentialStore.h; sourceTree = "<group>"; };
+		52FE914E18CD131000396574 /* TSFCredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCredentialStore.m; path = Networking/TSFCredentialStore.m; sourceTree = "<group>"; };
+		52FE915118CD133100396574 /* TSFCredentialStoreSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFCredentialStoreSpec.m; path = Networking/TSFCredentialStoreSpec.m; sourceTree = "<group>"; };
 		62C58F47C5FD4310BB92989F /* Pods-Three Sixty Feedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty Feedback.xcconfig"; path = "Pods/Pods-Three Sixty Feedback.xcconfig"; sourceTree = "<group>"; };
 		C40122A55ED3419EAD72E502 /* Pods-Three Sixty FeedbackTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Three Sixty FeedbackTests.xcconfig"; path = "Pods/Pods-Three Sixty FeedbackTests.xcconfig"; sourceTree = "<group>"; };
 		E417281618994A7A00DD77B5 /* TSFQuestionnaireMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSFQuestionnaireMapperSpec.m; path = Models/Mappers/TSFQuestionnaireMapperSpec.m; sourceTree = "<group>"; };
@@ -490,6 +495,8 @@
 				529702EF18C4E1FA00B6BA8A /* TSFTemplateService.h */,
 				529702F018C4E1FA00B6BA8A /* TSFTemplateService.m */,
 				E4800B2F1897FD9A00FCE147 /* TSFAppDelegate.h */,
+				52FE914D18CD131000396574 /* TSFCredentialStore.h */,
+				52FE914E18CD131000396574 /* TSFCredentialStore.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -503,6 +510,7 @@
 				E440586D189A6E30001AEE13 /* TSFCompetenceServiceSpec.m */,
 				526B426818B506AC00DC1310 /* TSFSessionServiceSpec.m */,
 				529702F318C4E21100B6BA8A /* TSFTemplateServiceSpec.m */,
+				52FE915118CD133100396574 /* TSFCredentialStoreSpec.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -863,6 +871,7 @@
 				52F32A0518C65C8A0010D579 /* TSFQuestionnairesNavigationController.m in Sources */,
 				E4C7F922189940A800B0E5F2 /* TSFCompetenceMapper.m in Sources */,
 				E455FF82189905DB00F8C04C /* TSFCompetence.m in Sources */,
+				52FE914F18CD131000396574 /* TSFCredentialStore.m in Sources */,
 				52E1398218BDF41F0094F941 /* TSFRemindAssessorsCell.m in Sources */,
 				52BE6F5E18BCDB89000B2DC7 /* TSFAssessorCell.m in Sources */,
 				527FD0B9189DA634003E1E96 /* UIColor+TSFColor.m in Sources */,
@@ -926,6 +935,7 @@
 				52BE89A818C6118600F6AE04 /* TSFNewQuestionnaireConfirmViewControllerSpec.m in Sources */,
 				E453D6F21899552000052854 /* TSFQuestionnaireServiceSpec.m in Sources */,
 				E455FF8518990DB000F8C04C /* TSFKeyBehaviourSpec.m in Sources */,
+				52FE915218CD133100396574 /* TSFCredentialStoreSpec.m in Sources */,
 				5290DBC118BBACEF0074AF78 /* TSFQuestionnaireIntroViewControllerSpec.m in Sources */,
 				527AF15618B611C100604A3A /* TSFUserMapperSpec.m in Sources */,
 				E429DD51189809A400BAFEC4 /* TSFAPIClientSpec.m in Sources */,
