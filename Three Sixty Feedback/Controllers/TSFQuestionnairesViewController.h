@@ -23,6 +23,10 @@
 @property (nonatomic, strong) NSArray *completedQuestionnaires;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *activeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *detailView;
+@property (weak, nonatomic) IBOutlet UIView *emptyStateView;
+@property (weak, nonatomic) IBOutlet UILabel *chooseQuestionnaireLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orLabel;
+@property (weak, nonatomic) IBOutlet TSFButton *createNewButton;
 
 - (void)reloadData;
 - (void)loadAssessors;
@@ -30,5 +34,7 @@
 - (void)filterQuestionnaires;
 - (IBAction)segmentedControlChanged:(id)sender;
 - (TSFUserQuestionnaireInfoViewController *)questionnaireViewControllerForQuestionnaire:(TSFQuestionnaire *)questionnaire;
+- (IBAction)pushToNewQuestionnaireController:(id)sender;
+
 
 @end

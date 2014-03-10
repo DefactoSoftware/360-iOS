@@ -61,11 +61,27 @@ describe(@"TSFQuestionnairesViewController", ^{
             [[_questionnairesViewController.detailView shouldNot] beNil];
         });
         
+        it(@"has an empty state view", ^{
+            [[_questionnairesViewController.emptyStateView shouldNot] beNil];
+        });
+        
         it(@"creates a new user questionnaire view controller", ^{
             TSFQuestionnaire *questionnaire = [[TSFQuestionnaire alloc] init];
             TSFUserQuestionnaireInfoViewController *questionnaireViewController = [_questionnairesViewController questionnaireViewControllerForQuestionnaire:questionnaire];
             
             [[questionnaireViewController.questionnaire should] equal:questionnaire];
+        });
+        
+        it(@"has an outlet for the choose label", ^{
+            [[_questionnairesViewController.chooseQuestionnaireLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the or label", ^{
+            [[_questionnairesViewController.orLabel shouldNot] beNil];
+        });
+        
+        it(@"has an outlet for the new button", ^{
+            [[_questionnairesViewController.createNewButton shouldNot] beNil];
         });
     });
     

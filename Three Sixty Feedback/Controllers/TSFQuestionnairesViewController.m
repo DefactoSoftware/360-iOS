@@ -17,6 +17,7 @@
 
 static NSString *const TSFQuestionnaireCellIdentifier = @"TSFQuestionnaireCell";
 static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuestionnaireInfoViewController";
+static NSString *const TSFNewQuestionnaireViewControllerIdentifier = @"TSFNewQuestionnaireViewControllerNavigation";
 
 @interface TSFQuestionnairesViewController()
 @property (nonatomic, assign) BOOL showCompletedQuestionnaires;
@@ -70,6 +71,11 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     [self.activeSegmentedControl addTarget:self
                                     action:@selector(segmentedControlChanged:)
                forControlEvents:UIControlEventValueChanged];
+    
+    self.chooseQuestionnaireLabel.text = TSFLocalizedString(@"TSFQuestionnairesViewControllerChooseQuestionnaire", @"Choose a questionnaire on the left side");
+    self.orLabel.text = TSFLocalizedString(@"TSFQuestionnairesViewControllerOr", @"or");
+    [self.createNewButton setTitle:TSFLocalizedString(@"TSFQuestionnairesViewControllerCreateNew", @"Create a new questionnaire")
+                          forState:UIControlStateNormal];
     
     [self checkToDisplayAddNotification];
     [self loadQuestionnaires];
@@ -128,6 +134,8 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     for (UIView *view in self.detailView.subviews) {
         [view removeFromSuperview];
     }
+    [self.view bringSubviewToFront:self.emptyStateView];
+    self.emptyStateView.hidden = NO;
 }
 
 - (IBAction)segmentedControlChanged:(id)sender {
@@ -182,15 +190,19 @@ static NSString *const TSFQuestionnaireViewControllerIdentifier = @"TSFUserQuest
     return questionnaireViewController;
 }
 
+- (IBAction)pushToNewQuestionnaireController:(id)sender {
+    UIViewController *newQuestionnaireViewController = [self.storyboard instantiateViewControllerWithIdentifier:TSFNewQuestionnaireViewControllerIdentifier];
+    [self.sideMenuViewController setContentViewController:newQuestionnaireViewController];
+}
+
 - (void)displayDetailViewForQuestionnaire:(TSFQuestionnaire *)questionnaire {
     TSFUserQuestionnaireInfoViewController *questionnaireViewController = [self questionnaireViewControllerForQuestionnaire:questionnaire];
     
     UIView *questionnaireView = questionnaireViewController.view;
     questionnaireView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    for (UIView *view in self.detailView.subviews) {
-        [view removeFromSuperview];
-    }
+    [self clearDetailView];
+    self.emptyStateView.hidden = YES;
     [self.detailView addSubview:questionnaireView];
     
     NSLayoutConstraint *width =[NSLayoutConstraint
