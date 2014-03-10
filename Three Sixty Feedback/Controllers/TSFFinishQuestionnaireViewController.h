@@ -10,6 +10,7 @@
 #import "TSFAssessorService.h"
 #import "TSFBaseViewController.h"
 #import "TSFQuestionnaireViewController.h"
+#import "TSFButton.h"
 
 @class TSFQuestionnaireViewController;
 
@@ -18,7 +19,7 @@
 @property (nonatomic, strong) TSFAssessorService *assessorService;
 @property (weak, nonatomic) IBOutlet UILabel *thankLabel;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet TSFButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) TSFQuestionnaireViewController *questionnaireViewController;

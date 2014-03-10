@@ -40,6 +40,8 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     self.pageControl.pageIndicatorTintColor = [UIColor TSFLightGreyColor];
     self.pageControl.currentPageIndicatorTintColor = [UIColor TSFOrangeColor];
     
+    self.view.backgroundColor = [UIColor TSFBeigeColor];
+    
     [self loadCompetenceControllers];
     [self createFinishQuestionnaireViewController];
     [self initializePageController];

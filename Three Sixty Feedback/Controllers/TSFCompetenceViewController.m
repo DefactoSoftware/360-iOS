@@ -206,6 +206,11 @@ static NSInteger const TSFCompetenceViewControllerExtraCellsCount = 2;
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor TSFBeigeColor];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01f;
 }

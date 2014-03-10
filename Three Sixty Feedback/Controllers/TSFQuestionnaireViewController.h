@@ -16,7 +16,7 @@ typedef void (^TSFCompleteQuestionnaireViewControllerBlock)(BOOL);
 
 @class TSFFinishQuestionnaireViewController;
 
-@interface TSFQuestionnaireViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface TSFQuestionnaireViewController : TSFBaseViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageController;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

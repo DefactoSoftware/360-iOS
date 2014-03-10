@@ -32,7 +32,7 @@ static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue
     self.subjectLabelFormat = TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerSubject", @"De vragen in deze ronde gaan over %@.");
     NSString *introLabel = TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerIntro", @"Je bent uitgenodigd om mee te doen met een 360°-feedbackronde.");
     NSString *timeLabel = TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerTime", @"Het beantwoorden van de vragen duurt ongeveer 15 minuten.");
-    NSString *startButton = TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerStart", @"Begin met het beantwoorden van de vragen");
+    NSString *startButton = TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerStart", @"Begin met het beantwoorden");
     
     self.title = TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerTitle", @"Feedback round");
     self.titleLabel.text = titleLabel;
@@ -41,11 +41,9 @@ static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue
     self.subjectLabel.text = [NSString stringWithFormat:self.subjectLabelFormat, @""];
     self.infoLabel.attributedText = [self createAttributedInfoString];
     [self.startButton setTitle:startButton forState:UIControlStateNormal];
-    [self.startButton setTintColor:[UIColor TSFOrangeColor]];
     
     self.startButton.enabled = NO;
     
-    self.navigationController.navigationBar.tintColor = [UIColor TSFOrangeColor];
     [self loadQuestionnaire];
 }
 

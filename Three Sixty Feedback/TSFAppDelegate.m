@@ -8,6 +8,7 @@
 #import "TSFAppDelegate.h"
 #import "TSFAPIClient.h"
 #import "UIColor+TSFColor.h"
+#import "UIColor+TSFColor.h"
 
 @implementation TSFAppDelegate
 
@@ -16,6 +17,7 @@
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor TSFLightGreyColor];
     pageControl.currentPageIndicatorTintColor = [UIColor TSFOrangeColor];
+    pageControl.backgroundColor = [UIColor TSFBeigeColor];
     
     return YES;
 }

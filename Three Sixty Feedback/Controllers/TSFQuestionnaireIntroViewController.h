@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TSFGenerics.h"
 #import "TSFQuestionnaireService.h"
+#import "TSFBaseViewController.h"
+#import "TSFButton.h"
 
-@interface TSFQuestionnaireIntroViewController : UIViewController
+@interface TSFQuestionnaireIntroViewController : TSFBaseViewController
 
 @property (nonatomic, strong) TSFQuestionnaireService *questionnaireService;
 @property (weak, nonatomic) IBOutlet UIScrollView *introScrollView;
@@ -19,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet TSFButton *startButton;
 @property (nonatomic, strong) TSFQuestionnaire *questionnaire;
 
 - (IBAction)startButtonPressed:(id)sender;
