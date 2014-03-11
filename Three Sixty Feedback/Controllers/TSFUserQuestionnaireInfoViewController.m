@@ -58,6 +58,8 @@ static NSString *const TSFAssessorCellIdentifier = @"TSFAssessorCell";
     [self.remindAssessorsButton setIconImage:[UIImage imageNamed:@"time"]];
     [self.showTemplateButton setIconImage:[UIImage imageNamed:@"clipboard"]];
     
+    self.remindAssessorsButton.hidden = self.questionnaire.completed;
+    
     self.assessorsTableView.separatorInset = UIEdgeInsetsMake(0, 20.0f, 0, 20.0f);
 
     [self setupAssessorsTableView];

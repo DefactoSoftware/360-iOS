@@ -880,7 +880,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gcz-HJ-kYi">
-                                <rect key="frame" x="20" y="177" width="411" height="761"/>
+                                <rect key="frame" x="20" y="177" width="411" height="827"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -991,7 +991,7 @@
                             <constraint firstItem="F3N-0U-Ljn" firstAttribute="top" secondItem="ZHH-ur-zzA" secondAttribute="bottom" constant="31" id="cmt-Lo-szt"/>
                             <constraint firstItem="b06-cD-cle" firstAttribute="top" secondItem="eeu-Pj-4N2" secondAttribute="top" constant="20" symbolic="YES" id="cvA-98-hCt"/>
                             <constraint firstItem="F3N-0U-Ljn" firstAttribute="leading" secondItem="eeu-Pj-4N2" secondAttribute="leading" constant="20" id="dkA-wq-Jr7"/>
-                            <constraint firstAttribute="bottom" secondItem="gcz-HJ-kYi" secondAttribute="bottom" constant="86" id="j6h-iL-o7z"/>
+                            <constraint firstAttribute="bottom" secondItem="gcz-HJ-kYi" secondAttribute="bottom" constant="20" id="j6h-iL-o7z"/>
                             <constraint firstItem="gcz-HJ-kYi" firstAttribute="leading" secondItem="eeu-Pj-4N2" secondAttribute="leading" constant="20" id="lKF-wD-eeM"/>
                             <constraint firstItem="Y5t-0Q-vFo" firstAttribute="top" secondItem="ZHH-ur-zzA" secondAttribute="bottom" constant="27" id="n6L-fi-TRG"/>
                             <constraint firstItem="ccY-ik-kmB" firstAttribute="leading" secondItem="b06-cD-cle" secondAttribute="trailing" constant="8" id="nLA-4w-1r8"/>
@@ -1640,6 +1640,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eEK-mC-NeN"/>
+        <segue reference="2h0-PH-eNa"/>
     </inferredMetricsTieBreakers>
 </document>
