@@ -30,4 +30,10 @@
     return completed;
 }
 
+- (NSArray *)sortedAssessors {
+    NSSortDescriptor *completedDescriptor = [[NSSortDescriptor alloc] initWithKey:@"completed"
+                                                                        ascending:YES];
+    return [self.assessors sortedArrayUsingDescriptors:@[completedDescriptor]];
+}
+
 @end

@@ -52,6 +52,7 @@ static NSString *const TSFRemindAssessorCellIdentifier = @"TSFRemindAssessorsCel
     self.assessorsTableView.dataSource = self;
     self.assessorsTableView.backgroundColor = [UIColor TSFBeigeColor];
     [self.assessorsTableView reloadData];
+    self.questionnaire.assessors = [self.questionnaire sortedAssessors];
 }
 
 - (void)reloadAssessors {

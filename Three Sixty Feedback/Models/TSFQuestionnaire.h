@@ -21,5 +21,6 @@
 
 - (NSInteger)completedAssessors;
 - (BOOL)completed;
+- (NSArray *)sortedAssessors;
 
 @end

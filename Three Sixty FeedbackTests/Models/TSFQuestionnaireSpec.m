@@ -44,8 +44,18 @@ describe(@"TSFQuestionnaire", ^{
             _questionnaire.assessors = @[ completedAssessor, completedAssessorTwo ];
             [[theValue([_questionnaire completed]) should] equal:theValue(YES)];
         });
+        
+        it(@"sorts the assessors by incompleted first", ^{
+            _assessorOne.completed = YES;
+            _assessorTwo.completed = NO;
+            _questionnaire.assessors = @[ _assessorOne, _assessorTwo ];
+            
+            NSArray *sortedAssessors = [_questionnaire sortedAssessors];
+            
+            [[theValue(((TSFAssessor *)sortedAssessors[0]).completed) should] equal:theValue(NO)];
+            [[theValue(((TSFAssessor *)sortedAssessors[1]).completed) should] equal:theValue(YES)];
+        });
     });
-    
 });
 
 SPEC_END

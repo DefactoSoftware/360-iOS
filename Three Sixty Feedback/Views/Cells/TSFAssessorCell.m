@@ -11,8 +11,8 @@
 #import "NSDate+StringParsing.h"
 #import "UIColor+TSFColor.h"
 
-static NSString *const TSFCompletedImageName = @"checkmark";
-static NSString *const TSFNotCompletedImageName = @"cancel";
+static NSString *const TSFCompletedImageName = @"checkmark-green";
+static NSString *const TSFNotCompletedImageName = @"cross-red";
 
 @interface TSFAssessorCell()
 @property (nonatomic, strong) TSFAssessor *assessor;
@@ -44,7 +44,7 @@ static NSString *const TSFNotCompletedImageName = @"cancel";
         self.completedImageView.image = [UIImage imageNamed:TSFNotCompletedImageName];
     }
     
-    self.completedImageView.alpha = 0.8f;
+    self.completedImageView.alpha = 0.3f;
     
     if (assessor.lastRemindedAt) {
         self.remindedAtLabel.text = [self remindedAtString:assessor.lastRemindedAt];
