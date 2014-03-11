@@ -164,20 +164,6 @@ static NSInteger const TSFNewAssessorsTableViewHorizontalInset = 106.0f;
 #pragma mark - ABPeoplePickerNavigationController
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker
-      shouldContinueAfterSelectingPerson:(ABRecordRef)person {
-    ABMultiValueRef emailReference = ABRecordCopyValue(person, kABPersonEmailProperty);
-    CFIndex emailCount = ABMultiValueGetCount(emailReference);
-    if (emailCount < 2) {
-        CFStringRef emailString = ABMultiValueCopyValueAtIndex(emailReference, 0);
-        [self insertAssessor:(__bridge NSString *)emailString];
-        [self dismissViewControllerAnimated:YES
-                                 completion:nil];
-    }
-    
-    return YES;
-}
-
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker
       shouldContinueAfterSelectingPerson:(ABRecordRef)person
                                 property:(ABPropertyID)property
                               identifier:(ABMultiValueIdentifier)identifier {
