@@ -84,7 +84,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hag-iI-HJQ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hag-iI-HJQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -191,6 +191,7 @@
                         <outlet property="timeLabel" destination="gMG-gq-1qA" id="ugQ-rT-LWb"/>
                         <outlet property="titleLabel" destination="n8A-Vq-opH" id="cvc-0k-llh"/>
                         <segue destination="iq2-1O-ouh" kind="push" identifier="TSFStartQuestionnaireSegue" id="yfP-d5-pWA"/>
+                        <segue destination="f3h-Wt-W8S" kind="push" identifier="TSFThanksViewControllerSegue" id="6c0-vm-NBy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuy-PD-R66" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -267,7 +268,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WuZ-bV-9bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="42"/>
+            <point key="canvasLocation" x="2253" y="42"/>
+        </scene>
+        <!--Thanks View Controller-->
+        <scene sceneID="fhN-Qp-Dbb">
+            <objects>
+                <viewController storyboardIdentifier="TSFThanksViewController" id="f3h-Wt-W8S" customClass="TSFThanksViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sGa-ZZ-jpr"/>
+                        <viewControllerLayoutGuide type="bottom" id="7aZ-3d-fMu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="50i-Y5-lXy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The questionnaire has been sent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTS-Wa-5Sa">
+                                <rect key="frame" x="20" y="70" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can now close the app." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulq-TY-TBg">
+                                <rect key="frame" x="20" y="99" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Yip-0o-ULw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hTS-Wa-5Sa" firstAttribute="leading" secondItem="50i-Y5-lXy" secondAttribute="leading" constant="20" id="9uP-X8-yJl"/>
+                            <constraint firstItem="hTS-Wa-5Sa" firstAttribute="top" secondItem="sGa-ZZ-jpr" secondAttribute="bottom" constant="50" id="Fob-xa-k1f"/>
+                            <constraint firstItem="ulq-TY-TBg" firstAttribute="leading" secondItem="50i-Y5-lXy" secondAttribute="leading" constant="20" id="HOS-nM-XYK"/>
+                            <constraint firstAttribute="trailing" secondItem="ulq-TY-TBg" secondAttribute="trailing" constant="20" id="fvp-m8-1L7"/>
+                            <constraint firstAttribute="trailing" secondItem="hTS-Wa-5Sa" secondAttribute="trailing" constant="20" id="g8d-0e-eGG"/>
+                            <constraint firstItem="ulq-TY-TBg" firstAttribute="top" secondItem="hTS-Wa-5Sa" secondAttribute="bottom" constant="8" id="i4T-kX-mbk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="NVk-z9-KMg"/>
+                    <connections>
+                        <outlet property="headerLabel" destination="hTS-Wa-5Sa" id="yLp-OC-Uwc"/>
+                        <outlet property="thanksLabel" destination="ulq-TY-TBg" id="RY6-h6-12i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mdS-KM-qfG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1350" y="104"/>
         </scene>
         <!--Questionnaire View Controller-->
         <scene sceneID="lwO-kT-Ek7">
@@ -292,11 +342,12 @@
                     <navigationItem key="navigationItem" id="jIV-D8-2AC"/>
                     <connections>
                         <outlet property="pageControl" destination="UT5-XM-taJ" id="L7k-Jb-Nwg"/>
+                        <segue destination="f3h-Wt-W8S" kind="push" identifier="TSFThanksViewControllerSegue" id="KAG-lp-jvt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xd8-Ka-322" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897" y="42"/>
+            <point key="canvasLocation" x="927" y="42"/>
         </scene>
         <!--Competence View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -357,7 +408,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7e-76-eL8" customClass="TSFKeyBehaviourRatingView">
                                                     <rect key="frame" x="20" y="61" width="280" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -439,7 +490,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365" y="42"/>
+            <point key="canvasLocation" x="1877" y="48"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yqF-2C-cbz">
@@ -1546,5 +1597,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="X5x-y6-Q8R"/>
+        <segue reference="6c0-vm-NBy"/>
     </inferredMetricsTieBreakers>
 </document>

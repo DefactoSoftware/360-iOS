@@ -44,7 +44,6 @@ static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue
     [self.startButton setTitle:startButton forState:UIControlStateNormal];
     
     self.startButton.enabled = NO;
-    
     [self loadQuestionnaire];
 }
 

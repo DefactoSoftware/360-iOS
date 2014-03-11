@@ -27,5 +27,6 @@
 - (void)canComplete;
 - (IBAction)sendButtonPressed:(id)sender;
 - (IBAction)previousButtonPressed:(id)sender;
+- (void)completionSuccess;
 
 @end

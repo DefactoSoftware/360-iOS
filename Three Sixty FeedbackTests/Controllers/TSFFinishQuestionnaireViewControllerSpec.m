@@ -110,6 +110,12 @@ describe(@"TSFFinishQuestionnaireViewController", ^{
             
             [_finishQuestionnaireViewController sendButtonPressed:nil];
         });
+        
+        it(@"calls the questionnaire viewcontroller when the sending has completed", ^{
+            [[_mockQuestionnaireViewController should] receive:@selector(pushToThanksController)];
+            
+            [_finishQuestionnaireViewController completionSuccess];
+        });
     });
 });
 

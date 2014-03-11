@@ -14,6 +14,7 @@
 
 static NSString *const TSFCompetenceViewControllerTag = @"TSFCompetenceViewController";
 static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQuestionnaireViewController";
+static NSString *const TSFThanksViewControllerSegue = @"TSFThanksViewControllerSegue";
 
 @interface TSFQuestionnaireViewController()
 @property (nonatomic, strong) TSFCompetenceViewController *pendingCompetenceViewController;
@@ -45,6 +46,11 @@ static NSString *const TSFFinishQuestionnaireViewControllerTag = @"TSFFinishQues
     [self loadCompetenceControllers];
     [self createFinishQuestionnaireViewController];
     [self initializePageController];
+}
+
+- (void)pushToThanksController {
+    [self performSegueWithIdentifier:TSFThanksViewControllerSegue
+                              sender:self];
 }
 
 #pragma mark - Initializing page controller and child viewcontrollers

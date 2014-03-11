@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerTitle", @"Finish feedback round");
+    self.navigationItem.title = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerTitle", @"Finish feedback round");
     self.thankLabel.text = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerThanks", @"Bedankt voor het invullen van de vragenlijst.");
     self.infoLabel.text = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerInfo", @"Druk op 'versturen' als je tevreden bent over de antwoorden die je hebt ingevuld.");
     
@@ -38,6 +38,7 @@
     self.sendButton.hidden = YES;
     self.previousButton.enabled = NO;
     self.infoLabel.text = TSFLocalizedString(@"TSFFinishQuestionnaireViewControllerCompletionSuccess", @"De vragenlijst is succesvol verzonden.");
+    [self.questionnaireViewController pushToThanksController];
     [self.view layoutSubviews];
 }
 

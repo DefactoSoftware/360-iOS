@@ -36,6 +36,7 @@ typedef void (^TSFCompleteQuestionnaireViewControllerBlock)(BOOL);
 - (void)displayCompletionError;
 - (BOOL)failedCompetencesCheck;
 - (void)completeQuestionnaireCheck;
+- (void)pushToThanksController;
 - (void)updateCurrentCompetenceViewController;
 - (void)completeQuestionnaireWithCompletion:(TSFCompleteQuestionnaireViewControllerBlock)completion;
 

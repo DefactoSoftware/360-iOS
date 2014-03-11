@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9a-E6-U4b">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9a-E6-U4b">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -151,11 +151,63 @@
                     <navigationItem key="navigationItem" id="qGW-a9-Cj9"/>
                     <connections>
                         <outlet property="pageControl" destination="CVi-M4-hmy" id="VkG-hH-kjl"/>
+                        <segue destination="45v-HC-ODD" kind="push" identifier="TSFThanksViewControllerSegue" id="RVx-gg-pC1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mLt-M5-gCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1998" y="-146"/>
+        </scene>
+        <!--Thanks View Controller-->
+        <scene sceneID="Bmc-7c-o9s">
+            <objects>
+                <viewController storyboardIdentifier="TSFThanksViewController" id="45v-HC-ODD" customClass="TSFThanksViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n5q-M8-pZu"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZGZ-WR-i3o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dGo-Lm-G8I">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for sending the questionnaire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hr-bP-xK7">
+                                <rect key="frame" x="20" y="114" width="728" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="eY6-nL-D0v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can now close the app." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lg9-hf-GQ7">
+                                <rect key="frame" x="20" y="143" width="728" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="irR-iS-tqZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5hr-bP-xK7" secondAttribute="trailing" constant="20" id="6Zi-Dd-REG"/>
+                            <constraint firstItem="Lg9-hf-GQ7" firstAttribute="leading" secondItem="dGo-Lm-G8I" secondAttribute="leading" constant="20" id="8tO-B1-Mk5"/>
+                            <constraint firstItem="5hr-bP-xK7" firstAttribute="leading" secondItem="dGo-Lm-G8I" secondAttribute="leading" constant="20" id="B6u-nJ-Ysp"/>
+                            <constraint firstItem="5hr-bP-xK7" firstAttribute="top" secondItem="n5q-M8-pZu" secondAttribute="bottom" constant="50" id="R7H-qC-33P"/>
+                            <constraint firstItem="Lg9-hf-GQ7" firstAttribute="top" secondItem="5hr-bP-xK7" secondAttribute="bottom" constant="8" id="RXn-eb-Q6c"/>
+                            <constraint firstAttribute="trailing" secondItem="Lg9-hf-GQ7" secondAttribute="trailing" constant="20" id="b0L-fH-cKH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wL0-Ly-94e"/>
+                    <connections>
+                        <outlet property="headerLabel" destination="5hr-bP-xK7" id="Svf-C7-KKa"/>
+                        <outlet property="thanksLabel" destination="Lg9-hf-GQ7" id="kqb-8w-dnG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RdE-5v-NIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2912" y="-146"/>
         </scene>
         <!--Competence View Controller-->
         <scene sceneID="lfc-4Z-saM">
@@ -307,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Js-NE-mrj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3002" y="-123"/>
+            <point key="canvasLocation" x="3868" y="-146"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CFf-7Z-JGU">
@@ -1279,10 +1331,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoN-fi-1RW">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoN-fi-1RW">
                                         <rect key="frame" x="20" y="79" width="728" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="zVK-H6-KVF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifq-hF-I6W" customClass="TSFButton">
@@ -1298,10 +1353,13 @@
                                             <action selector="sendButtonPressed:" destination="gaN-7M-dNv" eventType="touchUpInside" id="dbs-Ob-yIC"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzD-wX-O1R">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzD-wX-O1R">
                                         <rect key="frame" x="20" y="50" width="728" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Ugo-J5-frw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1345,7 +1403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ode-8l-h87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3848" y="-123"/>
+            <point key="canvasLocation" x="4714" y="-146"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OEH-rP-4xp">
