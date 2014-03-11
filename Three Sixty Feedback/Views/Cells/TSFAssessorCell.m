@@ -62,7 +62,7 @@ static NSString *const TSFNotCompletedImageName = @"cancel";
         textFontSize = 13.0f;
     }
     
-    CGFloat margin = 35.0f;
+    CGFloat margin = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 35.0f : 30.0f;
     
     CGSize constraint = CGSizeMake(textWidth, 20000.0f);
     CGSize emailSize = CGSizeMake(0, 0);

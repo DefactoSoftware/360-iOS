@@ -282,14 +282,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The questionnaire has been sent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTS-Wa-5Sa">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="The questionnaire has been sent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTS-Wa-5Sa">
                                 <rect key="frame" x="20" y="70" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can now close the app." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulq-TY-TBg">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You can now close the app." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulq-TY-TBg">
                                 <rect key="frame" x="20" y="99" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -1318,11 +1318,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3RU-WB-Go7">
-                                                    <rect key="frame" x="20" y="28" width="18" height="18"/>
+                                                    <rect key="frame" x="20" y="30" width="14" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="18" id="5ke-yn-2M8"/>
-                                                        <constraint firstAttribute="width" constant="18" id="DEr-iQ-BMQ"/>
+                                                        <constraint firstAttribute="height" constant="14" id="5ke-yn-2M8"/>
+                                                        <constraint firstAttribute="width" constant="14" id="DEr-iQ-BMQ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="254" translatesAutoresizingMaskIntoConstraints="NO" id="tHC-fV-ppU">
@@ -1341,8 +1341,8 @@
                                                 <constraint firstItem="tHC-fV-ppU" firstAttribute="top" secondItem="mDQ-9K-4gd" secondAttribute="bottom" id="5Yo-lo-7ZQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="mDQ-9K-4gd" secondAttribute="trailing" constant="20" id="7NM-Iz-S6n"/>
                                                 <constraint firstAttribute="centerY" secondItem="3RU-WB-Go7" secondAttribute="centerY" constant="-0.5" id="BjF-ol-hRC"/>
-                                                <constraint firstItem="tHC-fV-ppU" firstAttribute="leading" secondItem="3RU-WB-Go7" secondAttribute="trailing" constant="8" id="P11-jP-Mhv"/>
-                                                <constraint firstItem="mDQ-9K-4gd" firstAttribute="leading" secondItem="3RU-WB-Go7" secondAttribute="trailing" constant="8" id="ZCm-lw-AD3"/>
+                                                <constraint firstItem="tHC-fV-ppU" firstAttribute="leading" secondItem="3RU-WB-Go7" secondAttribute="trailing" constant="12" id="P11-jP-Mhv"/>
+                                                <constraint firstItem="mDQ-9K-4gd" firstAttribute="leading" secondItem="3RU-WB-Go7" secondAttribute="trailing" constant="12" id="ZCm-lw-AD3"/>
                                                 <constraint firstItem="3RU-WB-Go7" firstAttribute="leading" secondItem="JAf-Oa-wqi" secondAttribute="leading" constant="20" id="kAz-vg-Ssl"/>
                                                 <constraint firstItem="mDQ-9K-4gd" firstAttribute="top" secondItem="JAf-Oa-wqi" secondAttribute="top" constant="13" id="vF9-Bc-VJg"/>
                                             </constraints>
