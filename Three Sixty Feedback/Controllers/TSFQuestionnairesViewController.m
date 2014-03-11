@@ -126,8 +126,8 @@ static NSString *const TSFNewQuestionnaireViewControllerIdentifier = @"TSFNewQue
             [activeQuestionnaires addObject:questionnaire];
         }
     }
-    self.activeQuestionnaires = activeQuestionnaires;
-    self.completedQuestionnaires = completedQuestionnaires;
+    self.activeQuestionnaires = [[activeQuestionnaires reverseObjectEnumerator] allObjects];
+    self.completedQuestionnaires = [[completedQuestionnaires reverseObjectEnumerator] allObjects];
 }
 
 - (void)clearDetailView {

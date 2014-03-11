@@ -117,7 +117,8 @@ describe(@"TSFQuestionnaireService", ^{
         [[_mockAPIClient should] receive:@selector(GET:parameters:success:failure:)
                            withArguments:expectedUrl, [KWAny any], [KWAny any], [KWAny any]];
         
-        [_questionnaireService questionnaireWithId:questionnaireId success:^(id response) {
+        [_questionnaireService questionnaireWithId:questionnaireId
+                                           success:^(id response) {
         } failure:^(NSError *error) {
         }];
     });
@@ -140,14 +141,16 @@ describe(@"TSFQuestionnaireService", ^{
         [[_mockQuestionnaireMapper should] receive:@selector(questionnaireWithDictionary:)
                                          andReturn:stubMappedResponse];
         
-        [_mockAPIClient stub:@selector(GET:parameters:success:failure:) withBlock:^id(NSArray *params) {
+        [_mockAPIClient stub:@selector(GET:parameters:success:failure:)
+                   withBlock:^id(NSArray *params) {
             void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = params[2];
             successBlock(nil, _stubResponse);
             return nil;
         }];
         
         [_questionnaireService questionnaireWithId:questionnaireId success:^(id response) {
-        } failure:^(NSError *error) {
+        }
+                                           failure:^(NSError *error) {
         }];
     });
     

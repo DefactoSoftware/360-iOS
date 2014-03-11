@@ -162,6 +162,30 @@ describe(@"TSFQuestionnairesViewController", ^{
         [[_questionnairesViewController.activeQuestionnaires should] equal:@[ activeQuestionnaire ]];
         [[_questionnairesViewController.completedQuestionnaires should] equal:@[ completedQuestionnaire ]];
     });
+    
+    it(@"reverts the questionnaires", ^{
+        id activeQuestionnaireOne = [KWMock mockForClass:[TSFQuestionnaire class]];
+        id activeQuestionnaireTwo = [KWMock mockForClass:[TSFQuestionnaire class]];
+        id completedQuestionnaireOne = [KWMock mockForClass:[TSFQuestionnaire class]];
+        id completedQuestionnaireTwo = [KWMock mockForClass:[TSFQuestionnaire class]];
+        [activeQuestionnaireOne stub:@selector(completed)
+                        andReturn:theValue(NO)];
+        [activeQuestionnaireTwo stub:@selector(completed)
+                           andReturn:theValue(NO)];
+        [completedQuestionnaireOne stub:@selector(completed)
+                           andReturn:theValue(YES)];
+        [completedQuestionnaireTwo stub:@selector(completed)
+                              andReturn:theValue(YES)];
+        
+        _questionnairesViewController.questionnaires = @[ activeQuestionnaireOne, completedQuestionnaireOne, activeQuestionnaireTwo, completedQuestionnaireTwo ];
+        
+        [_questionnairesViewController filterQuestionnaires];
+        
+        [[_questionnairesViewController.activeQuestionnaires[0] should] equal:activeQuestionnaireTwo];
+        [[_questionnairesViewController.activeQuestionnaires[1] should] equal:activeQuestionnaireOne];
+        [[_questionnairesViewController.completedQuestionnaires[0] should] equal:completedQuestionnaireTwo];
+        [[_questionnairesViewController.completedQuestionnaires[1] should] equal:completedQuestionnaireOne];
+    });
 });
 
 SPEC_END

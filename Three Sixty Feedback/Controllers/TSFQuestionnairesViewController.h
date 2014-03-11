@@ -36,5 +36,4 @@
 - (TSFUserQuestionnaireInfoViewController *)questionnaireViewControllerForQuestionnaire:(TSFQuestionnaire *)questionnaire;
 - (IBAction)pushToNewQuestionnaireController:(id)sender;
 
-
 @end
