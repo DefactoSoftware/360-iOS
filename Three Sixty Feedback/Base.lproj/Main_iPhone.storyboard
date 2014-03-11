@@ -191,12 +191,11 @@
                         <outlet property="timeLabel" destination="gMG-gq-1qA" id="ugQ-rT-LWb"/>
                         <outlet property="titleLabel" destination="n8A-Vq-opH" id="cvc-0k-llh"/>
                         <segue destination="iq2-1O-ouh" kind="push" identifier="TSFStartQuestionnaireSegue" id="yfP-d5-pWA"/>
-                        <segue destination="f3h-Wt-W8S" kind="push" identifier="TSFThanksViewControllerSegue" id="6c0-vm-NBy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuy-PD-R66" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="479" y="42"/>
+            <point key="canvasLocation" x="470" y="42"/>
         </scene>
         <!--Finish Questionnaire View Controller-->
         <scene sceneID="1BR-jC-qm5">
@@ -282,15 +281,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="The questionnaire has been sent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTS-Wa-5Sa">
-                                <rect key="frame" x="20" y="70" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The questionnaire has been sent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTS-Wa-5Sa">
+                                <rect key="frame" x="20" y="114" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You can now close the app." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulq-TY-TBg">
-                                <rect key="frame" x="20" y="99" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can now close the app." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulq-TY-TBg">
+                                <rect key="frame" x="20" y="143" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Yip-0o-ULw"/>
@@ -317,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdS-KM-qfG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1350" y="104"/>
+            <point key="canvasLocation" x="1425" y="42"/>
         </scene>
         <!--Questionnaire View Controller-->
         <scene sceneID="lwO-kT-Ek7">
@@ -490,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1877" y="48"/>
+            <point key="canvasLocation" x="1878" y="42"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yqF-2C-cbz">
@@ -618,7 +617,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1Ls-AS-6Ly">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="QBG-hW-b3t">
+                        <barButtonItem key="rightBarButtonItem" id="QBG-hW-b3t">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oIx-CB-d09">
                                 <rect key="frame" x="233" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1566,8 +1565,8 @@
                                 <action selector="openMenu:" destination="Amp-gz-COa" id="Umn-yu-l9J"/>
                             </connections>
                         </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="oVn-6t-JGE">
-                            <rect key="frame" x="74" y="7" width="172" height="31"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="oVn-6t-JGE">
+                            <rect key="frame" x="74" y="7" width="172" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title=""/>
@@ -1597,6 +1596,5 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="X5x-y6-Q8R"/>
-        <segue reference="6c0-vm-NBy"/>
     </inferredMetricsTieBreakers>
 </document>

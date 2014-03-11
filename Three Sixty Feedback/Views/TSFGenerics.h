@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Defacto. All rights reserved.
 //
 
-#ifndef Three Sixty Feedback_CPMGenerics_h
-#define Three Sixty Feedback_CPMGenerics_h
+#ifndef ThreeSixtyFeedback_CPMGenerics_h
+#define ThreeSixtyFeedback_CPMGenerics_h
 
 static inline NSString * TSFLocalizedString(NSString *key, NSString *defaultValue) {
     return NSLocalizedStringWithDefaultValue(key, nil, [NSBundle mainBundle], defaultValue, nil);
