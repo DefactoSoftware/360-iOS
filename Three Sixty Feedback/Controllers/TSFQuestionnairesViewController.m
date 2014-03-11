@@ -132,7 +132,9 @@ static NSString *const TSFNewQuestionnaireViewControllerIdentifier = @"TSFNewQue
 
 - (void)clearDetailView {
     for (UIView *view in self.detailView.subviews) {
-        [view removeFromSuperview];
+        if (view != self.emptyStateView) {
+            [view removeFromSuperview];
+        }
     }
     [self.view bringSubviewToFront:self.emptyStateView];
     self.emptyStateView.hidden = NO;
