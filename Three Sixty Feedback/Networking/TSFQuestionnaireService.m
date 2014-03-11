@@ -28,14 +28,15 @@
 	                               stringWithFormat:@"%@%@", TSFAPIBaseURL, TSFAPIEndPointQuestionnaires];
 	NSDictionary *parameters = @{ @"token" : self.apiClient.assessorToken };
     
-	[self.apiClient GET:questionnairesURL parameters:parameters success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+	[self.apiClient GET:questionnairesURL parameters:parameters
+                success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *questionnaires = [self.questionnaireMapper questionnairesWithDictionaryArray:responseObject];
         self.questionnaires = questionnaires;
         success(questionnaires);
 	}
-     
-	            failure:
-	 ^(AFHTTPRequestOperation *operation, NSError *error) { failure(error); }];
+	            failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         failure(error);
+    }];
 }
 
 - (void)userQuestionnairesWithSuccess:(TSFNetworkingSuccessBlock)success

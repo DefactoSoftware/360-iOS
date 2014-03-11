@@ -16,7 +16,7 @@
 	dispatch_once(&onceToken, ^{
 	    _sharedClient =
         [[self alloc] initWithBaseURL:[NSURL URLWithString:TSFAPIBaseURL]];
-        _sharedClient.assessorToken = @"KooSLx35F1ca3Q3F6G8pgw";
+//        _sharedClient.assessorToken = @"KooSLx35F1ca3Q3F6G8pgw";
         _sharedClient.credentialStore = [[TSFCredentialStore alloc] init];
 	});
     

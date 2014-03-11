@@ -9,6 +9,7 @@
 #import "TSFQuestionnaireIntroViewController.h"
 #import "TSFCompetenceViewController.h"
 #import "UIColor+TSFColor.h"
+#import "CRToast.h"
 
 static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue";
 
@@ -55,6 +56,10 @@ static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue
         [_self displaySubjectTitle];
         [_self enableStartButton];
     } failure: ^(NSError *error) {
+        NSDictionary *options = @{kCRToastTextKey : TSFLocalizedString(@"TSFQuestionnaireIntroViewControllerLoadError", @"Could not load questionnaire"),
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                  kCRToastBackgroundColorKey : [UIColor TSFErrorColor]};
+        [CRToastManager showNotificationWithOptions:options completionBlock:^{ }];
         NSLog(@"Error loading questionnaires. Userinfo: %@. Error: %@", error.userInfo, error.localizedDescription);
     }];
 }
@@ -105,7 +110,6 @@ static NSString *const TSFStartQuestionnaireSegue = @"TSFStartQuestionnaireSegue
 - (void)enableStartButton {
     self.startButton.enabled = YES;
 }
-
 - (IBAction)startButtonPressed:(id)sender {
     [self performSegueWithIdentifier:TSFStartQuestionnaireSegue sender:self];
 }
