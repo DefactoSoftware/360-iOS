@@ -41,6 +41,10 @@ static NSString *const TSFMainViewControllerIdentifier = @"TSFMainViewController
     self.navigationItem.title = TSFLocalizedString(@"TSFLoginViewControllerTitle", @"Login");
     self.emailLabel.text = TSFLocalizedString(@"TSFLoginViewControllerEmail", @"E-mail address");
     self.passwordLabel.text = TSFLocalizedString(@"TSFLoginViewControllerPassword", @"Password");
+
+    self.emailTextField.placeholder = TSFLocalizedString(@"TSFLoginViewControllerEmailPlaceholder", @"Enter your e-mail address");
+    self.passwordTextField.placeholder = TSFLocalizedString(@"TSFLoginViewControllerPasswordPlaceholder", @"Enter your password");
+    
     [self.loginButton setTitle:TSFLocalizedString(@"TSFLoginViewControllerButton", @"Login") forState:UIControlStateNormal];
     [self addResignGestureRecognizer];
     
